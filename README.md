@@ -1,2 +1,3 @@
 # SERPE
-algo nuevo para probar el push
+Enseñando a los compas para usar github
+
