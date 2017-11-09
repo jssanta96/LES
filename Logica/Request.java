@@ -1,5 +1,7 @@
+package Logica;
+
 public class Request {
-    
+
     private String user_id;
     private String serial;
     private String start_date;
