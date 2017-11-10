@@ -53,21 +53,21 @@ public class UserDao {
             ResultSet tabla = sentence.executeQuery(sql_select);
 
             while(tabla.next()){
-                user.getIdentification(tabla.getString(1));
+                user.setIdentification(tabla.getString(1));
 
-                user.getProjectId(tabla.getString(2));
+                user.setProjectId(tabla.getString(2));
 
-                user.getPassword(tabla.getString(3));
+                user.setPassword(tabla.getString(3));
 
-                user.getNickName(tabla.getString(4));
+                user.setNickName(tabla.getString(4));
 
-                user.getUserName(tabla.getString(5));
+                user.setUserName(tabla.getString(5));
 
-                user.getType(tabla.getString(6));
+                user.setType(tabla.getString(6));
 
-                user.getState(tabla.getString(7));
+                user.setState(tabla.getString(7));
 
-                user.getEmail(tabla.getString(8));
+                user.setEmail(tabla.getString(8));
 
                 System.out.println("ok");
             }

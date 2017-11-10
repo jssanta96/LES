@@ -53,13 +53,13 @@ public class ProjectDao {
             ResultSet tabla = sentence.executeQuery(sql_select);
 
             while(tabla.next()){
-                project.getCode(tabla.getString(1));
+                project.setCode(tabla.getString(1));
 
-                project.getName(tabla.getString(2));
+                project.setName(tabla.getString(2));
 
-                project.getDescription(tabla.getString(3));
+                project.setDescription(tabla.getString(3));
 
-                project.getState(tabla.getString(4));
+                project.setState(tabla.getString(4));
 
                 System.out.println("ok");
             }
