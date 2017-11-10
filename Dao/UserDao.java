@@ -11,6 +11,8 @@ public class UserDao {
         fachada = new FachadaBD();
     }
 
+
+
     public int saveUser(User user){
         String save_sql;
         int numberRows=0;
@@ -18,7 +20,6 @@ public class UserDao {
         save_sql="INSERT INTO user VALUES('"+
                 user.getIdentification()+"','"+user.getProjectId()+"','"+user.getPassword()+"','"+user.getNickName()+"','"
                 +user.getUserName()+"','"+user.getType()+"','"+user.getState()+"','"+user.getEmail()+"');";
-
 
         try{
             Connection conn= fachada.getConnetion();
@@ -36,6 +37,8 @@ public class UserDao {
         }
         return -1;
     }
+
+
 
     public User viewUser(String identification){
         User user= new User();
@@ -78,5 +81,40 @@ public class UserDao {
             System.out.println(e);
         }
         return null;
+    }
+
+
+
+    public void updateUser(String identification, String projec_id, String password, String nickname, String userName, String type, String State, String email){
+
+        String sql_select;
+        sql_select="UPDATE users SET identification ='" + identification +  "', project_id = '"+ projec_id +"', password = '"+ password +
+                "', nickname ='" + nickname +"', name = '" + userName + "', email = '"+ email +" WHERE  identification='"+ identification +"';";
+        try{
+            Connection conn= fachada.getConnetion();
+            System.out.println("Update in the bd");
+            Statement sentencia = conn.createStatement();
+            sentencia.executeUpdate(sql_select);
+
+        }
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e); }
+
+    }
+
+
+    public void deleteUser(String identification){
+
+        String sql_select;
+        sql_select="DELETE FROM users WHERE  identification='"+ identification +"';";
+        try{
+            Connection conn= fachada.getConnetion();
+            System.out.println("Delete in the bd");
+            Statement sentencia = conn.createStatement();
+            sentencia.executeUpdate(sql_select);
+        }
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e); }
+
     }
 }
