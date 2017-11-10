@@ -6,11 +6,11 @@ public class FachadaBD {
     String url, user, password;
     Connection conexion =null;
     Statement instruccion;
-    ResultSet table;
+    ResultSet tabla;
     FachadaBD(){
-        url="jdbc:postgresql://pgsql2:5432/1632645";
-        user="1632645";
-        password="1632645";
+        url="jdbc:postgresql://pgsql2:5432/1625639";
+        user="1625639";
+        password="1625639";
     }
 
 

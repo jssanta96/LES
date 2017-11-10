@@ -1,25 +1,25 @@
 package Dao;
 
-import Logica.User;
+import Logica.Project;
 import java.sql.*;
 
-public class UserDao {
+public class ProjectDao {
     FachadaBD fachada;
 
 
-    public UserDao(){
+    public ProjectDao(){
         fachada = new FachadaBD();
     }
 
 
 
-    public int saveUser(User user){
+    public int saveProject(Project project){
         String save_sql;
         int numberRows=0;
 
-        save_sql="INSERT INTO user VALUES('"+
-                user.getIdentification()+"','"+user.getProjectId()+"','"+user.getPassword()+"','"+user.getNickName()+"','"
-                +user.getUserName()+"','"+user.getType()+"','"+user.getState()+"','"+user.getEmail()+"');";
+        save_sql="INSERT INTO project VALUES('"+
+                project.getCode()+"','"+project.getName()+"','"
+                +project.getDescription()+"','"+project.getState()+"');";
 
         try{
             Connection conn= fachada.getConnetion();
@@ -40,11 +40,11 @@ public class UserDao {
 
 
 
-    public User viewUser(String identification){
-        User user= new User();
+    public Project viewProject(String code){
+        Project project= new Project();
         String sql_select;
-        sql_select="SELECT identification,project_id,password,nickname,name,type,state,email"+
-                " FROM users WHERE identification='"+identification+"';";
+        sql_select="SELECT code,name,description,state"+
+                " FROM project WHERE code='"+code+"';";
 
         try{
             Connection conn= fachada.getConnetion();
@@ -53,26 +53,18 @@ public class UserDao {
             ResultSet tabla = sentence.executeQuery(sql_select);
 
             while(tabla.next()){
-                user.getIdentification(tabla.getString(1));
+                project.getCode(tabla.getString(1));
 
-                user.getProjectId(tabla.getString(2));
+                project.getName(tabla.getString(2));
 
-                user.getPassword(tabla.getString(3));
+                project.getDescription(tabla.getString(3));
 
-                user.getNickName(tabla.getString(4));
-
-                user.getUserName(tabla.getString(5));
-
-                user.getType(tabla.getString(6));
-
-                user.getState(tabla.getString(7));
-
-                user.getEmail(tabla.getString(8));
+                project.getState(tabla.getString(4));
 
                 System.out.println("ok");
             }
 
-            return user;
+            return project;
         }
         catch(SQLException e){
             System.out.println(e);
@@ -85,11 +77,11 @@ public class UserDao {
 
 
 
-    public void updateUser(String identification, String project_id, String password, String nickname, String userName, String type, String State, String email){
+    public void updateProject(String code, String name, String description, String state){
 
         String sql_select;
-        sql_select="UPDATE users SET identification ='" + identification +  "', project_id = '"+ project_id +"', password = '"+ password +
-                "', nickname ='" + nickname +"', name = '" + userName + "', email = '"+ email +" WHERE  identification='"+ identification +"';";
+        sql_select="UPDATE project SET code ='" + code +  "', name = '"+ name +"', description = '"+ description +
+                "', state ='" + state +" WHERE  code='"+ code +"';";
         try{
             Connection conn= fachada.getConnetion();
             System.out.println("Update in the bd");
@@ -103,10 +95,10 @@ public class UserDao {
     }
 
 
-    public void deleteUser(String identification){
+    public void deleteProject(String code){
 
         String sql_select;
-        sql_select="DELETE FROM users WHERE  identification='"+ identification +"';";
+        sql_select="DELETE FROM project WHERE  code='"+ code +"';";
         try{
             Connection conn= fachada.getConnetion();
             System.out.println("Delete in the bd");
