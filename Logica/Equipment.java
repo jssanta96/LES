@@ -4,8 +4,6 @@ public class Equipment {
 
     private String serial;
     private String name;
-    private String type;
-    private String model;
     private String description;
     private String state;
 
@@ -17,14 +15,6 @@ public class Equipment {
 
     public String getName(){
         return name;
-    }
-
-    public String getType(){
-        return type;
-    }
-
-    public String getModel(){
-        return model;
     }
 
     public String getDescription(){
@@ -41,14 +31,6 @@ public class Equipment {
 
     public void setName(String name){
         this.name=name;
-    }
-
-    public void setType(String type){
-        this.type=type;
-    }
-
-    public void setModel(String model){
-        this.model=model;
     }
 
     public void setDescription(String description){
