@@ -7,7 +7,7 @@ public class Request {
     private String start_date;
     private String end_date;
 
-    Request(){};
+    public Request(){};
 
     public String getUser_id(){
         return user_id;

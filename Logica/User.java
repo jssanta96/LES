@@ -2,6 +2,8 @@
 
 package Logica;
 
+import java.lang.*;
+
 public class User {
 
     private String user_name;
@@ -13,10 +15,10 @@ public class User {
     private String state;
     private String email;
 
-    User() {
-    }
+    public User() {
+    };
 
-    ;
+
 
     public  String getUserName() {
         return user_name;

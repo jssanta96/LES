@@ -7,7 +7,7 @@ public class Equipment {
     private String description;
     private String state;
 
-    Equipment(){};
+    public Equipment(){};
 
     public String getSerial(){
         return serial;
