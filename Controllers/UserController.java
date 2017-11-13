@@ -49,7 +49,7 @@ public class UserController {
         userDao.updateUser(identification, project_id, password, nickName, user_name, type, state,email);
     }
 
-    public void daleteUser(String identification){
+    public void deleteUser(String identification){
         userDao.deleteUser(identification);
     }
 }
