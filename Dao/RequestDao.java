@@ -14,7 +14,7 @@ public class RequestDao {
 
 
 
-    public int saveEquipment(Request request){
+    public int saveRequest(Request request){
         String save_sql;
         int numberRows=0;
 
