@@ -45,13 +45,13 @@ public class VentanaLogin extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelLogoLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dsinterfaces/Imagenes/logoLab.png"))); // NOI18N
+        jLabelLogoLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLab.png"))); // NOI18N
         getContentPane().add(jLabelLogoLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, -1));
 
-        jLabelLogoUnivalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dsinterfaces/Imagenes/logoUnivalle.png"))); // NOI18N
+        jLabelLogoUnivalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoUnivalle.png"))); // NOI18N
         getContentPane().add(jLabelLogoUnivalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
-        jLabelLogoUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dsinterfaces/Imagenes/logoUser.png"))); // NOI18N
+        jLabelLogoUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoUser.png"))); // NOI18N
         getContentPane().add(jLabelLogoUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, -1));
 
         jLabelSiglas.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
@@ -100,7 +100,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, 90, 30));
 
-        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/dsinterfaces/Imagenes/Fondo.jpg"))); // NOI18N
+        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         getContentPane().add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 470));
 
         pack();
