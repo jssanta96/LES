@@ -29,7 +29,7 @@
     <Component class="javax.swing.JLabel" name="jLabelLogoLab">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/dsinterfaces/Imagenes/logoLab.png"/>
+          <Image iconType="3" name="/Imagenes/logoLab.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -41,7 +41,7 @@
     <Component class="javax.swing.JLabel" name="jLabelLogoUnivalle">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/dsinterfaces/Imagenes/logoUnivalle.png"/>
+          <Image iconType="3" name="/Imagenes/logoUnivalle.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -53,7 +53,7 @@
     <Component class="javax.swing.JLabel" name="jLabelLogoUser">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/dsinterfaces/Imagenes/logoUser.png"/>
+          <Image iconType="3" name="/Imagenes/logoUser.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -74,7 +74,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="340" y="60" width="130" height="60"/>
+          <AbsoluteConstraints x="340" y="60" width="190" height="60"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -152,6 +152,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="INGRESAR"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonIngresarActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="380" y="400" width="100" height="30"/>
@@ -177,7 +180,7 @@
     <Component class="javax.swing.JLabel" name="jLabelFondo">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/dsinterfaces/Imagenes/Fondo.jpg"/>
+          <Image iconType="3" name="/Imagenes/Fondo.jpg"/>
         </Property>
       </Properties>
       <Constraints>

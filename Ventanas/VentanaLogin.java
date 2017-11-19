@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Ventanas;
-
 /**
  *
  * @author Administrador
@@ -57,7 +56,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         jLabelSiglas.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         jLabelSiglas.setForeground(new java.awt.Color(102, 102, 102));
         jLabelSiglas.setText("L.E.S");
-        getContentPane().add(jLabelSiglas, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 130, 60));
+        getContentPane().add(jLabelSiglas, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 190, 60));
 
         jLabelLes.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabelLes.setForeground(new java.awt.Color(153, 153, 153));
@@ -89,6 +88,11 @@ public class VentanaLogin extends javax.swing.JFrame {
 
         jButtonIngresar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButtonIngresar.setText("INGRESAR");
+        jButtonIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIngresarActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 100, 30));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -117,6 +121,10 @@ public class VentanaLogin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButtonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonIngresarActionPerformed
 
     /**
      * @param args the command line arguments
