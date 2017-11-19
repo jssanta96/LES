@@ -1,3 +1,3 @@
 # SERPE
-Enseñando a los compas para usar github
+Enseñando a serrato a usar github
 
