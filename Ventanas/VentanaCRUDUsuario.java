@@ -16,6 +16,8 @@ public class VentanaCRUDUsuario extends javax.swing.JFrame {
      */
     public VentanaCRUDUsuario() {
         initComponents();
+        this.setLocationRelativeTo(null);
+
     }
 
     /**
@@ -56,6 +58,7 @@ public class VentanaCRUDUsuario extends javax.swing.JFrame {
 
         jButtonInicio.setBackground(new java.awt.Color(102, 0, 0));
         jButtonInicio.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonInicio.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInicio.setText("INICIO");
         jButtonInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,6 +72,7 @@ public class VentanaCRUDUsuario extends javax.swing.JFrame {
 
         jButtonInicio1.setBackground(new java.awt.Color(102, 0, 0));
         jButtonInicio1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonInicio1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInicio1.setText("SOLICITAR EQUIPO");
         jButtonInicio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +83,7 @@ public class VentanaCRUDUsuario extends javax.swing.JFrame {
 
         jButtonInicio2.setBackground(new java.awt.Color(102, 0, 0));
         jButtonInicio2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonInicio2.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInicio2.setText("MI PERFIL");
         jButtonInicio2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +94,7 @@ public class VentanaCRUDUsuario extends javax.swing.JFrame {
 
         jButtonInicio3.setBackground(new java.awt.Color(102, 0, 0));
         jButtonInicio3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonInicio3.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInicio3.setText("CONTACTENOS");
         jButtonInicio3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +127,7 @@ public class VentanaCRUDUsuario extends javax.swing.JFrame {
 
         jButtonProyecto.setBackground(new java.awt.Color(102, 0, 0));
         jButtonProyecto.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonProyecto.setForeground(new java.awt.Color(255, 255, 255));
         jButtonProyecto.setText("CREAR");
         jButtonProyecto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +138,7 @@ public class VentanaCRUDUsuario extends javax.swing.JFrame {
 
         jButtonUsuario.setBackground(new java.awt.Color(102, 0, 0));
         jButtonUsuario.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUsuario.setText("LISTAR");
         jButtonUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +149,7 @@ public class VentanaCRUDUsuario extends javax.swing.JFrame {
 
         jButtonEquipo.setBackground(new java.awt.Color(102, 0, 0));
         jButtonEquipo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonEquipo.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEquipo.setText("ELIMINAR");
         jPanelSolicitud.add(jButtonEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 120, 40));
 

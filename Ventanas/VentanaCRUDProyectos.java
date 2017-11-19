@@ -9,12 +9,12 @@ package Ventanas;
  *
  * @author andres
  */
-public class VentanaInicial extends javax.swing.JFrame {
+public class VentanaCRUDProyectos extends javax.swing.JFrame {
 
     /**
      * Creates new form VentanaInicial
      */
-    public VentanaInicial() {
+    public VentanaCRUDProyectos() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -37,15 +37,15 @@ public class VentanaInicial extends javax.swing.JFrame {
         jButtonInicio3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanelInicio = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jPanelSolicitud = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jButtonProyecto = new javax.swing.JButton();
         jButtonUsuario = new javax.swing.JButton();
         jButtonEquipo = new javax.swing.JButton();
-        jLabelFondo1 = new javax.swing.JLabel();
-        jLabelFondo = new javax.swing.JLabel();
+        jLabelUsuarios = new javax.swing.JLabel();
+        jLabelFondo2 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -113,54 +113,55 @@ public class VentanaInicial extends javax.swing.JFrame {
 
         getContentPane().add(jPanelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jPanelInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelSolicitud.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLabPeq.png"))); // NOI18N
-        jPanelInicio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoUnivallePeq.png"))); // NOI18N
+        jPanelSolicitud.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoUnivallePeq.png"))); // NOI18N
-        jPanelInicio.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
+        jPanelSolicitud.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
-        jPanelInicio.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLabPeq.png"))); // NOI18N
+        jPanelSolicitud.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
         jButtonProyecto.setBackground(new java.awt.Color(102, 0, 0));
         jButtonProyecto.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonProyecto.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonProyecto.setText("PROYECTO");
+        jButtonProyecto.setText("CREAR");
         jButtonProyecto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonProyectoActionPerformed(evt);
             }
         });
-        jPanelInicio.add(jButtonProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 120, 40));
+        jPanelSolicitud.add(jButtonProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 120, 40));
 
         jButtonUsuario.setBackground(new java.awt.Color(102, 0, 0));
         jButtonUsuario.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonUsuario.setText("USUARIO");
+        jButtonUsuario.setText("LISTAR");
         jButtonUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonUsuarioActionPerformed(evt);
             }
         });
-        jPanelInicio.add(jButtonUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 120, 40));
+        jPanelSolicitud.add(jButtonUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 120, 40));
 
         jButtonEquipo.setBackground(new java.awt.Color(102, 0, 0));
         jButtonEquipo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonEquipo.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonEquipo.setText("EQUIPO");
-        jPanelInicio.add(jButtonEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 120, 40));
+        jButtonEquipo.setText("ELIMINAR");
+        jPanelSolicitud.add(jButtonEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 120, 40));
 
-        jLabelFondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
-        jLabelFondo1.setText("jLabel4");
-        jPanelInicio.add(jLabelFondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 350, 400));
+        jLabelUsuarios.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabelUsuarios.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelUsuarios.setText("PROYECTOS");
+        jPanelSolicitud.add(jLabelUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, -1, -1));
 
-        jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
-        jLabelFondo.setText("jLabel4");
-        jPanelInicio.add(jLabelFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, -10, 350, 400));
+        jLabelFondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
+        jLabelFondo2.setText("jLabel4");
+        jPanelSolicitud.add(jLabelFondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 400));
 
-        getContentPane().add(jPanelInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 380, 400));
+        getContentPane().add(jPanelSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 380, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -177,21 +178,20 @@ public class VentanaInicial extends javax.swing.JFrame {
         VentanaSolicitud objVentana = new VentanaSolicitud();
         objVentana.setVisible(true);
         this.setVisible(false);
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonInicio1ActionPerformed
 
     private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
-
+        VentanaInicial objVentana= new VentanaInicial();
+        objVentana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
     private void jButtonUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuarioActionPerformed
-        VentanaCRUDUsuario objVentana = new VentanaCRUDUsuario();
-        objVentana.setVisible(true);
-        this.setVisible(false);
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonUsuarioActionPerformed
 
     private void jButtonProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProyectoActionPerformed
-        VentanaCRUDProyectos objVentana = new VentanaCRUDProyectos();
+        VentanaProyectos objVentana = new VentanaProyectos();
         objVentana.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonProyectoActionPerformed
@@ -213,20 +213,35 @@ public class VentanaInicial extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaCRUDProyectos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaCRUDProyectos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaCRUDProyectos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaCRUDProyectos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaInicial().setVisible(true);
+                new VentanaCRUDProyectos().setVisible(true);
             }
         });
     }
@@ -239,16 +254,16 @@ public class VentanaInicial extends javax.swing.JFrame {
     private javax.swing.JButton jButtonInicio3;
     private javax.swing.JButton jButtonProyecto;
     private javax.swing.JButton jButtonUsuario;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabelFondo;
-    private javax.swing.JLabel jLabelFondo1;
-    private javax.swing.JPanel jPanelInicio;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelFondo2;
+    private javax.swing.JLabel jLabelUsuarios;
     private javax.swing.JPanel jPanelMenu;
+    private javax.swing.JPanel jPanelSolicitud;
     private javax.swing.JRadioButton jRadioButton1;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,6 +16,7 @@ public class VentanaSolicitud extends javax.swing.JFrame {
      */
     public VentanaSolicitud() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -54,9 +55,11 @@ public class VentanaSolicitud extends javax.swing.JFrame {
         jSpinnerAño1 = new javax.swing.JSpinner();
         jSpinnerMes1 = new javax.swing.JSpinner();
         jSpinnerDia1 = new javax.swing.JSpinner();
+        jButtonListar = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        jButtonGuardar = new javax.swing.JButton();
         jLabelFondo2 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
@@ -69,6 +72,7 @@ public class VentanaSolicitud extends javax.swing.JFrame {
 
         jButtonInicio.setBackground(new java.awt.Color(102, 0, 0));
         jButtonInicio.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonInicio.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInicio.setText("INICIO");
         jButtonInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +86,7 @@ public class VentanaSolicitud extends javax.swing.JFrame {
 
         jButtonInicio1.setBackground(new java.awt.Color(102, 0, 0));
         jButtonInicio1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonInicio1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInicio1.setText("SOLICITAR EQUIPO");
         jButtonInicio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +97,7 @@ public class VentanaSolicitud extends javax.swing.JFrame {
 
         jButtonInicio2.setBackground(new java.awt.Color(102, 0, 0));
         jButtonInicio2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonInicio2.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInicio2.setText("MI PERFIL");
         jButtonInicio2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,6 +108,7 @@ public class VentanaSolicitud extends javax.swing.JFrame {
 
         jButtonInicio3.setBackground(new java.awt.Color(102, 0, 0));
         jButtonInicio3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonInicio3.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInicio3.setText("CONTACTENOS");
         jButtonInicio3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,6 +192,17 @@ public class VentanaSolicitud extends javax.swing.JFrame {
         jSpinnerDia1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
         jPanelSolicitud.add(jSpinnerDia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
 
+        jButtonListar.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonListar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonListar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonListar.setText("LISTAR SOLICITUDES");
+        jButtonListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListarActionPerformed(evt);
+            }
+        });
+        jPanelSolicitud.add(jButtonListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 200, 37));
+
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("DD");
         jPanelSolicitud.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, -1, -1));
@@ -196,6 +214,14 @@ public class VentanaSolicitud extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("AA");
         jPanelSolicitud.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 30, -1));
+
+        jButtonGuardar.setText("Guardar");
+        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarActionPerformed(evt);
+            }
+        });
+        jPanelSolicitud.add(jButtonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
 
         jLabelFondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo2.setText("jLabel4");
@@ -225,6 +251,14 @@ public class VentanaSolicitud extends javax.swing.JFrame {
         objVentana.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonInicioActionPerformed
+
+    private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonListarActionPerformed
+
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,10 +297,12 @@ public class VentanaSolicitud extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonGuardar;
     private javax.swing.JButton jButtonInicio;
     private javax.swing.JButton jButtonInicio1;
     private javax.swing.JButton jButtonInicio2;
     private javax.swing.JButton jButtonInicio3;
+    private javax.swing.JButton jButtonListar;
     private javax.swing.JComboBox<String> jComboBoxEquipos;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
