@@ -123,6 +123,9 @@ public class VentanaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresarActionPerformed
+        VentanaInicial objVentana= new VentanaInicial();
+        objVentana.setVisible(true);
+        this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonIngresarActionPerformed
 
