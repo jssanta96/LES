@@ -6,13 +6,14 @@
 package Ventanas;
 
 
-public class VentanaSolicitud extends javax.swing.JFrame {
+public class VentanaCRUDEquipos extends javax.swing.JFrame {
 
 
-    public VentanaSolicitud() {
+    public VentanaCRUDEquipos() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -31,26 +32,10 @@ public class VentanaSolicitud extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabelFinal = new javax.swing.JLabel();
-        jLabelInicio = new javax.swing.JLabel();
-        jLabelSerial = new javax.swing.JLabel();
-        jLabelSolicitud = new javax.swing.JLabel();
-        jComboBoxEquipos = new javax.swing.JComboBox<>();
-        jSpinnerAño = new javax.swing.JSpinner();
-        jSpinnerMes = new javax.swing.JSpinner();
-        jSpinnerDia = new javax.swing.JSpinner();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jSpinnerAño1 = new javax.swing.JSpinner();
-        jSpinnerMes1 = new javax.swing.JSpinner();
-        jSpinnerDia1 = new javax.swing.JSpinner();
-        jButtonListar1 = new javax.swing.JButton();
-        jButtonListar = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jButtonGuardar = new javax.swing.JButton();
+        jButtonProyecto = new javax.swing.JButton();
+        jButtonUsuario = new javax.swing.JButton();
+        jButtonEquipo = new javax.swing.JButton();
+        jLabelUsuarios = new javax.swing.JLabel();
         jLabelFondo2 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
@@ -124,99 +109,48 @@ public class VentanaSolicitud extends javax.swing.JFrame {
         jPanelSolicitud.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
-        jPanelSolicitud.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
+        jPanelSolicitud.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLabPeq.png"))); // NOI18N
-        jPanelSolicitud.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
+        jPanelSolicitud.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, -1, -1));
 
-        jLabelFinal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelFinal.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelFinal.setText("FECHA FINAL");
-        jPanelSolicitud.add(jLabelFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, 30));
-
-        jLabelInicio.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelInicio.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelInicio.setText("FECHA INICIO");
-        jPanelSolicitud.add(jLabelInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 30));
-
-        jLabelSerial.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelSerial.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelSerial.setText("SERIAL EQUIPO");
-        jPanelSolicitud.add(jLabelSerial, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
-
-        jLabelSolicitud.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabelSolicitud.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelSolicitud.setText("SOLICITAR EQUIPO");
-        jPanelSolicitud.add(jLabelSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
-
-        jComboBoxEquipos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelSolicitud.add(jComboBoxEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 180, 30));
-
-        jSpinnerAño.setModel(new javax.swing.SpinnerNumberModel(2000, 2000, 2050, 1));
-        jPanelSolicitud.add(jSpinnerAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 80, -1));
-
-        jSpinnerMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        jPanelSolicitud.add(jSpinnerMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, -1, -1));
-
-        jSpinnerDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
-        jPanelSolicitud.add(jSpinnerDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, -1));
-
-        jLabel12.setText("AA");
-        jPanelSolicitud.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 30, -1));
-
-        jLabel11.setText("MM");
-        jPanelSolicitud.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, -1, -1));
-
-        jLabel10.setText("DD");
-        jPanelSolicitud.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, -1));
-
-        jSpinnerAño1.setModel(new javax.swing.SpinnerNumberModel(2000, 2000, 2050, 1));
-        jPanelSolicitud.add(jSpinnerAño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 80, -1));
-
-        jSpinnerMes1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        jPanelSolicitud.add(jSpinnerMes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, -1, -1));
-
-        jSpinnerDia1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
-        jPanelSolicitud.add(jSpinnerDia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
-
-        jButtonListar1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonListar1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonListar1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonListar1.setText("MODIFICAR");
-        jButtonListar1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonProyecto.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonProyecto.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonProyecto.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonProyecto.setText("CREAR");
+        jButtonProyecto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonListar1ActionPerformed(evt);
+                jButtonProyectoActionPerformed(evt);
             }
         });
-        jPanelSolicitud.add(jButtonListar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 110, 37));
+        jPanelSolicitud.add(jButtonProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 120, 40));
 
-        jButtonListar.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonListar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonListar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonListar.setText("CONSULTAR");
-        jButtonListar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonUsuario.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonUsuario.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonUsuario.setText("LISTAR");
+        jButtonUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonListarActionPerformed(evt);
+                jButtonUsuarioActionPerformed(evt);
             }
         });
-        jPanelSolicitud.add(jButtonListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 110, 37));
+        jPanelSolicitud.add(jButtonUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 120, 40));
 
-        jLabel13.setText("DD");
-        jPanelSolicitud.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, -1, -1));
-
-        jLabel14.setText("MM");
-        jPanelSolicitud.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, -1, -1));
-
-        jLabel15.setText("AA");
-        jPanelSolicitud.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 30, -1));
-
-        jButtonGuardar.setText("Guardar");
-        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEquipo.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonEquipo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonEquipo.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEquipo.setText("ELIMINAR");
+        jButtonEquipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonGuardarActionPerformed(evt);
+                jButtonEquipoActionPerformed(evt);
             }
         });
-        jPanelSolicitud.add(jButtonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
+        jPanelSolicitud.add(jButtonEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 120, 40));
+
+        jLabelUsuarios.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabelUsuarios.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelUsuarios.setText("EQUIPOS");
+        jPanelSolicitud.add(jLabelUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 90, -1, -1));
 
         jLabelFondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo2.setText("jLabel4");
@@ -234,8 +168,9 @@ public class VentanaSolicitud extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPerfilActionPerformed
 
     private void jButtonSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitudActionPerformed
-      //  jPanelInicio.setVisible(false);
-        jPanelSolicitud.setVisible(true);
+        VentanaSolicitud objVentana = new VentanaSolicitud();
+        objVentana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonSolicitudActionPerformed
 
     private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
@@ -244,15 +179,18 @@ public class VentanaSolicitud extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
-    private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
-    }//GEN-LAST:event_jButtonListarActionPerformed
+    private void jButtonUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuarioActionPerformed
+    }//GEN-LAST:event_jButtonUsuarioActionPerformed
 
-    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-    }//GEN-LAST:event_jButtonGuardarActionPerformed
+    private void jButtonProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProyectoActionPerformed
+        VentanaProyectos objVentana = new VentanaProyectos();
+        objVentana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonProyectoActionPerformed
 
-    private void jButtonListar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListar1ActionPerformed
+    private void jButtonEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonListar1ActionPerformed
+    }//GEN-LAST:event_jButtonEquipoActionPerformed
 
 
     public static void main(String args[]) {
@@ -269,59 +207,73 @@ public class VentanaSolicitud extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaSolicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaCRUDEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaSolicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaCRUDEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaSolicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaCRUDEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaSolicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaCRUDEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaSolicitud().setVisible(true);
+                new VentanaCRUDEquipos().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonGuardar;
+    private javax.swing.JButton jButtonEquipo;
     private javax.swing.JButton jButtonInfo;
     private javax.swing.JButton jButtonInicio;
-    private javax.swing.JButton jButtonListar;
-    private javax.swing.JButton jButtonListar1;
     private javax.swing.JButton jButtonPerfil;
+    private javax.swing.JButton jButtonProyecto;
     private javax.swing.JButton jButtonSolicitud;
-    private javax.swing.JComboBox<String> jComboBoxEquipos;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
+    private javax.swing.JButton jButtonUsuario;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelFinal;
     private javax.swing.JLabel jLabelFondo2;
-    private javax.swing.JLabel jLabelInicio;
-    private javax.swing.JLabel jLabelSerial;
-    private javax.swing.JLabel jLabelSolicitud;
+    private javax.swing.JLabel jLabelUsuarios;
     private javax.swing.JPanel jPanelMenu;
     private javax.swing.JPanel jPanelSolicitud;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JSpinner jSpinnerAño;
-    private javax.swing.JSpinner jSpinnerAño1;
-    private javax.swing.JSpinner jSpinnerDia;
-    private javax.swing.JSpinner jSpinnerDia1;
-    private javax.swing.JSpinner jSpinnerMes;
-    private javax.swing.JSpinner jSpinnerMes1;
     // End of variables declaration//GEN-END:variables
 }

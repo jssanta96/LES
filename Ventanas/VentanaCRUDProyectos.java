@@ -69,7 +69,7 @@ public class VentanaCRUDProyectos extends javax.swing.JFrame {
                 jButtonInicio1ActionPerformed(evt);
             }
         });
-        jPanelMenu.add(jButtonInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, 40));
+        jPanelMenu.add(jButtonInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 160, 40));
 
         jButtonInicio2.setBackground(new java.awt.Color(102, 0, 0));
         jButtonInicio2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -94,7 +94,6 @@ public class VentanaCRUDProyectos extends javax.swing.JFrame {
         jPanelMenu.add(jButtonInicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 161, 37));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("NombreUsuario");
         jPanelMenu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
@@ -113,7 +112,7 @@ public class VentanaCRUDProyectos extends javax.swing.JFrame {
         jPanelSolicitud.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLabPeq.png"))); // NOI18N
-        jPanelSolicitud.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
+        jPanelSolicitud.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
 
         jButtonProyecto.setBackground(new java.awt.Color(102, 0, 0));
         jButtonProyecto.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -141,6 +140,11 @@ public class VentanaCRUDProyectos extends javax.swing.JFrame {
         jButtonEquipo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonEquipo.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEquipo.setText("ELIMINAR");
+        jButtonEquipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEquipoActionPerformed(evt);
+            }
+        });
         jPanelSolicitud.add(jButtonEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 120, 40));
 
         jLabelUsuarios.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -183,6 +187,10 @@ public class VentanaCRUDProyectos extends javax.swing.JFrame {
         objVentana.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonProyectoActionPerformed
+
+    private void jButtonEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEquipoActionPerformed
 
 
     public static void main(String args[]) {

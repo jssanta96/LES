@@ -19,19 +19,19 @@ public class VentanaUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jRadioButton1 = new javax.swing.JRadioButton();
         jPanelMenu = new javax.swing.JPanel();
         jButtonInicio = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jButtonInicio1 = new javax.swing.JButton();
-        jButtonInicio2 = new javax.swing.JButton();
-        jButtonInicio3 = new javax.swing.JButton();
+        jButtonSolicitud = new javax.swing.JButton();
+        jButtonPerfil = new javax.swing.JButton();
+        jButtonInfo = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanelSolicitud = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jButtonVaciar = new javax.swing.JButton();
         jLabelContraseña = new javax.swing.JLabel();
         jLabelProyecto = new javax.swing.JLabel();
         jLabelIdentificacion = new javax.swing.JLabel();
@@ -47,11 +47,9 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jTextFieldNickName = new javax.swing.JTextField();
         jTextFieldNombre = new javax.swing.JTextField();
         jComboBoxTipoUsuario = new javax.swing.JComboBox<>();
-        jButtonGuardar1 = new javax.swing.JButton();
+        jButtonVolver = new javax.swing.JButton();
         jButtonGuardar = new javax.swing.JButton();
         jLabelFondo2 = new javax.swing.JLabel();
-
-        jRadioButton1.setText("jRadioButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -73,41 +71,40 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/bienvenido.png"))); // NOI18N
         jPanelMenu.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jButtonInicio1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonInicio1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonInicio1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonInicio1.setText("SOLICITAR EQUIPO");
-        jButtonInicio1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSolicitud.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonSolicitud.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonSolicitud.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSolicitud.setText("SOLICITAR EQUIPO");
+        jButtonSolicitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInicio1ActionPerformed(evt);
+                jButtonSolicitudActionPerformed(evt);
             }
         });
-        jPanelMenu.add(jButtonInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, 40));
+        jPanelMenu.add(jButtonSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 160, 40));
 
-        jButtonInicio2.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonInicio2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonInicio2.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonInicio2.setText("MI PERFIL");
-        jButtonInicio2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPerfil.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonPerfil.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonPerfil.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonPerfil.setText("MI PERFIL");
+        jButtonPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInicio2ActionPerformed(evt);
+                jButtonPerfilActionPerformed(evt);
             }
         });
-        jPanelMenu.add(jButtonInicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 161, 37));
+        jPanelMenu.add(jButtonPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 161, 37));
 
-        jButtonInicio3.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonInicio3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonInicio3.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonInicio3.setText("CONTACTENOS");
-        jButtonInicio3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonInfo.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonInfo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonInfo.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonInfo.setText("CONTACTENOS");
+        jButtonInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInicio3ActionPerformed(evt);
+                jButtonInfoActionPerformed(evt);
             }
         });
-        jPanelMenu.add(jButtonInicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 161, 37));
+        jPanelMenu.add(jButtonInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 161, 37));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("NombreUsuario");
         jPanelMenu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
@@ -123,10 +120,18 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jPanelSolicitud.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
-        jPanelSolicitud.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, -1));
+        jPanelSolicitud.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLabPeq.png"))); // NOI18N
-        jPanelSolicitud.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
+        jPanelSolicitud.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, -1, -1));
+
+        jButtonVaciar.setText("Vaciar");
+        jButtonVaciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVaciarActionPerformed(evt);
+            }
+        });
+        jPanelSolicitud.add(jButtonVaciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, -1, -1));
 
         jLabelContraseña.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelContraseña.setForeground(new java.awt.Color(102, 102, 102));
@@ -143,15 +148,15 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jLabelIdentificacion.setText("IDENTIFICACION");
         jPanelSolicitud.add(jLabelIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
-        jLabelSolicitud.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabelSolicitud.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabelSolicitud.setForeground(new java.awt.Color(102, 102, 102));
         jLabelSolicitud.setText("CREAR USUARIO");
-        jPanelSolicitud.add(jLabelSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
-        jPanelSolicitud.add(jTextFieldIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 180, 30));
+        jPanelSolicitud.add(jLabelSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        jPanelSolicitud.add(jTextFieldIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 230, 30));
 
         jComboBoxProyecto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelSolicitud.add(jComboBoxProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 180, 30));
-        jPanelSolicitud.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 180, 30));
+        jPanelSolicitud.add(jComboBoxProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 230, 30));
+        jPanelSolicitud.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 230, 30));
 
         jLabelTipo1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelTipo1.setForeground(new java.awt.Color(102, 102, 102));
@@ -172,26 +177,26 @@ public class VentanaUsuario extends javax.swing.JFrame {
         jLabelNombre.setForeground(new java.awt.Color(102, 102, 102));
         jLabelNombre.setText("NOMBRE");
         jPanelSolicitud.add(jLabelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, 30));
-        jPanelSolicitud.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 180, 30));
-        jPanelSolicitud.add(jTextFieldNickName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 180, 30));
+        jPanelSolicitud.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 230, 30));
+        jPanelSolicitud.add(jTextFieldNickName, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 230, 30));
 
         jTextFieldNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldNombreActionPerformed(evt);
             }
         });
-        jPanelSolicitud.add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 180, 30));
+        jPanelSolicitud.add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 230, 30));
 
         jComboBoxTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelSolicitud.add(jComboBoxTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 180, 30));
+        jPanelSolicitud.add(jComboBoxTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 230, 30));
 
-        jButtonGuardar1.setText("Vaciar");
-        jButtonGuardar1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVolver.setText("Volver");
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonGuardar1ActionPerformed(evt);
+                jButtonVolverActionPerformed(evt);
             }
         });
-        jPanelSolicitud.add(jButtonGuardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        jPanelSolicitud.add(jButtonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, -1, -1));
 
         jButtonGuardar.setText("Guardar");
         jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -199,28 +204,28 @@ public class VentanaUsuario extends javax.swing.JFrame {
                 jButtonGuardarActionPerformed(evt);
             }
         });
-        jPanelSolicitud.add(jButtonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 90, -1, -1));
+        jPanelSolicitud.add(jButtonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 80, -1));
 
         jLabelFondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo2.setText("jLabel4");
-        jPanelSolicitud.add(jLabelFondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 400));
+        jPanelSolicitud.add(jLabelFondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 400));
 
-        getContentPane().add(jPanelSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 380, 400));
+        getContentPane().add(jPanelSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 430, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonInicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicio3ActionPerformed
-    }//GEN-LAST:event_jButtonInicio3ActionPerformed
+    private void jButtonInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoActionPerformed
+    }//GEN-LAST:event_jButtonInfoActionPerformed
 
-    private void jButtonInicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicio2ActionPerformed
-    }//GEN-LAST:event_jButtonInicio2ActionPerformed
+    private void jButtonPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPerfilActionPerformed
+    }//GEN-LAST:event_jButtonPerfilActionPerformed
 
-    private void jButtonInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicio1ActionPerformed
+    private void jButtonSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitudActionPerformed
         VentanaSolicitud objVentana = new VentanaSolicitud();
         objVentana.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButtonInicio1ActionPerformed
+    }//GEN-LAST:event_jButtonSolicitudActionPerformed
 
     private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
         VentanaInicial objVentana= new VentanaInicial();
@@ -234,8 +239,18 @@ public class VentanaUsuario extends javax.swing.JFrame {
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
-    private void jButtonGuardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardar1ActionPerformed
-    }//GEN-LAST:event_jButtonGuardar1ActionPerformed
+    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+        VentanaCRUDUsuario objVentana = new VentanaCRUDUsuario();
+        objVentana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonVolverActionPerformed
+
+    private void jButtonVaciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVaciarActionPerformed
+        jPasswordField1.setText("");
+        jTextFieldEmail.setText("");
+        jTextFieldIdentificacion.setText("");
+        jTextFieldNickName.setText("");
+        jTextFieldNombre.setText("");    }//GEN-LAST:event_jButtonVaciarActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -275,11 +290,12 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGuardar;
-    private javax.swing.JButton jButtonGuardar1;
+    private javax.swing.JButton jButtonInfo;
     private javax.swing.JButton jButtonInicio;
-    private javax.swing.JButton jButtonInicio1;
-    private javax.swing.JButton jButtonInicio2;
-    private javax.swing.JButton jButtonInicio3;
+    private javax.swing.JButton jButtonPerfil;
+    private javax.swing.JButton jButtonSolicitud;
+    private javax.swing.JButton jButtonVaciar;
+    private javax.swing.JButton jButtonVolver;
     private javax.swing.JComboBox<String> jComboBoxProyecto;
     private javax.swing.JComboBox<String> jComboBoxTipoUsuario;
     private javax.swing.JLabel jLabel4;
@@ -300,7 +316,6 @@ public class VentanaUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelMenu;
     private javax.swing.JPanel jPanelSolicitud;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldIdentificacion;
     private javax.swing.JTextField jTextFieldNickName;

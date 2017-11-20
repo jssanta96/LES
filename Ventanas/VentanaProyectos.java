@@ -24,9 +24,9 @@ public class VentanaProyectos extends javax.swing.JFrame {
         jPanelMenu = new javax.swing.JPanel();
         jButtonInicio = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jButtonInicio1 = new javax.swing.JButton();
-        jButtonInicio2 = new javax.swing.JButton();
-        jButtonInicio3 = new javax.swing.JButton();
+        jButtonSolicitud = new javax.swing.JButton();
+        jButtonPerfil = new javax.swing.JButton();
+        jButtonInfo = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanelSolicitud = new javax.swing.JPanel();
@@ -38,6 +38,7 @@ public class VentanaProyectos extends javax.swing.JFrame {
         jLabelNombre = new javax.swing.JLabel();
         jLabelCodigo = new javax.swing.JLabel();
         jLabelSolicitud = new javax.swing.JLabel();
+        jButtonVolver = new javax.swing.JButton();
         jButtonVaciar = new javax.swing.JButton();
         jButtonGuardar = new javax.swing.JButton();
         jTextFieldCodigo = new javax.swing.JTextField();
@@ -69,41 +70,40 @@ public class VentanaProyectos extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/bienvenido.png"))); // NOI18N
         jPanelMenu.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jButtonInicio1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonInicio1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonInicio1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonInicio1.setText("SOLICITAR EQUIPO");
-        jButtonInicio1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSolicitud.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonSolicitud.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonSolicitud.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSolicitud.setText("SOLICITAR EQUIPO");
+        jButtonSolicitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInicio1ActionPerformed(evt);
+                jButtonSolicitudActionPerformed(evt);
             }
         });
-        jPanelMenu.add(jButtonInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, 40));
+        jPanelMenu.add(jButtonSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 160, 40));
 
-        jButtonInicio2.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonInicio2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonInicio2.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonInicio2.setText("MI PERFIL");
-        jButtonInicio2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPerfil.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonPerfil.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonPerfil.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonPerfil.setText("MI PERFIL");
+        jButtonPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInicio2ActionPerformed(evt);
+                jButtonPerfilActionPerformed(evt);
             }
         });
-        jPanelMenu.add(jButtonInicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 161, 37));
+        jPanelMenu.add(jButtonPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 161, 37));
 
-        jButtonInicio3.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonInicio3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonInicio3.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonInicio3.setText("CONTACTENOS");
-        jButtonInicio3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonInfo.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonInfo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonInfo.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonInfo.setText("CONTACTENOS");
+        jButtonInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInicio3ActionPerformed(evt);
+                jButtonInfoActionPerformed(evt);
             }
         });
-        jPanelMenu.add(jButtonInicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 161, 37));
+        jPanelMenu.add(jButtonInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 161, 37));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("NombreUsuario");
         jPanelMenu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
@@ -149,13 +149,21 @@ public class VentanaProyectos extends javax.swing.JFrame {
         jLabelSolicitud.setText("CREAR PROYECTO");
         jPanelSolicitud.add(jLabelSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
 
+        jButtonVolver.setText("Volver");
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolverActionPerformed(evt);
+            }
+        });
+        jPanelSolicitud.add(jButtonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, -1, -1));
+
         jButtonVaciar.setText("Vaciar");
         jButtonVaciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVaciarActionPerformed(evt);
             }
         });
-        jPanelSolicitud.add(jButtonVaciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, -1, -1));
+        jPanelSolicitud.add(jButtonVaciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, -1));
 
         jButtonGuardar.setText("Guardar");
         jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -171,7 +179,7 @@ public class VentanaProyectos extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jPanelSolicitud.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 270, -1));
+        jPanelSolicitud.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 270, 60));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanelSolicitud.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 170, 30));
@@ -185,15 +193,15 @@ public class VentanaProyectos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonInicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicio3ActionPerformed
-    }//GEN-LAST:event_jButtonInicio3ActionPerformed
+    private void jButtonInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoActionPerformed
+    }//GEN-LAST:event_jButtonInfoActionPerformed
 
-    private void jButtonInicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicio2ActionPerformed
-    }//GEN-LAST:event_jButtonInicio2ActionPerformed
+    private void jButtonPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPerfilActionPerformed
+    }//GEN-LAST:event_jButtonPerfilActionPerformed
 
-    private void jButtonInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicio1ActionPerformed
+    private void jButtonSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitudActionPerformed
         jPanelSolicitud.setVisible(true);
-    }//GEN-LAST:event_jButtonInicio1ActionPerformed
+    }//GEN-LAST:event_jButtonSolicitudActionPerformed
 
     private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
         VentanaInicial objVentana= new VentanaInicial();
@@ -205,7 +213,16 @@ public class VentanaProyectos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void jButtonVaciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVaciarActionPerformed
+        jTextFieldCodigo.setText("");
+        jTextFieldNombre.setText("");
+        jTextArea1.setText("");
     }//GEN-LAST:event_jButtonVaciarActionPerformed
+
+    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+        VentanaCRUDProyectos objVentana = new VentanaCRUDProyectos();
+        objVentana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonVolverActionPerformed
 
 
     public static void main(String args[]) {
@@ -245,11 +262,12 @@ public class VentanaProyectos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGuardar;
+    private javax.swing.JButton jButtonInfo;
     private javax.swing.JButton jButtonInicio;
-    private javax.swing.JButton jButtonInicio1;
-    private javax.swing.JButton jButtonInicio2;
-    private javax.swing.JButton jButtonInicio3;
+    private javax.swing.JButton jButtonPerfil;
+    private javax.swing.JButton jButtonSolicitud;
     private javax.swing.JButton jButtonVaciar;
+    private javax.swing.JButton jButtonVolver;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel4;

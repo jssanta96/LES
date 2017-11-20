@@ -6,19 +6,21 @@
 package Ventanas;
 
 
-public class VentanaSolicitud extends javax.swing.JFrame {
+public class VentanaEquipos extends javax.swing.JFrame {
 
 
-    public VentanaSolicitud() {
+    public VentanaEquipos() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jRadioButton1 = new javax.swing.JRadioButton();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanelMenu = new javax.swing.JPanel();
         jButtonInicio = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -31,26 +33,19 @@ public class VentanaSolicitud extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabelFinal = new javax.swing.JLabel();
-        jLabelInicio = new javax.swing.JLabel();
-        jLabelSerial = new javax.swing.JLabel();
+        jLabelDescripcion = new javax.swing.JLabel();
+        jLabelNombre1 = new javax.swing.JLabel();
+        jLabelNombre = new javax.swing.JLabel();
+        jLabelCodigo = new javax.swing.JLabel();
         jLabelSolicitud = new javax.swing.JLabel();
-        jComboBoxEquipos = new javax.swing.JComboBox<>();
-        jSpinnerAño = new javax.swing.JSpinner();
-        jSpinnerMes = new javax.swing.JSpinner();
-        jSpinnerDia = new javax.swing.JSpinner();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jSpinnerAño1 = new javax.swing.JSpinner();
-        jSpinnerMes1 = new javax.swing.JSpinner();
-        jSpinnerDia1 = new javax.swing.JSpinner();
-        jButtonListar1 = new javax.swing.JButton();
-        jButtonListar = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        jButtonVolver = new javax.swing.JButton();
+        jButtonVaciar = new javax.swing.JButton();
         jButtonGuardar = new javax.swing.JButton();
+        jTextFieldCodigo = new javax.swing.JTextField();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabelFondo2 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
@@ -129,86 +124,46 @@ public class VentanaSolicitud extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLabPeq.png"))); // NOI18N
         jPanelSolicitud.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
 
-        jLabelFinal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelFinal.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelFinal.setText("FECHA FINAL");
-        jPanelSolicitud.add(jLabelFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, 30));
+        jLabelDescripcion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelDescripcion.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelDescripcion.setText("DESCRIPCION");
+        jPanelSolicitud.add(jLabelDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, 30));
 
-        jLabelInicio.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelInicio.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelInicio.setText("FECHA INICIO");
-        jPanelSolicitud.add(jLabelInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 30));
+        jLabelNombre1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelNombre1.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelNombre1.setText("ESTADO");
+        jPanelSolicitud.add(jLabelNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, 30));
 
-        jLabelSerial.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelSerial.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelSerial.setText("SERIAL EQUIPO");
-        jPanelSolicitud.add(jLabelSerial, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+        jLabelNombre.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelNombre.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelNombre.setText("NOMBRE");
+        jPanelSolicitud.add(jLabelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, 30));
+
+        jLabelCodigo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelCodigo.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelCodigo.setText("SERIAL");
+        jPanelSolicitud.add(jLabelCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
         jLabelSolicitud.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabelSolicitud.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelSolicitud.setText("SOLICITAR EQUIPO");
-        jPanelSolicitud.add(jLabelSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
+        jLabelSolicitud.setText("CREAR EQUIPO");
+        jPanelSolicitud.add(jLabelSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
 
-        jComboBoxEquipos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelSolicitud.add(jComboBoxEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 180, 30));
-
-        jSpinnerAño.setModel(new javax.swing.SpinnerNumberModel(2000, 2000, 2050, 1));
-        jPanelSolicitud.add(jSpinnerAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 80, -1));
-
-        jSpinnerMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        jPanelSolicitud.add(jSpinnerMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, -1, -1));
-
-        jSpinnerDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
-        jPanelSolicitud.add(jSpinnerDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, -1, -1));
-
-        jLabel12.setText("AA");
-        jPanelSolicitud.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 30, -1));
-
-        jLabel11.setText("MM");
-        jPanelSolicitud.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, -1, -1));
-
-        jLabel10.setText("DD");
-        jPanelSolicitud.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, -1, -1));
-
-        jSpinnerAño1.setModel(new javax.swing.SpinnerNumberModel(2000, 2000, 2050, 1));
-        jPanelSolicitud.add(jSpinnerAño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 80, -1));
-
-        jSpinnerMes1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        jPanelSolicitud.add(jSpinnerMes1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, -1, -1));
-
-        jSpinnerDia1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
-        jPanelSolicitud.add(jSpinnerDia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
-
-        jButtonListar1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonListar1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonListar1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonListar1.setText("MODIFICAR");
-        jButtonListar1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVolver.setText("Volver");
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonListar1ActionPerformed(evt);
+                jButtonVolverActionPerformed(evt);
             }
         });
-        jPanelSolicitud.add(jButtonListar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 110, 37));
+        jPanelSolicitud.add(jButtonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, -1, -1));
 
-        jButtonListar.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonListar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonListar.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonListar.setText("CONSULTAR");
-        jButtonListar.addActionListener(new java.awt.event.ActionListener() {
+        jButtonVaciar.setText("Vaciar");
+        jButtonVaciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonListarActionPerformed(evt);
+                jButtonVaciarActionPerformed(evt);
             }
         });
-        jPanelSolicitud.add(jButtonListar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 330, 110, 37));
-
-        jLabel13.setText("DD");
-        jPanelSolicitud.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, -1, -1));
-
-        jLabel14.setText("MM");
-        jPanelSolicitud.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, -1, -1));
-
-        jLabel15.setText("AA");
-        jPanelSolicitud.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, 30, -1));
+        jPanelSolicitud.add(jButtonVaciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, -1));
 
         jButtonGuardar.setText("Guardar");
         jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -216,7 +171,18 @@ public class VentanaSolicitud extends javax.swing.JFrame {
                 jButtonGuardarActionPerformed(evt);
             }
         });
-        jPanelSolicitud.add(jButtonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
+        jPanelSolicitud.add(jButtonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, -1, -1));
+        jPanelSolicitud.add(jTextFieldCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 170, 30));
+        jPanelSolicitud.add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 170, 30));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jPanelSolicitud.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 270, 60));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelSolicitud.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 170, 30));
 
         jLabelFondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo2.setText("jLabel4");
@@ -234,7 +200,6 @@ public class VentanaSolicitud extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPerfilActionPerformed
 
     private void jButtonSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitudActionPerformed
-      //  jPanelInicio.setVisible(false);
         jPanelSolicitud.setVisible(true);
     }//GEN-LAST:event_jButtonSolicitudActionPerformed
 
@@ -244,15 +209,20 @@ public class VentanaSolicitud extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
-    private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
-    }//GEN-LAST:event_jButtonListarActionPerformed
-
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
-    private void jButtonListar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonListar1ActionPerformed
+    private void jButtonVaciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVaciarActionPerformed
+        jTextFieldCodigo.setText("");
+        jTextFieldNombre.setText("");
+        jTextArea1.setText("");
+    }//GEN-LAST:event_jButtonVaciarActionPerformed
+
+    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+        VentanaCRUDEquipos objVentana = new VentanaCRUDEquipos();
+        objVentana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonVolverActionPerformed
 
 
     public static void main(String args[]) {
@@ -269,21 +239,27 @@ public class VentanaSolicitud extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaSolicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaSolicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaSolicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaSolicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaEquipos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaSolicitud().setVisible(true);
+                new VentanaEquipos().setVisible(true);
             }
         });
     }
@@ -292,36 +268,30 @@ public class VentanaSolicitud extends javax.swing.JFrame {
     private javax.swing.JButton jButtonGuardar;
     private javax.swing.JButton jButtonInfo;
     private javax.swing.JButton jButtonInicio;
-    private javax.swing.JButton jButtonListar;
-    private javax.swing.JButton jButtonListar1;
     private javax.swing.JButton jButtonPerfil;
     private javax.swing.JButton jButtonSolicitud;
-    private javax.swing.JComboBox<String> jComboBoxEquipos;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
+    private javax.swing.JButton jButtonVaciar;
+    private javax.swing.JButton jButtonVolver;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelFinal;
+    private javax.swing.JLabel jLabelCodigo;
+    private javax.swing.JLabel jLabelDescripcion;
     private javax.swing.JLabel jLabelFondo2;
-    private javax.swing.JLabel jLabelInicio;
-    private javax.swing.JLabel jLabelSerial;
+    private javax.swing.JLabel jLabelNombre;
+    private javax.swing.JLabel jLabelNombre1;
     private javax.swing.JLabel jLabelSolicitud;
     private javax.swing.JPanel jPanelMenu;
     private javax.swing.JPanel jPanelSolicitud;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JSpinner jSpinnerAño;
-    private javax.swing.JSpinner jSpinnerAño1;
-    private javax.swing.JSpinner jSpinnerDia;
-    private javax.swing.JSpinner jSpinnerDia1;
-    private javax.swing.JSpinner jSpinnerMes;
-    private javax.swing.JSpinner jSpinnerMes1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextFieldCodigo;
+    private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }
