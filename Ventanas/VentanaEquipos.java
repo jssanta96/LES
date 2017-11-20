@@ -194,6 +194,9 @@ public class VentanaEquipos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoActionPerformed
+        VentanaContactenos objVentana = new VentanaContactenos();
+        objVentana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButtonInfoActionPerformed
 
     private void jButtonPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPerfilActionPerformed

@@ -23,9 +23,9 @@ public class VentanaCRUDProyectos extends javax.swing.JFrame {
         jPanelMenu = new javax.swing.JPanel();
         jButtonInicio = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jButtonInicio1 = new javax.swing.JButton();
-        jButtonInicio2 = new javax.swing.JButton();
-        jButtonInicio3 = new javax.swing.JButton();
+        jButtonSolicitud = new javax.swing.JButton();
+        jButtonPerfil = new javax.swing.JButton();
+        jButtonInfo = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanelSolicitud = new javax.swing.JPanel();
@@ -60,38 +60,38 @@ public class VentanaCRUDProyectos extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/bienvenido.png"))); // NOI18N
         jPanelMenu.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
 
-        jButtonInicio1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonInicio1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonInicio1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonInicio1.setText("SOLICITAR EQUIPO");
-        jButtonInicio1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSolicitud.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonSolicitud.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonSolicitud.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSolicitud.setText("SOLICITAR EQUIPO");
+        jButtonSolicitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInicio1ActionPerformed(evt);
+                jButtonSolicitudActionPerformed(evt);
             }
         });
-        jPanelMenu.add(jButtonInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 160, 40));
+        jPanelMenu.add(jButtonSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 160, 40));
 
-        jButtonInicio2.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonInicio2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonInicio2.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonInicio2.setText("MI PERFIL");
-        jButtonInicio2.addActionListener(new java.awt.event.ActionListener() {
+        jButtonPerfil.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonPerfil.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonPerfil.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonPerfil.setText("MI PERFIL");
+        jButtonPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInicio2ActionPerformed(evt);
+                jButtonPerfilActionPerformed(evt);
             }
         });
-        jPanelMenu.add(jButtonInicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 161, 37));
+        jPanelMenu.add(jButtonPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 161, 37));
 
-        jButtonInicio3.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonInicio3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonInicio3.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonInicio3.setText("CONTACTENOS");
-        jButtonInicio3.addActionListener(new java.awt.event.ActionListener() {
+        jButtonInfo.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonInfo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButtonInfo.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonInfo.setText("CONTACTENOS");
+        jButtonInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonInicio3ActionPerformed(evt);
+                jButtonInfoActionPerformed(evt);
             }
         });
-        jPanelMenu.add(jButtonInicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 161, 37));
+        jPanelMenu.add(jButtonInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 161, 37));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel6.setText("NombreUsuario");
@@ -161,17 +161,20 @@ public class VentanaCRUDProyectos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonInicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicio3ActionPerformed
-    }//GEN-LAST:event_jButtonInicio3ActionPerformed
+    private void jButtonInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoActionPerformed
+        VentanaContactenos objVentana = new VentanaContactenos();
+        objVentana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonInfoActionPerformed
 
-    private void jButtonInicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicio2ActionPerformed
-    }//GEN-LAST:event_jButtonInicio2ActionPerformed
+    private void jButtonPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPerfilActionPerformed
+    }//GEN-LAST:event_jButtonPerfilActionPerformed
 
-    private void jButtonInicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicio1ActionPerformed
+    private void jButtonSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitudActionPerformed
         VentanaSolicitud objVentana = new VentanaSolicitud();
         objVentana.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButtonInicio1ActionPerformed
+    }//GEN-LAST:event_jButtonSolicitudActionPerformed
 
     private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
         VentanaInicial objVentana= new VentanaInicial();
@@ -242,11 +245,11 @@ public class VentanaCRUDProyectos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEquipo;
+    private javax.swing.JButton jButtonInfo;
     private javax.swing.JButton jButtonInicio;
-    private javax.swing.JButton jButtonInicio1;
-    private javax.swing.JButton jButtonInicio2;
-    private javax.swing.JButton jButtonInicio3;
+    private javax.swing.JButton jButtonPerfil;
     private javax.swing.JButton jButtonProyecto;
+    private javax.swing.JButton jButtonSolicitud;
     private javax.swing.JButton jButtonUsuario;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

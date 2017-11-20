@@ -6,13 +6,12 @@
 package Ventanas;
 
 
-public class VentanaCRUDUsuario extends javax.swing.JFrame {
+public class VentanaContactenos extends javax.swing.JFrame {
 
 
-    public VentanaCRUDUsuario() {
+    public VentanaContactenos() {
         initComponents();
         this.setLocationRelativeTo(null);
-
     }
 
 
@@ -29,15 +28,17 @@ public class VentanaCRUDUsuario extends javax.swing.JFrame {
         jButtonInfo = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPanelSolicitud = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jButtonProyecto = new javax.swing.JButton();
-        jButtonUsuario = new javax.swing.JButton();
-        jButtonEquipo = new javax.swing.JButton();
-        jLabelUsuarios = new javax.swing.JLabel();
-        jLabelFondo2 = new javax.swing.JLabel();
+        jPanelInicio = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabelEmailLab = new javax.swing.JLabel();
+        jLabelTelefonos = new javax.swing.JLabel();
+        jLabelContacto = new javax.swing.JLabel();
+        jLabelEmailCordi = new javax.swing.JLabel();
+        jLabelCoordinadora = new javax.swing.JLabel();
+        jLabelCoordinador = new javax.swing.JLabel();
+        jLabelFondo1 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -104,63 +105,57 @@ public class VentanaCRUDUsuario extends javax.swing.JFrame {
 
         getContentPane().add(jPanelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jPanelSolicitud.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoUnivallePeq.png"))); // NOI18N
-        jPanelSolicitud.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLabPeq.png"))); // NOI18N
+        jPanelInicio.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, -1, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
-        jPanelSolicitud.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, -1));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoUnivallePeq.png"))); // NOI18N
+        jPanelInicio.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLabPeq.png"))); // NOI18N
-        jPanelSolicitud.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
+        jPanelInicio.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, -1));
 
-        jButtonProyecto.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonProyecto.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonProyecto.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonProyecto.setText("CREAR");
-        jButtonProyecto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonProyectoActionPerformed(evt);
-            }
-        });
-        jPanelSolicitud.add(jButtonProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 120, 40));
+        jLabelEmailLab.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelEmailLab.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelEmailLab.setText("E-mail: laboratorio.multimediayvision@correounivalle.edu.co");
+        jPanelInicio.add(jLabelEmailLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
-        jButtonUsuario.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonUsuario.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonUsuario.setText("LISTAR");
-        jButtonUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonUsuarioActionPerformed(evt);
-            }
-        });
-        jPanelSolicitud.add(jButtonUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 120, 40));
+        jLabelTelefonos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabelTelefonos.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelTelefonos.setText("Telefonos: (57) (2) 321 21 00 ext. 2791, Fax. 339 20 86");
+        jPanelInicio.add(jLabelTelefonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
-        jButtonEquipo.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonEquipo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jButtonEquipo.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonEquipo.setText("ELIMINAR");
-        jPanelSolicitud.add(jButtonEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 120, 40));
+        jLabelContacto.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabelContacto.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelContacto.setText("CONTACTO");
+        jPanelInicio.add(jLabelContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
-        jLabelUsuarios.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabelUsuarios.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelUsuarios.setText("USUARIOS");
-        jPanelSolicitud.add(jLabelUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, -1, -1));
+        jLabelEmailCordi.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabelEmailCordi.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelEmailCordi.setText("E-mail: maria.trujillo@correounivalle.edu.co");
+        jPanelInicio.add(jLabelEmailCordi, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
-        jLabelFondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
-        jLabelFondo2.setText("jLabel4");
-        jPanelSolicitud.add(jLabelFondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 400));
+        jLabelCoordinadora.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabelCoordinadora.setForeground(new java.awt.Color(51, 51, 51));
+        jLabelCoordinadora.setText("P.H.D Maria Patricia Trujillo Uribe");
+        jPanelInicio.add(jLabelCoordinadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
-        getContentPane().add(jPanelSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 380, 400));
+        jLabelCoordinador.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabelCoordinador.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelCoordinador.setText("COORDINADOR");
+        jPanelInicio.add(jLabelCoordinador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+
+        jLabelFondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
+        jLabelFondo1.setText("jLabel4");
+        jPanelInicio.add(jLabelFondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 400));
+
+        getContentPane().add(jPanelInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 470, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoActionPerformed
-        VentanaContactenos objVentana = new VentanaContactenos();
-        objVentana.setVisible(true);
-        this.setVisible(false);
     }//GEN-LAST:event_jButtonInfoActionPerformed
 
     private void jButtonPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPerfilActionPerformed
@@ -178,14 +173,6 @@ public class VentanaCRUDUsuario extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
-    private void jButtonUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuarioActionPerformed
-    }//GEN-LAST:event_jButtonUsuarioActionPerformed
-
-    private void jButtonProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProyectoActionPerformed
-        VentanaUsuario objVentana = new VentanaUsuario();
-        objVentana.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButtonProyectoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -201,49 +188,45 @@ public class VentanaCRUDUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaCRUDUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaContactenos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaCRUDUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaContactenos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaCRUDUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaContactenos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaCRUDUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaContactenos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaCRUDUsuario().setVisible(true);
+                new VentanaContactenos().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonEquipo;
     private javax.swing.JButton jButtonInfo;
     private javax.swing.JButton jButtonInicio;
     private javax.swing.JButton jButtonPerfil;
-    private javax.swing.JButton jButtonProyecto;
     private javax.swing.JButton jButtonSolicitud;
-    private javax.swing.JButton jButtonUsuario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JLabel jLabelFondo2;
-    private javax.swing.JLabel jLabelUsuarios;
+    private javax.swing.JLabel jLabelContacto;
+    private javax.swing.JLabel jLabelCoordinador;
+    private javax.swing.JLabel jLabelCoordinadora;
+    private javax.swing.JLabel jLabelEmailCordi;
+    private javax.swing.JLabel jLabelEmailLab;
+    private javax.swing.JLabel jLabelFondo1;
+    private javax.swing.JLabel jLabelTelefonos;
+    private javax.swing.JPanel jPanelInicio;
     private javax.swing.JPanel jPanelMenu;
-    private javax.swing.JPanel jPanelSolicitud;
     private javax.swing.JRadioButton jRadioButton1;
     // End of variables declaration//GEN-END:variables
 }
