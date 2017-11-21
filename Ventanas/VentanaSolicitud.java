@@ -4,14 +4,18 @@
  * and open the template in the editor.
  */
 package Ventanas;
+import Controllers.RequestController;
 
 
 public class VentanaSolicitud extends javax.swing.JFrame {
 
+    RequestController objRequestCtrl;
 
-    public VentanaSolicitud() {
+    public VentanaSolicitud() {//Esto a intej
         initComponents();
+        objRequestCtrl = new RequestController();
         this.setLocationRelativeTo(null);
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/logoLes.png")).getImage());
     }
 
     @SuppressWarnings("unchecked")
@@ -289,6 +293,37 @@ public class VentanaSolicitud extends javax.swing.JFrame {
                 new VentanaSolicitud().setVisible(true);
             }
         });
+    }
+
+    public String getInitialDate(){//Esto a int
+
+        String initialDate;
+
+        initialDate =   jSpinnerDia.getValue().toString() + "/" + jSpinnerMes.getValue().toString() + "/" + jSpinnerAño.getValue().toString();
+
+        return initialDate;
+
+    }
+
+    public String getFinalDate(){//Esto a int
+
+        String finalDate;
+
+        finalDate =   jSpinnerDia1.getValue().toString() + "/" + jSpinnerMes1.getValue().toString() + "/" + jSpinnerAño1.getValue().toString();
+
+        return finalDate;
+
+    }
+
+    public void createRequest(){//Esto a int
+
+        String serial =  jComboBoxEquipos.getSelectedItem().toString();
+        String initialDate = getInitialDate();
+        String finalDate = getFinalDate();
+
+        //objRequestCtrl.addRequest(, , , serial, initialDate, finalDate)
+
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
