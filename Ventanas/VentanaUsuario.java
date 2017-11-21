@@ -4,16 +4,22 @@
  * and open the template in the editor.
  */
 package Ventanas;
+import Controllers.UserController;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 
 public class VentanaUsuario extends javax.swing.JFrame {
 
+    UserController userController;
 
     public VentanaUsuario() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/logoUnivalle.png")).getImage());
+        userController = new UserController();
         this.setLocationRelativeTo(null);
-    }
 
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -240,6 +246,8 @@ public class VentanaUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNombreActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+        createUser();
+        JOptionPane.showMessageDialog(null,"Usuario Creado con exito" );
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
@@ -289,7 +297,25 @@ public class VentanaUsuario extends javax.swing.JFrame {
             }
         });
     }
+    public void createUser(){
 
+        String email = jTextFieldEmail.getText();
+
+        String identification = jTextFieldIdentificacion.getText();
+
+        String name = jTextFieldNombre.getText();
+
+        String nickName = jTextFieldNickName.getText();
+
+        String password = jPasswordField1.getText();
+
+        String idProyect = jComboBoxProyecto.getSelectedItem().toString();
+
+        String typeUser = jComboBoxTipoUsuario.getSelectedItem().toString();
+
+        userController.addUser(identification, idProyect, password, nickName, nickName, name, name, email);
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGuardar;
