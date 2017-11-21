@@ -5,15 +5,18 @@
  */
 package Ventanas;
 
-
 public class VentanaEquipos extends javax.swing.JFrame {
 
 
-    public VentanaEquipos() {
-        initComponents();
-        this.setLocationRelativeTo(null);
-    }
+    EquipmentController objEquipmentCtrl;
 
+    public VentanaEquipos() {//Subir a inte
+        initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/logoLes.png")).getImage());
+        objEquipmentCtrl = new EquipmentController();
+        this.setLocationRelativeTo(null);
+
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -213,6 +216,7 @@ public class VentanaEquipos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+        createEquipment();
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void jButtonVaciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVaciarActionPerformed
@@ -267,6 +271,16 @@ public class VentanaEquipos extends javax.swing.JFrame {
         });
     }
 
+    public void createEquipment(){//Subir a inte
+
+        String code = jTextFieldCodigo.getText();
+        String name = jTextFieldNombre.getName();
+        String description =  jTextArea1.getText();
+        String state = jComboBox1.getSelectedItem().toString();
+
+        objEquipmentCtrl.addEquipment(code, name, description, state);
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGuardar;
     private javax.swing.JButton jButtonInfo;

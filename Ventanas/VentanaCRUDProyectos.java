@@ -5,14 +5,17 @@
  */
 package Ventanas;
 
+import javax.swing.ImageIcon;
 
 public class VentanaCRUDProyectos extends javax.swing.JFrame {
 
-
-    public VentanaCRUDProyectos() {
+    public VentanaCRUDProyectos() {//Esto a inte
         initComponents();
         this.setLocationRelativeTo(null);
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/logoUnivalle.png")).getImage());
     }
+
+
 
 
     @SuppressWarnings("unchecked")

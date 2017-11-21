@@ -8,12 +8,17 @@ package Ventanas;
 
 public class VentanaInicial extends javax.swing.JFrame {
 
+import javax.swing.ImageIcon;
 
-    public VentanaInicial() {
-        initComponents();
-        this.setLocationRelativeTo(null);
-    }
 
+    public class VentanaInicial extends javax.swing.JFrame {
+
+
+        public VentanaInicial() {//Esto a intej
+            initComponents();
+            this.setLocationRelativeTo(null);
+            setIconImage(new ImageIcon(getClass().getResource("/Imagenes/logoLes.png")).getImage());
+        }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

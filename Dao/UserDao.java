@@ -38,8 +38,6 @@ public class UserDao {
         return -1;
     }
 
-
-
     public User viewUser(String identification){
         User user= new User();
         String sql_select;
@@ -118,3 +116,4 @@ public class UserDao {
 
     }
 }
+

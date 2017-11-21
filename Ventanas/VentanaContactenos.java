@@ -5,15 +5,17 @@
  */
 package Ventanas;
 
+import javax.swing.ImageIcon;
+
 
 public class VentanaContactenos extends javax.swing.JFrame {
 
 
-    public VentanaContactenos() {
+    public VentanaContactenos() {//Esto a intej
         initComponents();
         this.setLocationRelativeTo(null);
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/logoLes.png")).getImage());
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -27,7 +27,7 @@ public class UserController {
 
         int result=userDao.saveUser(user);
 
-        System.out.println("Se inserto un nuevo paciente");
+        System.out.println("Se inserto un nuevo Usuario");
 
         return result;
 
@@ -37,7 +37,7 @@ public class UserController {
 
         User user = new User();
 
-        System.out.println("Se va a consultar un paciente");
+        System.out.println("Se va a insertar un Usuario");
 
         user = userDao.viewUser(identification);
 

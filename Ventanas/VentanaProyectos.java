@@ -4,14 +4,19 @@
  * and open the template in the editor.
  */
 package Ventanas;
+import javax.swing.ImageIcon;
+import Controllers.ProjectController;
 
 
 public class VentanaProyectos extends javax.swing.JFrame {
 
+    ProjectController objProjectCtrl;
 
-    public VentanaProyectos() {
+    public VentanaProyectos() {//Esto a intej
         initComponents();
         this.setLocationRelativeTo(null);
+        objProjectCtrl = new ProjectController();
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/logoLes.png")).getImage());
     }
 
 
@@ -213,6 +218,7 @@ public class VentanaProyectos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+        createProject();
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void jButtonVaciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVaciarActionPerformed
@@ -261,6 +267,17 @@ public class VentanaProyectos extends javax.swing.JFrame {
                 new VentanaProyectos().setVisible(true);
             }
         });
+    }
+
+    public void createProject(){//Esto a intej
+
+        String code = jTextFieldCodigo.getText();
+        String name = jTextFieldNombre.getText();
+        String description = jTextArea1.getText();
+        String state = jComboBox1.getSelectedItem().toString();
+
+        objProjectCtrl.addProject(code, name, description, state);
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

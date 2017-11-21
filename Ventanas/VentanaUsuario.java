@@ -15,7 +15,7 @@ public class VentanaUsuario extends javax.swing.JFrame {
 
     public VentanaUsuario() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/logoUnivalle.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/logoLes.png")).getImage());
         userController = new UserController();
         this.setLocationRelativeTo(null);
 

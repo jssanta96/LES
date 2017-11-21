@@ -4,14 +4,16 @@
  * and open the template in the editor.
  */
 package Ventanas;
+import javax.swing.ImageIcon;
 
 
 public class VentanaCRUDEquipos extends javax.swing.JFrame {
 
 
-    public VentanaCRUDEquipos() {
+    public VentanaCRUDEquipos() {//Esto a inte
         initComponents();
         this.setLocationRelativeTo(null);
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/logoLes.png")).getImage());
     }
 
 
