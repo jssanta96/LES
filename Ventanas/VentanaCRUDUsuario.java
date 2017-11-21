@@ -140,7 +140,7 @@ public class VentanaCRUDUsuario extends javax.swing.JFrame {
         jButtonEquipo.setBackground(new java.awt.Color(102, 0, 0));
         jButtonEquipo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonEquipo.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonEquipo.setText("ELIMINAR");
+        jButtonEquipo.setText("ACTUALIZAR");
         jPanelSolicitud.add(jButtonEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 120, 40));
 
         jLabelUsuarios.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N

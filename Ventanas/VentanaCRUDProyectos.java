@@ -139,7 +139,7 @@ public class VentanaCRUDProyectos extends javax.swing.JFrame {
         jButtonEquipo.setBackground(new java.awt.Color(102, 0, 0));
         jButtonEquipo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonEquipo.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonEquipo.setText("ELIMINAR");
+        jButtonEquipo.setText("ACTUALIZAR");
         jButtonEquipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEquipoActionPerformed(evt);
