@@ -8,11 +8,11 @@ import javax.swing.ImageIcon;
 import Controllers.ProjectController;
 
 
-public class VentanaProyectos extends javax.swing.JFrame {
+public class VentanaActualizarProyectos extends javax.swing.JFrame {
 
     ProjectController objProjectCtrl;
 
-    public VentanaProyectos() {//Esto a intej
+    public VentanaActualizarProyectos() {//Esto a intej
         initComponents();
         this.setLocationRelativeTo(null);
         objProjectCtrl = new ProjectController();
@@ -31,24 +31,26 @@ public class VentanaProyectos extends javax.swing.JFrame {
         jButtonSolicitud = new javax.swing.JButton();
         jButtonPerfil = new javax.swing.JButton();
         jButtonInfo = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         jLabelBienvenido = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanelSolicitud = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabelDescripcion = new javax.swing.JLabel();
+        jLabelNombre1 = new javax.swing.JLabel();
         jLabelNombre = new javax.swing.JLabel();
         jLabelCodigo = new javax.swing.JLabel();
         jLabelSolicitud = new javax.swing.JLabel();
         jButtonVolver = new javax.swing.JButton();
         jButtonVaciar = new javax.swing.JButton();
         jButtonGuardar = new javax.swing.JButton();
-        jTextFieldCodigo = new javax.swing.JTextField();
         jTextFieldNombre = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jComboCodigo = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabelFondo2 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
@@ -103,14 +105,14 @@ public class VentanaProyectos extends javax.swing.JFrame {
         });
         jPanelMenu.add(jButtonInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 161, 37));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel6.setText("NombreUsuario");
-        jPanelMenu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
-
         jLabelBienvenido.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabelBienvenido.setForeground(new java.awt.Color(153, 0, 0));
         jLabelBienvenido.setText("BIENVENIDO");
         jPanelMenu.add(jLabelBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel6.setText("NombreUsuario");
+        jPanelMenu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoGris.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -132,12 +134,17 @@ public class VentanaProyectos extends javax.swing.JFrame {
         jLabelDescripcion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelDescripcion.setForeground(new java.awt.Color(102, 102, 102));
         jLabelDescripcion.setText("DESCRIPCION");
-        jPanelSolicitud.add(jLabelDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, 30));
+        jPanelSolicitud.add(jLabelDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, 30));
+
+        jLabelNombre1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelNombre1.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelNombre1.setText("ESTADO");
+        jPanelSolicitud.add(jLabelNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, 30));
 
         jLabelNombre.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelNombre.setForeground(new java.awt.Color(102, 102, 102));
         jLabelNombre.setText("NOMBRE");
-        jPanelSolicitud.add(jLabelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, 30));
+        jPanelSolicitud.add(jLabelNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, 30));
 
         jLabelCodigo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelCodigo.setForeground(new java.awt.Color(102, 102, 102));
@@ -146,8 +153,8 @@ public class VentanaProyectos extends javax.swing.JFrame {
 
         jLabelSolicitud.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabelSolicitud.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelSolicitud.setText("CREAR PROYECTO");
-        jPanelSolicitud.add(jLabelSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
+        jLabelSolicitud.setText("ACTUALIZAR PROYECTO");
+        jPanelSolicitud.add(jLabelSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, -1, -1));
 
         jButtonVolver.setText("Volver");
         jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -172,14 +179,18 @@ public class VentanaProyectos extends javax.swing.JFrame {
             }
         });
         jPanelSolicitud.add(jButtonGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, -1, -1));
-        jPanelSolicitud.add(jTextFieldCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 170, 30));
-        jPanelSolicitud.add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, 170, 30));
+        jPanelSolicitud.add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 170, 30));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jPanelSolicitud.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 270, 60));
+        jPanelSolicitud.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 270, 60));
+
+        jPanelSolicitud.add(jComboCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 170, 30));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelSolicitud.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 170, 30));
 
         jLabelFondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo2.setText("jLabel4");
@@ -216,7 +227,7 @@ public class VentanaProyectos extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void jButtonVaciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVaciarActionPerformed
-        jTextFieldCodigo.setText("");
+
         jTextFieldNombre.setText("");
         jTextArea1.setText("");
     }//GEN-LAST:event_jButtonVaciarActionPerformed
@@ -242,14 +253,18 @@ public class VentanaProyectos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaProyectos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaActualizarProyectos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaProyectos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaActualizarProyectos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaProyectos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaActualizarProyectos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaProyectos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaActualizarProyectos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -258,17 +273,17 @@ public class VentanaProyectos extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaProyectos().setVisible(true);
+                new VentanaActualizarProyectos().setVisible(true);
             }
         });
     }
 
     public void createProject(){//Esto a intej
 
-        String code = jTextFieldCodigo.getText();
+        String code =  jComboCodigo.getSelectedItem().toString();
         String name = jTextFieldNombre.getText();
         String description = jTextArea1.getText();
-        String state = "Activo";
+        String state = jComboBox1.getSelectedItem().toString();
 
         objProjectCtrl.addProject(code, name, description, state);
 
@@ -282,6 +297,8 @@ public class VentanaProyectos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSolicitud;
     private javax.swing.JButton jButtonVaciar;
     private javax.swing.JButton jButtonVolver;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboCodigo;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -293,13 +310,13 @@ public class VentanaProyectos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDescripcion;
     private javax.swing.JLabel jLabelFondo2;
     private javax.swing.JLabel jLabelNombre;
+    private javax.swing.JLabel jLabelNombre1;
     private javax.swing.JLabel jLabelSolicitud;
     private javax.swing.JPanel jPanelMenu;
     private javax.swing.JPanel jPanelSolicitud;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextFieldCodigo;
     private javax.swing.JTextField jTextFieldNombre;
     // End of variables declaration//GEN-END:variables
 }

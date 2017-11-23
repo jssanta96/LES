@@ -17,11 +17,13 @@ public class UserDao {
         String save_sql;
         int numberRows=0;
 
-        save_sql="INSERT INTO user VALUES('"+
+        save_sql="INSERT INTO users VALUES('"+
                 user.getIdentification()+"','"+user.getProjectId()+"','"+user.getPassword()+"','"+user.getNickName()+"','"
                 +user.getUserName()+"','"+user.getType()+"','"+user.getState()+"','"+user.getEmail()+"');";
 
-        try{
+        System.out.println( "prueba." + save_sql);
+        
+    try{
             Connection conn= fachada.getConnetion();
             Statement sentence = conn.createStatement();
 
@@ -41,7 +43,7 @@ public class UserDao {
     public User viewUser(String identification){
         User user= new User();
         String sql_select;
-        sql_select="SELECT identification,project_id,password,nickname,name,type,state,email"+
+        sql_select="SELECT identification,project_id,user_password,nickname,name,type,state,email"+
                 " FROM users WHERE identification='"+identification+"';";
 
         try{

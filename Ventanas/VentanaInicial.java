@@ -5,13 +5,11 @@
  */
 package Ventanas;
 
-
-public class VentanaInicial extends javax.swing.JFrame {
-
 import javax.swing.ImageIcon;
 
 
-    public class VentanaInicial extends javax.swing.JFrame {
+public class VentanaInicial extends javax.swing.JFrame {
+
 
 
         public VentanaInicial() {//Esto a intej
@@ -27,10 +25,10 @@ import javax.swing.ImageIcon;
         jRadioButton1 = new javax.swing.JRadioButton();
         jPanelMenu = new javax.swing.JPanel();
         jButtonInicio = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
         jButtonSolicitud = new javax.swing.JButton();
         jButtonPerfil = new javax.swing.JButton();
         jButtonInfo = new javax.swing.JButton();
+        jLabelBienvenido = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanelInicio = new javax.swing.JPanel();
@@ -61,13 +59,10 @@ import javax.swing.ImageIcon;
         });
         jPanelMenu.add(jButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 161, 37));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/bienvenido.png"))); // NOI18N
-        jPanelMenu.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
-
         jButtonSolicitud.setBackground(new java.awt.Color(102, 0, 0));
         jButtonSolicitud.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSolicitud.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonSolicitud.setText("SOLICITAR EQUIPO");
+        jButtonSolicitud.setText("PRESTAMO");
         jButtonSolicitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSolicitudActionPerformed(evt);
@@ -96,6 +91,11 @@ import javax.swing.ImageIcon;
             }
         });
         jPanelMenu.add(jButtonInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 161, 37));
+
+        jLabelBienvenido.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabelBienvenido.setForeground(new java.awt.Color(153, 0, 0));
+        jLabelBienvenido.setText("BIENVENIDO");
+        jPanelMenu.add(jLabelBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel6.setText("NombreUsuario");
@@ -165,7 +165,7 @@ import javax.swing.ImageIcon;
     }//GEN-LAST:event_jButtonPerfilActionPerformed
 
     private void jButtonSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitudActionPerformed
-        VentanaSolicitud objVentana = new VentanaSolicitud();
+        VentanaPrestamo objVentana = new VentanaPrestamo();
         objVentana.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonSolicitudActionPerformed
@@ -231,8 +231,8 @@ import javax.swing.ImageIcon;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabelBienvenido;
     private javax.swing.JLabel jLabelFondo1;
     private javax.swing.JPanel jPanelInicio;
     private javax.swing.JPanel jPanelMenu;

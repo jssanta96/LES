@@ -3,14 +3,16 @@ package Dao;
 import java.sql.*;
 
 public class FachadaBD {
+    
     String url, user, password;
     Connection conexion =null;
     Statement instruccion;
     ResultSet tabla;
-    FachadaBD(){
-        url="jdbc:postgresql://pgsql2:5432/1625639";
-        user="1625639";
-        password="1625639";
+    
+    public FachadaBD(){
+        url="jdbc:postgresql://pgsql2:5432/1632149";
+        user="1632149";
+        password="1632149";
     }
 
 
