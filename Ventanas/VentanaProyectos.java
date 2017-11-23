@@ -6,6 +6,7 @@
 package Ventanas;
 import javax.swing.ImageIcon;
 import Controllers.ProjectController;
+import javax.swing.JOptionPane;
 
 
 public class VentanaProyectos extends javax.swing.JFrame {
@@ -13,15 +14,18 @@ public class VentanaProyectos extends javax.swing.JFrame {
     ProjectController objProjectCtrl;
 
     public VentanaProyectos() {//Esto a intej
+
         initComponents();
+        addStateProject();
         this.setLocationRelativeTo(null);
         objProjectCtrl = new ProjectController();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/logoLes.png")).getImage());
+
     }
 
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -186,7 +190,6 @@ public class VentanaProyectos extends javax.swing.JFrame {
 
         jPanelSolicitud.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 270, 60));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanelSolicitud.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 170, 30));
 
         jLabelFondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
@@ -196,49 +199,50 @@ public class VentanaProyectos extends javax.swing.JFrame {
         getContentPane().add(jPanelSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 380, 400));
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>
 
-    private void jButtonInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoActionPerformed
+    private void jButtonInfoActionPerformed(java.awt.event.ActionEvent evt) {
         VentanaContactenos objVentana = new VentanaContactenos();
         objVentana.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButtonInfoActionPerformed
+    }
 
-    private void jButtonPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPerfilActionPerformed
-    }//GEN-LAST:event_jButtonPerfilActionPerformed
+    private void jButtonPerfilActionPerformed(java.awt.event.ActionEvent evt) {
+    }
 
-    private void jButtonSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitudActionPerformed
+    private void jButtonSolicitudActionPerformed(java.awt.event.ActionEvent evt) {
         jPanelSolicitud.setVisible(true);
-    }//GEN-LAST:event_jButtonSolicitudActionPerformed
+    }
 
-    private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
+    private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {
         VentanaInicial objVentana= new VentanaInicial();
         objVentana.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButtonInicioActionPerformed
+    }
 
-    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {
         createProject();
-    }//GEN-LAST:event_jButtonGuardarActionPerformed
+        JOptionPane.showMessageDialog(null,"Usuario Creado con exito" );
+    }
 
-    private void jButtonVaciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVaciarActionPerformed
+    private void jButtonVaciarActionPerformed(java.awt.event.ActionEvent evt) {
         jTextFieldCodigo.setText("");
         jTextFieldNombre.setText("");
         jTextArea1.setText("");
-    }//GEN-LAST:event_jButtonVaciarActionPerformed
+    }
 
-    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {
         VentanaCRUDProyectos objVentana = new VentanaCRUDProyectos();
         objVentana.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButtonVolverActionPerformed
+    }
 
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -279,8 +283,17 @@ public class VentanaProyectos extends javax.swing.JFrame {
         objProjectCtrl.addProject(code, name, description, state);
 
     }
+    public void addStateProject(){
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+        jComboBox1.addItem("Activo");
+        jComboBox1.addItem("Terminado");
+        jComboBox1.addItem("Suspendido");
+
+
+    }
+
+
+    // Variables declaration - do not modify
     private javax.swing.JButton jButtonGuardar;
     private javax.swing.JButton jButtonInfo;
     private javax.swing.JButton jButtonInicio;
@@ -309,5 +322,5 @@ public class VentanaProyectos extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextFieldCodigo;
     private javax.swing.JTextField jTextFieldNombre;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration
 }

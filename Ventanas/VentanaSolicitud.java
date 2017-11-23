@@ -5,21 +5,34 @@
  */
 package Ventanas;
 import Controllers.RequestController;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.ImageIcon;
+import Dao.FachadaBD;
+import javax.swing.JComboBox;
+
 
 
 public class VentanaSolicitud extends javax.swing.JFrame {
 
     RequestController objRequestCtrl;
+    FachadaBD  fachada;
 
     public VentanaSolicitud() {//Esto a intej
+
         initComponents();
+        fachada = new FachadaBD();
+        jComboBoxEquipos= new JComboBox();
+        // queryEquipment();
         objRequestCtrl = new RequestController();
         this.setLocationRelativeTo(null);
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/logoLes.png")).getImage());
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -229,44 +242,44 @@ public class VentanaSolicitud extends javax.swing.JFrame {
         getContentPane().add(jPanelSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 380, 400));
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>
 
-    private void jButtonInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoActionPerformed
+    private void jButtonInfoActionPerformed(java.awt.event.ActionEvent evt) {
         VentanaContactenos objVentana = new VentanaContactenos();
         objVentana.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButtonInfoActionPerformed
+    }
 
-    private void jButtonPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPerfilActionPerformed
-    }//GEN-LAST:event_jButtonPerfilActionPerformed
+    private void jButtonPerfilActionPerformed(java.awt.event.ActionEvent evt) {
+    }
 
-    private void jButtonSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitudActionPerformed
-      //  jPanelInicio.setVisible(false);
+    private void jButtonSolicitudActionPerformed(java.awt.event.ActionEvent evt) {
+        //  jPanelInicio.setVisible(false);
         jPanelSolicitud.setVisible(true);
-    }//GEN-LAST:event_jButtonSolicitudActionPerformed
+    }
 
-    private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
+    private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {
         VentanaInicial objVentana= new VentanaInicial();
         objVentana.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButtonInicioActionPerformed
+    }
 
-    private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
-    }//GEN-LAST:event_jButtonListarActionPerformed
+    private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {
+    }
 
-    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-    }//GEN-LAST:event_jButtonGuardarActionPerformed
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {
+    }
 
-    private void jButtonListar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListar1ActionPerformed
+    private void jButtonListar1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonListar1ActionPerformed
+    }
 
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -315,6 +328,27 @@ public class VentanaSolicitud extends javax.swing.JFrame {
 
     }
 
+    public void queryEquipment(){
+
+        this.jComboBoxEquipos.removeAllItems();
+        try{
+            Connection conn= fachada.getConnetion();
+            Statement sentence = conn.createStatement();
+            String queryProjects = "SELECT * FROM equipment";
+            ResultSet rs = sentence.executeQuery(queryProjects);
+
+            while(rs.next()){
+                System.out.println( "prueba." );
+                this.jComboBoxEquipos.addItem(rs.getString("serial"));
+            }
+
+        }catch(SQLException e){
+            System.out.println("error");
+        }
+
+
+    }
+
     public void createRequest(){//Esto a int
 
         String serial =  jComboBoxEquipos.getSelectedItem().toString();
@@ -326,7 +360,7 @@ public class VentanaSolicitud extends javax.swing.JFrame {
 
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify
     private javax.swing.JButton jButtonGuardar;
     private javax.swing.JButton jButtonInfo;
     private javax.swing.JButton jButtonInicio;
@@ -361,5 +395,5 @@ public class VentanaSolicitud extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinnerDia1;
     private javax.swing.JSpinner jSpinnerMes;
     private javax.swing.JSpinner jSpinnerMes1;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration
 }
