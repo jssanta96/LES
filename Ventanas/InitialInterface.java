@@ -5,21 +5,38 @@
  */
 package Ventanas;
 
+import Controllers.UserController;
+import Dao.FachadaBD;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import static javax.swing.UIManager.get;
+import javax.swing.table.DefaultTableModel;
 
 
 public class InitialInterface extends javax.swing.JFrame {
 
-
+        FachadaBD fachada;
+        UserController objCtrlUser;
 
         public InitialInterface() {//Esto a intej
-            initComponents();
-            hidePanels();
+            
+            fachada = new FachadaBD();
+            objCtrlUser = new UserController();
+            initComponents(); 
+            addTypeUser("Director");
+            UpdateComboBoxs();
+            hidePanels();           
             jPanelInicio.setVisible(true);           
             this.setLocationRelativeTo(null);
             setIconImage(new ImageIcon(getClass().getResource("/Imagenes/logoLes.png")).getImage());
         }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -35,7 +52,7 @@ public class InitialInterface extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanelUpdateUser = new javax.swing.JPanel();
-        jComboBoxEstado = new javax.swing.JComboBox<>();
+        jComboBoxState = new javax.swing.JComboBox<>();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
@@ -43,8 +60,8 @@ public class InitialInterface extends javax.swing.JFrame {
         jLabelProyecto1 = new javax.swing.JLabel();
         jLabelIdentificacion1 = new javax.swing.JLabel();
         jLabelSolicitud5 = new javax.swing.JLabel();
-        jComboBoxId = new javax.swing.JComboBox<>();
-        jComboBoxProyecto1 = new javax.swing.JComboBox<>();
+        jComboBoxUpdateId = new javax.swing.JComboBox<>();
+        jComboBoxUpdateProyectUser = new javax.swing.JComboBox<>();
         jPasswordField2 = new javax.swing.JPasswordField();
         jLabelTipo2 = new javax.swing.JLabel();
         jLabelTipo3 = new javax.swing.JLabel();
@@ -52,7 +69,7 @@ public class InitialInterface extends javax.swing.JFrame {
         jLabelNombre3 = new javax.swing.JLabel();
         jTextFieldEmail1 = new javax.swing.JTextField();
         jTextFieldNombre3 = new javax.swing.JTextField();
-        jComboBoxTipoUsuario1 = new javax.swing.JComboBox<>();
+        jComboBoxTypeUser = new javax.swing.JComboBox<>();
         jButtonSave5 = new javax.swing.JButton();
         jButtonOverwrite5 = new javax.swing.JButton();
         jButtonBack5 = new javax.swing.JButton();
@@ -82,7 +99,7 @@ public class InitialInterface extends javax.swing.JFrame {
         jLabelIdentificacion = new javax.swing.JLabel();
         jLabelSolicitud3 = new javax.swing.JLabel();
         jTextFieldIdentificacion = new javax.swing.JTextField();
-        jComboBoxProyecto = new javax.swing.JComboBox<>();
+        jComboBoxProjectUser = new javax.swing.JComboBox<>();
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabelTipo1 = new javax.swing.JLabel();
         jLabelTipo = new javax.swing.JLabel();
@@ -108,8 +125,8 @@ public class InitialInterface extends javax.swing.JFrame {
         jTextFieldNombre5 = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea4 = new javax.swing.JTextArea();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        jCombox2 = new javax.swing.JComboBox<>();
+        jComboBoxSerial = new javax.swing.JComboBox<>();
         jLabelCodigo4 = new javax.swing.JLabel();
         jLabelFondo13 = new javax.swing.JLabel();
         jPanelUpdateProject = new javax.swing.JPanel();
@@ -164,7 +181,7 @@ public class InitialInterface extends javax.swing.JFrame {
         jLabelInicio = new javax.swing.JLabel();
         jLabelSerial1 = new javax.swing.JLabel();
         jLabelSolicitud4 = new javax.swing.JLabel();
-        jComboBoxEquipos1 = new javax.swing.JComboBox<>();
+        jComboBoxSerialReservation = new javax.swing.JComboBox<>();
         jSpinnerAño = new javax.swing.JSpinner();
         jSpinnerMes = new javax.swing.JSpinner();
         jSpinnerDia = new javax.swing.JSpinner();
@@ -181,7 +198,7 @@ public class InitialInterface extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabelSerial = new javax.swing.JLabel();
         jLabelSolicitud = new javax.swing.JLabel();
-        jComboBoxEquipos = new javax.swing.JComboBox<>();
+        jComboBoxLoan = new javax.swing.JComboBox<>();
         jButtonSave7 = new javax.swing.JButton();
         jButtonList1 = new javax.swing.JButton();
         jLabelFondo5 = new javax.swing.JLabel();
@@ -267,7 +284,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonInicio.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonInicio.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonInicio.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInicio.setText("INICIO");
         jButtonInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -278,7 +294,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelMenu.add(jButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 161, 37));
 
         jButtonSolicitud.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSolicitud.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSolicitud.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSolicitud.setText("PRESTAMO");
         jButtonSolicitud.addActionListener(new java.awt.event.ActionListener() {
@@ -289,7 +304,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelMenu.add(jButtonSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 160, 40));
 
         jButtonPerfil.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonPerfil.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonPerfil.setForeground(new java.awt.Color(255, 255, 255));
         jButtonPerfil.setText("MI PERFIL");
         jButtonPerfil.addActionListener(new java.awt.event.ActionListener() {
@@ -300,7 +314,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelMenu.add(jButtonPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 161, 37));
 
         jButtonInfo.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonInfo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonInfo.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInfo.setText("CONTACTENOS");
         jButtonInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -327,8 +340,8 @@ public class InitialInterface extends javax.swing.JFrame {
 
         jPanelUpdateUser.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBoxEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelUpdateUser.add(jComboBoxEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 110, 30));
+        jComboBoxState.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelUpdateUser.add(jComboBoxState, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 110, 30));
 
         jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoUnivallePeq.png"))); // NOI18N
         jPanelUpdateUser.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
@@ -359,11 +372,11 @@ public class InitialInterface extends javax.swing.JFrame {
         jLabelSolicitud5.setText("ACTUALIZAR USUARIO");
         jPanelUpdateUser.add(jLabelSolicitud5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
 
-        jComboBoxId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelUpdateUser.add(jComboBoxId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 110, 30));
+        jComboBoxUpdateId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelUpdateUser.add(jComboBoxUpdateId, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, 110, 30));
 
-        jComboBoxProyecto1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelUpdateUser.add(jComboBoxProyecto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 130, 30));
+        jComboBoxUpdateProyectUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelUpdateUser.add(jComboBoxUpdateProyectUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 130, 30));
 
         jPasswordField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -400,11 +413,10 @@ public class InitialInterface extends javax.swing.JFrame {
         });
         jPanelUpdateUser.add(jTextFieldNombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, 340, 30));
 
-        jComboBoxTipoUsuario1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelUpdateUser.add(jComboBoxTipoUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 130, 30));
+        jComboBoxTypeUser.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelUpdateUser.add(jComboBoxTypeUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 130, 30));
 
         jButtonSave5.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSave5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSave5.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSave5.setText("Guardar");
         jButtonSave5.addActionListener(new java.awt.event.ActionListener() {
@@ -415,7 +427,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateUser.add(jButtonSave5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 100, 30));
 
         jButtonOverwrite5.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonOverwrite5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonOverwrite5.setForeground(new java.awt.Color(255, 255, 255));
         jButtonOverwrite5.setText("Vaciar");
         jButtonOverwrite5.addActionListener(new java.awt.event.ActionListener() {
@@ -426,7 +437,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateUser.add(jButtonOverwrite5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 90, 30));
 
         jButtonBack5.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack5.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack5.setText("Volver");
         jButtonBack5.addActionListener(new java.awt.event.ActionListener() {
@@ -476,7 +486,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateEquipment.add(jTextFieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 210, 30));
 
         jButtonSave2.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSave2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSave2.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSave2.setText("Guardar");
         jButtonSave2.addActionListener(new java.awt.event.ActionListener() {
@@ -487,7 +496,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateEquipment.add(jButtonSave2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 100, 30));
 
         jButtonOverwrite2.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonOverwrite2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonOverwrite2.setForeground(new java.awt.Color(255, 255, 255));
         jButtonOverwrite2.setText("Vaciar");
         jButtonOverwrite2.addActionListener(new java.awt.event.ActionListener() {
@@ -498,7 +506,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateEquipment.add(jButtonOverwrite2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 90, 30));
 
         jButtonBack2.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack2.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack2.setText("Volver");
         jButtonBack2.addActionListener(new java.awt.event.ActionListener() {
@@ -552,7 +559,7 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateUser.add(jLabelSolicitud3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
         jPanelCreateUser.add(jTextFieldIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 120, 230, 30));
 
-        jPanelCreateUser.add(jComboBoxProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 230, 30));
+        jPanelCreateUser.add(jComboBoxProjectUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 230, 30));
         jPanelCreateUser.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 230, 30));
 
         jLabelTipo1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -582,7 +589,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateUser.add(jComboBoxTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, 230, 30));
 
         jButtonBack1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack1.setText("Volver");
         jButtonBack1.addActionListener(new java.awt.event.ActionListener() {
@@ -593,7 +599,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateUser.add(jButtonBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 90, 30));
 
         jButtonOverwrite1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonOverwrite1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonOverwrite1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonOverwrite1.setText("Vaciar");
         jButtonOverwrite1.addActionListener(new java.awt.event.ActionListener() {
@@ -604,7 +609,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateUser.add(jButtonOverwrite1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 90, 30));
 
         jButtonSave1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSave1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSave1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSave1.setText("Guardar");
         jButtonSave1.addActionListener(new java.awt.event.ActionListener() {
@@ -652,7 +656,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateEquipment.add(jLabelSolicitud7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
 
         jButtonBack.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack.setText("Volver");
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
@@ -663,7 +666,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateEquipment.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 90, 30));
 
         jButtonOverwrite.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonOverwrite.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonOverwrite.setForeground(new java.awt.Color(255, 255, 255));
         jButtonOverwrite.setText("Vaciar");
         jButtonOverwrite.addActionListener(new java.awt.event.ActionListener() {
@@ -674,7 +676,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateEquipment.add(jButtonOverwrite, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 90, 30));
 
         jButtonSave.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSave.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSave.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSave.setText("Guardar");
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
@@ -691,11 +692,11 @@ public class InitialInterface extends javax.swing.JFrame {
 
         jPanelUpdateEquipment.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 300, 60));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelUpdateEquipment.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 200, 30));
+        jCombox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelUpdateEquipment.add(jCombox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, 200, 30));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelUpdateEquipment.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 200, 30));
+        jComboBoxSerial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelUpdateEquipment.add(jComboBoxSerial, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 200, 30));
 
         jLabelCodigo4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelCodigo4.setForeground(new java.awt.Color(102, 102, 102));
@@ -757,7 +758,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateProject.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 170, 30));
 
         jButtonSave4.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSave4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSave4.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSave4.setText("Guardar");
         jButtonSave4.addActionListener(new java.awt.event.ActionListener() {
@@ -768,7 +768,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateProject.add(jButtonSave4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 100, 30));
 
         jButtonOverwrite4.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonOverwrite4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonOverwrite4.setForeground(new java.awt.Color(255, 255, 255));
         jButtonOverwrite4.setText("Vaciar");
         jButtonOverwrite4.addActionListener(new java.awt.event.ActionListener() {
@@ -779,7 +778,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateProject.add(jButtonOverwrite4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 90, 30));
 
         jButtonBack4.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack4.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack4.setText("Volver");
         jButtonBack4.addActionListener(new java.awt.event.ActionListener() {
@@ -827,7 +825,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateProject.add(jLabelSolicitud2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
 
         jButtonSave3.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSave3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSave3.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSave3.setText("Guardar");
         jButtonSave3.addActionListener(new java.awt.event.ActionListener() {
@@ -838,7 +835,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateProject.add(jButtonSave3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 100, 30));
 
         jButtonOverwrite3.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonOverwrite3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonOverwrite3.setForeground(new java.awt.Color(255, 255, 255));
         jButtonOverwrite3.setText("Vaciar");
         jButtonOverwrite3.addActionListener(new java.awt.event.ActionListener() {
@@ -849,7 +845,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateProject.add(jButtonOverwrite3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 90, 30));
 
         jButtonBack3.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack3.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack3.setText("Volver");
         jButtonBack3.addActionListener(new java.awt.event.ActionListener() {
@@ -885,12 +880,10 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelContactUs.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
         jLabelEmailLab.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelEmailLab.setForeground(new java.awt.Color(51, 51, 51));
         jLabelEmailLab.setText("E-mail: laboratorio.multimediayvision@correounivalle.edu.co");
         jPanelContactUs.add(jLabelEmailLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
         jLabelTelefonos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabelTelefonos.setForeground(new java.awt.Color(51, 51, 51));
         jLabelTelefonos.setText("Telefonos: (57) (2) 321 21 00 ext. 2791, Fax. 339 20 86");
         jPanelContactUs.add(jLabelTelefonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
@@ -900,12 +893,10 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelContactUs.add(jLabelContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         jLabelEmailCordi.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabelEmailCordi.setForeground(new java.awt.Color(51, 51, 51));
         jLabelEmailCordi.setText("E-mail: maria.trujillo@correounivalle.edu.co");
         jPanelContactUs.add(jLabelEmailCordi, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         jLabelCoordinadora.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabelCoordinadora.setForeground(new java.awt.Color(51, 51, 51));
         jLabelCoordinadora.setText("P.H.D Maria Patricia Trujillo Uribe");
         jPanelContactUs.add(jLabelCoordinadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
@@ -946,8 +937,8 @@ public class InitialInterface extends javax.swing.JFrame {
         jLabelSolicitud4.setText("RESERVAR EQUIPO");
         jPanelReserve.add(jLabelSolicitud4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
 
-        jComboBoxEquipos1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelReserve.add(jComboBoxEquipos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 180, 30));
+        jComboBoxSerialReservation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelReserve.add(jComboBoxSerialReservation, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 180, 30));
 
         jSpinnerAño.setModel(new javax.swing.SpinnerNumberModel(2000, 2000, 2050, 1));
         jPanelReserve.add(jSpinnerAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 80, -1));
@@ -968,7 +959,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelReserve.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
 
         jButtonSave6.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSave6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSave6.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSave6.setText("Guardar");
         jButtonSave6.addActionListener(new java.awt.event.ActionListener() {
@@ -979,7 +969,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelReserve.add(jButtonSave6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 100, 30));
 
         jButtonList.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonList.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonList.setForeground(new java.awt.Color(255, 255, 255));
         jButtonList.setText("Listar");
         jButtonList.addActionListener(new java.awt.event.ActionListener() {
@@ -990,7 +979,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelReserve.add(jButtonList, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 90, 30));
 
         jButtonBack6.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack6.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack6.setText("Volver");
         jButtonBack6.addActionListener(new java.awt.event.ActionListener() {
@@ -1027,11 +1015,10 @@ public class InitialInterface extends javax.swing.JFrame {
         jLabelSolicitud.setText("PRESTAMO");
         jPanelLoan.add(jLabelSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, -1, -1));
 
-        jComboBoxEquipos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelLoan.add(jComboBoxEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 180, 30));
+        jComboBoxLoan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelLoan.add(jComboBoxLoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 180, 30));
 
         jButtonSave7.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSave7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSave7.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSave7.setText("Guardar");
         jButtonSave7.addActionListener(new java.awt.event.ActionListener() {
@@ -1042,7 +1029,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelLoan.add(jButtonSave7, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 100, 30));
 
         jButtonList1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonList1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonList1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonList1.setText("Reservar");
         jButtonList1.addActionListener(new java.awt.event.ActionListener() {
@@ -1070,7 +1056,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDEquipment.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
         jButtonProyecto3.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonProyecto3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonProyecto3.setForeground(new java.awt.Color(255, 255, 255));
         jButtonProyecto3.setText("CREAR");
         jButtonProyecto3.addActionListener(new java.awt.event.ActionListener() {
@@ -1081,7 +1066,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDEquipment.add(jButtonProyecto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 120, 40));
 
         jButtonUsuario3.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonUsuario3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonUsuario3.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUsuario3.setText("LISTAR");
         jButtonUsuario3.addActionListener(new java.awt.event.ActionListener() {
@@ -1092,7 +1076,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDEquipment.add(jButtonUsuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 120, 40));
 
         jButtonEquipo3.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonEquipo3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonEquipo3.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEquipo3.setText("ACTUALIZAR");
         jButtonEquipo3.addActionListener(new java.awt.event.ActionListener() {
@@ -1125,7 +1108,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelInicio.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
         jButtonProyecto.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonProyecto.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonProyecto.setForeground(new java.awt.Color(255, 255, 255));
         jButtonProyecto.setText("PROYECTO");
         jButtonProyecto.addActionListener(new java.awt.event.ActionListener() {
@@ -1136,7 +1118,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelInicio.add(jButtonProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 120, 40));
 
         jButtonUsuario.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonUsuario.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUsuario.setText("USUARIO");
         jButtonUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -1147,7 +1128,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelInicio.add(jButtonUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 120, 40));
 
         jButtonEquipo.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonEquipo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonEquipo.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEquipo.setText("EQUIPO");
         jButtonEquipo.addActionListener(new java.awt.event.ActionListener() {
@@ -1180,7 +1160,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDUsers.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
         jButtonProyecto1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonProyecto1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonProyecto1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonProyecto1.setText("CREAR");
         jButtonProyecto1.addActionListener(new java.awt.event.ActionListener() {
@@ -1191,7 +1170,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDUsers.add(jButtonProyecto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 120, 40));
 
         jButtonUsuario1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonUsuario1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonUsuario1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUsuario1.setText("LISTAR");
         jButtonUsuario1.addActionListener(new java.awt.event.ActionListener() {
@@ -1202,7 +1180,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDUsers.add(jButtonUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 120, 40));
 
         jButtonEquipo1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonEquipo1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonEquipo1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEquipo1.setText("ACTUALIZAR");
         jButtonEquipo1.addActionListener(new java.awt.event.ActionListener() {
@@ -1235,7 +1212,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDProjects.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
         jButtonProyecto2.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonProyecto2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonProyecto2.setForeground(new java.awt.Color(255, 255, 255));
         jButtonProyecto2.setText("CREAR");
         jButtonProyecto2.addActionListener(new java.awt.event.ActionListener() {
@@ -1246,7 +1222,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDProjects.add(jButtonProyecto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 120, 40));
 
         jButtonUsuario2.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonUsuario2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonUsuario2.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUsuario2.setText("LISTAR");
         jButtonUsuario2.addActionListener(new java.awt.event.ActionListener() {
@@ -1257,7 +1232,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDProjects.add(jButtonUsuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 120, 40));
 
         jButtonEquipo2.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonEquipo2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonEquipo2.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEquipo2.setText("ACTUALIZAR");
         jButtonEquipo2.addActionListener(new java.awt.event.ActionListener() {
@@ -1311,7 +1285,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUsersList.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 540, 200));
 
         jButtonBack7.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack7.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack7.setText("Volver");
         jButtonBack7.addActionListener(new java.awt.event.ActionListener() {
@@ -1359,7 +1332,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelProjectsList.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 480, 200));
 
         jButtonBack8.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack8.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack8.setText("Volver");
         jButtonBack8.addActionListener(new java.awt.event.ActionListener() {
@@ -1407,7 +1379,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelEquipmentList.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 480, 200));
 
         jButtonBack9.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack9.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack9.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack9.setText("Volver");
         jButtonBack9.addActionListener(new java.awt.event.ActionListener() {
@@ -1455,7 +1426,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelLoanList.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 480, 200));
 
         jButtonBack10.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack10.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack10.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack10.setText("Volver");
         jButtonBack10.addActionListener(new java.awt.event.ActionListener() {
@@ -1508,8 +1478,11 @@ public class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonProyecto1ActionPerformed
 
     private void jButtonUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuario1ActionPerformed
+        
+        fillTableUsers();
         hidePanels();
         jPanelUsersList.setVisible(true);
+        
     }//GEN-LAST:event_jButtonUsuario1ActionPerformed
 
     private void jButtonProyecto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProyecto2ActionPerformed
@@ -1754,6 +1727,241 @@ public class InitialInterface extends javax.swing.JFrame {
             }
         });
     }
+    public void UpdateComboBoxs(){//Funcion que consulta en sql.
+     
+
+         this.jComboBoxProjectUser.removeAllItems();
+         this.jComboBoxUpdateProyectUser.removeAllItems();
+         this.jComboBoxUpdateId.removeAllItems();
+         this.jComboBoxSerial.removeAllItems();
+         jComboBoxLoan.removeAllItems();
+         jComboBoxSerialReservation.removeAllItems();
+         
+         try{
+            Connection conn= fachada.getConnetion();
+            Statement sentenceProjects = conn.createStatement();
+            Statement sentenceUsers = conn.createStatement();
+            Statement sentenceEquipment = conn.createStatement();
+            String queryProjects = "SELECT * FROM project";
+            String queryUsers = "SELECT * FROM users";
+            String queryEquipment= "SELECT * FROM equipment";
+            ResultSet rsProjects = sentenceProjects.executeQuery(queryProjects);  
+            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
+            ResultSet rsEquipment = sentenceEquipment.executeQuery(queryEquipment);
+            
+            while(rsProjects.next()){
+          
+                this.jComboBoxProjectUser.addItem(rsProjects.getString("code")+ "-"+ rsProjects.getString("name") );      
+                this.jComboBoxUpdateProyectUser.addItem(rsProjects.getString("code")+ "-"+ rsProjects.getString("name") );  
+                this.jComboCodigo.addItem(rsProjects.getString("code")+ "-"+ rsProjects.getString("name") );  
+            }
+            while(rsUsers.next()){
+
+                this.jComboBoxUpdateId.addItem(rsUsers.getString("identification")+ "-"+ rsUsers.getString("name") );      
+               
+            }
+            while(rsEquipment.next()){
+
+                this.jComboBoxSerial.addItem(rsEquipment.getString("serial")+ "-"+ rsEquipment.getString("name") );  
+                this.jComboBoxLoan.addItem(rsEquipment.getString("serial")+ "-"+ rsEquipment.getString("name") );      
+                this.jComboBoxSerialReservation.addItem(rsEquipment.getString("serial")+ "-"+ rsEquipment.getString("name") );      
+               
+            }
+            
+        }catch(SQLException e){
+            System.out.println("error");
+        }
+
+    }
+    
+      
+    public void addTypeUser(String categoria){
+            
+        this.jComboBoxTipoUsuario.removeAllItems();
+        this.jComboBoxTypeUser.removeAllItems();
+     
+         switch(categoria){
+             
+             
+                 
+             case "Director":
+                    
+                      this.jComboBoxTipoUsuario.addItem("Lider de proyecto");
+                      this.jComboBoxTipoUsuario.addItem("Administrador");
+                      this.jComboBoxTipoUsuario.addItem("Cordinador de equipos");
+                      this.jComboBoxTipoUsuario.addItem("Miembro");
+                      
+                      this.jComboBoxTypeUser.addItem("Lider de proyecto");
+                      this.jComboBoxTypeUser.addItem("Administrador");
+                      this.jComboBoxTypeUser.addItem("Cordinador de equipos");
+                      this.jComboBoxTypeUser.addItem("Miembro");
+                      
+                      break;
+                      
+            case "Administrador":
+
+                    
+                      this.jComboBoxTipoUsuario.addItem("Lider de proyecto");
+                      this.jComboBoxTipoUsuario.addItem("Cordinador de equipos");
+                      this.jComboBoxTipoUsuario.addItem("Miembro");
+                      
+                      this.jComboBoxTypeUser.addItem("Lider de proyecto");
+                      this.jComboBoxTypeUser.addItem("Cordinador de equipos");
+                      this.jComboBoxTypeUser.addItem("Miembro");
+                      
+                      break;
+                      
+            case "Lider de proyecto":
+                      
+                      this.jComboBoxTipoUsuario.addItem("Miembro");
+                      this.jComboBoxTypeUser.addItem("Miembro");
+                      break;
+         }
+                 
+    }
+     public void createUser(){
+
+        String identification = jTextFieldIdentificacion.getText();
+
+        String name = jTextFieldNombre.getText();
+
+        String password = jPasswordField1.getText();
+        
+        String idProyect = jComboBoxProjectUser.getSelectedItem().toString();
+
+        String typeUser = jComboBoxTipoUsuario.getSelectedItem().toString();
+        
+        String email = jTextFieldEmail.getText();
+
+    //    userController.addUser(identification, idProyect, password,  name, typeUser, email);
+
+    }
+     
+    public void fillTableUsers(){
+        
+    
+        try{
+            
+            Connection conn= fachada.getConnetion();
+                        System.out.println("error");
+
+            String tableUsers = "SELECT identification , project_id , user_password , name , type , state , email FROM users";
+             
+            PreparedStatement sentenceUsers = conn.prepareStatement(tableUsers);
+                              
+            ResultSet rsUsers = sentenceUsers.executeQuery();  
+
+            ResultSetMetaData rsData =  rsUsers.getMetaData();
+
+            ArrayList< Object[] > data = new ArrayList <>();
+            
+            while(rsUsers.next()){
+
+              Object[] rows = new Object[rsData.getColumnCount()];
+                          System.out.println("error");
+
+              for(int i = 0;  i < rows.length; i++){
+                rows[i] = rsUsers.getObject(i+1);
+            }
+               data.add(rows);
+            }
+               DefaultTableModel tableUser = (DefaultTableModel)this.jTable1.getModel();
+               for(int i =0; i < data.size(); i++){
+                               System.out.println("error");
+
+                   tableUser.addRow(data.get(i));
+                               System.out.println("error");
+
+               }
+        }
+        catch(SQLException e){
+            System.out.println("error2");
+        }
+    }
+    
+    public void fillTableProject(){
+        try{
+            
+            Connection conn= fachada.getConnetion();
+
+            String tableProjects = "SELECT  codigo , nombre , descripcion , estado FROM project";
+             
+            PreparedStatement sentenceProjects = conn.prepareStatement(tableProjects);
+                              
+            ResultSet rsProjects = sentenceProjects.executeQuery(); 
+
+            ResultSetMetaData rsDataProjects =  rsProjects.getMetaData();
+
+            ArrayList< Object[] > data = new ArrayList <>();
+            
+            while(rsProjects.next()){
+
+              Object[] rows = new Object[rsDataProjects.getColumnCount()];
+                          System.out.println("error");
+
+              for(int i = 0;  i < rows.length; i++){
+                rows[i] = rsProjects.getObject(i+1);
+            }
+               data.add(rows);
+            }
+               DefaultTableModel tableUser = (DefaultTableModel)this.jTable2.getModel();
+               for(int i =0; i < data.size(); i++){
+                               System.out.println("error");
+
+                   tableUser.addRow(data.get(i));
+                               System.out.println("error");
+
+               }
+        }
+        catch(SQLException e){
+            System.out.println("error2");
+        }
+    }
+    
+        public void fillTableEquipment(){
+        
+    
+        try{
+            
+            Connection conn= fachada.getConnetion();
+                        System.out.println("error");
+
+            String tableEquipment = "SELECT serial , nombre , descripcion , estado FROM equipment";
+             
+            PreparedStatement sentenceEquipment = conn.prepareStatement(tableEquipment);
+                              
+            ResultSet rsEquipment = sentenceEquipment.executeQuery(); 
+
+            ResultSetMetaData rsDataEquipment =  rsEquipment.getMetaData();
+
+            ArrayList< Object[] > data = new ArrayList <>();
+            
+            while(rsEquipment.next()){
+
+              Object[] rows = new Object[rsDataEquipment.getColumnCount()];
+                          System.out.println("error");
+
+              for(int i = 0;  i < rows.length; i++){
+                rows[i] = rsEquipment.getObject(i+1);
+            }
+               data.add(rows);
+            }
+               DefaultTableModel tableEquipmen = (DefaultTableModel)this.jTable3.getModel();
+               for(int i =0; i < data.size(); i++){
+                               System.out.println("error");
+
+                   tableEquipmen.addRow(data.get(i));
+                               System.out.println("error");
+
+               }
+        }
+        catch(SQLException e){
+            System.out.println("error2");
+        }
+    }
+     
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
@@ -1800,17 +2008,17 @@ public class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonUsuario2;
     private javax.swing.JButton jButtonUsuario3;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBoxEquipos;
-    private javax.swing.JComboBox<String> jComboBoxEquipos1;
-    private javax.swing.JComboBox<String> jComboBoxEstado;
-    private javax.swing.JComboBox<String> jComboBoxId;
-    private javax.swing.JComboBox<String> jComboBoxProyecto;
-    private javax.swing.JComboBox<String> jComboBoxProyecto1;
+    private javax.swing.JComboBox<String> jComboBoxLoan;
+    private javax.swing.JComboBox<String> jComboBoxProjectUser;
+    private javax.swing.JComboBox<String> jComboBoxSerial;
+    private javax.swing.JComboBox<String> jComboBoxSerialReservation;
+    private javax.swing.JComboBox<String> jComboBoxState;
     private javax.swing.JComboBox<String> jComboBoxTipoUsuario;
-    private javax.swing.JComboBox<String> jComboBoxTipoUsuario1;
+    private javax.swing.JComboBox<String> jComboBoxTypeUser;
+    private javax.swing.JComboBox<String> jComboBoxUpdateId;
+    private javax.swing.JComboBox<String> jComboBoxUpdateProyectUser;
     private javax.swing.JComboBox<String> jComboCodigo;
+    private javax.swing.JComboBox<String> jCombox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
