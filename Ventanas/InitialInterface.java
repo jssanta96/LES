@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import static javax.swing.UIManager.get;
 import javax.swing.table.DefaultTableModel;
 
@@ -2009,7 +2010,7 @@ public class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEquipo1ActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-        // TODO add your handling code here:
+   int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar los cambios del Equipo?", "ACTUALIZAR INFORMACION DE EQUIPO", JOptionPane.YES_NO_OPTION);
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jButtonOverwriteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverwriteActionPerformed
@@ -2095,7 +2096,9 @@ public class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack5ActionPerformed
 
     private void jButtonSave6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave6ActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia: FECHA INICIO hasta DD/MM/AA, "
+                + "\nsi no lo entrega antes de la fecha se le empezata a cobrar 5000(COP) por cada dia de atraso", 
+                "PRESTAMO DE EQUIPO", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_jButtonSave6ActionPerformed
 
     private void jButtonListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListActionPerformed
@@ -2109,7 +2112,10 @@ public class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack6ActionPerformed
 
     private void jButtonSave7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave7ActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia: DD/MM/AA hasta DD/MM/AA, "
+                + "\nsi no lo entrega antes de la fecha se le empezata a cobrar 5000(COP) por cada dia de atraso", 
+                "PRESTAMO DE EQUIPO", JOptionPane.WARNING_MESSAGE);
+
     }//GEN-LAST:event_jButtonSave7ActionPerformed
 
     private void jButtonReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReserveActionPerformed
@@ -2197,11 +2203,11 @@ public class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonReserve1ActionPerformed
 
     private void jButtonEntregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntregarActionPerformed
-        // TODO add your handling code here:
+        int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea entregar el equipo: 'NombreEquipo?", "ENTREGA DE EQUIPO", JOptionPane.YES_NO_OPTION);
     }//GEN-LAST:event_jButtonEntregarActionPerformed
 
     private void jButtonDeleteMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteMultActionPerformed
-        // TODO add your handling code here:
+    int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea renovar el prestamo  del equipo: 'NombreEquipo?", "RENOVAR PRESTAMO DE EQUIPO", JOptionPane.YES_NO_OPTION);
     }//GEN-LAST:event_jButtonDeleteMultActionPerformed
 
     private void emptyText(){
