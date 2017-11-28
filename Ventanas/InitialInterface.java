@@ -5,6 +5,8 @@
  */
 package Ventanas;
 
+import Controllers.EquipmentController;
+import Controllers.ProjectController;
 import Controllers.UserController;
 import Dao.FachadaBD;
 import java.sql.Connection;
@@ -25,15 +27,17 @@ public class InitialInterface extends javax.swing.JFrame {
 
         FachadaBD fachada;
         UserController objCtrlUser;
-
+        ProjectController objCtrlProject;
+        EquipmentController objCtrlEquipment;
+        
         public InitialInterface() {//Esto a intej
             
-            fachada = new FachadaBD();
-            objCtrlUser = new UserController();
+            fachada = new FachadaBD();            
             initComponents(); 
             fillEmptyFields();
             addTypeUser("Director");
-            //UpdateComboBoxs();
+            addState("Director");
+            UpdateComboBoxs();
             hidePanels();           
             jPanelInicio.setVisible(true);           
             this.setLocationRelativeTo(null);
@@ -349,7 +353,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonReportes.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonReportes.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonReportes.setForeground(new java.awt.Color(255, 255, 255));
         jButtonReportes.setText("REPORTES");
         jButtonReportes.addActionListener(new java.awt.event.ActionListener() {
@@ -360,7 +363,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelMenu.add(jButtonReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 160, 40));
 
         jButtonInicio.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonInicio.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonInicio.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInicio.setText("INICIO");
         jButtonInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -371,7 +373,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelMenu.add(jButtonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 161, 37));
 
         jButtonSolicitud.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSolicitud.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSolicitud.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSolicitud.setText("PRESTAMO");
         jButtonSolicitud.addActionListener(new java.awt.event.ActionListener() {
@@ -382,7 +383,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelMenu.add(jButtonSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 160, 40));
 
         jButtonPerfil.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonPerfil.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonPerfil.setForeground(new java.awt.Color(255, 255, 255));
         jButtonPerfil.setText("MI PERFIL");
         jButtonPerfil.addActionListener(new java.awt.event.ActionListener() {
@@ -393,7 +393,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelMenu.add(jButtonPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 161, 37));
 
         jButtonInfo.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonInfo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonInfo.setForeground(new java.awt.Color(255, 255, 255));
         jButtonInfo.setText("CONTACTENOS");
         jButtonInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -430,7 +429,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelInicio.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
         jButtonProyecto.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonProyecto.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonProyecto.setForeground(new java.awt.Color(255, 255, 255));
         jButtonProyecto.setText("PROYECTO");
         jButtonProyecto.addActionListener(new java.awt.event.ActionListener() {
@@ -441,7 +439,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelInicio.add(jButtonProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 120, 40));
 
         jButtonUsuario.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonUsuario.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonUsuario.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUsuario.setText("USUARIO");
         jButtonUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -452,7 +449,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelInicio.add(jButtonUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 120, 40));
 
         jButtonEquipo.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonEquipo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonEquipo.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEquipo.setText("EQUIPO");
         jButtonEquipo.addActionListener(new java.awt.event.ActionListener() {
@@ -552,7 +548,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateUser.add(jComboBoxUpdateUserType, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 130, 30));
 
         jButtonSave5.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSave5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSave5.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSave5.setText("Guardar");
         jButtonSave5.addActionListener(new java.awt.event.ActionListener() {
@@ -563,7 +558,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateUser.add(jButtonSave5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 100, 30));
 
         jButtonOverwrite5.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonOverwrite5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonOverwrite5.setForeground(new java.awt.Color(255, 255, 255));
         jButtonOverwrite5.setText("Vaciar");
         jButtonOverwrite5.addActionListener(new java.awt.event.ActionListener() {
@@ -574,7 +568,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateUser.add(jButtonOverwrite5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 90, 30));
 
         jButtonBack5.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack5.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack5.setText("Volver");
         jButtonBack5.addActionListener(new java.awt.event.ActionListener() {
@@ -624,7 +617,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateEquipment.add(jTextFieldNombreCrearEquipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 210, 30));
 
         jButtonSave2.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSave2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSave2.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSave2.setText("Guardar");
         jButtonSave2.addActionListener(new java.awt.event.ActionListener() {
@@ -635,7 +627,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateEquipment.add(jButtonSave2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 100, 30));
 
         jButtonOverwrite2.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonOverwrite2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonOverwrite2.setForeground(new java.awt.Color(255, 255, 255));
         jButtonOverwrite2.setText("Vaciar");
         jButtonOverwrite2.addActionListener(new java.awt.event.ActionListener() {
@@ -646,7 +637,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateEquipment.add(jButtonOverwrite2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 90, 30));
 
         jButtonBack2.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack2.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack2.setText("Volver");
         jButtonBack2.addActionListener(new java.awt.event.ActionListener() {
@@ -724,7 +714,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateUser.add(jComboBoxCreateUserType, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 230, 30));
 
         jButtonBack1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack1.setText("Volver");
         jButtonBack1.addActionListener(new java.awt.event.ActionListener() {
@@ -735,7 +724,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateUser.add(jButtonBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 90, 30));
 
         jButtonOverwrite1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonOverwrite1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonOverwrite1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonOverwrite1.setText("Vaciar");
         jButtonOverwrite1.addActionListener(new java.awt.event.ActionListener() {
@@ -746,7 +734,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateUser.add(jButtonOverwrite1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 90, 30));
 
         jButtonSave1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSave1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSave1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSave1.setText("Guardar");
         jButtonSave1.addActionListener(new java.awt.event.ActionListener() {
@@ -794,7 +781,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateEquipment.add(jLabelSolicitud7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
 
         jButtonBack.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack.setText("Volver");
         jButtonBack.addActionListener(new java.awt.event.ActionListener() {
@@ -805,7 +791,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateEquipment.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 90, 30));
 
         jButtonOverwrite.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonOverwrite.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonOverwrite.setForeground(new java.awt.Color(255, 255, 255));
         jButtonOverwrite.setText("Vaciar");
         jButtonOverwrite.addActionListener(new java.awt.event.ActionListener() {
@@ -816,7 +801,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateEquipment.add(jButtonOverwrite, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 90, 30));
 
         jButtonSave.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSave.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSave.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSave.setText("Guardar");
         jButtonSave.addActionListener(new java.awt.event.ActionListener() {
@@ -899,7 +883,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateProject.add(jComboBoxUpdateProjectState, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 170, 30));
 
         jButtonSave4.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSave4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSave4.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSave4.setText("Guardar");
         jButtonSave4.addActionListener(new java.awt.event.ActionListener() {
@@ -910,7 +893,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateProject.add(jButtonSave4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 100, 30));
 
         jButtonOverwrite4.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonOverwrite4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonOverwrite4.setForeground(new java.awt.Color(255, 255, 255));
         jButtonOverwrite4.setText("Vaciar");
         jButtonOverwrite4.addActionListener(new java.awt.event.ActionListener() {
@@ -921,7 +903,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelUpdateProject.add(jButtonOverwrite4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 90, 30));
 
         jButtonBack4.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack4.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack4.setText("Volver");
         jButtonBack4.addActionListener(new java.awt.event.ActionListener() {
@@ -969,7 +950,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateProject.add(jLabelSolicitud2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
 
         jButtonSave3.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSave3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSave3.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSave3.setText("Guardar");
         jButtonSave3.addActionListener(new java.awt.event.ActionListener() {
@@ -980,7 +960,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateProject.add(jButtonSave3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 100, 30));
 
         jButtonOverwrite3.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonOverwrite3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonOverwrite3.setForeground(new java.awt.Color(255, 255, 255));
         jButtonOverwrite3.setText("Vaciar");
         jButtonOverwrite3.addActionListener(new java.awt.event.ActionListener() {
@@ -991,7 +970,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCreateProject.add(jButtonOverwrite3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 90, 30));
 
         jButtonBack3.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack3.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack3.setText("Volver");
         jButtonBack3.addActionListener(new java.awt.event.ActionListener() {
@@ -1027,12 +1005,10 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelContactUs.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
         jLabelEmailLab.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelEmailLab.setForeground(new java.awt.Color(51, 51, 51));
         jLabelEmailLab.setText("E-mail: laboratorio.multimediayvision@correounivalle.edu.co");
         jPanelContactUs.add(jLabelEmailLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
         jLabelTelefonos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabelTelefonos.setForeground(new java.awt.Color(51, 51, 51));
         jLabelTelefonos.setText("Telefonos: (57) (2) 321 21 00 ext. 2791, Fax. 339 20 86");
         jPanelContactUs.add(jLabelTelefonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
@@ -1042,12 +1018,10 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelContactUs.add(jLabelContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         jLabelEmailCordi.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabelEmailCordi.setForeground(new java.awt.Color(51, 51, 51));
         jLabelEmailCordi.setText("E-mail: maria.trujillo@correounivalle.edu.co");
         jPanelContactUs.add(jLabelEmailCordi, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
 
         jLabelCoordinadora.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabelCoordinadora.setForeground(new java.awt.Color(51, 51, 51));
         jLabelCoordinadora.setText("P.H.D Maria Patricia Trujillo Uribe");
         jPanelContactUs.add(jLabelCoordinadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
@@ -1110,7 +1084,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelReserve.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
 
         jButtonSave6.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSave6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSave6.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSave6.setText("Guardar");
         jButtonSave6.addActionListener(new java.awt.event.ActionListener() {
@@ -1121,7 +1094,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelReserve.add(jButtonSave6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 100, 30));
 
         jButtonList.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonList.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonList.setForeground(new java.awt.Color(255, 255, 255));
         jButtonList.setText("Listar");
         jButtonList.addActionListener(new java.awt.event.ActionListener() {
@@ -1132,7 +1104,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelReserve.add(jButtonList, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 90, 30));
 
         jButtonBack6.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack6.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack6.setText("Volver");
         jButtonBack6.addActionListener(new java.awt.event.ActionListener() {
@@ -1173,7 +1144,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelLoan.add(jComboBoxEquipmentSerialLoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 180, 30));
 
         jButtonSave7.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonSave7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonSave7.setForeground(new java.awt.Color(255, 255, 255));
         jButtonSave7.setText("Guardar");
         jButtonSave7.addActionListener(new java.awt.event.ActionListener() {
@@ -1184,7 +1154,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelLoan.add(jButtonSave7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 100, 30));
 
         jButtonReserve1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonReserve1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonReserve1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonReserve1.setText("Eliminar Multa");
         jButtonReserve1.addActionListener(new java.awt.event.ActionListener() {
@@ -1195,7 +1164,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelLoan.add(jButtonReserve1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 120, 30));
 
         jButtonReserve.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonReserve.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonReserve.setForeground(new java.awt.Color(255, 255, 255));
         jButtonReserve.setText("Reservar");
         jButtonReserve.addActionListener(new java.awt.event.ActionListener() {
@@ -1206,7 +1174,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelLoan.add(jButtonReserve, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 90, 30));
 
         jButtonDeleteMult.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonDeleteMult.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonDeleteMult.setForeground(new java.awt.Color(255, 255, 255));
         jButtonDeleteMult.setText("Renovar");
         jButtonDeleteMult.addActionListener(new java.awt.event.ActionListener() {
@@ -1217,7 +1184,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelLoan.add(jButtonDeleteMult, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 90, 30));
 
         jButtonEntregar.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonEntregar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonEntregar.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEntregar.setText("Entregar");
         jButtonEntregar.addActionListener(new java.awt.event.ActionListener() {
@@ -1245,7 +1211,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDEquipment.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
         jButtonProyecto3.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonProyecto3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonProyecto3.setForeground(new java.awt.Color(255, 255, 255));
         jButtonProyecto3.setText("CREAR");
         jButtonProyecto3.addActionListener(new java.awt.event.ActionListener() {
@@ -1256,7 +1221,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDEquipment.add(jButtonProyecto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 120, 40));
 
         jButtonUsuario3.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonUsuario3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonUsuario3.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUsuario3.setText("LISTAR");
         jButtonUsuario3.addActionListener(new java.awt.event.ActionListener() {
@@ -1267,7 +1231,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDEquipment.add(jButtonUsuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 120, 40));
 
         jButtonEquipo3.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonEquipo3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonEquipo3.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEquipo3.setText("ACTUALIZAR");
         jButtonEquipo3.addActionListener(new java.awt.event.ActionListener() {
@@ -1300,7 +1263,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDUsers.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
         jButtonProyecto1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonProyecto1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonProyecto1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonProyecto1.setText("CREAR");
         jButtonProyecto1.addActionListener(new java.awt.event.ActionListener() {
@@ -1311,7 +1273,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDUsers.add(jButtonProyecto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 120, 40));
 
         jButtonUsuario1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonUsuario1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonUsuario1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUsuario1.setText("LISTAR");
         jButtonUsuario1.addActionListener(new java.awt.event.ActionListener() {
@@ -1322,7 +1283,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDUsers.add(jButtonUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 120, 40));
 
         jButtonEquipo1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonEquipo1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonEquipo1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEquipo1.setText("ACTUALIZAR");
         jButtonEquipo1.addActionListener(new java.awt.event.ActionListener() {
@@ -1355,7 +1315,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDProjects.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
         jButtonProyecto2.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonProyecto2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonProyecto2.setForeground(new java.awt.Color(255, 255, 255));
         jButtonProyecto2.setText("CREAR");
         jButtonProyecto2.addActionListener(new java.awt.event.ActionListener() {
@@ -1366,7 +1325,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDProjects.add(jButtonProyecto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 120, 40));
 
         jButtonUsuario2.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonUsuario2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonUsuario2.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUsuario2.setText("LISTAR");
         jButtonUsuario2.addActionListener(new java.awt.event.ActionListener() {
@@ -1377,7 +1335,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDProjects.add(jButtonUsuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 120, 40));
 
         jButtonEquipo2.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonEquipo2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonEquipo2.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEquipo2.setText("ACTUALIZAR");
         jButtonEquipo2.addActionListener(new java.awt.event.ActionListener() {
@@ -1416,11 +1373,7 @@ public class InitialInterface extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Identificacion", "Proyecto", "Contraseña", "Nombre", "Cargo", "Estado", "Email"
@@ -1428,18 +1381,12 @@ public class InitialInterface extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(1).setHeaderValue("Proyecto");
-            jTable1.getColumnModel().getColumn(2).setHeaderValue("Contraseña");
-            jTable1.getColumnModel().getColumn(4).setHeaderValue("Cargo");
-            jTable1.getColumnModel().getColumn(5).setHeaderValue("Estado");
             jTable1.getColumnModel().getColumn(6).setResizable(false);
-            jTable1.getColumnModel().getColumn(6).setHeaderValue("Email");
         }
 
         jPanelUsersList.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 540, 200));
 
         jButtonBack7.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack7.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack7.setText("Volver");
         jButtonBack7.addActionListener(new java.awt.event.ActionListener() {
@@ -1487,7 +1434,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelProjectsList.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 480, 200));
 
         jButtonBack8.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack8.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack8.setText("Volver");
         jButtonBack8.addActionListener(new java.awt.event.ActionListener() {
@@ -1535,7 +1481,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelEquipmentList.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 480, 200));
 
         jButtonBack9.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack9.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack9.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack9.setText("Volver");
         jButtonBack9.addActionListener(new java.awt.event.ActionListener() {
@@ -1583,7 +1528,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelLoanList.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 480, 200));
 
         jButtonBack10.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack10.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack10.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack10.setText("Volver");
         jButtonBack10.addActionListener(new java.awt.event.ActionListener() {
@@ -1611,7 +1555,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelReportes.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
         jButtonReportPrestxProject.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonReportPrestxProject.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonReportPrestxProject.setForeground(new java.awt.Color(255, 255, 255));
         jButtonReportPrestxProject.setText("PRESTAMOS POR PROYECTO");
         jButtonReportPrestxProject.addActionListener(new java.awt.event.ActionListener() {
@@ -1622,7 +1565,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelReportes.add(jButtonReportPrestxProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 210, 40));
 
         jButtonMultasXMes.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonMultasXMes.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonMultasXMes.setForeground(new java.awt.Color(255, 255, 255));
         jButtonMultasXMes.setText("MULTAS POR MES");
         jButtonMultasXMes.addActionListener(new java.awt.event.ActionListener() {
@@ -1633,7 +1575,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelReportes.add(jButtonMultasXMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 210, 40));
 
         jButtonReportPresxMes.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonReportPresxMes.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonReportPresxMes.setForeground(new java.awt.Color(255, 255, 255));
         jButtonReportPresxMes.setText("PRESTAMOS POR MES");
         jButtonReportPresxMes.addActionListener(new java.awt.event.ActionListener() {
@@ -1644,7 +1585,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelReportes.add(jButtonReportPresxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 210, 40));
 
         jButtonReportMultxMiembro.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonReportMultxMiembro.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonReportMultxMiembro.setForeground(new java.awt.Color(255, 255, 255));
         jButtonReportMultxMiembro.setText("MULTAS POR MIEMBRO");
         jButtonReportMultxMiembro.addActionListener(new java.awt.event.ActionListener() {
@@ -1655,7 +1595,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelReportes.add(jButtonReportMultxMiembro, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 210, 40));
 
         jButtonReportPresxMiembros.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonReportPresxMiembros.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonReportPresxMiembros.setForeground(new java.awt.Color(255, 255, 255));
         jButtonReportPresxMiembros.setText("PRESTAMOS POR MIEMBRO");
         jButtonReportPresxMiembros.addActionListener(new java.awt.event.ActionListener() {
@@ -1708,7 +1647,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelLoanXProjectList.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 540, 140));
 
         jButtonBack11.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack11.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack11.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack11.setText("Volver");
         jButtonBack11.addActionListener(new java.awt.event.ActionListener() {
@@ -1753,7 +1691,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelLoanXMonthList.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 540, 140));
 
         jButtonBack12.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack12.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack12.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack12.setText("Volver");
         jButtonBack12.addActionListener(new java.awt.event.ActionListener() {
@@ -1798,7 +1735,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelLoanXMembersList.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 540, 140));
 
         jButtonBack13.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack13.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack13.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack13.setText("Volver");
         jButtonBack13.addActionListener(new java.awt.event.ActionListener() {
@@ -1848,7 +1784,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelMultXMembersList.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 540, 140));
 
         jButtonBack14.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack14.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack14.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack14.setText("Volver");
         jButtonBack14.addActionListener(new java.awt.event.ActionListener() {
@@ -1901,7 +1836,6 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelMultXMonthList.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 540, 140));
 
         jButtonBack15.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonBack15.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jButtonBack15.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack15.setText("Volver");
         jButtonBack15.addActionListener(new java.awt.event.ActionListener() {
@@ -2032,11 +1966,11 @@ public class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonOverwrite1ActionPerformed
 
     private void jButtonSave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave1ActionPerformed
-        // TODO add your handling code here:
+        createUser();
     }//GEN-LAST:event_jButtonSave1ActionPerformed
 
     private void jButtonSave2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave2ActionPerformed
-        // TODO add your handling code here:
+        createEquipment();
     }//GEN-LAST:event_jButtonSave2ActionPerformed
 
     private void jButtonOverwrite2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverwrite2ActionPerformed
@@ -2049,7 +1983,7 @@ public class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack2ActionPerformed
 
     private void jButtonSave3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave3ActionPerformed
-        // TODO add your handling code here:
+        createProject();
     }//GEN-LAST:event_jButtonSave3ActionPerformed
 
     private void jButtonOverwrite3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverwrite3ActionPerformed
@@ -2284,18 +2218,13 @@ public class InitialInterface extends javax.swing.JFrame {
         });
     }
     public void UpdateComboBoxs(){//Funcion que consulta en sql.
-   
-            jComboBoxUpdateProjectState.removeAllItems();
-            jComboBoxUpdateEquipmentState.removeAllItems();
+
             jComboBoxUpdateEquipmentSerial.removeAllItems();
             jComboBoxEquipmentSerialLoan.removeAllItems();
             jComboBoxEquipmentSerialReserve.removeAllItems();
-            jComboBoxUpdateUserState.removeAllItems();
             jComboBoxUpdateIdUser.removeAllItems();
             jComboBoxCreateUserProject.removeAllItems();
             jComboBoxUpdateUserProject.removeAllItems();
-            jComboBoxCreateUserType.removeAllItems();
-            jComboBoxUpdateUserType.removeAllItems();
             jComboBoxUpdateProjectId.removeAllItems();
 
 
@@ -2314,7 +2243,7 @@ public class InitialInterface extends javax.swing.JFrame {
             
             while(rsProjects.next()){
           
-                this.jComboBoxCreateUserProject.addItem(rsProjects.getString("code")+ "-"+ rsProjects.getString("name") );      
+                this.jComboBoxCreateUserProject.addItem(rsProjects.getString("id_project"));      
                 this.jComboBoxUpdateUserProject.addItem(rsProjects.getString("code")+ "-"+ rsProjects.getString("name") );  
                 this.jComboBoxUpdateProjectId.addItem(rsProjects.getString("code")+ "-"+ rsProjects.getString("name") );  
             }
@@ -2382,22 +2311,105 @@ public class InitialInterface extends javax.swing.JFrame {
          }
                  
     }
+    
+        public void addState(String categoria){
+            
+        this.jComboBoxUpdateProjectState.removeAllItems();
+        this.jComboBoxUpdateEquipmentState.removeAllItems();
+     
+         switch(categoria){
+             
+             
+                 
+             case "Director":
+                    
+                      this.jComboBoxUpdateProjectState.addItem("Activo");
+                      this.jComboBoxUpdateProjectState.addItem("Inactivo");
+                      this.jComboBoxUpdateProjectState.addItem("Terminado");
+
+                      this.jComboBoxUpdateEquipmentState.addItem("Disponible");
+                      this.jComboBoxUpdateEquipmentState.addItem("Ocupado");
+
+                      
+                      break;
+                      
+            case "Cordinador de equipos":
+
+                      this.jComboBoxUpdateEquipmentState.addItem("Disponible");
+                      this.jComboBoxUpdateEquipmentState.addItem("Ocupado");
+                      
+                      break;
+                      
+            case "Lider de proyecto":
+                      
+                      this.jComboBoxUpdateProjectState.addItem("Activo");
+                      this.jComboBoxUpdateProjectState.addItem("Inactivo");
+                      this.jComboBoxUpdateProjectState.addItem("Terminado");
+
+                      break;
+         }
+                 
+    }
      public void createUser(){
+
+        objCtrlUser = new UserController();
 
         String identification = jTextFieldIdentificacionCrearUsuario.getText();
 
-        String name = jTextFieldNombreCrearEquipo.getText();
-
-        String password = "12345"; //Hay que generar la contraseña automaticamente
-        
         String idProyect = jComboBoxCreateUserProject.getSelectedItem().toString();
+                
+        String name = jTextFieldNombreCrearUsuario.getText();
 
+        String password =  generateInitialPassword();
+        
         String typeUser = jComboBoxCreateUserType.getSelectedItem().toString();
+                
+        String state = "Activo";
         
         String email = jTextFieldEmailCrearUsuario.getText();
 
-    //    userController.addUser(identification, idProyect, password,  name, typeUser, email);
 
+       objCtrlUser.addUser(identification, idProyect, password,  name, typeUser,state , email);
+
+    }
+      public void createProject(){
+            
+            objCtrlProject = new ProjectController();
+
+
+            String code = jTextFieldCodigoCrearProyecto.getText();
+            String name = jTextFieldNombreCrearProyecto.getText();
+            String description = jTextAreaCrearProyecto.getText();
+            String state = "Activo";
+
+            objCtrlProject.addProject(code, name, description, state);
+            
+    }
+      
+    public void createEquipment(){
+        
+        objCtrlEquipment = new EquipmentController();
+        
+        String serial=jTextFieldSerialCrearEquipo.getText();
+        String name=jTextFieldNombreCrearEquipo.getText();
+        String description=jTextAreaCrearEquipo.getText();
+        String state = "Activo";
+
+        
+        objCtrlEquipment.addEquipment(serial,name,description,state);
+        
+    }
+     
+    public String generateInitialPassword(){
+        
+        String identification = jTextFieldIdentificacionCrearUsuario.getText();
+        String name = jTextFieldNombreCrearUsuario.getText();
+        String initial = name.substring(0,1);
+        char last = name.charAt(name.length()-1);          
+        String password =  (initial + identification + last).toUpperCase();
+        
+        return password;
+        
     }
      
     public void fillTableUsers(){
@@ -2421,7 +2433,6 @@ public class InitialInterface extends javax.swing.JFrame {
             while(rsUsers.next()){
 
               Object[] rows = new Object[rsData.getColumnCount()];
-                          System.out.println("error");
 
               for(int i = 0;  i < rows.length; i++){
                 rows[i] = rsUsers.getObject(i+1);
@@ -2430,10 +2441,8 @@ public class InitialInterface extends javax.swing.JFrame {
             }
                DefaultTableModel tableUser = (DefaultTableModel)this.jTable1.getModel();
                for(int i =0; i < data.size(); i++){
-                               System.out.println("error");
 
                    tableUser.addRow(data.get(i));
-                               System.out.println("error");
 
                }
         }
