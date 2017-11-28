@@ -10,10 +10,9 @@ public class MultController {
         multDao= new MultDao();
     }
 
-    public int addMult(int id_user,int id_request, double value){
+    public int addMult(int id_request, double value){
         Mult mult= new Mult();
 
-        mult.setId_user(id_user);
         mult.setId_request(id_request);
         mult.setValue(value);
 
@@ -28,23 +27,23 @@ public class MultController {
 
     }
 
-    public Mult viewMult(int id_user, int id_request){
+    public Mult viewMult(int id_request){
 
         Mult mult = new Mult();
 
         System.out.println("Se va a consultar una Multa");
 
-        mult = multDao.viewMult(id_user,id_request);
+        mult = multDao.viewMult(id_request);
 
         return mult;
 
     }
 
-    public void updateRequest(int id_user, int id_request, double value){
-        multDao.updateMult(id_user,id_request,value);
+    public void updateRequest(int id_request, double value){
+        multDao.updateMult(id_request,value);
     }
 
-    public void deleteRequest(int id_user, int id_request){
-        multDao.deleteMult(id_user,id_request);
+    public void deleteRequest(int id_request){
+        multDao.deleteMult(id_request);
     }
 }
