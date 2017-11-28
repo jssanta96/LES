@@ -17,8 +17,8 @@ public class MultDao {
         String save_sql;
         int numberRows=0;
 
-        save_sql="INSERT INTO mult VALUES("+
-                mult.getId_user()+","+mult.getId_request()+","+mult.getValue()+");";
+        save_sql="INSERT INTO mult VALUES(NEXTVAL('mult_seq'), '"+
+                mult.getId_request()+","+mult.getValue()+");";
 
         try{
             Connection conn= fachada.getConnetion();
@@ -39,11 +39,11 @@ public class MultDao {
 
 
 
-    public Mult viewMult(int id_user, int id_request){
+    public Mult viewMult(int id_request){
         Mult mult= new Mult();
         String sql_select;
-        sql_select="SELECT id_user,id_request,value"+
-                " FROM project WHERE id_user="+id_user+" AND id_request="+id_request+";";
+        sql_select="SELECT id_mult,id_request,value"+
+                " FROM project WHERE id_request="+id_request+";";
 
         try{
             Connection conn= fachada.getConnetion();
@@ -52,11 +52,10 @@ public class MultDao {
             ResultSet tabla = sentence.executeQuery(sql_select);
 
             while(tabla.next()){
-                mult.setId_user(tabla.getInt(1));
 
-                mult.setId_request(tabla.getInt(2));
+                mult.setId_request(tabla.getInt(1));
 
-                mult.setValue(tabla.getInt(3));
+                mult.setValue(tabla.getInt(2));
 
                 System.out.println("ok");
             }
@@ -74,10 +73,10 @@ public class MultDao {
 
 
 
-    public void updateMult(int id_user, int id_request, double value){
+    public void updateMult(int id_request, double value){
 
         String sql_select;
-        sql_select="UPDATE mult SET value =" + value +" WHERE  id_user="+ id_user +" AND id_request="+id_request+";";
+        sql_select="UPDATE mult SET value =" + value +" WHERE id_request="+id_request+";";
         try{
             Connection conn= fachada.getConnetion();
             System.out.println("Update in the bd");
@@ -91,10 +90,10 @@ public class MultDao {
     }
 
 
-    public void deleteMult(int id_user, int id_request){
+    public void deleteMult(int id_request){
 
         String sql_select;
-        sql_select="DELETE FROM mult WHERE  id_user="+ id_user +" AND id_request ="+id_request+";";
+        sql_select="DELETE FROM mult WHERE  id_request ="+id_request+";";
         try{
             Connection conn= fachada.getConnetion();
             System.out.println("Delete in the bd");
