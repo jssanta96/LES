@@ -10,13 +10,12 @@ public class RequestController {
         requestDao= new RequestDao();
     }
 
-    public int addRequest(String request_id, String state, String user_id, String serial, String start_date, String end_date){
+    public int addRequest(String state, String user_id, String equipment_id, String start_date, String end_date){
         Request request= new Request();
 
-        request.setRequest_id(request_id);
         request.setState(state);
         request.setUser_id(user_id);
-        request.setSerial(serial);
+        request.setEquipment_id(equipment_id);
         request.setStart_date(start_date);
         request.setEnd_date(end_date);
 
