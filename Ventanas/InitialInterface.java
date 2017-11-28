@@ -2400,18 +2400,7 @@ public class InitialInterface extends javax.swing.JFrame {
         
     }
      
-    public String generateInitialPassword(){
-        
-        String identification = jTextFieldIdentificacionCrearUsuario.getText();
-        String name = jTextFieldNombreCrearUsuario.getText();
-        String initial = name.substring(0,1);
-        char last = name.charAt(name.length()-1);          
-        String password =  (initial + identification + last).toUpperCase();
-        
-        return password;
-        
-    }
-     
+
     public void fillTableUsers(){
         
     
