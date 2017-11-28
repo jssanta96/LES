@@ -2,9 +2,8 @@ package Logica;
 
 public class Request {
 
-    private String request_id;
     private String user_id;
-    private String serial;
+    private String equipment_id;
     private String start_date;
     private String end_date;
     private String state;
@@ -14,9 +13,6 @@ public class Request {
 
     ;
 
-    public String getRequest_id() {
-        return request_id;
-    }
 
     public String getState(){
         return state;
@@ -26,8 +22,8 @@ public class Request {
         return user_id;
     }
 
-    public String getSerial() {
-        return serial;
+    public String getEquipment_id() {
+        return equipment_id;
     }
 
     public String getStart_date() {
@@ -42,8 +38,8 @@ public class Request {
         this.user_id = user_id;
     }
 
-    public void setSerial(String serial) {
-        this.serial = serial;
+    public void setEquipment_id(String equipment_id) {
+        this.equipment_id = equipment_id;
     }
 
     public void setStart_date(String start_date) {
@@ -54,9 +50,6 @@ public class Request {
         this.end_date = end_date;
     }
 
-    public void setRequest_id(String request_id) {
-        this.request_id = request_id;
-    }
 
     public void setState(String state){
         this.state=state;
