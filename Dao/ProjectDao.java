@@ -17,7 +17,7 @@ public class ProjectDao {
         String save_sql;
         int numberRows=0;
 
-        save_sql="INSERT INTO project VALUES('"+
+        save_sql="INSERT INTO project VALUES(NEXTVAL('project_seq'), '"+
                 project.getCode()+"','"+project.getName()+"','"
                 +project.getDescription()+"','"+project.getState()+"');";
 

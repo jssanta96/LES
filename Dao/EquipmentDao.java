@@ -19,7 +19,7 @@ public class EquipmentDao {
         String save_sql;
         int numberRows=0;
 
-        save_sql="INSERT INTO equipment VALUES('"+
+        save_sql="INSERT INTO equipment VALUES(NEXTVAL('equipment_seq'), '"+ 
                 equipment.getSerial()+"','"+equipment.getName()+"','"
                 +equipment.getDescription()+"','"+equipment.getState()+"');";
 

@@ -17,8 +17,8 @@ public class UserDao {
         String save_sql;
         int numberRows=0;
 
-        save_sql="INSERT INTO users VALUES('"+
-                user.getIdentification()+"','"+user.getProjectId()+"','"+user.getPassword()+"','"+user.getNickName()+"','"
+        save_sql="INSERT INTO users VALUES(NEXTVAL('users_seq'), '"+ 
+                user.getIdentification()+"',"+user.getProjectId()+",'"+user.getPassword()+"','"
                 +user.getUserName()+"','"+user.getType()+"','"+user.getState()+"','"+user.getEmail()+"');";
 
         System.out.println( "prueba." + save_sql);
@@ -57,17 +57,15 @@ public class UserDao {
 
                 user.setProjectId(tabla.getString(2));
 
-                user.setPassword(tabla.getString(3));
+                user.setPassword(tabla.getString(3));;
 
-                user.setNickName(tabla.getString(4));
+                user.setUserName(tabla.getString(4));
 
-                user.setUserName(tabla.getString(5));
+                user.setType(tabla.getString(5));
 
-                user.setType(tabla.getString(6));
+                user.setState(tabla.getString(6));
 
-                user.setState(tabla.getString(7));
-
-                user.setEmail(tabla.getString(8));
+                user.setEmail(tabla.getString(7));
 
                 System.out.println("ok");
             }
@@ -85,11 +83,11 @@ public class UserDao {
 
 
 
-    public void updateUser(String identification, String project_id, String password, String nickname, String userName, String type, String State, String email){
+    public void updateUser(String identification, String project_id, String password , String userName, String type, String state, String email){
 
         String sql_select;
-        sql_select="UPDATE users SET identification ='" + identification +  "', project_id = '"+ project_id +"', password = '"+ password +
-                "', nickname ='" + nickname +"', name = '" + userName + "', email = '"+ email +" WHERE  identification='"+ identification +"';";
+        sql_select="UPDATE users SET identification ='" + identification +  "', project_id = "+ project_id +", password = '"+ password +
+                "', name ='" + userName + "', type = '" + type +  "', state = '" + state + "', email = '"+ email +" WHERE  identification='"+ identification +"';";
         try{
             Connection conn= fachada.getConnetion();
             System.out.println("Update in the bd");
