@@ -12,6 +12,7 @@ public class ProjectController {
     }
 
     public int addProject(String code, String name, String description, String state){
+        
         Project project= new Project();
 
         project.setCode(code);
@@ -34,7 +35,7 @@ public class ProjectController {
 
         Project project = new Project();
 
-        System.out.println("Se va a consultar un paciente");
+        System.out.println("Se va a consultar un Proyecto");
 
         project = projectDao.viewProject(code);
 

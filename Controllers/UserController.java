@@ -10,13 +10,12 @@ public class UserController {
         userDao= new UserDao();
     }
 
-    public int addUser(String identification, String project_id, String password, String nickName, String user_name, String type, String state, String email){
+    public int addUser(String identification, String project_id, String password, String user_name, String type, String state, String email){
         User user= new User();
 
         user.setIdentification(identification);
         user.setProjectId(project_id);
         user.setPassword(password);
-        user.setNickName(nickName);
         user.setUserName(user_name);
         user.setType(type);
         user.setState(state);
@@ -45,8 +44,8 @@ public class UserController {
 
     }
 
-    public void updateUser(String identification, String project_id, String password, String nickName, String user_name, String type, String state, String email){
-        userDao.updateUser(identification, project_id, password, nickName, user_name, type, state,email);
+    public void updateUser(String identification, String project_id, String password,  String user_name, String type, String state, String email){
+        userDao.updateUser(identification, project_id, password, user_name, type, state,email);
     }
 
     public void deleteUser(String identification){
