@@ -1,6 +1,7 @@
 package Dao;
 
 import Logica.User;
+import Ventanas.InitialInterface;
 import java.sql.*;
 
 public class UserDao {
@@ -115,5 +116,41 @@ public class UserDao {
         catch(Exception e){ System.out.println(e); }
 
     }
+    
+    public boolean conection(String identification , String password){
+        
+      String sql_select;
+      int result =0;
+        sql_select="SELECT * FROM users WHERE  identification='"+ identification +"'AND user_password = '"+ password +"';";
+        try{
+            Connection conn= fachada.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet rsUser = sentencia.executeQuery(sql_select);
+
+                   
+            if(rsUser.next()){
+                
+                String testingId =(rsUser.getString("identification"));
+                String testingPassword =(rsUser.getString("user_password"));
+                
+                if(testingId.equals(identification) && testingPassword.equals(password)){
+                    
+                        System.out.println("Logeo exitoso");
+                        InitialInterface objVentana = new InitialInterface();
+                        objVentana.setVisible(true);
+                        return true;
+                }
+                               
+            }
+            
+        }
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e); }
+        
+        return false;
+    }
+    
 }
+        
+
 
