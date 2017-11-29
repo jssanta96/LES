@@ -18,8 +18,8 @@ public class RequestDao {
         String save_sql;
         int numberRows=0;
 
-        save_sql="INSERT INTO request VALUES(NEXTVAL('request_seq'), '"+ "','"+request.getState()+"','"+
-                request.getUser_id()+"','"+request.getEquipment_id()+"','"
+        save_sql="INSERT INTO request VALUES(NEXTVAL('request_seq'),'"+request.getState()+"',"+
+                request.getUser_id()+","+request.getEquipment_id()+",'"
                 +request.getStart_date()+"','"+request.getEnd_date()+"');";
 
         try{
@@ -57,9 +57,9 @@ public class RequestDao {
 
                 request.setState(tabla.getString(1));
 
-                request.setUser_id(tabla.getString(2));
+                request.setUser_id(tabla.getInt(2));
 
-                request.setEquipment_id(tabla.getString(3));
+                request.setEquipment_id(tabla.getInt(3));
 
                 request.setStart_date(tabla.getString(4));
 
