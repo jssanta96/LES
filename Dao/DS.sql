@@ -2,6 +2,7 @@
 
 
 
+
 DROP SEQUENCE equipment_seq cascade;
 CREATE SEQUENCE equipment_seq;
 
@@ -14,6 +15,9 @@ CREATE TABLE equipment(
 	state VARCHAR(20) NOT NULL
 
 );
+INSERT INTO equipment(serial,name,description,state)
+VALUES('31654971' , 'Portatil DELL' , 'nothing' , 'Disponible');
+
 
 DROP SEQUENCE project_seq cascade;
 CREATE SEQUENCE project_seq;
@@ -24,7 +28,8 @@ CREATE TABLE project(
 	code VARCHAR(30) NOT NULL,
 	name VARCHAR(50) NOT NULL,
 	description VARCHAR(60) NOT NULL,
-	state VARCHAR(30) NOT NULL	
+	state VARCHAR(30) NOT NULL
+	
 );
 
 INSERT INTO project(code,name,description,state)
@@ -66,6 +71,10 @@ CREATE TABLE request(
 	start_date DATE NOT NULL,
 	end_date DATE NOT NULL
 );
+INSERT INTO request(state,id_user,id_equipment,start_date,end_date)
+VALUES('Activo',1,1,'2017-11-29','2017-12-6');
+
+
 
 DROP SEQUENCE mult_seq cascade;
 CREATE SEQUENCE mult_seq;	
@@ -78,11 +87,13 @@ CREATE TABLE mult(
 );
 
 --FUNCION CREAR MULTA
-CREATE OR REPLACE FUNCTION f_createMult () RETURNS TRIGGER AS $$
+CREATE OR REPLACE FUNCTION f_createMult() RETURNS TRIGGER AS $$
 BEGIN
 IF(TG_OP = 'UPDATE') THEN
 	IF(NEW.end_date<now()) THEN
 		INSERT INTO mult(id_request,value) VALUES (NEW.id_request,5000);
+	ELSIF(NEW.end_date>now()) THEN
+		INSERT INTO mult(id_request,value) VALUES (NEW.id_request,0);
 	END IF;
 END IF;
 RETURN NULL;
@@ -90,7 +101,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 CREATE TRIGGER insert_mult AFTER UPDATE
-ON request FOR EACH ROW EXECUTE PROCEDURE f_crearMulta();
+ON request FOR EACH ROW EXECUTE PROCEDURE f_createMult();
 
 
 
