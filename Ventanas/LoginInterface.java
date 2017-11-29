@@ -6,6 +6,11 @@
 package Ventanas;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import Dao.UserDao;
+import Controllers.UserController;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
@@ -16,6 +21,8 @@ public class LoginInterface extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    UserDao daoUser;
+    
     public LoginInterface() {
         initComponents();
         this.setTitle("LES");
@@ -80,6 +87,11 @@ public class LoginInterface extends javax.swing.JFrame {
         textFieldPass1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         textFieldPass1.setForeground(new java.awt.Color(153, 153, 153));
         textFieldPass1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textFieldPass1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textFieldPass1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(textFieldPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 170, 34));
 
         iconPass1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconPass.png"))); // NOI18N
@@ -118,14 +130,16 @@ public class LoginInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_forgotPass1ActionPerformed
 
     private void submitLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitLogin1ActionPerformed
-        InitialInterface objVentana = new InitialInterface();
-        objVentana.setVisible(true);
-        this.setVisible(false);
+        queryUser();
     }//GEN-LAST:event_submitLogin1ActionPerformed
 
     private void textFieldAccount1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAccount1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldAccount1ActionPerformed
+
+    private void textFieldPass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPass1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textFieldPass1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -138,6 +152,27 @@ public class LoginInterface extends javax.swing.JFrame {
             }
         });
     }
+  
+  public void queryUser(){
+      
+
+         daoUser = new UserDao();
+         
+         String identification = textFieldAccount1.getText();
+         String password = textFieldPass1.getText();       
+         boolean cheek = daoUser.conection(identification, password);
+         if(cheek == true){
+                this.setVisible(false);
+                System.out.println("Logeo exitoso");
+         }else{
+                             System.out.println("fALLO INTENTE");
+
+         }
+      
+      
+
+      
+  }
 
 
 
