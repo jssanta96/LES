@@ -84,7 +84,7 @@ public class UserDao {
 
 
 
-    public void updateUser(String identification, String project_id, String password , String userName, String type, String state, String email){
+    public boolean updateUser(String identification, String project_id, String password , String userName, String type, String state, String email){
 
         String sql_select;
         sql_select="UPDATE users SET identification ='" + identification +  "', project_id = "+ project_id +", password = '"+ password +
@@ -94,11 +94,11 @@ public class UserDao {
             System.out.println("Update in the bd");
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_select);
-
+            return true;
         }
         catch(SQLException e){ System.out.println(e); }
         catch(Exception e){ System.out.println(e); }
-
+        return false;
     }
 
 

@@ -77,7 +77,7 @@ public class ProjectDao {
 
 
 
-    public void updateProject(String code, String name, String description, String state){
+    public boolean updateProject(String code, String name, String description, String state){
 
         String sql_select;
         sql_select="UPDATE project SET code ='" + code +  "', name = '"+ name +"', description = '"+ description +
@@ -87,11 +87,13 @@ public class ProjectDao {
             System.out.println("Update in the bd");
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_select);
+               return true;
 
         }
         catch(SQLException e){ System.out.println(e); }
         catch(Exception e){ System.out.println(e); }
-
+        return false;
+        
     }
 
 
