@@ -99,7 +99,7 @@ END IF;
 RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
-
+--
 CREATE TRIGGER insert_mult AFTER UPDATE
 ON request FOR EACH ROW EXECUTE PROCEDURE f_createMult();
 
