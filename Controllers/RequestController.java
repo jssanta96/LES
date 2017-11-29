@@ -10,7 +10,7 @@ public class RequestController {
         requestDao= new RequestDao();
     }
 
-    public int addRequest(String state, String user_id, String equipment_id, String start_date, String end_date){
+    public int addRequest(String state, int user_id, int equipment_id, String start_date, String end_date){
         Request request= new Request();
 
         request.setState(state);
@@ -19,11 +19,11 @@ public class RequestController {
         request.setStart_date(start_date);
         request.setEnd_date(end_date);
 
-        System.out.println("Se va a insertar una Solicitud");
+        System.out.println("Se va a insertar un Prestamo");
 
         int result=requestDao.saveRequest(request);
 
-        System.out.println("Se inserto una nueva solicitud");
+        System.out.println("Se inserto un nueva Prestamo");
 
         return result;
 
@@ -33,7 +33,7 @@ public class RequestController {
 
         Request request = new Request();
 
-        System.out.println("Se va a consultar una solicitud");
+        System.out.println("Se va a consultar un Prestamo");
 
         request = requestDao.viewRequest(request_id);
 
