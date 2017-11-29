@@ -45,7 +45,13 @@ public class UserController {
     }
 
     public void updateUser(String identification, String project_id, String password,  String user_name, String type, String state, String email){
-        userDao.updateUser(identification, project_id, password, user_name, type, state,email);
+        boolean cheek =userDao.updateUser(identification, project_id, password, user_name, type, state,email);
+        if (cheek == true){
+                        System.out.println("Se se actualizao un Usuario");
+
+        }
+                        System.out.println("error");
+
     }
 
     public void deleteUser(String identification){

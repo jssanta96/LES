@@ -44,7 +44,14 @@ public class ProjectController {
     }
 
     public void updateProject(String code, String name, String description, String state){
-        projectDao.updateProject(code,name,description,state);
+        boolean cheek = projectDao.updateProject(code,name,description,state);
+         if (cheek == true){
+                        System.out.println("Se se actualizao un projecto");
+
+        }
+                        System.out.println("error");
+
+    
     }
 
     public void deleteProject(String code){
