@@ -18,8 +18,8 @@ public class RequestDao {
         String save_sql;
         int numberRows=0;
 
-        save_sql="INSERT INTO request VALUES('"+ request.getRequest_id()+"','"+request.getState()+"','"+
-                request.getUser_id()+"','"+request.getSerial()+"','"
+        save_sql="INSERT INTO request VALUES(NEXTVAL('request_seq'), '"+ "','"+request.getState()+"','"+
+                request.getUser_id()+"','"+request.getEquipment_id()+"','"
                 +request.getStart_date()+"','"+request.getEnd_date()+"');";
 
         try{
@@ -54,17 +54,16 @@ public class RequestDao {
             ResultSet tabla = sentence.executeQuery(sql_select);
 
             while(tabla.next()){
-                request.setRequest_id(tabla.getString(1));
 
-                request.setState(tabla.getString(2));
+                request.setState(tabla.getString(1));
 
-                request.setUser_id(tabla.getString(3));
+                request.setUser_id(tabla.getString(2));
 
-                request.setSerial(tabla.getString(4));
+                request.setEquipment_id(tabla.getString(3));
 
-                request.setSerial(tabla.getString(5));
+                request.setStart_date(tabla.getString(4));
 
-                request.setEnd_date(tabla.getString(6));
+                request.setEnd_date(tabla.getString(5));
 
                 System.out.println("ok");
             }
@@ -85,7 +84,7 @@ public class RequestDao {
     public void updateRequest(String request_id,String state, String user_id, String serial, String start_date, String end_date){
 
         String sql_select;
-        sql_select="UPDATE request SET request_id ='" + request_id + ",state ='"+state+ "', user_id = '"+ user_id +"', serial = '"+ serial +
+        sql_select="UPDATE request SET state ='"+state+ "', user_id = '"+ user_id +"', serial = '"+ serial +
                 "', start_date ='" + start_date +"',end_date= '"+end_date+" WHERE  request_id='"+ request_id +"';";
         try{
             Connection conn= fachada.getConnetion();
