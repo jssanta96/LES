@@ -16,6 +16,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -1939,6 +1940,7 @@ public class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNombreCrearUsuarioActionPerformed
 
     private void jButtonEquipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipo1ActionPerformed
+
         hidePanels();
         jPanelUpdateUser.setVisible(true);
     }//GEN-LAST:event_jButtonEquipo1ActionPerformed
@@ -1996,7 +1998,7 @@ public class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack3ActionPerformed
 
     private void jButtonSave4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave4ActionPerformed
-        // TODO add your handling code here:
+         updateProject();
     }//GEN-LAST:event_jButtonSave4ActionPerformed
 
     private void jButtonOverwrite4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverwrite4ActionPerformed
@@ -2018,6 +2020,7 @@ public class InitialInterface extends javax.swing.JFrame {
 
     private void jButtonSave5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave5ActionPerformed
         // TODO add your handling code here:
+                updateUser();
     }//GEN-LAST:event_jButtonSave5ActionPerformed
 
     private void jButtonOverwrite5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverwrite5ActionPerformed
@@ -2243,20 +2246,20 @@ public class InitialInterface extends javax.swing.JFrame {
             
             while(rsProjects.next()){
           
-                this.jComboBoxCreateUserProject.addItem(rsProjects.getString("id_project"));      
-                this.jComboBoxUpdateUserProject.addItem(rsProjects.getString("code")+ "-"+ rsProjects.getString("name") );  
-                this.jComboBoxUpdateProjectId.addItem(rsProjects.getString("code")+ "-"+ rsProjects.getString("name") );  
+                this.jComboBoxCreateUserProject.addItem(rsProjects.getString("id_project")+ " "+ rsProjects.getString("name"));      
+                this.jComboBoxUpdateUserProject.addItem(rsProjects.getString("code")+ " "+ rsProjects.getString("name") );  
+                this.jComboBoxUpdateProjectId.addItem(rsProjects.getString("code")+ " "+ rsProjects.getString("name") );  
             }
             while(rsUsers.next()){
 
-                this.jComboBoxUpdateIdUser.addItem(rsUsers.getString("identification")+ "-"+ rsUsers.getString("name") );      
+                this.jComboBoxUpdateIdUser.addItem(rsUsers.getString("identification")+ " "+ rsUsers.getString("name") );      
                
             }
             while(rsEquipment.next()){
 
-                this.jComboBoxUpdateEquipmentSerial.addItem(rsEquipment.getString("serial")+ "-"+ rsEquipment.getString("name") );  
-                this.jComboBoxEquipmentSerialLoan.addItem(rsEquipment.getString("serial")+ "-"+ rsEquipment.getString("name") );      
-                this.jComboBoxEquipmentSerialReserve.addItem(rsEquipment.getString("serial")+ "-"+ rsEquipment.getString("name") );      
+                this.jComboBoxUpdateEquipmentSerial.addItem(rsEquipment.getString("serial")+ " "+ rsEquipment.getString("name") );  
+                this.jComboBoxEquipmentSerialLoan.addItem(rsEquipment.getString("serial")+ " "+ rsEquipment.getString("name") );      
+                this.jComboBoxEquipmentSerialReserve.addItem(rsEquipment.getString("serial")+ " "+ rsEquipment.getString("name") );      
                
             }
             
@@ -2264,9 +2267,7 @@ public class InitialInterface extends javax.swing.JFrame {
             System.out.println("error");
         }
 
-    }
-    
-      
+    } //Metodos que llenan los comboBox  
     public void addTypeUser(String categoria){
             
         this.jComboBoxCreateUserType.removeAllItems();
@@ -2310,12 +2311,12 @@ public class InitialInterface extends javax.swing.JFrame {
                       break;
          }
                  
-    }
-    
-        public void addState(String categoria){
+    }   
+    public void addState(String categoria){
             
         this.jComboBoxUpdateProjectState.removeAllItems();
         this.jComboBoxUpdateEquipmentState.removeAllItems();
+        this.jComboBoxUpdateUserState.removeAllItems();
      
          switch(categoria){
              
@@ -2329,7 +2330,16 @@ public class InitialInterface extends javax.swing.JFrame {
 
                       this.jComboBoxUpdateEquipmentState.addItem("Disponible");
                       this.jComboBoxUpdateEquipmentState.addItem("Ocupado");
+                      
+                      this.jComboBoxUpdateUserState.addItem("Activo");
+                      this.jComboBoxUpdateUserState.addItem("Inactivo");
 
+                      
+                      break;
+                      
+             case "Administrador" : 
+                      this.jComboBoxUpdateUserState.addItem("Activo");
+                      this.jComboBoxUpdateUserState.addItem("Inactivo"); 
                       
                       break;
                       
@@ -2350,13 +2360,15 @@ public class InitialInterface extends javax.swing.JFrame {
          }
                  
     }
-     public void createUser(){
+    //Metodos que crean en la bd
+    public void createUser(){
 
         objCtrlUser = new UserController();
 
         String identification = jTextFieldIdentificacionCrearUsuario.getText();
 
-        String idProyect = jComboBoxCreateUserProject.getSelectedItem().toString();
+        String IdProyectCreate = null;
+        String idProyect = splitComboBox(jComboBoxCreateUserProject);
                 
         String name = jTextFieldNombreCrearUsuario.getText();
 
@@ -2369,10 +2381,34 @@ public class InitialInterface extends javax.swing.JFrame {
         String email = jTextFieldEmailCrearUsuario.getText();
 
 
-       objCtrlUser.addUser(identification, idProyect, password,  name, typeUser,state , email);
+       objCtrlUser.addUser(identification, IdProyectCreate, password,  name, typeUser,state , email);
 
+                 
     }
-      public void createProject(){
+    
+    //Funcion que me genera un split al comboBox
+    public String splitComboBox(JComboBox change){
+        
+        String positionId = null;
+        String[] id = change.getSelectedItem().toString().split("\n");
+        ArrayList <String> prueba = new ArrayList<>(Arrays.asList(id));
+           
+                 for(int i=0; i<prueba.size(); i++){                    
+                      String codigo[] = prueba.get(i).split(" "); 
+               
+                      positionId = codigo[0];
+
+                      
+                 }
+                 
+                                 System.out.println(positionId);
+
+                 return positionId;          
+        
+    }
+    
+    //Metodos de creado
+    public void createProject(){
             
             objCtrlProject = new ProjectController();
 
@@ -2384,8 +2420,7 @@ public class InitialInterface extends javax.swing.JFrame {
 
             objCtrlProject.addProject(code, name, description, state);
             
-    }
-      
+    }  
     public void createEquipment(){
         
         objCtrlEquipment = new EquipmentController();
@@ -2398,8 +2433,7 @@ public class InitialInterface extends javax.swing.JFrame {
         
         objCtrlEquipment.addEquipment(serial,name,description,state);
         
-    }
-     
+    }   
     public String generateInitialPassword(){
         
         String identification = jTextFieldIdentificacionCrearUsuario.getText();
@@ -2410,8 +2444,9 @@ public class InitialInterface extends javax.swing.JFrame {
         
         return password;
         
-    }
-     
+    } 
+    
+    //Metodos que llenan las tablas
     public void fillTableUsers(){
         
     
@@ -2450,7 +2485,6 @@ public class InitialInterface extends javax.swing.JFrame {
             System.out.println("error2");
         }
     }
-    
     public void fillTableProject(){
         try{
             
@@ -2489,8 +2523,7 @@ public class InitialInterface extends javax.swing.JFrame {
             System.out.println("error2");
         }
     }
-    
-        public void fillTableEquipment(){
+    public void fillTableEquipment(){
         
     
         try{
@@ -2531,8 +2564,35 @@ public class InitialInterface extends javax.swing.JFrame {
             System.out.println("error2");
         }
     }
+    
+    //Meotodos que actualizan     
+    public void  updateUser(){
+            
+           objCtrlUser = new UserController();       
+           String updateIdUser = splitComboBox(jComboBoxUpdateIdUser);
+           String updateIdProject = splitComboBox(jComboBoxUpdateUserProject);
+           String updatePassword = jPasswordField2.getText();
+           String updateState = jComboBoxUpdateUserState.getSelectedItem().toString();
+           String updateType = jComboBoxUpdateUserType.getSelectedItem().toString();
+           String updateName = jTextFieldNombre3.getText();
+           String updateEmail = jTextFieldEmail1.getText();
+           
+           objCtrlUser.updateUser(updateIdUser, updateIdProject, updatePassword, updateName, updateType, updateState, updateEmail);
+                
+        }     
+    public void  updateProject(){
         
-        private void fillEmptyFields(){
+    String updateProject = splitComboBox(jComboBoxUpdateProjectId);
+    String updateNameProject = jTextFieldNombre4.getText();
+    String updateDescription = jTextArea3.getText();
+    String updateState = splitComboBox(jComboBoxUpdateProjectState);
+    
+    objCtrlProject.updateProject(updateProject, updateProject, updateDescription, updateState);
+    
+    }
+    
+    //Esto aun no implementa  
+    private void fillEmptyFields(){
             if (!jTextAreaCrearEquipo.getText().isEmpty()) {
                 jTextAreaCrearEquipo.setText("Ingrese una breve descripcion del equipo");}
             
