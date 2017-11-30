@@ -96,6 +96,25 @@ public class EquipmentDao {
         catch(Exception e){ System.out.println(e); }
         return false;
     }
+    
+    public boolean changeStateEquipment(int id_equipment, String state){
+
+        String sql_select;
+        sql_select="UPDATE equipment SET state='" + state +"' WHERE  id_equipment="+ id_equipment +";";
+        try{
+            Connection conn= fachada.getConnetion();
+            System.out.println("Update in the bd");
+            Statement sentencia = conn.createStatement();
+            sentencia.executeUpdate(sql_select);
+            return true;
+
+        }
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e); }
+        return false;
+    }
+    
+    
 
 
     public void deleteEquipment(String serial){
