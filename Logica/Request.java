@@ -57,23 +57,3 @@ public class Request {
 
 
 }
-
-    public void setEquipment_id(String equipment_id) {
-        this.equipment_id = equipment_id;
-    }
-
-    public void setStart_date(String start_date) {
-        this.start_date = start_date;
-    }
-
-    public void setEnd_date(String end_date) {
-        this.end_date = end_date;
-    }
-
-
-    public void setState(String state){
-        this.state=state;
-    }
-
-
-}
