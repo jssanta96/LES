@@ -43,7 +43,15 @@ public class EquipmentController {
     }
 
     public void updateEquipment(String serial, String name, String description, String state){
-        equipmentDao.updateEquipment(serial,name,description,state);
+        
+        boolean cheek =equipmentDao.updateEquipment(serial,name,description,state);
+        
+        if (cheek == true){
+                        System.out.println("Se se actualizao un Usuario");
+
+        }
+                        System.out.println("error");
+
     }
 
     public void deleteEquipment(String serial){
