@@ -79,7 +79,7 @@ public class EquipmentDao {
 
 
 
-    public void updateEquipment(String serial, String name, String description, String state){
+    public boolean updateEquipment(String serial, String name, String description, String state){
 
         String sql_select;
         sql_select="UPDATE equipment SET serial ='" + serial +  "', name = '"+ name +"', description = '"+ description +
@@ -89,11 +89,12 @@ public class EquipmentDao {
             System.out.println("Update in the bd");
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_select);
+            return true;
 
         }
         catch(SQLException e){ System.out.println(e); }
         catch(Exception e){ System.out.println(e); }
-
+        return false;
     }
 
 

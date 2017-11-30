@@ -120,7 +120,6 @@ public class UserDao {
     public boolean conection(String identification , String password){
         
       String sql_select;
-      int result =0;
         sql_select="SELECT * FROM users WHERE  identification='"+ identification +"'AND user_password = '"+ password +"';";
         try{
             Connection conn= fachada.getConnetion();
@@ -132,8 +131,9 @@ public class UserDao {
                 
                 String testingId =(rsUser.getString("identification"));
                 String testingPassword =(rsUser.getString("user_password"));
+                String testingState =(rsUser.getString("state"));
                 
-                if(testingId.equals(identification) && testingPassword.equals(password)){
+                if(testingId.equals(identification) && testingPassword.equals(password) && testingState.equals("Activo")){
                     
                         System.out.println("Logeo exitoso");
                         InitialInterface objVentana = new InitialInterface();
