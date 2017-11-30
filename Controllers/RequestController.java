@@ -28,6 +28,17 @@ public class RequestController {
         return result;
 
     }
+    
+    public void setStateRequest(int id_request,String state){
+        
+        boolean cheek =requestDao.changeStateRequest(id_request,state);
+        
+        if (cheek == true){
+                        System.out.println("Se actualizo el estado de un equipo ");
+
+        }
+    }
+    
 
     public Request viewRequest(String request_id){
 
