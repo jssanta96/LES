@@ -2168,10 +2168,12 @@ public class InitialInterface extends javax.swing.JFrame {
 
     private void jButtonEntregarActionPerformed(java.awt.event.ActionEvent evt) {                                                
         int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea entregar el equipo: 'NombreEquipo?", "ENTREGA DE EQUIPO", JOptionPane.YES_NO_OPTION);
+             deliverEquipment();
+            
     }                                               
 
     private void jButtonDeleteMultActionPerformed(java.awt.event.ActionEvent evt) {                                                  
-    int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea renovar el prestamo  del equipo: 'NombreEquipo?", "RENOVAR PRESTAMO DE EQUIPO", JOptionPane.YES_NO_OPTION);
+        int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea renovar el prestamo  del equipo: 'NombreEquipo?", "RENOVAR PRESTAMO DE EQUIPO", JOptionPane.YES_NO_OPTION);
     }                                                 
 
     private void emptyText(){
@@ -2455,6 +2457,42 @@ public class InitialInterface extends javax.swing.JFrame {
                 Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
             }
          return 0; 
+    }
+    
+        public int getIdRequest(int id_user,int id_equipment, String state){//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
+        Connection conn= fachada.getConnetion();
+        int id=0;
+            try {
+                Statement sentenceRequest = conn.createStatement();
+                String queryRequest= "SELECT id_request FROM request WHERE id_user="+id_user+" AND id_equipment="+id_equipment+"AND state='"+state+"';";
+                System.out.print(queryRequest);
+                ResultSet rsRequest = sentenceRequest.executeQuery(queryRequest);
+                while(rsRequest.next()){
+                id=rsRequest.getInt("id_request");
+                }
+                System.out.print(id);
+                return id;
+            } catch (SQLException ex) {
+                Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         return 0; 
+    }
+    
+    public void deliverEquipment(){
+        objCtrlRequest = new RequestController();
+        objCtrlEquipment = new EquipmentController();
+        String identification_user="";
+        identification_user=jLabelUserIdentificationGeneral.getText();
+        int id_user=getIdUser(identification_user);
+        String serial_equipment = "";
+        serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
+        int id_equipment=getIdEquipment(serial_equipment);
+        int id_request=0;
+        id_request=getIdRequest(id_user,id_equipment,"Activo");
+        
+        objCtrlRequest.setStateRequest(id_request,"Terminado");
+        objCtrlEquipment.setStateEquipment(id_equipment, "Disponible");
+    
     }
     
     
