@@ -7,19 +7,27 @@ package Ventanas;
 
 import Controllers.EquipmentController;
 import Controllers.ProjectController;
+import Controllers.RequestController;
 import Controllers.UserController;
 import Dao.FachadaBD;
+import Logica.Querys;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import static javax.swing.UIManager.get;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,7 +38,9 @@ public class InitialInterface extends javax.swing.JFrame {
         UserController objCtrlUser;
         ProjectController objCtrlProject;
         EquipmentController objCtrlEquipment;
-        
+        Querys objQuery;
+        RequestController objCtrlRequest;
+        Date fecha = new Date();
         public InitialInterface() {//Esto a intej
             
             fachada = new FachadaBD();            
@@ -38,7 +48,6 @@ public class InitialInterface extends javax.swing.JFrame {
             fillEmptyFields();
             addTypeUser("Director");
             addState("Director");
-            UpdateComboBoxs();
             hidePanels();           
             jPanelInicio.setVisible(true);           
             this.setLocationRelativeTo(null);
@@ -57,7 +66,7 @@ public class InitialInterface extends javax.swing.JFrame {
         jButtonPerfil = new javax.swing.JButton();
         jButtonInfo = new javax.swing.JButton();
         jLabelBienvenido = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jLabelUserIdentificationGeneral = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanelInicio = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -408,9 +417,9 @@ public class InitialInterface extends javax.swing.JFrame {
         jLabelBienvenido.setText("BIENVENIDO");
         jPanelMenu.add(jLabelBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel6.setText("NombreUsuario");
-        jPanelMenu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        jLabelUserIdentificationGeneral.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabelUserIdentificationGeneral.setText("1234");
+        jPanelMenu.add(jLabelUserIdentificationGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoGris.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -1421,10 +1430,7 @@ public class InitialInterface extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Codigo", "Nombre", "Descripcion", "Estado"
@@ -1468,10 +1474,7 @@ public class InitialInterface extends javax.swing.JFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Serial", "Nombre", "Descripcion", "Estado"
@@ -1867,6 +1870,8 @@ public class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonPerfilActionPerformed
 
     private void jButtonSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitudActionPerformed
+        objQuery = new Querys();
+        objQuery.updateComboBoxs(this.jComboBoxEquipmentSerialLoan, "SELECT * FROM equipment" , "serial" , "name" );
         hidePanels();
         jPanelLoan.setVisible(true);
     }//GEN-LAST:event_jButtonSolicitudActionPerformed
@@ -1887,29 +1892,41 @@ public class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonProyectoActionPerformed
 
     private void jButtonProyecto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProyecto1ActionPerformed
+       
+        objQuery = new Querys();
+        objQuery.updateComboBoxs(this.jComboBoxCreateUserProject, "SELECT * FROM project" , "id_project" , "name" );
         hidePanels();
         jPanelCreateUser.setVisible(true);
+        
     }//GEN-LAST:event_jButtonProyecto1ActionPerformed
 
     private void jButtonUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuario1ActionPerformed
         
-        fillTableUsers();
+        objQuery = new Querys();
+        objQuery.fillTables(this.jTable1 , "SELECT identification , project_id , user_password , name , type , state , email FROM users");
         hidePanels();
         jPanelUsersList.setVisible(true);
         
     }//GEN-LAST:event_jButtonUsuario1ActionPerformed
 
     private void jButtonProyecto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProyecto2ActionPerformed
+        
         hidePanels();
         jPanelCreateProject.setVisible(true);
     }//GEN-LAST:event_jButtonProyecto2ActionPerformed
 
     private void jButtonUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuario2ActionPerformed
+       
+        objQuery = new Querys();
+        objQuery.fillTables(this.jTable2 , "SELECT  code , name , description , state FROM project");
         hidePanels();
         jPanelProjectsList.setVisible(true);
     }//GEN-LAST:event_jButtonUsuario2ActionPerformed
 
     private void jButtonEquipo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipo2ActionPerformed
+        
+        objQuery = new Querys();
+        objQuery.updateComboBoxs(this.jComboBoxUpdateProjectId, "SELECT * FROM project" , "code" , "name" );  
         hidePanels();
         jPanelUpdateProject.setVisible(true);
     }//GEN-LAST:event_jButtonEquipo2ActionPerformed
@@ -1920,11 +1937,15 @@ public class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonProyecto3ActionPerformed
 
     private void jButtonUsuario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuario3ActionPerformed
+        objQuery = new Querys();
+        objQuery.fillTables(this.jTable3 , "SELECT serial , name , description , state FROM equipment");
         hidePanels();
         jPanelEquipmentList.setVisible(true);
     }//GEN-LAST:event_jButtonUsuario3ActionPerformed
 
     private void jButtonEquipo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipo3ActionPerformed
+        objQuery = new Querys();
+        objQuery.updateComboBoxs(this.jComboBoxUpdateEquipmentSerial, "SELECT * FROM equipment" , "serial" , "name" );
         hidePanels();
         jPanelUpdateEquipment.setVisible(true);
     }//GEN-LAST:event_jButtonEquipo3ActionPerformed
@@ -1940,7 +1961,10 @@ public class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNombreCrearUsuarioActionPerformed
 
     private void jButtonEquipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipo1ActionPerformed
-
+       
+        objQuery = new Querys();
+        objQuery.updateComboBoxs(this.jComboBoxUpdateUserProject, "SELECT * FROM project" , "code" , "name" );
+        objQuery.updateComboBoxs(this.jComboBoxUpdateIdUser, "SELECT * FROM users" , "identification" , "name" );
         hidePanels();
         jPanelUpdateUser.setVisible(true);
     }//GEN-LAST:event_jButtonEquipo1ActionPerformed
@@ -1998,7 +2022,7 @@ public class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack3ActionPerformed
 
     private void jButtonSave4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave4ActionPerformed
-         updateProject();
+        updateProject();
     }//GEN-LAST:event_jButtonSave4ActionPerformed
 
     private void jButtonOverwrite4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverwrite4ActionPerformed
@@ -2049,13 +2073,16 @@ public class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack6ActionPerformed
 
     private void jButtonSave7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave7ActionPerformed
-        JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia: DD/MM/AA hasta DD/MM/AA, "
+        JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia:"+getStartDate()+"hasta: "+convertDayToString(addDayDate(fecha,7))
                 + "\nsi no lo entrega antes de la fecha se le empezata a cobrar 5000(COP) por cada dia de atraso", 
                 "PRESTAMO DE EQUIPO", JOptionPane.WARNING_MESSAGE);
+        createRequest();
 
     }//GEN-LAST:event_jButtonSave7ActionPerformed
 
     private void jButtonReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReserveActionPerformed
+        objQuery = new Querys();
+        objQuery.updateComboBoxs(this.jComboBoxEquipmentSerialReserve, "SELECT * FROM equipment" , "serial" , "name" );
         hidePanels();
         jPanelReserve.setVisible(true);
     }//GEN-LAST:event_jButtonReserveActionPerformed
@@ -2220,54 +2247,8 @@ public class InitialInterface extends javax.swing.JFrame {
             }
         });
     }
-    public void UpdateComboBoxs(){//Funcion que consulta en sql.
 
-            jComboBoxUpdateEquipmentSerial.removeAllItems();
-            jComboBoxEquipmentSerialLoan.removeAllItems();
-            jComboBoxEquipmentSerialReserve.removeAllItems();
-            jComboBoxUpdateIdUser.removeAllItems();
-            jComboBoxCreateUserProject.removeAllItems();
-            jComboBoxUpdateUserProject.removeAllItems();
-            jComboBoxUpdateProjectId.removeAllItems();
-
-
-         
-         try{
-            Connection conn= fachada.getConnetion();
-            Statement sentenceProjects = conn.createStatement();
-            Statement sentenceUsers = conn.createStatement();
-            Statement sentenceEquipment = conn.createStatement();
-            String queryProjects = "SELECT * FROM project";
-            String queryUsers = "SELECT * FROM users";
-            String queryEquipment= "SELECT * FROM equipment";
-            ResultSet rsProjects = sentenceProjects.executeQuery(queryProjects);  
-            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
-            ResultSet rsEquipment = sentenceEquipment.executeQuery(queryEquipment);
-            
-            while(rsProjects.next()){
-          
-                this.jComboBoxCreateUserProject.addItem(rsProjects.getString("id_project")+ " "+ rsProjects.getString("name"));      
-                this.jComboBoxUpdateUserProject.addItem(rsProjects.getString("code")+ " "+ rsProjects.getString("name") );  
-                this.jComboBoxUpdateProjectId.addItem(rsProjects.getString("code")+ " "+ rsProjects.getString("name") );  
-            }
-            while(rsUsers.next()){
-
-                this.jComboBoxUpdateIdUser.addItem(rsUsers.getString("identification")+ " "+ rsUsers.getString("name") );      
-               
-            }
-            while(rsEquipment.next()){
-
-                this.jComboBoxUpdateEquipmentSerial.addItem(rsEquipment.getString("serial")+ " "+ rsEquipment.getString("name") );  
-                this.jComboBoxEquipmentSerialLoan.addItem(rsEquipment.getString("serial")+ " "+ rsEquipment.getString("name") );      
-                this.jComboBoxEquipmentSerialReserve.addItem(rsEquipment.getString("serial")+ " "+ rsEquipment.getString("name") );      
-               
-            }
-            
-        }catch(SQLException e){
-            System.out.println("error");
-        }
-
-    } //Metodos que llenan los comboBox  
+//Metodos que llenan los comboBox  
     public void addTypeUser(String categoria){
             
         this.jComboBoxCreateUserType.removeAllItems();
@@ -2385,29 +2366,6 @@ public class InitialInterface extends javax.swing.JFrame {
 
                  
     }
-    
-    //Funcion que me genera un split al comboBox
-    public String splitComboBox(JComboBox change){
-        
-        String positionId = null;
-        String[] id = change.getSelectedItem().toString().split("\n");
-        ArrayList <String> prueba = new ArrayList<>(Arrays.asList(id));
-           
-                 for(int i=0; i<prueba.size(); i++){                    
-                      String codigo[] = prueba.get(i).split(" "); 
-               
-                      positionId = codigo[0];
-
-                      
-                 }
-                 
-                                 System.out.println(positionId);
-
-                 return positionId;          
-        
-    }
-    
-    //Metodos de creado
     public void createProject(){
             
             objCtrlProject = new ProjectController();
@@ -2433,7 +2391,102 @@ public class InitialInterface extends javax.swing.JFrame {
         
         objCtrlEquipment.addEquipment(serial,name,description,state);
         
-    }   
+    }  
+     public void createRequest(){
+        objCtrlRequest = new RequestController();
+        String identification_user="";
+        identification_user=jLabelUserIdentificationGeneral.getText();
+        int id_user=getIdUser(identification_user);
+        String serial_equipment = "";
+        serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
+        int id_equipment=getIdEquipment(serial_equipment);
+        String start_date=getStartDate();
+        String state = "Activo";
+        String end_date=convertDayToString(addDayDate(fecha,7));
+        
+        objCtrlRequest.addRequest(state, id_user, id_equipment, start_date, end_date);
+         
+        
+    }
+    
+    public String getStartDate(){//Obtiene la fecha actual
+        SimpleDateFormat formatDate= new SimpleDateFormat("dd-MM-yyyy");      
+        return formatDate.format(fecha);
+    }
+    
+    public int getIdEquipment(String serial){//Obtiene el id de la secuencia dependiendo del serial del equipo
+        Connection conn= fachada.getConnetion();
+        int id=0;
+            try {
+                Statement sentenceEquipment = conn.createStatement();
+                String queryEquipment= "SELECT id_equipment FROM equipment WHERE serial='"+serial+"';";
+                System.out.print(queryEquipment);
+                ResultSet rsEquipment = sentenceEquipment.executeQuery(queryEquipment);
+                while(rsEquipment.next()){
+                id=rsEquipment.getInt("id_equipment");
+                }
+                System.out.print(id);
+                return id;
+            } catch (SQLException ex) {
+                Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         return 0; 
+    }
+    
+    
+    public int getIdUser(String identification){//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
+        Connection conn= fachada.getConnetion();
+        int id=0;
+            try {
+                Statement sentenceUsers = conn.createStatement();
+                String queryUsers= "SELECT id_user FROM users WHERE identification='"+identification+"';";
+                System.out.print(queryUsers);
+                ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
+                while(rsUsers.next()){
+                id=rsUsers.getInt("id_user");
+                }
+                System.out.print(id);
+                return id;
+            } catch (SQLException ex) {
+                Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         return 0; 
+    }
+    
+    
+    public String convertDayToString(Date date){//Convierte un dato de tipo DATE a un String
+        SimpleDateFormat formatDate= new SimpleDateFormat("dd-MM-yyyy");
+        return formatDate.format(date);
+    }
+    
+     public Date addDayDate(Date date, int days){	
+      Calendar calendar = Calendar.getInstance();	
+      calendar.setTime(date); // Configuramos la fecha que se recibe	
+      calendar.add(Calendar.DAY_OF_YEAR, days);  // numero de días a añadir, o restar en caso de días<0
+      return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos	
+ }
+    
+    
+    //Funcion que me genera un split al comboBox
+    public String splitComboBox(JComboBox change){
+        
+        String positionId = null;
+        String[] id = change.getSelectedItem().toString().split("\n");
+        ArrayList <String> prueba = new ArrayList<>(Arrays.asList(id));
+           
+                 for(int i=0; i<prueba.size(); i++){                    
+                      String codigo[] = prueba.get(i).split(" "); 
+               
+                      positionId = codigo[0];
+
+                      
+                 }
+                 
+                                 System.out.println(positionId);
+
+                 return positionId;          
+        
+    }
     public String generateInitialPassword(){
         
         String identification = jTextFieldIdentificacionCrearUsuario.getText();
@@ -2444,127 +2497,7 @@ public class InitialInterface extends javax.swing.JFrame {
         
         return password;
         
-    } 
-    
-    //Metodos que llenan las tablas
-    public void fillTableUsers(){
-        
-    
-        try{
-            
-            Connection conn= fachada.getConnetion();
-                        System.out.println("error");
-
-            String tableUsers = "SELECT identification , project_id , user_password , name , type , state , email FROM users";
-             
-            PreparedStatement sentenceUsers = conn.prepareStatement(tableUsers);
-                              
-            ResultSet rsUsers = sentenceUsers.executeQuery();  
-
-            ResultSetMetaData rsData =  rsUsers.getMetaData();
-
-            ArrayList< Object[] > data = new ArrayList <>();
-            
-            while(rsUsers.next()){
-
-              Object[] rows = new Object[rsData.getColumnCount()];
-
-              for(int i = 0;  i < rows.length; i++){
-                rows[i] = rsUsers.getObject(i+1);
-            }
-               data.add(rows);
-            }
-               DefaultTableModel tableUser = (DefaultTableModel)this.jTable1.getModel();
-               for(int i =0; i < data.size(); i++){
-
-                   tableUser.addRow(data.get(i));
-
-               }
-        }
-        catch(SQLException e){
-            System.out.println("error2");
-        }
-    }
-    public void fillTableProject(){
-        try{
-            
-            Connection conn= fachada.getConnetion();
-
-            String tableProjects = "SELECT  codigo , nombre , descripcion , estado FROM project";
-             
-            PreparedStatement sentenceProjects = conn.prepareStatement(tableProjects);
-                              
-            ResultSet rsProjects = sentenceProjects.executeQuery(); 
-
-            ResultSetMetaData rsDataProjects =  rsProjects.getMetaData();
-
-            ArrayList< Object[] > data = new ArrayList <>();
-            
-            while(rsProjects.next()){
-
-              Object[] rows = new Object[rsDataProjects.getColumnCount()];
-                          System.out.println("error");
-
-              for(int i = 0;  i < rows.length; i++){
-                rows[i] = rsProjects.getObject(i+1);
-            }
-               data.add(rows);
-            }
-               DefaultTableModel tableUser = (DefaultTableModel)this.jTable2.getModel();
-               for(int i =0; i < data.size(); i++){
-                               System.out.println("error");
-
-                   tableUser.addRow(data.get(i));
-                               System.out.println("error");
-
-               }
-        }
-        catch(SQLException e){
-            System.out.println("error2");
-        }
-    }
-    public void fillTableEquipment(){
-        
-    
-        try{
-            
-            Connection conn= fachada.getConnetion();
-                        System.out.println("error");
-
-            String tableEquipment = "SELECT serial , nombre , descripcion , estado FROM equipment";
-             
-            PreparedStatement sentenceEquipment = conn.prepareStatement(tableEquipment);
-                              
-            ResultSet rsEquipment = sentenceEquipment.executeQuery(); 
-
-            ResultSetMetaData rsDataEquipment =  rsEquipment.getMetaData();
-
-            ArrayList< Object[] > data = new ArrayList <>();
-            
-            while(rsEquipment.next()){
-
-              Object[] rows = new Object[rsDataEquipment.getColumnCount()];
-                          System.out.println("error");
-
-              for(int i = 0;  i < rows.length; i++){
-                rows[i] = rsEquipment.getObject(i+1);
-            }
-               data.add(rows);
-            }
-               DefaultTableModel tableEquipmen = (DefaultTableModel)this.jTable3.getModel();
-               for(int i =0; i < data.size(); i++){
-                               System.out.println("error");
-
-                   tableEquipmen.addRow(data.get(i));
-                               System.out.println("error");
-
-               }
-        }
-        catch(SQLException e){
-            System.out.println("error2");
-        }
-    }
-    
+    }    
     //Meotodos que actualizan     
     public void  updateUser(){
             
@@ -2590,7 +2523,19 @@ public class InitialInterface extends javax.swing.JFrame {
     objCtrlProject.updateProject(updateProject, updateProject, updateDescription, updateState);
     
     }
+    public void  updateEquipment(){
+        
+        objCtrlEquipment = new EquipmentController();
+        String updateSerialEquipment = jComboBoxUpdateEquipmentSerial.getSelectedItem().toString();
+        String updateNameEquipment = jTextFieldNombre5.getText();
+        String updateStateEquipment = jComboBoxUpdateEquipmentState.getSelectedItem().toString();
+        String updateDescriptionEquipment = jTextArea4.getText();
+        
+        objCtrlEquipment.updateEquipment(updateSerialEquipment, updateNameEquipment, updateStateEquipment, updateDescriptionEquipment);
+        
+    }
     
+        
     //Esto aun no implementa  
     private void fillEmptyFields(){
             if (!jTextAreaCrearEquipo.getText().isEmpty()) {
@@ -2752,7 +2697,6 @@ public class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
@@ -2839,6 +2783,7 @@ public class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTipo1;
     private javax.swing.JLabel jLabelTipo2;
     private javax.swing.JLabel jLabelTipo3;
+    private javax.swing.JLabel jLabelUserIdentificationGeneral;
     private javax.swing.JLabel jLabelUsuarios;
     private javax.swing.JLabel jLabelUsuarios1;
     private javax.swing.JLabel jLabelUsuarios10;

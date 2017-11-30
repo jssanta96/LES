@@ -165,12 +165,9 @@ public class LoginInterface extends javax.swing.JFrame {
                 this.setVisible(false);
                 System.out.println("Logeo exitoso");
          }else{
-                             System.out.println("fALLO INTENTE");
+                System.out.println("fALLO INTENTE");
 
          }
-      
-      
-
       
   }
 
