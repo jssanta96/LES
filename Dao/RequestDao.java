@@ -38,6 +38,26 @@ public class RequestDao {
         }
         return -1;
     }
+    
+    
+    
+    public boolean changeStateRequest(int id_request, String state){
+
+        String sql_select;
+        sql_select="UPDATE request SET state='" + state +"' WHERE  id_request="+ id_request +";";
+        try{
+            Connection conn= fachada.getConnetion();
+            System.out.println("Update in the bd");
+            Statement sentencia = conn.createStatement();
+            sentencia.executeUpdate(sql_select);
+            return true;
+
+        }
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e); }
+        return false;
+    }
+    
 
 
 
