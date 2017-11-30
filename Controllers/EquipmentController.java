@@ -1,16 +1,3 @@
-package Controllers;
-
-import Dao.EquipmentDao;
-import Logica.Equipment;
-
-public class EquipmentController {
-
-    EquipmentDao equipmentDao;
-
-    public EquipmentController(){
-        equipmentDao= new EquipmentDao();
-    }
-
     public int addEquipment(String serial, String name, String description, String state){
         Equipment equipment= new Equipment();
 
@@ -47,11 +34,20 @@ public class EquipmentController {
         boolean cheek =equipmentDao.updateEquipment(serial,name,description,state);
         
         if (cheek == true){
-                        System.out.println("Se se actualizao un Usuario");
+                        System.out.println("Se se actualizao un Equipo");
 
         }
-                        System.out.println("error");
 
+    }
+    
+    public void setStateEquipment(int id_equipment,String state){
+        
+        boolean cheek =equipmentDao.changeStateEquipment(id_equipment,state);
+        
+        if (cheek == true){
+                        System.out.println("Se actualizo el estado de un equipo ");
+
+        }
     }
 
     public void deleteEquipment(String serial){
