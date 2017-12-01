@@ -1,15 +1,17 @@
 package Dao;
 
 import Logica.User;
+import Logica.View;
 import Ventanas.InitialInterface;
 import java.sql.*;
 
 public class UserDao {
     FachadaBD fachada;
-
+    View message;
 
     public UserDao(){
         fachada = new FachadaBD();
+        View message = new View();
     }
 
 
@@ -21,27 +23,25 @@ public class UserDao {
         save_sql="INSERT INTO users VALUES(NEXTVAL('users_seq'), '"+ 
                 user.getIdentification()+"',"+user.getProjectId()+",'"+user.getPassword()+"','"
                 +user.getUserName()+"','"+user.getType()+"','"+user.getState()+"','"+user.getEmail()+"');";
-
-        System.out.println( "prueba." + save_sql);
         
     try{
             Connection conn= fachada.getConnetion();
             Statement sentence = conn.createStatement();
 
             numberRows= sentence.executeUpdate(save_sql);
-            System.out.println("up" + numberRows);
             return numberRows;
 
         }catch(SQLException e){
-            System.out.println(e);
+            message.errorConnection();
         }
         catch(Exception e){
-            System.out.println(e);
+            message.errorConnection();
         }
         return -1;
     }
 
     public User viewUser(String identification){
+        
         User user= new User();
         String sql_select;
         sql_select="SELECT identification,project_id,user_password,nickname,name,type,state,email"+
@@ -49,7 +49,6 @@ public class UserDao {
 
         try{
             Connection conn= fachada.getConnetion();
-            System.out.println("consultando en la bd");
             Statement sentence = conn.createStatement();
             ResultSet tabla = sentence.executeQuery(sql_select);
 
@@ -68,16 +67,15 @@ public class UserDao {
 
                 user.setEmail(tabla.getString(7));
 
-                System.out.println("ok");
             }
 
             return user;
         }
         catch(SQLException e){
-            System.out.println(e);
+           message.errorConnection();
         }
         catch(Exception e){
-            System.out.println(e);
+            message.errorConnection();
         }
         return null;
     }
@@ -96,8 +94,8 @@ public class UserDao {
             sentencia.executeUpdate(sql_select);
             return true;
         }
-        catch(SQLException e){ System.out.println(e); }
-        catch(Exception e){ System.out.println(e); }
+        catch(SQLException e){message.errorConnection();}
+        catch(Exception e){message.errorConnection();}
         return false;
     }
 
@@ -139,6 +137,7 @@ public class UserDao {
                         InitialInterface objVentana = new InitialInterface();
                         objVentana.changeLabelIdentification(identification);
                         objVentana.setVisible(true);
+                        objVentana.enableButtons(identification);
                         return true;
                 }
                                
