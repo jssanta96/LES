@@ -29,12 +29,24 @@ public class RequestController {
 
     }
     
+
+    
     public void setStateRequest(int id_request,String state){
         
         boolean cheek =requestDao.changeStateRequest(id_request,state);
         
         if (cheek == true){
                         System.out.println("Se actualizo el estado de un equipo ");
+
+        }
+    }
+    
+    public void renovateRequest(int id_request,String end_date){
+        
+        boolean cheek =requestDao.renovateRequest(id_request,end_date);
+        
+        if (cheek == true){
+                        System.out.println("Se renovo el prestamo de un equipo ");
 
         }
     }

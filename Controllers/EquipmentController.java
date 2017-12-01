@@ -1,3 +1,16 @@
+package Controllers;
+
+import Dao.EquipmentDao;
+import Logica.Equipment;
+
+public class EquipmentController {
+
+    EquipmentDao equipmentDao;
+
+    public EquipmentController(){
+        equipmentDao= new EquipmentDao();
+    }
+
     public int addEquipment(String serial, String name, String description, String state){
         Equipment equipment= new Equipment();
 
