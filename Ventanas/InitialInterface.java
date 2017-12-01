@@ -11,7 +11,7 @@ import Controllers.RequestController;
 import Controllers.UserController;
 import Dao.FachadaBD;
 import java.io.File;
-import Logica.Querys;
+import Dao.Querys;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -38,13 +38,11 @@ public final class InitialInterface extends javax.swing.JFrame {
 
         Date fecha = new Date();
         File fichero;
+        
         public InitialInterface() {//Esto a intej
-            
-            FachadaBD fachada = new FachadaBD();            
-            initComponents(); 
+
+            initComponents();
             fillEmptyFields();
-            addTypeUser("Director");
-            addState("Director");
             hidePanels();           
             jPanelInicio.setVisible(true);           
             this.setLocationRelativeTo(null);
@@ -749,7 +747,6 @@ public final class InitialInterface extends javax.swing.JFrame {
         });
         jPanelCreateUser.add(jTextFieldNombreCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 230, 30));
 
-        jComboBoxCreateUserType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanelCreateUser.add(jComboBoxCreateUserType, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 230, 30));
 
         jButtonBack1.setBackground(new java.awt.Color(102, 0, 0));
@@ -2061,8 +2058,11 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInicioActionPerformed
 
     private void jButtonUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuarioActionPerformed
+
+        
         hidePanels();
         jPanelCRUDUsers.setVisible(true);
+        
     }//GEN-LAST:event_jButtonUsuarioActionPerformed
 
     private void jButtonProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProyectoActionPerformed
@@ -2074,6 +2074,7 @@ public final class InitialInterface extends javax.swing.JFrame {
        
         Querys objQuery = new Querys();
         objQuery.updateComboBoxs(this.jComboBoxCreateUserProject, "SELECT * FROM project" , "id_project" , "name" );
+        objQuery.addTypeUser(jComboBoxCreateUserType, "SELECT type FROM users WHERE identification ='"+jLabelUserIdentificationGeneral.getText() +"'", "type");
         hidePanels();
         jPanelCreateUser.setVisible(true);
         
@@ -2106,6 +2107,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         
         Querys objQuery = new Querys();
         objQuery.updateComboBoxs(this.jComboBoxUpdateProjectId, "SELECT * FROM project" , "code" , "name" );  
+        objQuery.addStateProjectr(jComboBoxUpdateProjectState, "SELECT type FROM users WHERE identification ='"+jLabelUserIdentificationGeneral.getText() +"'", "type");
         hidePanels();
         jPanelUpdateProject.setVisible(true);
     }//GEN-LAST:event_jButtonEquipo2ActionPerformed
@@ -2126,6 +2128,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         
         Querys objQuery = new Querys();
         objQuery.updateComboBoxs(this.jComboBoxUpdateEquipmentSerial, "SELECT * FROM equipment" , "serial" , "name" );
+        objQuery.addStateEquipment(jComboBoxUpdateProjectState, "SELECT type FROM users WHERE identification ='"+jLabelUserIdentificationGeneral.getText() +"'", "type");
         hidePanels();
         jPanelUpdateEquipment.setVisible(true);
     }//GEN-LAST:event_jButtonEquipo3ActionPerformed
@@ -2145,6 +2148,8 @@ public final class InitialInterface extends javax.swing.JFrame {
         Querys objQuery = new Querys();
         objQuery.updateComboBoxs(this.jComboBoxUpdateUserProject, "SELECT * FROM project" , "code" , "name" );
         objQuery.updateComboBoxs(this.jComboBoxUpdateIdUser, "SELECT * FROM users" , "identification" , "name" );
+        objQuery.addTypeUser(jComboBoxUpdateUserType, "SELECT type FROM users WHERE identification ='"+jLabelUserIdentificationGeneral.getText() +"'", "type");
+        objQuery.addStateUser(jComboBoxUpdateUserState, "SELECT type FROM users WHERE identification ='"+jLabelUserIdentificationGeneral.getText() +"'", "type");
         hidePanels();
         jPanelUpdateUser.setVisible(true);
     }//GEN-LAST:event_jButtonEquipo1ActionPerformed
@@ -2456,11 +2461,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelMyProfile.setVisible(false);
     }
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -2488,100 +2489,6 @@ public final class InitialInterface extends javax.swing.JFrame {
         });
     }
 
-//Metodos que llenan los comboBox  
-    public void addTypeUser(String categoria){
-            
-        this.jComboBoxCreateUserType.removeAllItems();
-        this.jComboBoxUpdateUserType.removeAllItems();
-     
-         switch(categoria){
-             
-             
-                 
-             case "Director":
-                    
-                      this.jComboBoxCreateUserType.addItem("Lider de proyecto");
-                      this.jComboBoxCreateUserType.addItem("Administrador");
-                      this.jComboBoxCreateUserType.addItem("Cordinador de equipos");
-                      this.jComboBoxCreateUserType.addItem("Miembro");
-                      
-                      this.jComboBoxUpdateUserType.addItem("Lider de proyecto");
-                      this.jComboBoxUpdateUserType.addItem("Administrador");
-                      this.jComboBoxUpdateUserType.addItem("Cordinador de equipos");
-                      this.jComboBoxUpdateUserType.addItem("Miembro");
-                      
-                      break;
-                      
-            case "Administrador":
-
-                    
-                      this.jComboBoxCreateUserType.addItem("Lider de proyecto");
-                      this.jComboBoxCreateUserType.addItem("Cordinador de equipos");
-                      this.jComboBoxCreateUserType.addItem("Miembro");
-                      
-                      this.jComboBoxUpdateUserType.addItem("Lider de proyecto");
-                      this.jComboBoxUpdateUserType.addItem("Cordinador de equipos");
-                      this.jComboBoxUpdateUserType.addItem("Miembro");
-                      
-                      break;
-                      
-            case "Lider de proyecto":
-                      
-                      this.jComboBoxCreateUserType.addItem("Miembro");
-                      this.jComboBoxUpdateUserType.addItem("Miembro");
-                      break;
-         }
-                 
-    }   
-    public void addState(String categoria){
-            
-        this.jComboBoxUpdateProjectState.removeAllItems();
-        this.jComboBoxUpdateEquipmentState.removeAllItems();
-        this.jComboBoxUpdateUserState.removeAllItems();
-     
-         switch(categoria){
-             
-             
-                 
-             case "Director":
-                    
-                      this.jComboBoxUpdateProjectState.addItem("Activo");
-                      this.jComboBoxUpdateProjectState.addItem("Inactivo");
-                      this.jComboBoxUpdateProjectState.addItem("Terminado");
-
-                      this.jComboBoxUpdateEquipmentState.addItem("Disponible");
-                      this.jComboBoxUpdateEquipmentState.addItem("Ocupado");
-                      
-                      this.jComboBoxUpdateUserState.addItem("Activo");
-                      this.jComboBoxUpdateUserState.addItem("Inactivo");
-
-                      
-                      break;
-                      
-             case "Administrador" : 
-                      this.jComboBoxUpdateUserState.addItem("Activo");
-                      this.jComboBoxUpdateUserState.addItem("Inactivo"); 
-                      
-                      break;
-                      
-            case "Cordinador de equipos":
-
-                      this.jComboBoxUpdateEquipmentState.addItem("Disponible");
-                      this.jComboBoxUpdateEquipmentState.addItem("Ocupado");
-                      
-                      break;
-                      
-            case "Lider de proyecto":
-                      
-                      this.jComboBoxUpdateProjectState.addItem("Activo");
-                      this.jComboBoxUpdateProjectState.addItem("Inactivo");
-                      this.jComboBoxUpdateProjectState.addItem("Terminado");
-
-                      break;
-         }
-                 
-    }
-    //Metodos que crean en la bd
     public void createUser(){
         
         UserController objCtrlUser = new UserController();
@@ -2600,7 +2507,6 @@ public final class InitialInterface extends javax.swing.JFrame {
 
                  
     }
-    
     public void renovateLoan(){
         RequestController objCtrlRequest = new RequestController();
         EquipmentController objCtrlEquipment = new EquipmentController();
@@ -2621,9 +2527,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         
         objCtrlRequest.renovateRequest(id_request, extend_date);
         objCtrlEquipment.setStateEquipment(id_equipment, "Reservado");
-     }
-        
-    
+     }  
     public void createProject(){
             
             ProjectController objCtrlProject =  new ProjectController();
@@ -2648,7 +2552,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         objCtrlEquipment.addEquipment(serial,name,description,state);
         
     }  
-     public void createRequest(){
+    public void createRequest(){
         RequestController objCtrlRequest = new RequestController();
         EquipmentController objCtrlEquipment = new EquipmentController();
         
@@ -2667,7 +2571,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         
     }
      
-     public void createReserve(){
+    public void createReserve(){
         RequestController objCtrlRequest = new RequestController();
         EquipmentController objCtrlEquipment = new EquipmentController();
         
@@ -2685,7 +2589,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         objCtrlEquipment.setStateEquipment(id_equipment, "Reservado");
      }
      
-     public void changeLabelIdentification(String identification){
+    public void changeLabelIdentification(String identification){
          jLabelUserIdentificationGeneral.setText(identification);
      }
     
@@ -2765,7 +2669,7 @@ public final class InitialInterface extends javax.swing.JFrame {
          return 0; 
     }
     
-        public int getIdRequest(int id_user,int id_equipment, String state){//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
+    public int getIdRequest(int id_user,int id_equipment, String state){//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
            
             FachadaBD fachada = new FachadaBD();        
             Connection conn= fachada.getConnetion();
@@ -2829,8 +2733,6 @@ public final class InitialInterface extends javax.swing.JFrame {
       return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos	
  }
     
-    
-    //Funcion que me genera un split al comboBox
     public String splitComboBox(JComboBox change){
         
         String positionId = null;
@@ -2861,7 +2763,6 @@ public final class InitialInterface extends javax.swing.JFrame {
         return password;
         
     }    
-    //Meotodos que actualizan     
     public void  updateUser(){
            
            UserController objCtrlUser = new UserController();
@@ -2899,8 +2800,36 @@ public final class InitialInterface extends javax.swing.JFrame {
         
     }
     
+    public void enableButtons(String identification){
         
-    //Esto aun no implementa  
+        Querys objQuery = new Querys();
+        String query= objQuery.typeUser("SELECT type FROM users WHERE identification ='"+ identification +"'", "type");
+        switch(query){
+      
+                   
+                   
+                case "Lider de proyecto":
+                      
+                    jButtonEquipo.setEnabled(false);
+                    break;
+                    
+                case "Miembro":
+                      
+                    jButtonEquipo.setEnabled(false);
+                    jButtonProyecto.setEnabled(false);
+                    jButtonUsuario.setEnabled(false);
+                    break;
+                    
+                 case "Cordinador de equipos":
+                      
+                    jButtonProyecto.setEnabled(false);
+                    jButtonUsuario.setEnabled(false);
+                    break;
+                       
+                    }
+                 
+    }   
+            
     private void fillEmptyFields(){
             if (!jTextAreaCrearEquipo.getText().isEmpty()) {
                 jTextAreaCrearEquipo.setText("Ingrese una breve descripcion del equipo");}

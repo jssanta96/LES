@@ -8,6 +8,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import Dao.UserDao;
 import Controllers.UserController;
+import Logica.View;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -22,8 +23,10 @@ public class LoginInterface extends javax.swing.JFrame {
      * Creates new form Login
      */
     UserDao daoUser;
+    View message;
     
     public LoginInterface() {
+       
         initComponents();
         this.setTitle("LES");
         this.setLocationRelativeTo(null);
@@ -155,17 +158,16 @@ public class LoginInterface extends javax.swing.JFrame {
   
   public void queryUser(){
       
-
          daoUser = new UserDao();
          
          String identification = textFieldAccount1.getText();
          String password = textFieldPass1.getText();       
          boolean cheek = daoUser.conection(identification, password);
          if(cheek == true){
-                this.setVisible(false);
-                System.out.println("Logeo exitoso");
+                 this.setVisible(false);
+                 message.sucessfulLogin();
          }else{
-                System.out.println("fALLO INTENTE");
+                message.errorLogin();
 
          }
       
