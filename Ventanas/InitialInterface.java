@@ -221,9 +221,10 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabelSolicitud = new javax.swing.JLabel();
         jComboBoxEquipmentSerialLoan = new javax.swing.JComboBox<>();
         jButtonSave7 = new javax.swing.JButton();
-        jButtonReserve1 = new javax.swing.JButton();
+        jButtonListarPrestamos = new javax.swing.JButton();
+        jButtonMultDelete = new javax.swing.JButton();
         jButtonReserve = new javax.swing.JButton();
-        jButtonDeleteMult = new javax.swing.JButton();
+        jButtonRenovate = new javax.swing.JButton();
         jButtonEntregar = new javax.swing.JButton();
         jLabelFondo5 = new javax.swing.JLabel();
         jPanelCRUDEquipment = new javax.swing.JPanel();
@@ -289,6 +290,15 @@ public final class InitialInterface extends javax.swing.JFrame {
         jTable4 = new javax.swing.JTable();
         jButtonBack10 = new javax.swing.JButton();
         jLabelFondo17 = new javax.swing.JLabel();
+        jPanelReserveList = new javax.swing.JPanel();
+        jLabel77 = new javax.swing.JLabel();
+        jLabel78 = new javax.swing.JLabel();
+        jLabel79 = new javax.swing.JLabel();
+        jLabelUsuarios12 = new javax.swing.JLabel();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        jTable10 = new javax.swing.JTable();
+        jButtonBack16 = new javax.swing.JButton();
+        jLabelFondo25 = new javax.swing.JLabel();
         jPanelReportes = new javax.swing.JPanel();
         jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
@@ -369,6 +379,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jTextFieldSetName = new javax.swing.JTextField();
         jTextFieldPassActual1 = new javax.swing.JTextField();
         jLabelPhoto = new javax.swing.JLabel();
+        jButtonSaveProfile = new javax.swing.JButton();
         jButtonLoadPhoto = new javax.swing.JButton();
         jLabelFondo24 = new javax.swing.JLabel();
 
@@ -1119,17 +1130,17 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonSave6ActionPerformed(evt);
             }
         });
-        jPanelReserve.add(jButtonSave6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 100, 30));
+        jPanelReserve.add(jButtonSave6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 100, 30));
 
         jButtonList.setBackground(new java.awt.Color(102, 0, 0));
         jButtonList.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonList.setText("Listar");
+        jButtonList.setText("Listar Reservas");
         jButtonList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonListActionPerformed(evt);
             }
         });
-        jPanelReserve.add(jButtonList, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 90, 30));
+        jPanelReserve.add(jButtonList, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 150, 30));
 
         jButtonBack6.setBackground(new java.awt.Color(102, 0, 0));
         jButtonBack6.setForeground(new java.awt.Color(255, 255, 255));
@@ -1139,7 +1150,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonBack6ActionPerformed(evt);
             }
         });
-        jPanelReserve.add(jButtonBack6, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, 80, 30));
+        jPanelReserve.add(jButtonBack6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 100, 30));
 
         jLabelFondo9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo9.setText("jLabel4");
@@ -1161,7 +1172,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabelSerial.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelSerial.setForeground(new java.awt.Color(102, 102, 102));
         jLabelSerial.setText("SERIAL EQUIPO");
-        jPanelLoan.add(jLabelSerial, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 190, -1, -1));
+        jPanelLoan.add(jLabelSerial, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, -1, -1));
 
         jLabelSolicitud.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabelSolicitud.setForeground(new java.awt.Color(102, 102, 102));
@@ -1169,7 +1180,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelLoan.add(jLabelSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, -1, -1));
 
         jComboBoxEquipmentSerialLoan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanelLoan.add(jComboBoxEquipmentSerialLoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 180, 30));
+        jPanelLoan.add(jComboBoxEquipmentSerialLoan, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 180, 30));
 
         jButtonSave7.setBackground(new java.awt.Color(102, 0, 0));
         jButtonSave7.setForeground(new java.awt.Color(255, 255, 255));
@@ -1179,17 +1190,27 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonSave7ActionPerformed(evt);
             }
         });
-        jPanelLoan.add(jButtonSave7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 100, 30));
+        jPanelLoan.add(jButtonSave7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 120, 30));
 
-        jButtonReserve1.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonReserve1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonReserve1.setText("Eliminar Multa");
-        jButtonReserve1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonListarPrestamos.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonListarPrestamos.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonListarPrestamos.setText("Listar Prestamos");
+        jButtonListarPrestamos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonReserve1ActionPerformed(evt);
+                jButtonListarPrestamosActionPerformed(evt);
             }
         });
-        jPanelLoan.add(jButtonReserve1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 350, 120, 30));
+        jPanelLoan.add(jButtonListarPrestamos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 310, 160, 30));
+
+        jButtonMultDelete.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonMultDelete.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonMultDelete.setText("Eliminar Multa");
+        jButtonMultDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMultDeleteActionPerformed(evt);
+            }
+        });
+        jPanelLoan.add(jButtonMultDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 160, 30));
 
         jButtonReserve.setBackground(new java.awt.Color(102, 0, 0));
         jButtonReserve.setForeground(new java.awt.Color(255, 255, 255));
@@ -1199,17 +1220,17 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonReserveActionPerformed(evt);
             }
         });
-        jPanelLoan.add(jButtonReserve, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 270, 90, 30));
+        jPanelLoan.add(jButtonReserve, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 120, 30));
 
-        jButtonDeleteMult.setBackground(new java.awt.Color(102, 0, 0));
-        jButtonDeleteMult.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonDeleteMult.setText("Renovar");
-        jButtonDeleteMult.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRenovate.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonRenovate.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonRenovate.setText("Renovar");
+        jButtonRenovate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonDeleteMultActionPerformed(evt);
+                jButtonRenovateActionPerformed(evt);
             }
         });
-        jPanelLoan.add(jButtonDeleteMult, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 230, 90, 30));
+        jPanelLoan.add(jButtonRenovate, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 120, 30));
 
         jButtonEntregar.setBackground(new java.awt.Color(102, 0, 0));
         jButtonEntregar.setForeground(new java.awt.Color(255, 255, 255));
@@ -1219,7 +1240,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonEntregarActionPerformed(evt);
             }
         });
-        jPanelLoan.add(jButtonEntregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 100, 30));
+        jPanelLoan.add(jButtonEntregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 120, 30));
 
         jLabelFondo5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo5.setText("jLabel4");
@@ -1536,10 +1557,7 @@ public final class InitialInterface extends javax.swing.JFrame {
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "Usuario", "Equipo", "FechaInicio", "FechaEntrega", "Estado"
@@ -1564,6 +1582,50 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelLoanList.add(jLabelFondo17, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 430));
 
         getContentPane().add(jPanelLoanList, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 560, 430));
+
+        jPanelReserveList.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel77.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLabPeq.png"))); // NOI18N
+        jPanelReserveList.add(jLabel77, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+
+        jLabel78.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoUnivallePeq.png"))); // NOI18N
+        jPanelReserveList.add(jLabel78, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel79.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
+        jPanelReserveList.add(jLabel79, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
+
+        jLabelUsuarios12.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabelUsuarios12.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelUsuarios12.setText("LISTA RESERVAS");
+        jPanelReserveList.add(jLabelUsuarios12, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, 30));
+
+        jTable10.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Usuario", "Equipo", "FechaInicio", "FechaEntrega", "Estado"
+            }
+        ));
+        jScrollPane14.setViewportView(jTable10);
+
+        jPanelReserveList.add(jScrollPane14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 480, 200));
+
+        jButtonBack16.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonBack16.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonBack16.setText("Volver");
+        jButtonBack16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBack16ActionPerformed(evt);
+            }
+        });
+        jPanelReserveList.add(jButtonBack16, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 90, 30));
+
+        jLabelFondo25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
+        jLabelFondo25.setText("jLabel4");
+        jPanelReserveList.add(jLabelFondo25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 430));
+
+        getContentPane().add(jPanelReserveList, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 560, 430));
 
         jPanelReportes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1932,6 +1994,12 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabelPassNew3.setText("CONFIRMAR");
         jPanelMyProfile.add(jLabelPassNew3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
         jPanelMyProfile.add(jTextFieldPassActual2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 210, 30));
+
+        jTextFieldPassActual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPassActualActionPerformed(evt);
+            }
+        });
         jPanelMyProfile.add(jTextFieldPassActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 210, 30));
         jPanelMyProfile.add(jTextFieldSetEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 210, 30));
         jPanelMyProfile.add(jTextFieldSetName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 210, 30));
@@ -1939,6 +2007,16 @@ public final class InitialInterface extends javax.swing.JFrame {
 
         jLabelPhoto.setText("Foto");
         jPanelMyProfile.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 140, 140));
+
+        jButtonSaveProfile.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonSaveProfile.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSaveProfile.setText("Guardar");
+        jButtonSaveProfile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveProfileActionPerformed(evt);
+            }
+        });
+        jPanelMyProfile.add(jButtonSaveProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 100, 30));
 
         jButtonLoadPhoto.setBackground(new java.awt.Color(102, 0, 0));
         jButtonLoadPhoto.setForeground(new java.awt.Color(255, 255, 255));
@@ -2159,15 +2237,18 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack5ActionPerformed
 
     private void jButtonSave6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave6ActionPerformed
-        JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia:"+getReserveDate()+"hasta: "+convertDayToString(addDayDate(convertStringToDate(getReserveDate()),7))
-                + "\nsi no lo entrega antes de la fecha se le empezata a cobrar 5000(COP) por cada dia de atraso", 
+        JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia: "+getReserveDate()+" hasta: "+convertDayToString(addDayDate(convertStringToDate(getReserveDate()),7))
+                + "\n si no lo entrega antes de la fecha se le empezata a cobrar 5000(COP) por cada dia de atraso", 
                 "PRESTAMO DE EQUIPO", JOptionPane.WARNING_MESSAGE);
+        createReserve();
         
     }//GEN-LAST:event_jButtonSave6ActionPerformed
 
     private void jButtonListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListActionPerformed
+        Querys objQuery = new Querys();
+        objQuery.fillTables(this.jTable10 , "SELECT id_user , id_equipment , start_date , end_date , state FROM request WHERE state='Reserva'");
         hidePanels();
-        jPanelLoanList.setVisible(true);
+        jPanelReserveList.setVisible(true);
     }//GEN-LAST:event_jButtonListActionPerformed
 
     private void jButtonBack6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack6ActionPerformed
@@ -2207,7 +2288,7 @@ public final class InitialInterface extends javax.swing.JFrame {
 
     private void jButtonBack10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack10ActionPerformed
         hidePanels();
-        jPanelReserve.setVisible(true);
+        jPanelLoan.setVisible(true);
     }//GEN-LAST:event_jButtonBack10ActionPerformed
 
     private void jButtonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportesActionPerformed
@@ -2265,19 +2346,24 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelReportes.setVisible(true);
     }//GEN-LAST:event_jButtonBack15ActionPerformed
 
-    private void jButtonReserve1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReserve1ActionPerformed
+    private void jButtonMultDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultDeleteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonReserve1ActionPerformed
+    }//GEN-LAST:event_jButtonMultDeleteActionPerformed
 
     private void jButtonEntregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntregarActionPerformed
-        int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea entregar el equipo: 'NombreEquipo?", "ENTREGA DE EQUIPO", JOptionPane.YES_NO_OPTION);
-             deliverEquipment();
+        int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea entregar el equipo:"+jComboBoxEquipmentSerialLoan.getSelectedItem().toString(), "ENTREGA DE EQUIPO", JOptionPane.YES_NO_OPTION);
+        if(JOptionPane.YES_OPTION==resp){
+            deliverEquipment();
+        }
             
     }//GEN-LAST:event_jButtonEntregarActionPerformed
 
-    private void jButtonDeleteMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteMultActionPerformed
-        int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea renovar el prestamo  del equipo: 'NombreEquipo?", "RENOVAR PRESTAMO DE EQUIPO", JOptionPane.YES_NO_OPTION);
-    }//GEN-LAST:event_jButtonDeleteMultActionPerformed
+    private void jButtonRenovateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenovateActionPerformed
+        int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea renovar el prestamo  del equipo: "+jComboBoxEquipmentSerialLoan.getSelectedItem().toString(), "RENOVAR PRESTAMO DE EQUIPO", JOptionPane.YES_NO_OPTION);
+        if(JOptionPane.YES_OPTION==resp){
+            renovateLoan();
+        }
+    }//GEN-LAST:event_jButtonRenovateActionPerformed
 
     private void jButtonLoadPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoadPhotoActionPerformed
          int result;
@@ -2305,6 +2391,26 @@ public final class InitialInterface extends javax.swing.JFrame {
          
         
     }//GEN-LAST:event_jButtonLoadPhotoActionPerformed
+
+    private void jTextFieldPassActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPassActualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPassActualActionPerformed
+
+    private void jButtonSaveProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveProfileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSaveProfileActionPerformed
+
+    private void jButtonListarPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarPrestamosActionPerformed
+        Querys objQuery = new Querys();
+        objQuery.fillTables(this.jTable4 , "SELECT id_user , id_equipment , start_date , end_date , state FROM request WHERE state='Activo'");
+        hidePanels();
+        jPanelLoanList.setVisible(true);
+    }//GEN-LAST:event_jButtonListarPrestamosActionPerformed
+
+    private void jButtonBack16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack16ActionPerformed
+        hidePanels();
+        jPanelReserve.setVisible(true);
+    }//GEN-LAST:event_jButtonBack16ActionPerformed
 
     private void emptyText(){
         jTextAreaCrearEquipo.setText("");
@@ -2340,6 +2446,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelProjectsList.setVisible(false);
         jPanelEquipmentList.setVisible(false);
         jPanelLoanList.setVisible(false);
+        jPanelReserveList.setVisible(false);
         jPanelReportes.setVisible(false);
         jPanelLoanXProjectList.setVisible(false);
         jPanelLoanXMonthList.setVisible(false);
@@ -2493,6 +2600,30 @@ public final class InitialInterface extends javax.swing.JFrame {
 
                  
     }
+    
+    public void renovateLoan(){
+        RequestController objCtrlRequest = new RequestController();
+        EquipmentController objCtrlEquipment = new EquipmentController();
+        
+        String identification_user="";
+        identification_user=jLabelUserIdentificationGeneral.getText();
+        int id_user=getIdUser(identification_user);
+        String serial_equipment = "";
+        serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
+        int id_equipment=getIdEquipment(serial_equipment);
+        int id_request=0;
+        id_request=getIdRequest(id_user,id_equipment,"Activo");
+        Date end_date;
+        end_date=convertStringToDate(getEndDate(id_request));
+        String extend_date=convertDayToString(addDayDate(end_date,7));
+        
+        System.out.println(extend_date);
+        
+        objCtrlRequest.renovateRequest(id_request, extend_date);
+        objCtrlEquipment.setStateEquipment(id_equipment, "Reservado");
+     }
+        
+    
     public void createProject(){
             
             ProjectController objCtrlProject =  new ProjectController();
@@ -2544,7 +2675,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         identification_user=jLabelUserIdentificationGeneral.getText();
         int id_user=getIdUser(identification_user);
         String serial_equipment = "";
-        serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
+        serial_equipment = splitComboBox(jComboBoxEquipmentSerialReserve);
         int id_equipment=getIdEquipment(serial_equipment);
         String start_date=getReserveDate();
         String state = "Reserva";
@@ -2560,8 +2691,26 @@ public final class InitialInterface extends javax.swing.JFrame {
     
     public String getStartDate(){//Obtiene la fecha actual
         SimpleDateFormat formatDate= new SimpleDateFormat("dd-MM-yyyy");
-        System.out.print(fecha.toString());
         return formatDate.format(fecha);
+    }
+    
+    public String getEndDate(int id_request){
+        FachadaBD fachada = new FachadaBD();        
+        Connection conn= fachada.getConnetion();
+        String end_date="";
+            try {
+                Statement sentenceRequest = conn.createStatement();
+                String queryRequest= "SELECT end_date FROM request WHERE id_request="+id_request+";";
+                System.out.print(queryRequest);
+                ResultSet rsRequest = sentenceRequest.executeQuery(queryRequest);
+                while(rsRequest.next()){
+                end_date=rsRequest.getString("end_date");
+                }
+                return end_date;
+            } catch (SQLException ex) {
+                Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         return null; 
     }
     
     public String getReserveDate(){
@@ -2589,7 +2738,6 @@ public final class InitialInterface extends javax.swing.JFrame {
                 while(rsEquipment.next()){
                 id=rsEquipment.getInt("id_equipment");
                 }
-                System.out.print(id);
                 return id;
             } catch (SQLException ex) {
                 Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
@@ -2606,12 +2754,10 @@ public final class InitialInterface extends javax.swing.JFrame {
             try {
                 Statement sentenceUsers = conn.createStatement();
                 String queryUsers= "SELECT id_user FROM users WHERE identification='"+identification+"';";
-                System.out.print(queryUsers);
                 ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
                 while(rsUsers.next()){
                 id=rsUsers.getInt("id_user");
                 }
-                System.out.print(id);
                 return id;
             } catch (SQLException ex) {
                 Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
@@ -2627,12 +2773,11 @@ public final class InitialInterface extends javax.swing.JFrame {
             try {
                 Statement sentenceRequest = conn.createStatement();
                 String queryRequest= "SELECT id_request FROM request WHERE id_user="+id_user+" AND id_equipment="+id_equipment+"AND state='"+state+"';";
-                System.out.print(queryRequest);
                 ResultSet rsRequest = sentenceRequest.executeQuery(queryRequest);
                 while(rsRequest.next()){
                 id=rsRequest.getInt("id_request");
                 }
-                System.out.print(id);
+                System.out.println(id);
                 return id;
             } catch (SQLException ex) {
                 Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
@@ -2667,14 +2812,14 @@ public final class InitialInterface extends javax.swing.JFrame {
     public Date convertStringToDate(String date){
         System.out.print(date);
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
-        Date reserveDate=null;
+        Date dateConvert=null;
         try{
-            reserveDate=format.parse(date);
+            dateConvert=format.parse(date);
         }catch(ParseException ex){
             ex.printStackTrace();
         }
-        System.out.print(reserveDate.toString());
-        return reserveDate;
+        System.out.print(dateConvert.toString());
+        return dateConvert;
     }
     
      public Date addDayDate(Date date, int days){	
@@ -2798,6 +2943,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack13;
     private javax.swing.JButton jButtonBack14;
     private javax.swing.JButton jButtonBack15;
+    private javax.swing.JButton jButtonBack16;
     private javax.swing.JButton jButtonBack2;
     private javax.swing.JButton jButtonBack3;
     private javax.swing.JButton jButtonBack4;
@@ -2806,7 +2952,6 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack7;
     private javax.swing.JButton jButtonBack8;
     private javax.swing.JButton jButtonBack9;
-    private javax.swing.JButton jButtonDeleteMult;
     private javax.swing.JButton jButtonEntregar;
     private javax.swing.JButton jButtonEquipo;
     private javax.swing.JButton jButtonEquipo1;
@@ -2815,7 +2960,9 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonInfo;
     private javax.swing.JButton jButtonInicio;
     private javax.swing.JButton jButtonList;
+    private javax.swing.JButton jButtonListarPrestamos;
     private javax.swing.JButton jButtonLoadPhoto;
+    private javax.swing.JButton jButtonMultDelete;
     private javax.swing.JButton jButtonMultasXMes;
     private javax.swing.JButton jButtonOverwrite;
     private javax.swing.JButton jButtonOverwrite1;
@@ -2828,13 +2975,13 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonProyecto1;
     private javax.swing.JButton jButtonProyecto2;
     private javax.swing.JButton jButtonProyecto3;
+    private javax.swing.JButton jButtonRenovate;
     private javax.swing.JButton jButtonReportMultxMiembro;
     private javax.swing.JButton jButtonReportPrestxProject;
     private javax.swing.JButton jButtonReportPresxMes;
     private javax.swing.JButton jButtonReportPresxMiembros;
     private javax.swing.JButton jButtonReportes;
     private javax.swing.JButton jButtonReserve;
-    private javax.swing.JButton jButtonReserve1;
     private javax.swing.JButton jButtonSave;
     private javax.swing.JButton jButtonSave1;
     private javax.swing.JButton jButtonSave2;
@@ -2843,6 +2990,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSave5;
     private javax.swing.JButton jButtonSave6;
     private javax.swing.JButton jButtonSave7;
+    private javax.swing.JButton jButtonSaveProfile;
     private javax.swing.JButton jButtonSolicitud;
     private javax.swing.JButton jButtonUsuario;
     private javax.swing.JButton jButtonUsuario1;
@@ -2936,6 +3084,9 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel74;
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelBienvenido;
@@ -2973,6 +3124,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFondo22;
     private javax.swing.JLabel jLabelFondo23;
     private javax.swing.JLabel jLabelFondo24;
+    private javax.swing.JLabel jLabelFondo25;
     private javax.swing.JLabel jLabelFondo3;
     private javax.swing.JLabel jLabelFondo4;
     private javax.swing.JLabel jLabelFondo5;
@@ -3022,6 +3174,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelUsuarios1;
     private javax.swing.JLabel jLabelUsuarios10;
     private javax.swing.JLabel jLabelUsuarios11;
+    private javax.swing.JLabel jLabelUsuarios12;
     private javax.swing.JLabel jLabelUsuarios2;
     private javax.swing.JLabel jLabelUsuarios3;
     private javax.swing.JLabel jLabelUsuarios4;
@@ -3053,6 +3206,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelProjectsList;
     private javax.swing.JPanel jPanelReportes;
     private javax.swing.JPanel jPanelReserve;
+    private javax.swing.JPanel jPanelReserveList;
     private javax.swing.JPanel jPanelUpdateEquipment;
     private javax.swing.JPanel jPanelUpdateProject;
     private javax.swing.JPanel jPanelUpdateUser;
@@ -3064,6 +3218,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -3076,6 +3231,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinnerDia;
     private javax.swing.JSpinner jSpinnerMes;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable10;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
