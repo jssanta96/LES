@@ -10,13 +10,14 @@ import Controllers.ProjectController;
 import Controllers.RequestController;
 import Controllers.UserController;
 import Dao.FachadaBD;
+import java.io.File;
 import Logica.Querys;
+import java.awt.Image;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,26 +25,22 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import static javax.swing.UIManager.get;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
-public class InitialInterface extends javax.swing.JFrame {
 
-        FachadaBD fachada;
-        UserController objCtrlUser;
-        ProjectController objCtrlProject;
-        EquipmentController objCtrlEquipment;
-        Querys objQuery;
-        RequestController objCtrlRequest;
+public final class InitialInterface extends javax.swing.JFrame {
+
         Date fecha = new Date();
+        File fichero;
         public InitialInterface() {//Esto a intej
             
-            fachada = new FachadaBD();            
+            FachadaBD fachada = new FachadaBD();            
             initComponents(); 
             fillEmptyFields();
             addTypeUser("Director");
@@ -55,7 +52,7 @@ public class InitialInterface extends javax.swing.JFrame {
         }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jRadioButton1 = new javax.swing.JRadioButton();
@@ -353,6 +350,27 @@ public class InitialInterface extends javax.swing.JFrame {
         jButtonBack15 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jLabelFondo23 = new javax.swing.JLabel();
+        jPanelMyProfile = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel75 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
+        jLabelName = new javax.swing.JLabel();
+        jLabelPerfil = new javax.swing.JLabel();
+        jLabelPassActual1 = new javax.swing.JLabel();
+        jLabelPassActual = new javax.swing.JLabel();
+        jLabelPassNew = new javax.swing.JLabel();
+        jLabelPassNew2 = new javax.swing.JLabel();
+        jLabelEmailLb = new javax.swing.JLabel();
+        jLabelPassNew1 = new javax.swing.JLabel();
+        jLabelPassNew3 = new javax.swing.JLabel();
+        jTextFieldPassActual2 = new javax.swing.JTextField();
+        jTextFieldPassActual = new javax.swing.JTextField();
+        jTextFieldSetEmail = new javax.swing.JTextField();
+        jTextFieldSetName = new javax.swing.JTextField();
+        jTextFieldPassActual1 = new javax.swing.JTextField();
+        jLabelPhoto = new javax.swing.JLabel();
+        jButtonLoadPhoto = new javax.swing.JButton();
+        jLabelFondo24 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -1858,323 +1876,435 @@ public class InitialInterface extends javax.swing.JFrame {
 
         getContentPane().add(jPanelMultXMonthList, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 560, 430));
 
-        pack();
-    }// </editor-fold>                        
+        jPanelMyProfile.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-    private void jButtonInfoActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLabPeq.png"))); // NOI18N
+        jPanelMyProfile.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+
+        jLabel75.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoUnivallePeq.png"))); // NOI18N
+        jPanelMyProfile.add(jLabel75, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel76.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
+        jPanelMyProfile.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
+
+        jLabelName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelName.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelName.setText("NOMBRE");
+        jPanelMyProfile.add(jLabelName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
+
+        jLabelPerfil.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabelPerfil.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelPerfil.setText("PERFIL");
+        jPanelMyProfile.add(jLabelPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, -1));
+
+        jLabelPassActual1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelPassActual1.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelPassActual1.setText("ACTUAL");
+        jPanelMyProfile.add(jLabelPassActual1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, -1));
+
+        jLabelPassActual.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelPassActual.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelPassActual.setText("CONTRASEÑA");
+        jPanelMyProfile.add(jLabelPassActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+
+        jLabelPassNew.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelPassNew.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelPassNew.setText("NUEVA");
+        jPanelMyProfile.add(jLabelPassNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+
+        jLabelPassNew2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelPassNew2.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelPassNew2.setText("CONTRASEÑA");
+        jPanelMyProfile.add(jLabelPassNew2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+
+        jLabelEmailLb.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelEmailLb.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelEmailLb.setText("EMAIL");
+        jPanelMyProfile.add(jLabelEmailLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+
+        jLabelPassNew1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelPassNew1.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelPassNew1.setText("CONTRASEÑA");
+        jPanelMyProfile.add(jLabelPassNew1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+
+        jLabelPassNew3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelPassNew3.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelPassNew3.setText("CONFIRMAR");
+        jPanelMyProfile.add(jLabelPassNew3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
+        jPanelMyProfile.add(jTextFieldPassActual2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 210, 30));
+        jPanelMyProfile.add(jTextFieldPassActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 210, 30));
+        jPanelMyProfile.add(jTextFieldSetEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 210, 30));
+        jPanelMyProfile.add(jTextFieldSetName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 210, 30));
+        jPanelMyProfile.add(jTextFieldPassActual1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 210, 30));
+
+        jLabelPhoto.setText("Foto");
+        jPanelMyProfile.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 140, 140));
+
+        jButtonLoadPhoto.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonLoadPhoto.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonLoadPhoto.setText("Cargar Foto");
+        jButtonLoadPhoto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLoadPhotoActionPerformed(evt);
+            }
+        });
+        jPanelMyProfile.add(jButtonLoadPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 130, 30));
+
+        jLabelFondo24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
+        jLabelFondo24.setText("jLabel4");
+        jPanelMyProfile.add(jLabelFondo24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 430));
+
+        getContentPane().add(jPanelMyProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 560, 430));
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoActionPerformed
         hidePanels();
         jPanelContactUs.setVisible(true);
-    }                                           
+    }//GEN-LAST:event_jButtonInfoActionPerformed
 
-    private void jButtonPerfilActionPerformed(java.awt.event.ActionEvent evt) {                                              
-    }                                             
+    private void jButtonPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPerfilActionPerformed
+        hidePanels();
+        jPanelMyProfile.setVisible(true);
 
-    private void jButtonSolicitudActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        objQuery = new Querys();
+    }//GEN-LAST:event_jButtonPerfilActionPerformed
+
+    private void jButtonSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSolicitudActionPerformed
+        Querys objQuery = new Querys();
         objQuery.updateComboBoxs(this.jComboBoxEquipmentSerialLoan, "SELECT * FROM equipment" , "serial" , "name" );
         hidePanels();
         jPanelLoan.setVisible(true);
-    }                                                
+    }//GEN-LAST:event_jButtonSolicitudActionPerformed
 
-    private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void jButtonInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicioActionPerformed
         hidePanels();
         jPanelInicio.setVisible(true);
-    }                                             
+    }//GEN-LAST:event_jButtonInicioActionPerformed
 
-    private void jButtonUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void jButtonUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuarioActionPerformed
         hidePanels();
         jPanelCRUDUsers.setVisible(true);
-    }                                              
+    }//GEN-LAST:event_jButtonUsuarioActionPerformed
 
-    private void jButtonProyectoActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    private void jButtonProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProyectoActionPerformed
         hidePanels();
         jPanelCRUDProjects.setVisible(true);
-    }                                               
+    }//GEN-LAST:event_jButtonProyectoActionPerformed
 
-    private void jButtonProyecto1ActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+    private void jButtonProyecto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProyecto1ActionPerformed
        
-        objQuery = new Querys();
+        Querys objQuery = new Querys();
         objQuery.updateComboBoxs(this.jComboBoxCreateUserProject, "SELECT * FROM project" , "id_project" , "name" );
         hidePanels();
         jPanelCreateUser.setVisible(true);
         
-    }                                                
+    }//GEN-LAST:event_jButtonProyecto1ActionPerformed
 
-    private void jButtonUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    private void jButtonUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuario1ActionPerformed
         
-        objQuery = new Querys();
+        Querys objQuery = new Querys();
         objQuery.fillTables(this.jTable1 , "SELECT identification , project_id , user_password , name , type , state , email FROM users");
         hidePanels();
         jPanelUsersList.setVisible(true);
         
-    }                                               
+    }//GEN-LAST:event_jButtonUsuario1ActionPerformed
 
-    private void jButtonProyecto2ActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+    private void jButtonProyecto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProyecto2ActionPerformed
         
         hidePanels();
         jPanelCreateProject.setVisible(true);
-    }                                                
+    }//GEN-LAST:event_jButtonProyecto2ActionPerformed
 
-    private void jButtonUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    private void jButtonUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuario2ActionPerformed
        
-        objQuery = new Querys();
+        Querys objQuery = new Querys();
         objQuery.fillTables(this.jTable2 , "SELECT  code , name , description , state FROM project");
         hidePanels();
         jPanelProjectsList.setVisible(true);
-    }                                               
+    }//GEN-LAST:event_jButtonUsuario2ActionPerformed
 
-    private void jButtonEquipo2ActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void jButtonEquipo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipo2ActionPerformed
         
-        objQuery = new Querys();
+        Querys objQuery = new Querys();
         objQuery.updateComboBoxs(this.jComboBoxUpdateProjectId, "SELECT * FROM project" , "code" , "name" );  
         hidePanels();
         jPanelUpdateProject.setVisible(true);
-    }                                              
+    }//GEN-LAST:event_jButtonEquipo2ActionPerformed
 
-    private void jButtonProyecto3ActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+    private void jButtonProyecto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProyecto3ActionPerformed
         hidePanels();
         jPanelCreateEquipment.setVisible(true);
-    }                                                
+    }//GEN-LAST:event_jButtonProyecto3ActionPerformed
 
-    private void jButtonUsuario3ActionPerformed(java.awt.event.ActionEvent evt) {                                                
-        objQuery = new Querys();
+    private void jButtonUsuario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuario3ActionPerformed
+        Querys objQuery = new Querys();
         objQuery.fillTables(this.jTable3 , "SELECT serial , name , description , state FROM equipment");
         hidePanels();
         jPanelEquipmentList.setVisible(true);
-    }                                               
+    }//GEN-LAST:event_jButtonUsuario3ActionPerformed
 
-    private void jButtonEquipo3ActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        objQuery = new Querys();
+    private void jButtonEquipo3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipo3ActionPerformed
+        
+        Querys objQuery = new Querys();
         objQuery.updateComboBoxs(this.jComboBoxUpdateEquipmentSerial, "SELECT * FROM equipment" , "serial" , "name" );
         hidePanels();
         jPanelUpdateEquipment.setVisible(true);
-    }                                              
+    }//GEN-LAST:event_jButtonEquipo3ActionPerformed
 
-    private void jButtonEquipoActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void jButtonEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipoActionPerformed
         hidePanels();
         jPanelCRUDEquipment.setVisible(true);
         // TODO add your handling code here:
-    }                                             
+    }//GEN-LAST:event_jButtonEquipoActionPerformed
 
-    private void jTextFieldNombreCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                                             
+    private void jTextFieldNombreCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreCrearUsuarioActionPerformed
 
-    }                                                            
+    }//GEN-LAST:event_jTextFieldNombreCrearUsuarioActionPerformed
 
-    private void jButtonEquipo1ActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void jButtonEquipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipo1ActionPerformed
        
-        objQuery = new Querys();
+        Querys objQuery = new Querys();
         objQuery.updateComboBoxs(this.jComboBoxUpdateUserProject, "SELECT * FROM project" , "code" , "name" );
         objQuery.updateComboBoxs(this.jComboBoxUpdateIdUser, "SELECT * FROM users" , "identification" , "name" );
         hidePanels();
         jPanelUpdateUser.setVisible(true);
-    }                                              
+    }//GEN-LAST:event_jButtonEquipo1ActionPerformed
 
-    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
    int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar los cambios del Equipo?", "ACTUALIZAR INFORMACION DE EQUIPO", JOptionPane.YES_NO_OPTION);
-    }                                           
+    }//GEN-LAST:event_jButtonSaveActionPerformed
 
-    private void jButtonOverwriteActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+    private void jButtonOverwriteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverwriteActionPerformed
         emptyText();
-    }                                                
+    }//GEN-LAST:event_jButtonOverwriteActionPerformed
 
-    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         hidePanels();
         jPanelCRUDEquipment.setVisible(true);
-    }                                           
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
-    private void jButtonBack1ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jButtonBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack1ActionPerformed
         hidePanels();
         jPanelCRUDUsers.setVisible(true);
-    }                                            
+    }//GEN-LAST:event_jButtonBack1ActionPerformed
 
-    private void jButtonOverwrite1ActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    private void jButtonOverwrite1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverwrite1ActionPerformed
         emptyText();
-    }                                                 
+    }//GEN-LAST:event_jButtonOverwrite1ActionPerformed
 
-    private void jButtonSave1ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jButtonSave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave1ActionPerformed
         createUser();
-    }                                            
+    }//GEN-LAST:event_jButtonSave1ActionPerformed
 
-    private void jButtonSave2ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jButtonSave2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave2ActionPerformed
         createEquipment();
-    }                                            
+    }//GEN-LAST:event_jButtonSave2ActionPerformed
 
-    private void jButtonOverwrite2ActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    private void jButtonOverwrite2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverwrite2ActionPerformed
         emptyText();
-    }                                                 
+    }//GEN-LAST:event_jButtonOverwrite2ActionPerformed
 
-    private void jButtonBack2ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jButtonBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack2ActionPerformed
        hidePanels();
         jPanelCRUDEquipment.setVisible(true);
-    }                                            
+    }//GEN-LAST:event_jButtonBack2ActionPerformed
 
-    private void jButtonSave3ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jButtonSave3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave3ActionPerformed
         createProject();
-    }                                            
+    }//GEN-LAST:event_jButtonSave3ActionPerformed
 
-    private void jButtonOverwrite3ActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    private void jButtonOverwrite3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverwrite3ActionPerformed
         emptyText();
-    }                                                 
+    }//GEN-LAST:event_jButtonOverwrite3ActionPerformed
 
-    private void jButtonBack3ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jButtonBack3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack3ActionPerformed
        hidePanels();
         jPanelCRUDProjects.setVisible(true);
-    }                                            
+    }//GEN-LAST:event_jButtonBack3ActionPerformed
 
-    private void jButtonSave4ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jButtonSave4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave4ActionPerformed
         updateProject();
-    }                                            
+    }//GEN-LAST:event_jButtonSave4ActionPerformed
 
-    private void jButtonOverwrite4ActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    private void jButtonOverwrite4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverwrite4ActionPerformed
         emptyText();
-    }                                                 
+    }//GEN-LAST:event_jButtonOverwrite4ActionPerformed
 
-    private void jButtonBack4ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jButtonBack4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack4ActionPerformed
         hidePanels(); 
         jPanelCRUDProjects.setVisible(true);
-    }                                            
+    }//GEN-LAST:event_jButtonBack4ActionPerformed
 
-    private void jTextFieldNombre3ActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    private void jTextFieldNombre3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombre3ActionPerformed
 
-    }                                                 
+    }//GEN-LAST:event_jTextFieldNombre3ActionPerformed
 
-    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    private void jPasswordField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField2ActionPerformed
         // TODO add your handling code here:
-    }                                               
+    }//GEN-LAST:event_jPasswordField2ActionPerformed
 
-    private void jButtonSave5ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jButtonSave5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave5ActionPerformed
         // TODO add your handling code here:
                 updateUser();
-    }                                            
+    }//GEN-LAST:event_jButtonSave5ActionPerformed
 
-    private void jButtonOverwrite5ActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    private void jButtonOverwrite5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverwrite5ActionPerformed
         emptyText();
-    }                                                 
+    }//GEN-LAST:event_jButtonOverwrite5ActionPerformed
 
-    private void jButtonBack5ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jButtonBack5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack5ActionPerformed
         hidePanels();
         jPanelCRUDUsers.setVisible(true);
-    }                                            
+    }//GEN-LAST:event_jButtonBack5ActionPerformed
 
-    private void jButtonSave6ActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia: FECHA INICIO hasta DD/MM/AA, "
+    private void jButtonSave6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave6ActionPerformed
+        JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia:"+getReserveDate()+"hasta: "+convertDayToString(addDayDate(convertStringToDate(getReserveDate()),7))
                 + "\nsi no lo entrega antes de la fecha se le empezata a cobrar 5000(COP) por cada dia de atraso", 
                 "PRESTAMO DE EQUIPO", JOptionPane.WARNING_MESSAGE);
-    }                                            
+        
+    }//GEN-LAST:event_jButtonSave6ActionPerformed
 
-    private void jButtonListActionPerformed(java.awt.event.ActionEvent evt) {                                            
+    private void jButtonListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListActionPerformed
         hidePanels();
         jPanelLoanList.setVisible(true);
-    }                                           
+    }//GEN-LAST:event_jButtonListActionPerformed
 
-    private void jButtonBack6ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jButtonBack6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack6ActionPerformed
         hidePanels();
         jPanelLoan.setVisible(true);
-    }                                            
+    }//GEN-LAST:event_jButtonBack6ActionPerformed
 
-    private void jButtonSave7ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jButtonSave7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave7ActionPerformed
         JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia:"+getStartDate()+"hasta: "+convertDayToString(addDayDate(fecha,7))
                 + "\nsi no lo entrega antes de la fecha se le empezata a cobrar 5000(COP) por cada dia de atraso", 
                 "PRESTAMO DE EQUIPO", JOptionPane.WARNING_MESSAGE);
         createRequest();
 
-    }                                            
+    }//GEN-LAST:event_jButtonSave7ActionPerformed
 
-    private void jButtonReserveActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        objQuery = new Querys();
+    private void jButtonReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReserveActionPerformed
+        Querys objQuery = new Querys();
         objQuery.updateComboBoxs(this.jComboBoxEquipmentSerialReserve, "SELECT * FROM equipment" , "serial" , "name" );
         hidePanels();
         jPanelReserve.setVisible(true);
-    }                                              
+    }//GEN-LAST:event_jButtonReserveActionPerformed
 
-    private void jButtonBack7ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jButtonBack7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack7ActionPerformed
         hidePanels();
         jPanelCRUDUsers.setVisible(true);
-    }                                            
+    }//GEN-LAST:event_jButtonBack7ActionPerformed
 
-    private void jButtonBack8ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jButtonBack8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack8ActionPerformed
         hidePanels();
         jPanelCRUDProjects.setVisible(true);
-    }                                            
+    }//GEN-LAST:event_jButtonBack8ActionPerformed
 
-    private void jButtonBack9ActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jButtonBack9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack9ActionPerformed
        hidePanels();
        jPanelCRUDEquipment.setVisible(true);
-    }                                            
+    }//GEN-LAST:event_jButtonBack9ActionPerformed
 
-    private void jButtonBack10ActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void jButtonBack10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack10ActionPerformed
         hidePanels();
         jPanelReserve.setVisible(true);
-    }                                             
+    }//GEN-LAST:event_jButtonBack10ActionPerformed
 
-    private void jButtonReportesActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    private void jButtonReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportesActionPerformed
         hidePanels();
         jPanelReportes.setVisible(true);
-    }                                               
+    }//GEN-LAST:event_jButtonReportesActionPerformed
 
-    private void jButtonReportPrestxProjectActionPerformed(java.awt.event.ActionEvent evt) {                                                           
+    private void jButtonReportPrestxProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportPrestxProjectActionPerformed
         hidePanels();
         jPanelLoanXProjectList.setVisible(true);
-    }                                                          
+    }//GEN-LAST:event_jButtonReportPrestxProjectActionPerformed
 
-    private void jButtonMultasXMesActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    private void jButtonMultasXMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultasXMesActionPerformed
         hidePanels();
         jPanelMultXMonthList.setVisible(true);
-    }                                                 
+    }//GEN-LAST:event_jButtonMultasXMesActionPerformed
 
-    private void jButtonReportPresxMesActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+    private void jButtonReportPresxMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportPresxMesActionPerformed
         hidePanels();
         jPanelLoanXMonthList.setVisible(true);
-    }                                                     
+    }//GEN-LAST:event_jButtonReportPresxMesActionPerformed
 
-    private void jButtonReportPresxMiembrosActionPerformed(java.awt.event.ActionEvent evt) {                                                           
+    private void jButtonReportPresxMiembrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportPresxMiembrosActionPerformed
         hidePanels();
         jPanelLoanXMembersList.setVisible(true);
-    }                                                          
+    }//GEN-LAST:event_jButtonReportPresxMiembrosActionPerformed
 
-    private void jButtonReportMultxMiembroActionPerformed(java.awt.event.ActionEvent evt) {                                                          
+    private void jButtonReportMultxMiembroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportMultxMiembroActionPerformed
         hidePanels();
         jPanelMultXMembersList.setVisible(true);
-    }                                                         
+    }//GEN-LAST:event_jButtonReportMultxMiembroActionPerformed
 
-    private void jButtonBack11ActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void jButtonBack11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack11ActionPerformed
         hidePanels();
         jPanelReportes.setVisible(true);
-    }                                             
+    }//GEN-LAST:event_jButtonBack11ActionPerformed
 
-    private void jButtonBack12ActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void jButtonBack12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack12ActionPerformed
         hidePanels();
         jPanelReportes.setVisible(true);
-    }                                             
+    }//GEN-LAST:event_jButtonBack12ActionPerformed
 
-    private void jButtonBack13ActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void jButtonBack13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack13ActionPerformed
         hidePanels();
         jPanelReportes.setVisible(true);
-    }                                             
+    }//GEN-LAST:event_jButtonBack13ActionPerformed
 
-    private void jButtonBack14ActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void jButtonBack14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack14ActionPerformed
         hidePanels();
         jPanelReportes.setVisible(true);
-    }                                             
+    }//GEN-LAST:event_jButtonBack14ActionPerformed
 
-    private void jButtonBack15ActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void jButtonBack15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack15ActionPerformed
         hidePanels();
         jPanelReportes.setVisible(true);
-    }                                             
+    }//GEN-LAST:event_jButtonBack15ActionPerformed
 
-    private void jButtonReserve1ActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    private void jButtonReserve1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReserve1ActionPerformed
         // TODO add your handling code here:
-    }                                               
+    }//GEN-LAST:event_jButtonReserve1ActionPerformed
 
-    private void jButtonEntregarActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    private void jButtonEntregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntregarActionPerformed
         int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea entregar el equipo: 'NombreEquipo?", "ENTREGA DE EQUIPO", JOptionPane.YES_NO_OPTION);
              deliverEquipment();
             
-    }                                               
+    }//GEN-LAST:event_jButtonEntregarActionPerformed
 
-    private void jButtonDeleteMultActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+    private void jButtonDeleteMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteMultActionPerformed
         int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea renovar el prestamo  del equipo: 'NombreEquipo?", "RENOVAR PRESTAMO DE EQUIPO", JOptionPane.YES_NO_OPTION);
-    }                                                 
+    }//GEN-LAST:event_jButtonDeleteMultActionPerformed
+
+    private void jButtonLoadPhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoadPhotoActionPerformed
+         int result;
+         FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG","jpg","png");
+         LoadPicture ventana = new LoadPicture();
+         ventana.jFileChooserLoad.setFileFilter(filtro);
+         
+         result= ventana.jFileChooserLoad.showOpenDialog(null);
+         
+         if(JFileChooser.APPROVE_OPTION == result){
+             fichero = ventana.jFileChooserLoad.getSelectedFile();
+         }
+         try{
+             ImageIcon icon = new ImageIcon(fichero.toString());
+             
+             Icon icono = new ImageIcon(icon.getImage().getScaledInstance(jLabelPhoto.getWidth(),jLabelPhoto.getHeight(), Image.SCALE_DEFAULT));
+             
+             jLabelPhoto.setText(null);
+             
+             jLabelPhoto.setIcon(icono);
+         }catch(Exception ex){
+               JOptionPane.showMessageDialog(null,"Error al abrir la imagen "+ ex);
+         
+         }
+         
+        
+    }//GEN-LAST:event_jButtonLoadPhotoActionPerformed
 
     private void emptyText(){
         jTextAreaCrearEquipo.setText("");
@@ -2216,6 +2346,7 @@ public class InitialInterface extends javax.swing.JFrame {
         jPanelLoanXMembersList.setVisible(false);
         jPanelMultXMembersList.setVisible(false);
         jPanelMultXMonthList.setVisible(false);
+        jPanelMyProfile.setVisible(false);
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -2345,24 +2476,18 @@ public class InitialInterface extends javax.swing.JFrame {
     }
     //Metodos que crean en la bd
     public void createUser(){
-
+        
+        UserController objCtrlUser = new UserController();
         objCtrlUser = new UserController();
 
         String identification = jTextFieldIdentificacionCrearUsuario.getText();
-
         String IdProyectCreate = null;
-        String idProyect = splitComboBox(jComboBoxCreateUserProject);
-                
+        String idProyect = splitComboBox(jComboBoxCreateUserProject);         
         String name = jTextFieldNombreCrearUsuario.getText();
-
-        String password =  generateInitialPassword();
-        
-        String typeUser = jComboBoxCreateUserType.getSelectedItem().toString();
-                
-        String state = "Activo";
-        
+        String password =  generateInitialPassword();      
+        String typeUser = jComboBoxCreateUserType.getSelectedItem().toString();              
+        String state = "Activo";       
         String email = jTextFieldEmailCrearUsuario.getText();
-
 
        objCtrlUser.addUser(identification, IdProyectCreate, password,  name, typeUser,state , email);
 
@@ -2370,9 +2495,7 @@ public class InitialInterface extends javax.swing.JFrame {
     }
     public void createProject(){
             
-            objCtrlProject = new ProjectController();
-
-
+            ProjectController objCtrlProject =  new ProjectController();
             String code = jTextFieldCodigoCrearProyecto.getText();
             String name = jTextFieldNombreCrearProyecto.getText();
             String description = jTextAreaCrearProyecto.getText();
@@ -2383,7 +2506,7 @@ public class InitialInterface extends javax.swing.JFrame {
     }  
     public void createEquipment(){
         
-        objCtrlEquipment = new EquipmentController();
+        EquipmentController objCtrlEquipment = new EquipmentController();
         
         String serial=jTextFieldSerialCrearEquipo.getText();
         String name=jTextFieldNombreCrearEquipo.getText();
@@ -2395,8 +2518,9 @@ public class InitialInterface extends javax.swing.JFrame {
         
     }  
      public void createRequest(){
-        objCtrlRequest = new RequestController();
-        objCtrlEquipment = new EquipmentController();
+        RequestController objCtrlRequest = new RequestController();
+        EquipmentController objCtrlEquipment = new EquipmentController();
+        
         String identification_user="";
         identification_user=jLabelUserIdentificationGeneral.getText();
         int id_user=getIdUser(identification_user);
@@ -2411,16 +2535,50 @@ public class InitialInterface extends javax.swing.JFrame {
         objCtrlEquipment.setStateEquipment(id_equipment, "Ocupado");
         
     }
+     
+     public void createReserve(){
+        RequestController objCtrlRequest = new RequestController();
+        EquipmentController objCtrlEquipment = new EquipmentController();
+        
+        String identification_user="";
+        identification_user=jLabelUserIdentificationGeneral.getText();
+        int id_user=getIdUser(identification_user);
+        String serial_equipment = "";
+        serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
+        int id_equipment=getIdEquipment(serial_equipment);
+        String start_date=getReserveDate();
+        String state = "Reserva";
+        String end_date=convertDayToString(addDayDate(convertStringToDate(getReserveDate()),7));
+        
+        objCtrlRequest.addRequest(state, id_user, id_equipment, start_date, end_date);
+        objCtrlEquipment.setStateEquipment(id_equipment, "Reservado");
+     }
+     
      public void changeLabelIdentification(String identification){
          jLabelUserIdentificationGeneral.setText(identification);
      }
     
     public String getStartDate(){//Obtiene la fecha actual
-        SimpleDateFormat formatDate= new SimpleDateFormat("dd-MM-yyyy");      
+        SimpleDateFormat formatDate= new SimpleDateFormat("dd-MM-yyyy");
+        System.out.print(fecha.toString());
         return formatDate.format(fecha);
     }
     
+    public String getReserveDate(){
+        String day="";
+        day=jSpinnerDia.getValue().toString();
+        String month="";
+        month=jSpinnerMes.getValue().toString();
+        String year="";
+        year=jSpinnerAño.getValue().toString();
+        String reserveDate= day+"-"+month+"-"+year;
+        return reserveDate;
+    }
+    
+    
     public int getIdEquipment(String serial){//Obtiene el id de la secuencia dependiendo del serial del equipo
+        
+        FachadaBD fachada = new FachadaBD();        
         Connection conn= fachada.getConnetion();
         int id=0;
             try {
@@ -2441,6 +2599,8 @@ public class InitialInterface extends javax.swing.JFrame {
     
     
     public int getIdUser(String identification){//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
+        
+        FachadaBD fachada = new FachadaBD();        
         Connection conn= fachada.getConnetion();
         int id=0;
             try {
@@ -2460,7 +2620,9 @@ public class InitialInterface extends javax.swing.JFrame {
     }
     
         public int getIdRequest(int id_user,int id_equipment, String state){//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
-        Connection conn= fachada.getConnetion();
+           
+            FachadaBD fachada = new FachadaBD();        
+            Connection conn= fachada.getConnetion();
         int id=0;
             try {
                 Statement sentenceRequest = conn.createStatement();
@@ -2479,8 +2641,9 @@ public class InitialInterface extends javax.swing.JFrame {
     }
     
     public void deliverEquipment(){
-        objCtrlRequest = new RequestController();
-        objCtrlEquipment = new EquipmentController();
+        
+        RequestController objCtrlRequest = new RequestController();
+        EquipmentController objCtrlEquipment = new EquipmentController();
         String identification_user="";
         identification_user=jLabelUserIdentificationGeneral.getText();
         int id_user=getIdUser(identification_user);
@@ -2499,6 +2662,19 @@ public class InitialInterface extends javax.swing.JFrame {
     public String convertDayToString(Date date){//Convierte un dato de tipo DATE a un String
         SimpleDateFormat formatDate= new SimpleDateFormat("dd-MM-yyyy");
         return formatDate.format(date);
+    }
+    
+    public Date convertStringToDate(String date){
+        System.out.print(date);
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        Date reserveDate=null;
+        try{
+            reserveDate=format.parse(date);
+        }catch(ParseException ex){
+            ex.printStackTrace();
+        }
+        System.out.print(reserveDate.toString());
+        return reserveDate;
     }
     
      public Date addDayDate(Date date, int days){	
@@ -2542,8 +2718,8 @@ public class InitialInterface extends javax.swing.JFrame {
     }    
     //Meotodos que actualizan     
     public void  updateUser(){
-            
-           objCtrlUser = new UserController();       
+           
+           UserController objCtrlUser = new UserController();
            String updateIdUser = splitComboBox(jComboBoxUpdateIdUser);
            String updateIdProject = splitComboBox(jComboBoxUpdateUserProject);
            String updatePassword = jPasswordField2.getText();
@@ -2557,6 +2733,7 @@ public class InitialInterface extends javax.swing.JFrame {
         }     
     public void  updateProject(){
         
+    ProjectController objCtrlProject =  new ProjectController();  
     String updateProject = splitComboBox(jComboBoxUpdateProjectId);
     String updateNameProject = jTextFieldNombre4.getText();
     String updateDescription = jTextArea3.getText();
@@ -2567,7 +2744,7 @@ public class InitialInterface extends javax.swing.JFrame {
     }
     public void  updateEquipment(){
         
-        objCtrlEquipment = new EquipmentController();
+        EquipmentController objCtrlEquipment = new EquipmentController();
         String updateSerialEquipment = jComboBoxUpdateEquipmentSerial.getSelectedItem().toString();
         String updateNameEquipment = jTextFieldNombre5.getText();
         String updateStateEquipment = jComboBoxUpdateEquipmentState.getSelectedItem().toString();
@@ -2612,7 +2789,7 @@ public class InitialInterface extends javax.swing.JFrame {
     
     
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonBack1;
     private javax.swing.JButton jButtonBack10;
@@ -2638,6 +2815,7 @@ public class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonInfo;
     private javax.swing.JButton jButtonInicio;
     private javax.swing.JButton jButtonList;
+    private javax.swing.JButton jButtonLoadPhoto;
     private javax.swing.JButton jButtonMultasXMes;
     private javax.swing.JButton jButtonOverwrite;
     private javax.swing.JButton jButtonOverwrite1;
@@ -2739,6 +2917,7 @@ public class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel57;
     private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel59;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
@@ -2755,6 +2934,8 @@ public class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelBienvenido;
@@ -2773,6 +2954,7 @@ public class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDescripcion3;
     private javax.swing.JLabel jLabelEmailCordi;
     private javax.swing.JLabel jLabelEmailLab;
+    private javax.swing.JLabel jLabelEmailLb;
     private javax.swing.JLabel jLabelEstado;
     private javax.swing.JLabel jLabelFondo1;
     private javax.swing.JLabel jLabelFondo10;
@@ -2790,6 +2972,7 @@ public class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFondo21;
     private javax.swing.JLabel jLabelFondo22;
     private javax.swing.JLabel jLabelFondo23;
+    private javax.swing.JLabel jLabelFondo24;
     private javax.swing.JLabel jLabelFondo3;
     private javax.swing.JLabel jLabelFondo4;
     private javax.swing.JLabel jLabelFondo5;
@@ -2800,6 +2983,7 @@ public class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelIdentificacion;
     private javax.swing.JLabel jLabelIdentificacion1;
     private javax.swing.JLabel jLabelInicio;
+    private javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelNombre1;
     private javax.swing.JLabel jLabelNombre2;
@@ -2807,6 +2991,14 @@ public class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNombre4;
     private javax.swing.JLabel jLabelNombre5;
     private javax.swing.JLabel jLabelNombre6;
+    private javax.swing.JLabel jLabelPassActual;
+    private javax.swing.JLabel jLabelPassActual1;
+    private javax.swing.JLabel jLabelPassNew;
+    private javax.swing.JLabel jLabelPassNew1;
+    private javax.swing.JLabel jLabelPassNew2;
+    private javax.swing.JLabel jLabelPassNew3;
+    private javax.swing.JLabel jLabelPerfil;
+    private javax.swing.JLabel jLabelPhoto;
     private javax.swing.JLabel jLabelProyecto;
     private javax.swing.JLabel jLabelProyecto1;
     private javax.swing.JLabel jLabelReportes;
@@ -2857,6 +3049,7 @@ public class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelMenu;
     private javax.swing.JPanel jPanelMultXMembersList;
     private javax.swing.JPanel jPanelMultXMonthList;
+    private javax.swing.JPanel jPanelMyProfile;
     private javax.swing.JPanel jPanelProjectsList;
     private javax.swing.JPanel jPanelReportes;
     private javax.swing.JPanel jPanelReserve;
@@ -2907,7 +3100,11 @@ public class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNombreCrearEquipo;
     private javax.swing.JTextField jTextFieldNombreCrearProyecto;
     private javax.swing.JTextField jTextFieldNombreCrearUsuario;
+    private javax.swing.JTextField jTextFieldPassActual;
+    private javax.swing.JTextField jTextFieldPassActual1;
+    private javax.swing.JTextField jTextFieldPassActual2;
     private javax.swing.JTextField jTextFieldSerialCrearEquipo;
-    // End of variables declaration                   
+    private javax.swing.JTextField jTextFieldSetEmail;
+    private javax.swing.JTextField jTextFieldSetName;
+    // End of variables declaration//GEN-END:variables
 }
-
