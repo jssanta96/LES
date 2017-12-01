@@ -137,6 +137,7 @@ public class UserDao {
                     
                         System.out.println("Logeo exitoso");
                         InitialInterface objVentana = new InitialInterface();
+                        objVentana.changeLabelIdentification(identification);
                         objVentana.setVisible(true);
                         return true;
                 }

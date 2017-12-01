@@ -58,6 +58,25 @@ public class RequestDao {
         return false;
     }
     
+        public boolean renovateRequest(int id_request, String end_date){
+
+        String sql_select;
+        sql_select="UPDATE request SET end_date='" + end_date +"' WHERE  id_request="+ id_request +";";
+        try{
+            Connection conn= fachada.getConnetion();
+            System.out.println("Update in the bd");
+            Statement sentencia = conn.createStatement();
+            sentencia.executeUpdate(sql_select);
+            return true;
+
+        }
+        catch(SQLException e){ System.out.println(e); }
+        catch(Exception e){ System.out.println(e); }
+        return false;
+    }
+    
+    
+    
 
 
 
