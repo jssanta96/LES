@@ -39,11 +39,11 @@ public class MultController {
 
     }
 
-    public void updateRequest(int id_request, double value){
+    public void updateMult(int id_request, double value){
         multDao.updateMult(id_request,value);
     }
 
-    public void deleteRequest(int id_request){
+    public void deleteMult(String id_request){
         multDao.deleteMult(id_request);
     }
 }
