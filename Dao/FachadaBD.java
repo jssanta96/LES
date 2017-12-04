@@ -10,9 +10,9 @@ public class FachadaBD {
     ResultSet tabla;
     
     public FachadaBD(){
-        url="jdbc:postgresql://pgsql2:5432/1625639";
-        user="1625639";
-        password="1625639";
+        url="jdbc:postgresql://localhost:5432/curso_bd";
+        user="andres";
+        password="";
     }
 
 

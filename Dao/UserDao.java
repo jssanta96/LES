@@ -1,17 +1,17 @@
 package Dao;
 
 import Logica.User;
-import Logica.View;
+
 import Ventanas.InitialInterface;
 import java.sql.*;
 
 public class UserDao {
     FachadaBD fachada;
-    View message;
+
 
     public UserDao(){
         fachada = new FachadaBD();
-        View message = new View();
+ 
     }
 
 
@@ -32,10 +32,10 @@ public class UserDao {
             return numberRows;
 
         }catch(SQLException e){
-            message.errorConnection();
+
         }
         catch(Exception e){
-            message.errorConnection();
+
         }
         return -1;
     }
@@ -72,10 +72,10 @@ public class UserDao {
             return user;
         }
         catch(SQLException e){
-           message.errorConnection();
+
         }
         catch(Exception e){
-            message.errorConnection();
+
         }
         return null;
     }
@@ -94,8 +94,8 @@ public class UserDao {
             sentencia.executeUpdate(sql_select);
             return true;
         }
-        catch(SQLException e){message.errorConnection();}
-        catch(Exception e){message.errorConnection();}
+        catch(SQLException e){}
+        catch(Exception e){}
         return false;
     }
 
