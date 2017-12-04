@@ -90,10 +90,10 @@ public class MultDao {
     }
 
 
-    public void deleteMult(int id_request){
+    public void deleteMult(String id_mult){
 
         String sql_select;
-        sql_select="DELETE FROM mult WHERE  id_request ="+id_request+";";
+        sql_select="DELETE FROM mult WHERE  id_mult ="+id_mult+";";
         try{
             Connection conn= fachada.getConnetion();
             System.out.println("Delete in the bd");
