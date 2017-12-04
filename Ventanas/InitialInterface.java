@@ -6,6 +6,7 @@
 package Ventanas;
 
 import Controllers.EquipmentController;
+import Controllers.MultController;
 import Controllers.ProjectController;
 import Controllers.RequestController;
 import Controllers.UserController;
@@ -435,6 +436,21 @@ public final class InitialInterface extends javax.swing.JFrame {
         jButtonCheckProject = new javax.swing.JButton();
         jButtonBack19 = new javax.swing.JButton();
         jLabelFondo28 = new javax.swing.JLabel();
+        jPanelDeleteMult = new javax.swing.JPanel();
+        jLabel89 = new javax.swing.JLabel();
+        jLabel90 = new javax.swing.JLabel();
+        jLabel91 = new javax.swing.JLabel();
+        jLabelMultValue = new javax.swing.JLabel();
+        jLabelValueMultUser = new javax.swing.JLabel();
+        jLabelUserNameMult = new javax.swing.JLabel();
+        jLabelInicio1 = new javax.swing.JLabel();
+        jLabelSerial2 = new javax.swing.JLabel();
+        jLabelSolicitud11 = new javax.swing.JLabel();
+        jComboBoxMult = new javax.swing.JComboBox<>();
+        jButtonSave8 = new javax.swing.JButton();
+        jButtonCheckMult = new javax.swing.JButton();
+        jButtonBack20 = new javax.swing.JButton();
+        jLabelFondo29 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -2375,6 +2391,86 @@ public final class InitialInterface extends javax.swing.JFrame {
 
         getContentPane().add(jPanelViewProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 560, 430));
 
+        jPanelDeleteMult.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel89.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoUnivallePeq.png"))); // NOI18N
+        jPanelDeleteMult.add(jLabel89, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel90.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
+        jPanelDeleteMult.add(jLabel90, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
+
+        jLabel91.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLabPeq.png"))); // NOI18N
+        jPanelDeleteMult.add(jLabel91, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+
+        jLabelMultValue.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelMultValue.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelMultValue.setText("VALOR");
+        jPanelDeleteMult.add(jLabelMultValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, 30));
+
+        jLabelValueMultUser.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelValueMultUser.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelValueMultUser.setText("ValorMulta");
+        jPanelDeleteMult.add(jLabelValueMultUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, -1, 30));
+
+        jLabelUserNameMult.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelUserNameMult.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelUserNameMult.setText("NULL");
+        jPanelDeleteMult.add(jLabelUserNameMult, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, 30));
+
+        jLabelInicio1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelInicio1.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelInicio1.setText("USUARIO");
+        jPanelDeleteMult.add(jLabelInicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, 30));
+
+        jLabelSerial2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelSerial2.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelSerial2.setText("REGISTRO MULTA");
+        jPanelDeleteMult.add(jLabelSerial2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
+
+        jLabelSolicitud11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabelSolicitud11.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelSolicitud11.setText("ELIMINAR MULTA");
+        jPanelDeleteMult.add(jLabelSolicitud11, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
+
+        jComboBoxMult.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelDeleteMult.add(jComboBoxMult, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 160, 30));
+
+        jButtonSave8.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonSave8.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSave8.setText("Eliminar");
+        jButtonSave8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSave8ActionPerformed(evt);
+            }
+        });
+        jPanelDeleteMult.add(jButtonSave8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 100, 30));
+
+        jButtonCheckMult.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonCheckMult.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCheckMult.setText("...");
+        jButtonCheckMult.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCheckMultActionPerformed(evt);
+            }
+        });
+        jPanelDeleteMult.add(jButtonCheckMult, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 20, 30));
+
+        jButtonBack20.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonBack20.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonBack20.setText("Volver");
+        jButtonBack20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBack20ActionPerformed(evt);
+            }
+        });
+        jPanelDeleteMult.add(jButtonBack20, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 340, 100, 30));
+
+        jLabelFondo29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
+        jLabelFondo29.setText("jLabel4");
+        jPanelDeleteMult.add(jLabelFondo29, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 430));
+
+        getContentPane().add(jPanelDeleteMult, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 560, 430));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -2692,7 +2788,10 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack15ActionPerformed
 
     private void jButtonMultDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultDeleteActionPerformed
-        // TODO add your handling code here:
+        hidePanels();
+        jPanelDeleteMult.setVisible(true);
+        Querys objQuery = new Querys();
+        objQuery.updateComboBoxs(this.jComboBoxMult, "SELECT * FROM mult" , "id_mult" , "id_request" );
     }//GEN-LAST:event_jButtonMultDeleteActionPerformed
 
     private void jButtonEntregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntregarActionPerformed
@@ -2803,6 +2902,26 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelCRUDProjects.setVisible(true);
     }//GEN-LAST:event_jButtonBack19ActionPerformed
 
+    private void jButtonSave8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave8ActionPerformed
+        deleteMult();
+    }//GEN-LAST:event_jButtonSave8ActionPerformed
+
+    private void jButtonBack20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack20ActionPerformed
+        hidePanels();
+        jPanelLoan.setVisible(true);
+    }//GEN-LAST:event_jButtonBack20ActionPerformed
+
+    private void jButtonCheckMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckMultActionPerformed
+        String id_mult=splitComboBox(jComboBoxMult);
+        String user_name="";
+        int id_request=getIdRequestMult(id_mult);
+        int id_user=getIdUserMult(id_request);
+        System.out.println(id_user);
+        user_name=getNameUserMult(id_user);
+        jLabelUserNameMult.setText(user_name);
+        
+    }//GEN-LAST:event_jButtonCheckMultActionPerformed
+
     private void emptyText(){
         jTextAreaCrearEquipo.setText("");
         jTextAreaCrearProyecto.setText("");
@@ -2848,6 +2967,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelViewEquipment.setVisible(false);
         jPanelViewUser.setVisible(false);
         jPanelViewProject.setVisible(false);
+        jPanelDeleteMult.setVisible(false);
     }
     public static void main(String args[]) {
 
@@ -2876,6 +2996,66 @@ public final class InitialInterface extends javax.swing.JFrame {
                 new InitialInterface().setVisible(true);
             }
         });
+    }
+    
+    public String getNameUserMult(int id_user){
+        FachadaBD fachada = new FachadaBD();        
+        Connection conn= fachada.getConnetion();
+        String name="";
+            try {
+                Statement sentenceMult = conn.createStatement();
+                String queryMult= "SELECT name FROM users WHERE id_user="+id_user+";";
+                System.out.print(queryMult);
+                ResultSet rsMult = sentenceMult.executeQuery(queryMult);
+                while(rsMult.next()){                    
+                    name=rsMult.getString("name");
+                }
+                return name;
+            } catch (SQLException ex) {
+                Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         return null;
+    }
+    
+    public int getIdUserMult(int id_request){
+        FachadaBD fachada = new FachadaBD();        
+        Connection conn= fachada.getConnetion();
+        int id_user=0;
+            try {
+                Statement sentenceMult = conn.createStatement();
+                String queryMult= "SELECT id_user FROM request WHERE id_request="+id_request+";";
+                System.out.print(queryMult);
+                ResultSet rsMult = sentenceMult.executeQuery(queryMult);
+                while(rsMult.next()){
+                    id_user=rsMult.getInt("id_user");
+                }
+                System.out.println(id_user);
+                return id_user;
+            } catch (SQLException ex) {
+                Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         return 0;
+    }
+    
+    public int getIdRequestMult(String id_mult){
+        
+        FachadaBD fachada = new FachadaBD();        
+        Connection conn= fachada.getConnetion();
+        int id_request=0;
+            try {
+                Statement sentenceMult = conn.createStatement();
+                String queryMult= "SELECT id_request FROM mult WHERE id_mult="+id_mult+";";
+                System.out.print(queryMult);
+                ResultSet rsMult = sentenceMult.executeQuery(queryMult);
+                while(rsMult.next()){
+                id_request=rsMult.getInt("id_request");
+                }
+                return id_request;
+            } catch (SQLException ex) {
+                Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         return 0;
+        
     }
 
     public void createUser(){
@@ -2940,7 +3120,17 @@ public final class InitialInterface extends javax.swing.JFrame {
         
         objCtrlEquipment.addEquipment(serial,name,description,state);
         
-    }  
+    }
+    
+    public void deleteMult(){
+        MultController objCtrlMult = new MultController();
+        
+        String id_mult="";
+        id_mult=splitComboBox(jComboBoxMult);
+        
+        objCtrlMult.deleteMult(id_mult);
+        
+    }
     public void createRequest(){
         RequestController objCtrlRequest = new RequestController();
         EquipmentController objCtrlEquipment = new EquipmentController();
@@ -3266,6 +3456,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack18;
     private javax.swing.JButton jButtonBack19;
     private javax.swing.JButton jButtonBack2;
+    private javax.swing.JButton jButtonBack20;
     private javax.swing.JButton jButtonBack3;
     private javax.swing.JButton jButtonBack4;
     private javax.swing.JButton jButtonBack5;
@@ -3274,6 +3465,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack8;
     private javax.swing.JButton jButtonBack9;
     private javax.swing.JButton jButtonCheckEquip;
+    private javax.swing.JButton jButtonCheckMult;
     private javax.swing.JButton jButtonCheckProject;
     private javax.swing.JButton jButtonConsultEquipment;
     private javax.swing.JButton jButtonConsultProject;
@@ -3316,6 +3508,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSave5;
     private javax.swing.JButton jButtonSave6;
     private javax.swing.JButton jButtonSave7;
+    private javax.swing.JButton jButtonSave8;
     private javax.swing.JButton jButtonSaveProfile;
     private javax.swing.JButton jButtonSolicitud;
     private javax.swing.JButton jButtonUserCheck;
@@ -3327,6 +3520,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxCreateUserType;
     private javax.swing.JComboBox<String> jComboBoxEquipmentSerialLoan;
     private javax.swing.JComboBox<String> jComboBoxEquipmentSerialReserve;
+    private javax.swing.JComboBox<String> jComboBoxMult;
     private javax.swing.JComboBox<String> jComboBoxUpdateEquipmentSerial;
     private javax.swing.JComboBox<String> jComboBoxUpdateEquipmentSerial1;
     private javax.swing.JComboBox<String> jComboBoxUpdateEquipmentState;
@@ -3427,7 +3621,10 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel86;
     private javax.swing.JLabel jLabel87;
     private javax.swing.JLabel jLabel88;
+    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel90;
+    private javax.swing.JLabel jLabel91;
     private javax.swing.JLabel jLabelBienvenido;
     private javax.swing.JLabel jLabelCodigo;
     private javax.swing.JLabel jLabelCodigo1;
@@ -3476,6 +3673,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFondo26;
     private javax.swing.JLabel jLabelFondo27;
     private javax.swing.JLabel jLabelFondo28;
+    private javax.swing.JLabel jLabelFondo29;
     private javax.swing.JLabel jLabelFondo3;
     private javax.swing.JLabel jLabelFondo4;
     private javax.swing.JLabel jLabelFondo5;
@@ -3487,6 +3685,8 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelIdentificacion1;
     private javax.swing.JLabel jLabelIdentificacion2;
     private javax.swing.JLabel jLabelInicio;
+    private javax.swing.JLabel jLabelInicio1;
+    private javax.swing.JLabel jLabelMultValue;
     private javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelNombre1;
@@ -3513,9 +3713,11 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelReportes;
     private javax.swing.JLabel jLabelSerial;
     private javax.swing.JLabel jLabelSerial1;
+    private javax.swing.JLabel jLabelSerial2;
     private javax.swing.JLabel jLabelSolicitud;
     private javax.swing.JLabel jLabelSolicitud1;
     private javax.swing.JLabel jLabelSolicitud10;
+    private javax.swing.JLabel jLabelSolicitud11;
     private javax.swing.JLabel jLabelSolicitud2;
     private javax.swing.JLabel jLabelSolicitud3;
     private javax.swing.JLabel jLabelSolicitud4;
@@ -3532,6 +3734,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTipo4;
     private javax.swing.JLabel jLabelTipo5;
     private javax.swing.JLabel jLabelUserIdentificationGeneral;
+    private javax.swing.JLabel jLabelUserNameMult;
     private javax.swing.JLabel jLabelUsuarios;
     private javax.swing.JLabel jLabelUsuarios1;
     private javax.swing.JLabel jLabelUsuarios10;
@@ -3547,6 +3750,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelUsuarios9;
     private javax.swing.JLabel jLabelValorTotal;
     private javax.swing.JLabel jLabelValorTotal1;
+    private javax.swing.JLabel jLabelValueMultUser;
     private javax.swing.JLabel jLabelViewProjectDescription;
     private javax.swing.JLabel jLabelViewProjectName;
     private javax.swing.JLabel jLabelViewProjectName1;
@@ -3562,6 +3766,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelCreateEquipment;
     private javax.swing.JPanel jPanelCreateProject;
     private javax.swing.JPanel jPanelCreateUser;
+    private javax.swing.JPanel jPanelDeleteMult;
     private javax.swing.JPanel jPanelEquipmentList;
     private javax.swing.JPanel jPanelInicio;
     private javax.swing.JPanel jPanelLoan;
