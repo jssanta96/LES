@@ -231,6 +231,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jButtonProyecto3 = new javax.swing.JButton();
         jButtonUsuario3 = new javax.swing.JButton();
+        jButtonConsultEquipment = new javax.swing.JButton();
         jButtonEquipo3 = new javax.swing.JButton();
         jLabelUsuarios3 = new javax.swing.JLabel();
         jLabelFondo4 = new javax.swing.JLabel();
@@ -238,6 +239,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jButtonConsultUser = new javax.swing.JButton();
         jButtonProyecto1 = new javax.swing.JButton();
         jButtonUsuario1 = new javax.swing.JButton();
         jButtonEquipo1 = new javax.swing.JButton();
@@ -249,6 +251,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jButtonProyecto2 = new javax.swing.JButton();
         jButtonUsuario2 = new javax.swing.JButton();
+        jButtonConsultProject = new javax.swing.JButton();
         jButtonEquipo2 = new javax.swing.JButton();
         jLabelUsuarios2 = new javax.swing.JLabel();
         jLabelFondo3 = new javax.swing.JLabel();
@@ -380,6 +383,58 @@ public final class InitialInterface extends javax.swing.JFrame {
         jButtonSaveProfile = new javax.swing.JButton();
         jButtonLoadPhoto = new javax.swing.JButton();
         jLabelFondo24 = new javax.swing.JLabel();
+        jPanelViewEquipment = new javax.swing.JPanel();
+        jLabel80 = new javax.swing.JLabel();
+        jLabel81 = new javax.swing.JLabel();
+        jLabel82 = new javax.swing.JLabel();
+        jLabelDescriptionEquip = new javax.swing.JLabel();
+        jLabelEquipState = new javax.swing.JLabel();
+        jLabelEquipName = new javax.swing.JLabel();
+        jLabelDescripcion4 = new javax.swing.JLabel();
+        jLabelNombre7 = new javax.swing.JLabel();
+        jLabelCodigo5 = new javax.swing.JLabel();
+        jLabelSolicitud8 = new javax.swing.JLabel();
+        jButtonBack17 = new javax.swing.JButton();
+        jButtonCheckEquip = new javax.swing.JButton();
+        jComboBoxUpdateEquipmentSerial1 = new javax.swing.JComboBox<>();
+        jLabelCodigo6 = new javax.swing.JLabel();
+        jLabelFondo26 = new javax.swing.JLabel();
+        jPanelViewUser = new javax.swing.JPanel();
+        jLabel83 = new javax.swing.JLabel();
+        jLabel84 = new javax.swing.JLabel();
+        jLabel85 = new javax.swing.JLabel();
+        jLabelViewUserEmail = new javax.swing.JLabel();
+        jLabelViewUserName = new javax.swing.JLabel();
+        jLabelViewUserRange = new javax.swing.JLabel();
+        jLabelViewUserState = new javax.swing.JLabel();
+        jLabelViewUserProject = new javax.swing.JLabel();
+        jLabelProyecto2 = new javax.swing.JLabel();
+        jLabelIdentificacion2 = new javax.swing.JLabel();
+        jLabelSolicitud9 = new javax.swing.JLabel();
+        jComboBoxUpdateIdUser1 = new javax.swing.JComboBox<>();
+        jLabelTipo4 = new javax.swing.JLabel();
+        jLabelTipo5 = new javax.swing.JLabel();
+        jLabelEstado1 = new javax.swing.JLabel();
+        jLabelNombre8 = new javax.swing.JLabel();
+        jButtonUserCheck = new javax.swing.JButton();
+        jButtonBack18 = new javax.swing.JButton();
+        jLabelFondo27 = new javax.swing.JLabel();
+        jPanelViewProject = new javax.swing.JPanel();
+        jLabel86 = new javax.swing.JLabel();
+        jLabel87 = new javax.swing.JLabel();
+        jLabel88 = new javax.swing.JLabel();
+        jLabelViewProjectName1 = new javax.swing.JLabel();
+        jLabelViewProjectDescription = new javax.swing.JLabel();
+        jLabelViewProjectName = new javax.swing.JLabel();
+        jLabelDescripcion5 = new javax.swing.JLabel();
+        jLabelNombre9 = new javax.swing.JLabel();
+        jLabelNombre10 = new javax.swing.JLabel();
+        jLabelCodigo7 = new javax.swing.JLabel();
+        jLabelSolicitud10 = new javax.swing.JLabel();
+        jComboBoxUpdateProjectId1 = new javax.swing.JComboBox<>();
+        jButtonCheckProject = new javax.swing.JButton();
+        jButtonBack19 = new javax.swing.JButton();
+        jLabelFondo28 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -1276,6 +1331,16 @@ public final class InitialInterface extends javax.swing.JFrame {
         });
         jPanelCRUDEquipment.add(jButtonUsuario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 120, 40));
 
+        jButtonConsultEquipment.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonConsultEquipment.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonConsultEquipment.setText("CONSULTAR");
+        jButtonConsultEquipment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultEquipmentActionPerformed(evt);
+            }
+        });
+        jPanelCRUDEquipment.add(jButtonConsultEquipment, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 120, 40));
+
         jButtonEquipo3.setBackground(new java.awt.Color(102, 0, 0));
         jButtonEquipo3.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEquipo3.setText("ACTUALIZAR");
@@ -1307,6 +1372,16 @@ public final class InitialInterface extends javax.swing.JFrame {
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLabPeq.png"))); // NOI18N
         jPanelCRUDUsers.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+
+        jButtonConsultUser.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonConsultUser.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonConsultUser.setText("CONSULTAR");
+        jButtonConsultUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultUserActionPerformed(evt);
+            }
+        });
+        jPanelCRUDUsers.add(jButtonConsultUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 120, 40));
 
         jButtonProyecto1.setBackground(new java.awt.Color(102, 0, 0));
         jButtonProyecto1.setForeground(new java.awt.Color(255, 255, 255));
@@ -1379,6 +1454,16 @@ public final class InitialInterface extends javax.swing.JFrame {
             }
         });
         jPanelCRUDProjects.add(jButtonUsuario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 120, 40));
+
+        jButtonConsultProject.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonConsultProject.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonConsultProject.setText("CONSULTAR");
+        jButtonConsultProject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultProjectActionPerformed(evt);
+            }
+        });
+        jPanelCRUDProjects.add(jButtonConsultProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 120, 40));
 
         jButtonEquipo2.setBackground(new java.awt.Color(102, 0, 0));
         jButtonEquipo2.setForeground(new java.awt.Color(255, 255, 255));
@@ -2031,6 +2116,265 @@ public final class InitialInterface extends javax.swing.JFrame {
 
         getContentPane().add(jPanelMyProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 560, 430));
 
+        jPanelViewEquipment.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel80.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoUnivallePeq.png"))); // NOI18N
+        jPanelViewEquipment.add(jLabel80, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel81.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
+        jPanelViewEquipment.add(jLabel81, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
+
+        jLabel82.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLabPeq.png"))); // NOI18N
+        jPanelViewEquipment.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+
+        jLabelDescriptionEquip.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelDescriptionEquip.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelDescriptionEquip.setText("State");
+        jPanelViewEquipment.add(jLabelDescriptionEquip, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 310, 60));
+
+        jLabelEquipState.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelEquipState.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelEquipState.setText("State");
+        jPanelViewEquipment.add(jLabelEquipState, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 190, 30));
+
+        jLabelEquipName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelEquipName.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelEquipName.setText("NOMBRE");
+        jPanelViewEquipment.add(jLabelEquipName, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 190, 30));
+
+        jLabelDescripcion4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelDescripcion4.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelDescripcion4.setText("DESCRIPCION");
+        jPanelViewEquipment.add(jLabelDescripcion4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, -1, 30));
+
+        jLabelNombre7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelNombre7.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelNombre7.setText("NOMBRE");
+        jPanelViewEquipment.add(jLabelNombre7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, 30));
+
+        jLabelCodigo5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelCodigo5.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelCodigo5.setText("ESTADO");
+        jPanelViewEquipment.add(jLabelCodigo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
+
+        jLabelSolicitud8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabelSolicitud8.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelSolicitud8.setText("CONSULTAR EQUIPO");
+        jPanelViewEquipment.add(jLabelSolicitud8, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, 30));
+
+        jButtonBack17.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonBack17.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonBack17.setText("Volver");
+        jButtonBack17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBack17ActionPerformed(evt);
+            }
+        });
+        jPanelViewEquipment.add(jButtonBack17, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 90, 30));
+
+        jButtonCheckEquip.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonCheckEquip.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCheckEquip.setText("...");
+        jButtonCheckEquip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCheckEquipActionPerformed(evt);
+            }
+        });
+        jPanelViewEquipment.add(jButtonCheckEquip, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 30, 30));
+
+        jComboBoxUpdateEquipmentSerial1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelViewEquipment.add(jComboBoxUpdateEquipmentSerial1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, 170, 30));
+
+        jLabelCodigo6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelCodigo6.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelCodigo6.setText("SERIAL");
+        jPanelViewEquipment.add(jLabelCodigo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, -1));
+
+        jLabelFondo26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
+        jLabelFondo26.setText("jLabel4");
+        jPanelViewEquipment.add(jLabelFondo26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 430));
+
+        getContentPane().add(jPanelViewEquipment, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 560, 430));
+
+        jPanelViewUser.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel83.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoUnivallePeq.png"))); // NOI18N
+        jPanelViewUser.add(jLabel83, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel84.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
+        jPanelViewUser.add(jLabel84, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
+
+        jLabel85.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLabPeq.png"))); // NOI18N
+        jPanelViewUser.add(jLabel85, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+
+        jLabelViewUserEmail.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelViewUserEmail.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelViewUserEmail.setText("EmailDelUsuarioSeleccionado");
+        jPanelViewUser.add(jLabelViewUserEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 260, 30));
+
+        jLabelViewUserName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelViewUserName.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelViewUserName.setText("NombreDelUsuarioSeleccionado");
+        jPanelViewUser.add(jLabelViewUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 260, 30));
+
+        jLabelViewUserRange.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelViewUserRange.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelViewUserRange.setText("Cargo");
+        jPanelViewUser.add(jLabelViewUserRange, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 70, 30));
+
+        jLabelViewUserState.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelViewUserState.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelViewUserState.setText("State");
+        jPanelViewUser.add(jLabelViewUserState, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 90, 30));
+
+        jLabelViewUserProject.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelViewUserProject.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelViewUserProject.setText("PROYECTO");
+        jPanelViewUser.add(jLabelViewUserProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 270, 30));
+
+        jLabelProyecto2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelProyecto2.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelProyecto2.setText("PROYECTO");
+        jPanelViewUser.add(jLabelProyecto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, 30));
+
+        jLabelIdentificacion2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelIdentificacion2.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelIdentificacion2.setText("IDENTIFICACION");
+        jPanelViewUser.add(jLabelIdentificacion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+
+        jLabelSolicitud9.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabelSolicitud9.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelSolicitud9.setText("CONSULTAR USUARIO");
+        jPanelViewUser.add(jLabelSolicitud9, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
+
+        jComboBoxUpdateIdUser1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanelViewUser.add(jComboBoxUpdateIdUser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 240, 30));
+
+        jLabelTipo4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelTipo4.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelTipo4.setText("E-MAIL");
+        jPanelViewUser.add(jLabelTipo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, 30));
+
+        jLabelTipo5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelTipo5.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelTipo5.setText("CARGO");
+        jPanelViewUser.add(jLabelTipo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, -1, 30));
+
+        jLabelEstado1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelEstado1.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelEstado1.setText("ESTADO");
+        jPanelViewUser.add(jLabelEstado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, 30));
+
+        jLabelNombre8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelNombre8.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelNombre8.setText("NOMBRE");
+        jPanelViewUser.add(jLabelNombre8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, -1, 30));
+
+        jButtonUserCheck.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonUserCheck.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonUserCheck.setText("...");
+        jButtonUserCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUserCheckActionPerformed(evt);
+            }
+        });
+        jPanelViewUser.add(jButtonUserCheck, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, 30, 30));
+
+        jButtonBack18.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonBack18.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonBack18.setText("Volver");
+        jButtonBack18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBack18ActionPerformed(evt);
+            }
+        });
+        jPanelViewUser.add(jButtonBack18, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 90, 30));
+
+        jLabelFondo27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
+        jLabelFondo27.setText("jLabel4");
+        jPanelViewUser.add(jLabelFondo27, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 430));
+
+        getContentPane().add(jPanelViewUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 560, 430));
+
+        jPanelViewProject.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel86.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoUnivallePeq.png"))); // NOI18N
+        jPanelViewProject.add(jLabel86, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel87.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
+        jPanelViewProject.add(jLabel87, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
+
+        jLabel88.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLabPeq.png"))); // NOI18N
+        jPanelViewProject.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
+
+        jLabelViewProjectName1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelViewProjectName1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelViewProjectName1.setText("EstadoDelProyecto");
+        jPanelViewProject.add(jLabelViewProjectName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 190, 30));
+
+        jLabelViewProjectDescription.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelViewProjectDescription.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelViewProjectDescription.setText("DescripcionDelProyecto");
+        jPanelViewProject.add(jLabelViewProjectDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 290, 70));
+
+        jLabelViewProjectName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelViewProjectName.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelViewProjectName.setText("NombreDelProyecto");
+        jPanelViewProject.add(jLabelViewProjectName, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 190, 30));
+
+        jLabelDescripcion5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelDescripcion5.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelDescripcion5.setText("DESCRIPCION");
+        jPanelViewProject.add(jLabelDescripcion5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, 30));
+
+        jLabelNombre9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelNombre9.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelNombre9.setText("ESTADO");
+        jPanelViewProject.add(jLabelNombre9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, -1, 30));
+
+        jLabelNombre10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelNombre10.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelNombre10.setText("NOMBRE");
+        jPanelViewProject.add(jLabelNombre10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, 30));
+
+        jLabelCodigo7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelCodigo7.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelCodigo7.setText("CODIGO");
+        jPanelViewProject.add(jLabelCodigo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, -1));
+
+        jLabelSolicitud10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabelSolicitud10.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelSolicitud10.setText("CONSULTAR PROYECTO");
+        jPanelViewProject.add(jLabelSolicitud10, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, -1, -1));
+
+        jPanelViewProject.add(jComboBoxUpdateProjectId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 160, 30));
+
+        jButtonCheckProject.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonCheckProject.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCheckProject.setText("...");
+        jButtonCheckProject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCheckProjectActionPerformed(evt);
+            }
+        });
+        jPanelViewProject.add(jButtonCheckProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 30, 30));
+
+        jButtonBack19.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonBack19.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonBack19.setText("Volver");
+        jButtonBack19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBack19ActionPerformed(evt);
+            }
+        });
+        jPanelViewProject.add(jButtonBack19, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 90, 30));
+
+        jLabelFondo28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
+        jLabelFondo28.setText("jLabel4");
+        jPanelViewProject.add(jLabelFondo28, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 430));
+
+        getContentPane().add(jPanelViewProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 560, 430));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -2205,10 +2549,6 @@ public final class InitialInterface extends javax.swing.JFrame {
        hidePanels();
         jPanelCRUDProjects.setVisible(true);
     }//GEN-LAST:event_jButtonBack3ActionPerformed
-
-    private void jButtonSave4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave4ActionPerformed
-        updateProject();
-    }//GEN-LAST:event_jButtonSave4ActionPerformed
 
     private void jButtonOverwrite4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverwrite4ActionPerformed
         emptyText();
@@ -2417,6 +2757,52 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelReserve.setVisible(true);
     }//GEN-LAST:event_jButtonBack16ActionPerformed
 
+    private void jButtonConsultEquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultEquipmentActionPerformed
+        hidePanels();
+        jPanelViewEquipment.setVisible(true);
+    }//GEN-LAST:event_jButtonConsultEquipmentActionPerformed
+
+    private void jButtonConsultUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultUserActionPerformed
+        hidePanels();
+        jPanelViewUser.setVisible(true);
+    }//GEN-LAST:event_jButtonConsultUserActionPerformed
+
+    private void jButtonConsultProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultProjectActionPerformed
+        hidePanels();
+        jPanelViewProject.setVisible(true);
+    }//GEN-LAST:event_jButtonConsultProjectActionPerformed
+
+    private void jButtonBack17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack17ActionPerformed
+        hidePanels();
+        jPanelCRUDEquipment.setVisible(true);
+    }//GEN-LAST:event_jButtonBack17ActionPerformed
+
+    private void jButtonCheckEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckEquipActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCheckEquipActionPerformed
+
+    private void jButtonUserCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUserCheckActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonUserCheckActionPerformed
+
+    private void jButtonBack18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack18ActionPerformed
+        hidePanels();
+        jPanelCRUDUsers.setVisible(true);
+    }//GEN-LAST:event_jButtonBack18ActionPerformed
+
+    private void jButtonSave4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave4ActionPerformed
+        updateProject();
+    }//GEN-LAST:event_jButtonSave4ActionPerformed
+
+    private void jButtonCheckProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckProjectActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonCheckProjectActionPerformed
+
+    private void jButtonBack19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack19ActionPerformed
+        hidePanels();
+        jPanelCRUDProjects.setVisible(true);
+    }//GEN-LAST:event_jButtonBack19ActionPerformed
+
     private void emptyText(){
         jTextAreaCrearEquipo.setText("");
         jTextAreaCrearProyecto.setText("");
@@ -2459,6 +2845,9 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelMultXMembersList.setVisible(false);
         jPanelMultXMonthList.setVisible(false);
         jPanelMyProfile.setVisible(false);
+        jPanelViewEquipment.setVisible(false);
+        jPanelViewUser.setVisible(false);
+        jPanelViewProject.setVisible(false);
     }
     public static void main(String args[]) {
 
@@ -2873,6 +3262,9 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack14;
     private javax.swing.JButton jButtonBack15;
     private javax.swing.JButton jButtonBack16;
+    private javax.swing.JButton jButtonBack17;
+    private javax.swing.JButton jButtonBack18;
+    private javax.swing.JButton jButtonBack19;
     private javax.swing.JButton jButtonBack2;
     private javax.swing.JButton jButtonBack3;
     private javax.swing.JButton jButtonBack4;
@@ -2881,6 +3273,11 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack7;
     private javax.swing.JButton jButtonBack8;
     private javax.swing.JButton jButtonBack9;
+    private javax.swing.JButton jButtonCheckEquip;
+    private javax.swing.JButton jButtonCheckProject;
+    private javax.swing.JButton jButtonConsultEquipment;
+    private javax.swing.JButton jButtonConsultProject;
+    private javax.swing.JButton jButtonConsultUser;
     private javax.swing.JButton jButtonEntregar;
     private javax.swing.JButton jButtonEquipo;
     private javax.swing.JButton jButtonEquipo1;
@@ -2921,6 +3318,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSave7;
     private javax.swing.JButton jButtonSaveProfile;
     private javax.swing.JButton jButtonSolicitud;
+    private javax.swing.JButton jButtonUserCheck;
     private javax.swing.JButton jButtonUsuario;
     private javax.swing.JButton jButtonUsuario1;
     private javax.swing.JButton jButtonUsuario2;
@@ -2930,9 +3328,12 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxEquipmentSerialLoan;
     private javax.swing.JComboBox<String> jComboBoxEquipmentSerialReserve;
     private javax.swing.JComboBox<String> jComboBoxUpdateEquipmentSerial;
+    private javax.swing.JComboBox<String> jComboBoxUpdateEquipmentSerial1;
     private javax.swing.JComboBox<String> jComboBoxUpdateEquipmentState;
     private javax.swing.JComboBox<String> jComboBoxUpdateIdUser;
+    private javax.swing.JComboBox<String> jComboBoxUpdateIdUser1;
     private javax.swing.JComboBox<String> jComboBoxUpdateProjectId;
+    private javax.swing.JComboBox<String> jComboBoxUpdateProjectId1;
     private javax.swing.JComboBox<String> jComboBoxUpdateProjectState;
     private javax.swing.JComboBox<String> jComboBoxUpdateUserProject;
     private javax.swing.JComboBox<String> jComboBoxUpdateUserState;
@@ -3017,6 +3418,15 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel78;
     private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
+    private javax.swing.JLabel jLabel88;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelBienvenido;
     private javax.swing.JLabel jLabelCodigo;
@@ -3024,6 +3434,9 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelCodigo2;
     private javax.swing.JLabel jLabelCodigo3;
     private javax.swing.JLabel jLabelCodigo4;
+    private javax.swing.JLabel jLabelCodigo5;
+    private javax.swing.JLabel jLabelCodigo6;
+    private javax.swing.JLabel jLabelCodigo7;
     private javax.swing.JLabel jLabelContacto;
     private javax.swing.JLabel jLabelContraseña1;
     private javax.swing.JLabel jLabelCoordinador;
@@ -3032,10 +3445,16 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDescripcion1;
     private javax.swing.JLabel jLabelDescripcion2;
     private javax.swing.JLabel jLabelDescripcion3;
+    private javax.swing.JLabel jLabelDescripcion4;
+    private javax.swing.JLabel jLabelDescripcion5;
+    private javax.swing.JLabel jLabelDescriptionEquip;
     private javax.swing.JLabel jLabelEmailCordi;
     private javax.swing.JLabel jLabelEmailLab;
     private javax.swing.JLabel jLabelEmailLb;
+    private javax.swing.JLabel jLabelEquipName;
+    private javax.swing.JLabel jLabelEquipState;
     private javax.swing.JLabel jLabelEstado;
+    private javax.swing.JLabel jLabelEstado1;
     private javax.swing.JLabel jLabelFondo1;
     private javax.swing.JLabel jLabelFondo10;
     private javax.swing.JLabel jLabelFondo11;
@@ -3054,6 +3473,9 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFondo23;
     private javax.swing.JLabel jLabelFondo24;
     private javax.swing.JLabel jLabelFondo25;
+    private javax.swing.JLabel jLabelFondo26;
+    private javax.swing.JLabel jLabelFondo27;
+    private javax.swing.JLabel jLabelFondo28;
     private javax.swing.JLabel jLabelFondo3;
     private javax.swing.JLabel jLabelFondo4;
     private javax.swing.JLabel jLabelFondo5;
@@ -3063,15 +3485,20 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFondo9;
     private javax.swing.JLabel jLabelIdentificacion;
     private javax.swing.JLabel jLabelIdentificacion1;
+    private javax.swing.JLabel jLabelIdentificacion2;
     private javax.swing.JLabel jLabelInicio;
     private javax.swing.JLabel jLabelName;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelNombre1;
+    private javax.swing.JLabel jLabelNombre10;
     private javax.swing.JLabel jLabelNombre2;
     private javax.swing.JLabel jLabelNombre3;
     private javax.swing.JLabel jLabelNombre4;
     private javax.swing.JLabel jLabelNombre5;
     private javax.swing.JLabel jLabelNombre6;
+    private javax.swing.JLabel jLabelNombre7;
+    private javax.swing.JLabel jLabelNombre8;
+    private javax.swing.JLabel jLabelNombre9;
     private javax.swing.JLabel jLabelPassActual;
     private javax.swing.JLabel jLabelPassActual1;
     private javax.swing.JLabel jLabelPassNew;
@@ -3082,22 +3509,28 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPhoto;
     private javax.swing.JLabel jLabelProyecto;
     private javax.swing.JLabel jLabelProyecto1;
+    private javax.swing.JLabel jLabelProyecto2;
     private javax.swing.JLabel jLabelReportes;
     private javax.swing.JLabel jLabelSerial;
     private javax.swing.JLabel jLabelSerial1;
     private javax.swing.JLabel jLabelSolicitud;
     private javax.swing.JLabel jLabelSolicitud1;
+    private javax.swing.JLabel jLabelSolicitud10;
     private javax.swing.JLabel jLabelSolicitud2;
     private javax.swing.JLabel jLabelSolicitud3;
     private javax.swing.JLabel jLabelSolicitud4;
     private javax.swing.JLabel jLabelSolicitud5;
     private javax.swing.JLabel jLabelSolicitud6;
     private javax.swing.JLabel jLabelSolicitud7;
+    private javax.swing.JLabel jLabelSolicitud8;
+    private javax.swing.JLabel jLabelSolicitud9;
     private javax.swing.JLabel jLabelTelefonos;
     private javax.swing.JLabel jLabelTipo;
     private javax.swing.JLabel jLabelTipo1;
     private javax.swing.JLabel jLabelTipo2;
     private javax.swing.JLabel jLabelTipo3;
+    private javax.swing.JLabel jLabelTipo4;
+    private javax.swing.JLabel jLabelTipo5;
     private javax.swing.JLabel jLabelUserIdentificationGeneral;
     private javax.swing.JLabel jLabelUsuarios;
     private javax.swing.JLabel jLabelUsuarios1;
@@ -3114,6 +3547,14 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelUsuarios9;
     private javax.swing.JLabel jLabelValorTotal;
     private javax.swing.JLabel jLabelValorTotal1;
+    private javax.swing.JLabel jLabelViewProjectDescription;
+    private javax.swing.JLabel jLabelViewProjectName;
+    private javax.swing.JLabel jLabelViewProjectName1;
+    private javax.swing.JLabel jLabelViewUserEmail;
+    private javax.swing.JLabel jLabelViewUserName;
+    private javax.swing.JLabel jLabelViewUserProject;
+    private javax.swing.JLabel jLabelViewUserRange;
+    private javax.swing.JLabel jLabelViewUserState;
     private javax.swing.JPanel jPanelCRUDEquipment;
     private javax.swing.JPanel jPanelCRUDProjects;
     private javax.swing.JPanel jPanelCRUDUsers;
@@ -3140,6 +3581,9 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelUpdateProject;
     private javax.swing.JPanel jPanelUpdateUser;
     private javax.swing.JPanel jPanelUsersList;
+    private javax.swing.JPanel jPanelViewEquipment;
+    private javax.swing.JPanel jPanelViewProject;
+    private javax.swing.JPanel jPanelViewUser;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
