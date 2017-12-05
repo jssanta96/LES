@@ -5,6 +5,7 @@
  */
 package Dao;
 
+import Logica.View;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,8 +24,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Querys {
     
-    FachadaBD fachada;
-    
 public Querys(){
     
 }
@@ -33,13 +32,11 @@ public Querys(){
 
 public void fillTables(JTable table , String query){
         
-    fachada = new FachadaBD();
+    FachadaBD fachada = new FachadaBD();
     
         try{
             
             Connection conn= fachada.getConnetion();
-                        System.out.println("error");
-
              
             PreparedStatement sentenceUsers = conn.prepareStatement(query);
                               
@@ -66,13 +63,13 @@ public void fillTables(JTable table , String query){
                }
         }
         catch(SQLException e){
-            System.out.println("error2");
+           View message = new View();
+           message.errorConnection();
         }
     }
 public void updateComboBoxs(JComboBox comboBox , String query , String dateOne , String dateTwo){//Funcion que consulta en sql.
 
-      fachada = new FachadaBD();
-
+      FachadaBD fachada = new FachadaBD();
       comboBox.removeAllItems();
          
          try{
@@ -87,14 +84,15 @@ public void updateComboBoxs(JComboBox comboBox , String query , String dateOne ,
             }
             
         }catch(SQLException e){
-            System.out.println("error");
+        View message = new View();
+        message.errorConnection();    
         }
 
     } 
 public void addStateProjectr(JComboBox comboBox , String query , String type ){
       
-      fachada = new FachadaBD();
-
+      FachadaBD fachada = new FachadaBD();
+      
       comboBox.removeAllItems();
          
          try{
@@ -136,14 +134,14 @@ public void addStateProjectr(JComboBox comboBox , String query , String type ){
             }
             
         }catch(SQLException e){
-            System.out.println("error");
+           View message = new View();
+           message.errorConnection();        
         }
                  
     }
 public void addStateEquipment(JComboBox comboBox , String query , String state ){
       
-      fachada = new FachadaBD();
-
+      FachadaBD fachada = new FachadaBD();
       comboBox.removeAllItems();
          
          try{
@@ -175,14 +173,14 @@ public void addStateEquipment(JComboBox comboBox , String query , String state )
             }
             
         }catch(SQLException e){
-            System.out.println("error");
+           View message = new View();
+           message.errorConnection();
         }
                  
     }
 public void addStateUser(JComboBox comboBox , String query , String type ){
       
-      fachada = new FachadaBD();
-
+      FachadaBD fachada = new FachadaBD();    
       comboBox.removeAllItems();
          
          try{
@@ -214,44 +212,35 @@ public void addStateUser(JComboBox comboBox , String query , String type ){
             }
             
         }catch(SQLException e){
-            System.out.println("error");
+           View message = new View();
+           message.errorConnection();
         }
                  
     }
 public String typeUser(String query , String type){
      
-      fachada = new FachadaBD();
-       
+         FachadaBD fachada = new FachadaBD();       
          try{
             Connection conn= fachada.getConnetion();
-                        System.out.println("1");
 
             Statement sentenceProjects = conn.createStatement();
-                        System.out.println("2");
            
             ResultSet rs = sentenceProjects.executeQuery(query);    
-                        System.out.println("3");
-                System.out.println(query);
             while(rs.next()){
-                            
-                
                 String typeUser = rs.getString(type);
-                System.out.println(typeUser);
-                
                      return typeUser;
-                 
-
-        
             }
          }catch(SQLException e){
-            System.out.println("error");
-        }
+           View message = new View();
+           message.errorConnection();
+         }
         return null;
 
     }
 public void setTotal(JTextField jtexfield, String query){
-       fachada = new FachadaBD(); 
-             try{
+    
+        FachadaBD fachada = new FachadaBD();   
+        try{
             Connection conn= fachada.getConnetion();
 
             Statement sentenceProjects = conn.createStatement();
@@ -263,15 +252,16 @@ public void setTotal(JTextField jtexfield, String query){
              }
             
              }catch(SQLException e){
-            System.out.println("error");
-        }
+           View message = new View();
+           message.errorConnection();
+             }
     
 }
 public void addTypeUser(JComboBox comboBox , String query , String type ){
             
-       comboBox.removeAllItems();
-       fachada = new FachadaBD(); 
-       
+    FachadaBD fachada = new FachadaBD();  
+    comboBox.removeAllItems();
+
          try{
             Connection conn= fachada.getConnetion();
 
@@ -310,11 +300,9 @@ public void addTypeUser(JComboBox comboBox , String query , String type ){
                  
                 }   
             }catch(SQLException e){
-            System.out.println("error");
-        }
+           View message = new View();
+           message.errorConnection();
+            }
     }
-
-
-
 
 }

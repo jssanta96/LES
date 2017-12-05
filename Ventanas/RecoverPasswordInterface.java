@@ -6,7 +6,6 @@
 package Ventanas;
 import Dao.UserDao;
 import Logica.View;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
@@ -102,15 +101,23 @@ public class RecoverPasswordInterface extends javax.swing.JFrame {
 
     
     private void jButtonComfirmar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComfirmar1ActionPerformed
+     
        UserDao objDao = new UserDao();
        View objView = new View();
-       String question=objDao.getQuestion(jTextFieldIdentificacion.getText());
-       String answer = objView.valitadionAnswer(question);
-       if(answer.equals(objDao.getAnswer(jTextFieldIdentificacion.getText()))){
-           System.out.println(objDao.getAnswer(jTextFieldIdentificacion.getText())); 
-           objView.sucessfulOperationTypeElement("Contraseña","restaurada");
-           InitialInterface objWindow = new InitialInterface();
-           objWindow.generateInitialPassword();
+       
+       String identification = jTextFieldIdentificacion.getText();
+       String question=objDao.getData(identification , "SELECT secret_question FROM users WHERE identification='" ,"secret_question" );
+       String validateAnswer = objView.valitadionAnswer(question);
+       String answer = objDao.getData(identification , "SELECT secret_answer FROM users WHERE identification='" ,"secret_answer");
+       if(validateAnswer.equals(answer)){
+           
+          String password = generatePassword();
+          boolean cheek =objDao.updatePassword(identification, password);
+          if(cheek== true){
+               View message = new View();
+               message.sucessfulOperationTypeElement("Su contreseña", "generada");
+          }
+          
        }
        
     }//GEN-LAST:event_jButtonComfirmar1ActionPerformed
@@ -133,8 +140,15 @@ public class RecoverPasswordInterface extends javax.swing.JFrame {
         });
     }
   
-  public void showQuestion(){
-  
+  public String  generatePassword(){
+           
+           UserDao objDao = new UserDao();
+           String identification = jTextFieldIdentificacion.getText();
+           String name = objDao.getData(identification , "SELECT name FROM users WHERE identification='" ,"name");           
+           String initial = name.substring(0, 1);
+           char last = name.charAt(name.length() - 1);
+           String password = (initial + identification + last).toUpperCase();
+           return password;
   }
 
 

@@ -44,7 +44,7 @@ public class MultController {
         boolean  cheek = multDao.updateMult(id_request,value);
         if (cheek == true){
                 View message = new View();
-                message.sucessfulOperationTypeElement("Un usuario", "actualizar");
+                message.sucessfulOperationTypeElement("Una multa", "actualizo");
 
         }
         System.out.println("error");

@@ -9,7 +9,7 @@ public class UserController {
     public UserController(){
     }
 
-    public int addUser(String identification, String project_id, String password, String user_name, String type, String state, String email , String answer , String question){
+    public int addUser(String identification, String project_id, String password, String user_name, String type, String state, String email , String answer , String question , String photo){
         
         User user= new User();
         user.setIdentification(identification);
@@ -19,6 +19,9 @@ public class UserController {
         user.setType(type);
         user.setState(state);
         user.setEmail(email);
+        user.setAnswer(answer);
+        user.setQuestion(question);
+        user.setPhoto(photo);
         
         UserDao userDao= new UserDao();
         int result=userDao.saveUser(user);
@@ -46,13 +49,13 @@ public class UserController {
 
     }
 
-    public void updateUser(String identification, String project_id, String password,  String user_name, String type, String state, String email){
+    public void updateUser(String identification, String project_id, String password,  String user_name, String type, String state, String email,String answer , String question){
        
         UserDao userDao= new UserDao();
-        boolean cheek =userDao.updateUser(identification, project_id, password, user_name, type, state,email);
+        boolean cheek =userDao.updateUser(identification, project_id, password, user_name, type, state,email, answer, question);
         if (cheek == true){
                 View message = new View();
-                message.sucessfulOperationTypeElement("Un usuario", "actualizar");
+                message.sucessfulOperationTypeElement("Un usuario", "actualizado");
 
         }
         System.out.println("error");

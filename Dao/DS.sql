@@ -51,7 +51,8 @@ CREATE TABLE users(
 	email VARCHAR(40) NOT NULL,
 	secret_answer VARCHAR(80) NOT NULL,
 	secret_question VARCHAR(80) NOT NULL,
-	adress_photo VARCHAR(80)
+	adress_photo VARCHAR(80),
+        UNIQUE(identification)
 
 );
 INSERT INTO users(identification,project_id,user_password,name,type,state,email,secret_answer,secret_question)

@@ -1,10 +1,8 @@
 package Dao;
 
 import Logica.Equipment;
-import Logica.Project;
 import Logica.View;
 import Ventanas.InitialInterface;
-
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -86,7 +84,7 @@ public class EquipmentDao {
     public boolean updateEquipment(String serial, String name, String description, String state){
 
         String sql_select ="UPDATE equipment SET serial ='" + serial +  "', name = '"+ name +"', description = '"+ description +
-                "', state ='" + state +" WHERE  serial='"+ serial +"';";
+                "', state ='" + state +"' WHERE  serial='"+ serial +"';";
         try{
             FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();

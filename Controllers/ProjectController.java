@@ -2,40 +2,42 @@ package Controllers;
 
 import Logica.Project;
 import Dao.ProjectDao;
+import Logica.View;
 
 public class ProjectController {
 
-    ProjectDao projectDao;
-
     public ProjectController(){
-        projectDao= new ProjectDao();
     }
 
     public int addProject(String code, String name, String description, String state){
         
         Project project= new Project();
+        ProjectDao projectDao= new ProjectDao();
 
         project.setCode(code);
         project.setName(name);
         project.setDescription(description);
         project.setState(state);
 
-
-        System.out.println("Se va a insertar un Proyecto");
-
         int result=projectDao.saveProject(project);
+        
+        if (result == 1){
+                View message = new View();
+                message.sucessfulOperationTypeElement("Un proyecto" , "creado");
+                return result;
+            }else{
+               View message = new View();
+               message.errorCreateTypeElement();
+            }
 
-        System.out.println("Se inserto un nuevo Proyecto");
-
-        return result;
+        return 0;
 
     }
 
     public Project viewProject(String code){
 
         Project project = new Project();
-
-        System.out.println("Se va a consultar un Proyecto");
+        ProjectDao projectDao= new ProjectDao();
 
         project = projectDao.viewProject(code);
 
@@ -44,9 +46,11 @@ public class ProjectController {
     }
 
     public void updateProject(String code, String name, String description, String state){
+        ProjectDao projectDao= new ProjectDao();
         boolean cheek = projectDao.updateProject(code,name,description,state);
-         if (cheek == true){
-                        System.out.println("Se se actualizao un projecto");
+        if (cheek == true){
+                View message = new View();
+                message.sucessfulOperationTypeElement("Un proyecto", "actualizo");
 
         }
                         System.out.println("error");

@@ -68,7 +68,7 @@ public ProjectDao(){
     public boolean updateProject(String code, String name, String description, String state){
 
         String sql_select="UPDATE project SET code ='" + code +  "', name = '"+ name +"', description = '"+ description +
-                "', state ='" + state +" WHERE  code='"+ code +"';";
+                "', state ='" + state +"' WHERE  code='"+ code +"';";
         try{
             FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();

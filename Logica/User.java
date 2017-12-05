@@ -15,6 +15,7 @@ public class User {
     private String email;
     private String question;
     private String answer;
+    private String photo;
 
     public User() {
     };
@@ -55,6 +56,9 @@ public class User {
     public  String getAnswer() {
         return answer;
     }
+    public String getPhoto(){
+        return photo;
+    }
 
     public  void setIdentification(String identification) {
         this.identification = identification;
@@ -90,7 +94,9 @@ public class User {
     public  void setAnswer(String answer){
         this.answer = answer;
     }
-    
+     public  void setPhoto(String photo){
+        this.photo = photo;
+    }
     
 
 

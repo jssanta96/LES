@@ -42,7 +42,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     Date fecha = new Date();
     File fichero;
 
-    public InitialInterface() {//Esto a intej
+    public InitialInterface() {
 
         initComponents();
         fillEmptyFields();
@@ -2679,7 +2679,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private void jButtonEquipo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipo1ActionPerformed
 
         Querys objQuery = new Querys();
-        objQuery.updateComboBoxs(this.jComboBoxUpdateUserProject, "SELECT * FROM project", "code", "name");
+        objQuery.updateComboBoxs(this.jComboBoxUpdateUserProject, "SELECT * FROM project", "id_project", "name");
         objQuery.updateComboBoxs(this.jComboBoxUpdateIdUser, "SELECT * FROM users", "identification", "name");
         objQuery.addTypeUser(jComboBoxUpdateUserType, "SELECT type FROM users WHERE identification ='" + jLabelUserIdentificationGeneral.getText() + "'", "type");
         objQuery.addStateUser(jComboBoxUpdateUserState, "SELECT type FROM users WHERE identification ='" + jLabelUserIdentificationGeneral.getText() + "'", "type");
@@ -2831,6 +2831,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonReportesActionPerformed
 
     private void jButtonReportPrestxProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportPrestxProjectActionPerformed
+        
         String[] titulos = {"Proyecto", "Cantidad_Prestamos"};
         jTable5.setModel(new DefaultTableModel(null, titulos));
         Querys objQuery = new Querys();
@@ -2840,6 +2841,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 + "GROUP BY project.name;");
         hidePanels();
         jPanelLoanXProjectList.setVisible(true);
+        
     }//GEN-LAST:event_jButtonReportPrestxProjectActionPerformed
 
     private void jButtonMultasXMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultasXMesActionPerformed
@@ -3012,7 +3014,6 @@ public final class InitialInterface extends javax.swing.JFrame {
         int id_equipment = getIdEquipment(serial);
         String state = getStateEquipment(id_equipment);
         System.out.println(state);
-//        equipment_name = g(id_equipment);
         jLabelEquipName.setText(equipment_name);  
         jLabelEquipState.setText(state);
     }//GEN-LAST:event_jButtonCheckEquipActionPerformed
@@ -3208,10 +3209,8 @@ public final class InitialInterface extends javax.swing.JFrame {
     public void createUser() {
 
         UserController objCtrlUser = new UserController();
-        objCtrlUser = new UserController();
 
         String identification = jTextFieldIdentificacionCrearUsuario.getText();
-        String IdProyectCreate = null;
         String idProyect = splitComboBox(jComboBoxCreateUserProject);
         String name = jTextFieldNombreCrearUsuario.getText();
         String password = generateInitialPassword();
@@ -3220,12 +3219,14 @@ public final class InitialInterface extends javax.swing.JFrame {
         String email = jTextFieldEmailCrearUsuario.getText();
         String question = jTextFieldQuestion.getText();
         String answer = jTextFieldAnswer.getText();
+        String photo = "1";
 
-        objCtrlUser.addUser(identification, IdProyectCreate, password, name, typeUser, state, email,answer,question);
+        objCtrlUser.addUser(identification, idProyect, password, name, typeUser, state, email,answer,question , photo);
 
     }
 
     public void renovateLoan() {
+        
         RequestController objCtrlRequest = new RequestController();
         EquipmentController objCtrlEquipment = new EquipmentController();
 
@@ -3412,11 +3413,7 @@ public final class InitialInterface extends javax.swing.JFrame {
             String codigo[] = prueba.get(i).split(" ");
 
             positionId = codigo[0];
-
         }
-
-        System.out.println(positionId);
-
         return positionId;
 
     }
@@ -3443,8 +3440,9 @@ public final class InitialInterface extends javax.swing.JFrame {
         String updateType = jComboBoxUpdateUserType.getSelectedItem().toString();
         String updateName = jTextFieldNombre3.getText();
         String updateEmail = jTextFieldEmail1.getText();
-
-        objCtrlUser.updateUser(updateIdUser, updateIdProject, updatePassword, updateName, updateType, updateState, updateEmail);
+        String updateAnswer ="";
+        String updateQuestion = "";
+        objCtrlUser.updateUser(updateIdUser, updateIdProject, updatePassword, updateName, updateType, updateState, updateEmail, updateAnswer , updateQuestion);
 
     }
 
@@ -3456,7 +3454,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         String updateDescription = jTextArea3.getText();
         String updateState = splitComboBox(jComboBoxUpdateProjectState);
 
-        objCtrlProject.updateProject(updateProject, updateProject, updateDescription, updateState);
+        objCtrlProject.updateProject(updateProject, updateNameProject, updateDescription, updateState);
 
     }
 
