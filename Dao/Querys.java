@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -248,6 +249,24 @@ public String typeUser(String query , String type){
         return null;
 
     }
+public void setTotal(JTextField jtexfield, String query){
+       fachada = new FachadaBD(); 
+             try{
+            Connection conn= fachada.getConnetion();
+
+            Statement sentenceProjects = conn.createStatement();
+
+            ResultSet rs = sentenceProjects.executeQuery(query);
+         
+             while(rs.next()){
+                 jtexfield.setText(rs.getString(1));
+             }
+            
+             }catch(SQLException e){
+            System.out.println("error");
+        }
+    
+}
 public void addTypeUser(JComboBox comboBox , String query , String type ){
             
        comboBox.removeAllItems();
