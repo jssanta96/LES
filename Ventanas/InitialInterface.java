@@ -1824,7 +1824,18 @@ public final class InitialInterface extends javax.swing.JFrame {
             new String [] {
                 "Proyecto", "Cantidad_prestamos"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable5.setEnabled(false);
+        jTable5.setFocusable(false);
+        jTable5.setRequestFocusEnabled(false);
         jScrollPane9.setViewportView(jTable5);
 
         jPanelLoanXProjectList.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 540, 140));
@@ -1868,7 +1879,18 @@ public final class InitialInterface extends javax.swing.JFrame {
             new String [] {
                 "Mes", "Cantidad_prestamos"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable6.setEnabled(false);
+        jTable6.setFocusable(false);
+        jTable6.setRequestFocusEnabled(false);
         jScrollPane10.setViewportView(jTable6);
 
         jPanelLoanXMonthList.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 540, 140));
@@ -1903,7 +1925,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabelUsuarios11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabelUsuarios11.setForeground(new java.awt.Color(102, 102, 102));
         jLabelUsuarios11.setText("PRESTAMOS POR MIEMBRO");
-        jPanelLoanXMembersList.add(jLabelUsuarios11, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
+        jPanelLoanXMembersList.add(jLabelUsuarios11, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, -1, -1));
 
         jTable7.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1912,7 +1934,17 @@ public final class InitialInterface extends javax.swing.JFrame {
             new String [] {
                 "Miembro", "Cantidad_prestamos"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable7.setEnabled(false);
+        jTable7.setFocusable(false);
         jScrollPane11.setViewportView(jTable7);
 
         jPanelLoanXMembersList.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 540, 140));
@@ -2145,17 +2177,14 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelViewEquipment.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
         jLabelDescriptionEquip.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelDescriptionEquip.setForeground(new java.awt.Color(0, 0, 0));
         jLabelDescriptionEquip.setText("State");
         jPanelViewEquipment.add(jLabelDescriptionEquip, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 310, 60));
 
         jLabelEquipState.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelEquipState.setForeground(new java.awt.Color(0, 0, 0));
         jLabelEquipState.setText("State");
         jPanelViewEquipment.add(jLabelEquipState, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 190, 30));
 
         jLabelEquipName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelEquipName.setForeground(new java.awt.Color(0, 0, 0));
         jLabelEquipName.setText("NOMBRE");
         jPanelViewEquipment.add(jLabelEquipName, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 190, 30));
 
@@ -2225,27 +2254,22 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelViewUser.add(jLabel85, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
         jLabelViewUserEmail.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelViewUserEmail.setForeground(new java.awt.Color(0, 0, 0));
         jLabelViewUserEmail.setText("EmailDelUsuarioSeleccionado");
         jPanelViewUser.add(jLabelViewUserEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 300, 260, 30));
 
         jLabelViewUserName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelViewUserName.setForeground(new java.awt.Color(0, 0, 0));
         jLabelViewUserName.setText("NombreDelUsuarioSeleccionado");
         jPanelViewUser.add(jLabelViewUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 260, 30));
 
         jLabelViewUserRange.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelViewUserRange.setForeground(new java.awt.Color(0, 0, 0));
         jLabelViewUserRange.setText("Cargo");
         jPanelViewUser.add(jLabelViewUserRange, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 70, 30));
 
         jLabelViewUserState.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelViewUserState.setForeground(new java.awt.Color(0, 0, 0));
         jLabelViewUserState.setText("State");
         jPanelViewUser.add(jLabelViewUserState, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 90, 30));
 
         jLabelViewUserProject.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelViewUserProject.setForeground(new java.awt.Color(0, 0, 0));
         jLabelViewUserProject.setText("PROYECTO");
         jPanelViewUser.add(jLabelViewUserProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 270, 30));
 
@@ -2325,17 +2349,14 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelViewProject.add(jLabel88, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
         jLabelViewProjectName1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelViewProjectName1.setForeground(new java.awt.Color(0, 0, 0));
         jLabelViewProjectName1.setText("EstadoDelProyecto");
         jPanelViewProject.add(jLabelViewProjectName1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 190, 30));
 
         jLabelViewProjectDescription.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelViewProjectDescription.setForeground(new java.awt.Color(0, 0, 0));
         jLabelViewProjectDescription.setText("DescripcionDelProyecto");
         jPanelViewProject.add(jLabelViewProjectDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 290, 70));
 
         jLabelViewProjectName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelViewProjectName.setForeground(new java.awt.Color(0, 0, 0));
         jLabelViewProjectName.setText("NombreDelProyecto");
         jPanelViewProject.add(jLabelViewProjectName, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 190, 30));
 
@@ -2409,12 +2430,10 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelDeleteMult.add(jLabelMultValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, 30));
 
         jLabelValueMultUser.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelValueMultUser.setForeground(new java.awt.Color(0, 0, 0));
         jLabelValueMultUser.setText("ValorMulta");
         jPanelDeleteMult.add(jLabelValueMultUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, -1, 30));
 
         jLabelUserNameMult.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelUserNameMult.setForeground(new java.awt.Color(0, 0, 0));
         jLabelUserNameMult.setText("NULL");
         jPanelDeleteMult.add(jLabelUserNameMult, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, 30));
 
@@ -2743,7 +2762,14 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonReportesActionPerformed
 
     private void jButtonReportPrestxProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportPrestxProjectActionPerformed
-        hidePanels();
+         String[] titulos = {"Proyecto","Cantidad_Prestamos"};
+       jTable5.setModel(new DefaultTableModel(null,titulos));
+        Querys objQuery = new Querys();
+        objQuery.fillTables(this.jTable5 ,"SELECT project.name, count(request.id_request) FROM users\n" +
+"INNER JOIN project  ON users.project_id = project.id_project\n" +
+"INNER JOIN request ON users.id_user = request.id_user\n" +
+"GROUP BY project.name;");
+      hidePanels();
         jPanelLoanXProjectList.setVisible(true);
     }//GEN-LAST:event_jButtonReportPrestxProjectActionPerformed
 
@@ -2753,11 +2779,19 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonMultasXMesActionPerformed
 
     private void jButtonReportPresxMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportPresxMesActionPerformed
+        String[] titulos = {"Mes","Cantidad_Prestamos"};
+       jTable6.setModel(new DefaultTableModel(null,titulos));
+        Querys objQuery = new Querys();
+        objQuery.fillTables(this.jTable6 ,"SELECT TO_CHAR(start_date,'TMMonth') mes, COUNT (id_request) FROM request WHERE TO_CHAR(start_date,'TMMonth') =TO_CHAR(start_date,'TMMonth') GROUP BY mes;");
         hidePanels();
         jPanelLoanXMonthList.setVisible(true);
     }//GEN-LAST:event_jButtonReportPresxMesActionPerformed
 
     private void jButtonReportPresxMiembrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportPresxMiembrosActionPerformed
+        String[] titulos = {"Miembro","Cantidad_Prestamos"};
+       jTable7.setModel(new DefaultTableModel(null,titulos));
+        Querys objQuery = new Querys();
+        objQuery.fillTables(this.jTable7 , "SELECT name , COUNT (id_request) FROM users, request WHERE users.id_user= request.id_user GROUP BY name;");
         hidePanels();
         jPanelLoanXMembersList.setVisible(true);
     }//GEN-LAST:event_jButtonReportPresxMiembrosActionPerformed
