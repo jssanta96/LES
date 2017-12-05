@@ -10,9 +10,13 @@ import Controllers.MultController;
 import Controllers.ProjectController;
 import Controllers.RequestController;
 import Controllers.UserController;
+import Dao.EquipmentDao;
 import Dao.FachadaBD;
+import Dao.MultDao;
 import java.io.File;
 import Dao.Querys;
+import Dao.RequestDao;
+import Dao.UserDao;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -2231,15 +2235,15 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelViewEquipment.add(jLabel82, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
         jLabelDescriptionEquip.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelDescriptionEquip.setText("State");
+        jLabelDescriptionEquip.setText("NULL");
         jPanelViewEquipment.add(jLabelDescriptionEquip, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 310, 60));
 
         jLabelEquipState.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelEquipState.setText("State");
+        jLabelEquipState.setText("NULL");
         jPanelViewEquipment.add(jLabelEquipState, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 190, 30));
 
         jLabelEquipName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelEquipName.setText("NOMBRE");
+        jLabelEquipName.setText("NULL");
         jPanelViewEquipment.add(jLabelEquipName, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 190, 30));
 
         jLabelDescripcion4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -2968,8 +2972,10 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack16ActionPerformed
 
     private void jButtonConsultEquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultEquipmentActionPerformed
+        Querys objQuery = new Querys();
         hidePanels();
         jPanelViewEquipment.setVisible(true);
+        objQuery.updateComboBoxs(this.jComboBoxUpdateEquipmentSerial1, "SELECT * FROM equipment", "serial", "name");
     }//GEN-LAST:event_jButtonConsultEquipmentActionPerformed
 
     private void jButtonConsultUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultUserActionPerformed
@@ -2988,7 +2994,15 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack17ActionPerformed
 
     private void jButtonCheckEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckEquipActionPerformed
-        // TODO add your handling code here:
+                                            
+        String serial = splitComboBox(jComboBoxUpdateEquipmentSerial1);
+        String equipment_name = "";
+        int id_equipment = getIdEquipment(serial);
+        String state = getStateEquipment(id_equipment);
+        System.out.println(state);
+//        equipment_name = g(id_equipment);
+        jLabelEquipName.setText(equipment_name);  
+        jLabelEquipState.setText(state);
     }//GEN-LAST:event_jButtonCheckEquipActionPerformed
 
     private void jButtonUserCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUserCheckActionPerformed
@@ -3128,22 +3142,13 @@ public final class InitialInterface extends javax.swing.JFrame {
     }
 
     public String getNameUserMult(int id_user) {
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        String name = "";
-        try {
-            Statement sentenceMult = conn.createStatement();
-            String queryMult = "SELECT name FROM users WHERE id_user=" + id_user + ";";
-            System.out.print(queryMult);
-            ResultSet rsMult = sentenceMult.executeQuery(queryMult);
-            while (rsMult.next()) {
-                name = rsMult.getString("name");
-            }
-            return name;
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+        UserDao objDao = new UserDao();
+        return objDao.getNameUser(id_user);
+    }
+    
+    public String getStateEquipment(int id_equipment){
+        EquipmentDao objDao = new EquipmentDao();
+        return objDao.getStateEquipment(id_equipment); 
     }
     
     public void saveImage(String route){
@@ -3173,44 +3178,13 @@ public final class InitialInterface extends javax.swing.JFrame {
     }
 
     public int getIdUserMult(int id_request) {
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        int id_user = 0;
-        try {
-            Statement sentenceMult = conn.createStatement();
-            String queryMult = "SELECT id_user FROM request WHERE id_request=" + id_request + ";";
-            System.out.print(queryMult);
-            ResultSet rsMult = sentenceMult.executeQuery(queryMult);
-            while (rsMult.next()) {
-                id_user = rsMult.getInt("id_user");
-            }
-            System.out.println(id_user);
-            return id_user;
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+        RequestDao objDao = new RequestDao();
+        return objDao.getIdUser(id_request);
     }
 
     public int getIdRequestMult(String id_mult) {
-
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        int id_request = 0;
-        try {
-            Statement sentenceMult = conn.createStatement();
-            String queryMult = "SELECT id_request FROM mult WHERE id_mult=" + id_mult + ";";
-            System.out.print(queryMult);
-            ResultSet rsMult = sentenceMult.executeQuery(queryMult);
-            while (rsMult.next()) {
-                id_request = rsMult.getInt("id_request");
-            }
-            return id_request;
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
-
+        MultDao objDao = new MultDao();
+        return objDao.getIdRequestMult(id_mult);
     }
 
     public void createUser() {
@@ -3226,8 +3200,10 @@ public final class InitialInterface extends javax.swing.JFrame {
         String typeUser = jComboBoxCreateUserType.getSelectedItem().toString();
         String state = "Activo";
         String email = jTextFieldEmailCrearUsuario.getText();
+        String question = jTextFieldQuestion.getText();
+        String answer = jTextFieldAnswer.getText();
 
-        objCtrlUser.addUser(identification, IdProyectCreate, password, name, typeUser, state, email);
+        objCtrlUser.addUser(identification, IdProyectCreate, password, name, typeUser, state, email,answer,question);
 
     }
 
@@ -3335,22 +3311,8 @@ public final class InitialInterface extends javax.swing.JFrame {
     }
 
     public String getEndDate(int id_request) {
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        String end_date = "";
-        try {
-            Statement sentenceRequest = conn.createStatement();
-            String queryRequest = "SELECT end_date FROM request WHERE id_request=" + id_request + ";";
-            System.out.print(queryRequest);
-            ResultSet rsRequest = sentenceRequest.executeQuery(queryRequest);
-            while (rsRequest.next()) {
-                end_date = rsRequest.getString("end_date");
-            }
-            return end_date;
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
+        RequestDao objDao = new RequestDao();
+        return objDao.getEndDate(id_request);
     }
 
     public String getReserveDate() {
@@ -3365,62 +3327,18 @@ public final class InitialInterface extends javax.swing.JFrame {
     }
 
     public int getIdEquipment(String serial) {//Obtiene el id de la secuencia dependiendo del serial del equipo
-
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        int id = 0;
-        try {
-            Statement sentenceEquipment = conn.createStatement();
-            String queryEquipment = "SELECT id_equipment FROM equipment WHERE serial='" + serial + "';";
-            System.out.print(queryEquipment);
-            ResultSet rsEquipment = sentenceEquipment.executeQuery(queryEquipment);
-            while (rsEquipment.next()) {
-                id = rsEquipment.getInt("id_equipment");
-            }
-            return id;
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+        EquipmentDao objDao = new EquipmentDao();
+        return objDao.getIdEquipment(serial);
     }
 
     public int getIdUser(String identification) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
-
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        int id = 0;
-        try {
-            Statement sentenceUsers = conn.createStatement();
-            String queryUsers = "SELECT id_user FROM users WHERE identification='" + identification + "';";
-            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
-            while (rsUsers.next()) {
-                id = rsUsers.getInt("id_user");
-            }
-            return id;
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+        UserDao objDao = new UserDao();
+        return objDao.getIdUser(identification);
     }
 
     public int getIdRequest(int id_user, int id_equipment, String state) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
-
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        int id = 0;
-        try {
-            Statement sentenceRequest = conn.createStatement();
-            String queryRequest = "SELECT id_request FROM request WHERE id_user=" + id_user + " AND id_equipment=" + id_equipment + "AND state='" + state + "';";
-            ResultSet rsRequest = sentenceRequest.executeQuery(queryRequest);
-            while (rsRequest.next()) {
-                id = rsRequest.getInt("id_request");
-            }
-            System.out.println(id);
-            return id;
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
+        RequestDao objDao = new RequestDao();
+        return objDao.getIdRequest(id_user, id_equipment, state);
     }
 
     public void deliverEquipment() {

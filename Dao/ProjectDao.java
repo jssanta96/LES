@@ -1,54 +1,47 @@
 package Dao;
 
 import Logica.Project;
+import Logica.View;
 import java.sql.*;
 
 public class ProjectDao {
-    FachadaBD fachada;
 
 
-    public ProjectDao(){
-        fachada = new FachadaBD();
-    }
-
-
+public ProjectDao(){
+}
 
     public int saveProject(Project project){
-        String save_sql;
-        int numberRows=0;
-
-        save_sql="INSERT INTO project VALUES(NEXTVAL('project_seq'), '"+
+        String save_sql="INSERT INTO project VALUES(NEXTVAL('project_seq'), '"+
                 project.getCode()+"','"+project.getName()+"','"
                 +project.getDescription()+"','"+project.getState()+"');";
 
         try{
+            int numberRows;
+            FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();
             Statement sentence = conn.createStatement();
-
             numberRows= sentence.executeUpdate(save_sql);
-            System.out.println("up" + numberRows);
             return numberRows;
 
         }catch(SQLException e){
-            System.out.println(e);
+            View message = new View();
+            message.errorConnection();  
         }
         catch(Exception e){
-            System.out.println(e);
+            View message = new View();
+            message.errorConnection();  
         }
         return -1;
     }
-
-
-
     public Project viewProject(String code){
+        
         Project project= new Project();
-        String sql_select;
-        sql_select="SELECT code,name,description,state"+
+        String sql_select="SELECT code,name,description,state"+
                 " FROM project WHERE code='"+code+"';";
 
         try{
+            FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();
-            System.out.println("consultando en la bd");
             Statement sentence = conn.createStatement();
             ResultSet tabla = sentence.executeQuery(sql_select);
 
@@ -60,8 +53,6 @@ public class ProjectDao {
                 project.setDescription(tabla.getString(3));
 
                 project.setState(tabla.getString(4));
-
-                System.out.println("ok");
             }
 
             return project;
@@ -74,41 +65,28 @@ public class ProjectDao {
         }
         return null;
     }
-
-
-
     public boolean updateProject(String code, String name, String description, String state){
 
-        String sql_select;
-        sql_select="UPDATE project SET code ='" + code +  "', name = '"+ name +"', description = '"+ description +
+        String sql_select="UPDATE project SET code ='" + code +  "', name = '"+ name +"', description = '"+ description +
                 "', state ='" + state +" WHERE  code='"+ code +"';";
         try{
+            FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();
-            System.out.println("Update in the bd");
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_select);
-               return true;
+              return true;
 
         }
-        catch(SQLException e){ System.out.println(e); }
-        catch(Exception e){ System.out.println(e); }
+        catch(SQLException e){
+            View message = new View();
+            message.errorConnection();   
+        }
+        catch(Exception e){
+            View message = new View();
+            message.errorConnection();  
+        }
         return false;
         
     }
 
-
-    public void deleteProject(String code){
-
-        String sql_select;
-        sql_select="DELETE FROM project WHERE  code='"+ code +"';";
-        try{
-            Connection conn= fachada.getConnetion();
-            System.out.println("Delete in the bd");
-            Statement sentencia = conn.createStatement();
-            sentencia.executeUpdate(sql_select);
-        }
-        catch(SQLException e){ System.out.println(e); }
-        catch(Exception e){ System.out.println(e); }
-
-    }
 }

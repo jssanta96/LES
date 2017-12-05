@@ -54,7 +54,4 @@ public class ProjectController {
     
     }
 
-    public void deleteProject(String code){
-        projectDao.deleteProject(code);
-    }
 }

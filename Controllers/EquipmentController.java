@@ -63,7 +63,4 @@ public class EquipmentController {
         }
     }
 
-    public void deleteEquipment(String serial){
-        equipmentDao.deleteEquipment(serial);
-    }
 }

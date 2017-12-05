@@ -68,7 +68,5 @@ public class RequestController {
         requestDao.updateRequest(request_id,state,user_id,serial,start_date,end_date);
     }
 
-    public void deleteRequest(String request_id){
-        requestDao.deleteRequest(request_id);
-    }
+ 
 }

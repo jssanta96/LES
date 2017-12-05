@@ -1,40 +1,42 @@
 package Dao;
 
 import Logica.Request;
+import Logica.View;
+import Ventanas.InitialInterface;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class RequestDao {
-    FachadaBD fachada;
 
 
     public RequestDao(){
-        fachada = new FachadaBD();
     }
 
 
 
     public int saveRequest(Request request){
-        String save_sql;
-        int numberRows=0;
-
-        save_sql="INSERT INTO request VALUES(NEXTVAL('request_seq'),'"+request.getState()+"',"+
+        
+        String save_sql="INSERT INTO request VALUES(NEXTVAL('request_seq'),'"+request.getState()+"',"+
                 request.getUser_id()+","+request.getEquipment_id()+",'"
                 +request.getStart_date()+"','"+request.getEnd_date()+"');";
 
         try{
+            int numberRows;
+            FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();
             Statement sentence = conn.createStatement();
-
             numberRows= sentence.executeUpdate(save_sql);
-            System.out.println("up" + numberRows);
             return numberRows;
 
         }catch(SQLException e){
-            System.out.println(e);
+            View message = new View();
+            message.errorConnection(); 
         }
         catch(Exception e){
-            System.out.println(e);
+            View message = new View();
+            message.errorConnection(); 
         }
         return -1;
     }
@@ -43,18 +45,22 @@ public class RequestDao {
     
     public boolean changeStateRequest(int id_request, String state){
 
-        String sql_select;
-        sql_select="UPDATE request SET state='" + state +"' WHERE  id_request="+ id_request +";";
+        String sql_select="UPDATE request SET state='" + state +"' WHERE  id_request="+ id_request +";";
         try{
+            FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();
-            System.out.println("Update in the bd");
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_select);
             return true;
-
         }
-        catch(SQLException e){ System.out.println(e); }
-        catch(Exception e){ System.out.println(e); }
+        catch(SQLException e){  
+            View message = new View();
+            message.errorConnection(); 
+        }
+        catch(Exception e){  
+            View message = new View();
+            message.errorConnection();  
+        }
         return false;
     }
     
@@ -63,22 +69,23 @@ public class RequestDao {
         String sql_select;
         sql_select="UPDATE request SET end_date='" + end_date +"' WHERE  id_request="+ id_request +";";
         try{
+            FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();
-            System.out.println("Update in the bd");
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_select);
             return true;
 
         }
-        catch(SQLException e){ System.out.println(e); }
-        catch(Exception e){ System.out.println(e); }
+        catch(SQLException e){  
+            View message = new View();
+            message.errorConnection();  
+        }
+        catch(Exception e){  
+            View message = new View();
+            message.errorConnection();  
+        }
         return false;
     }
-    
-    
-    
-
-
 
     public Request viewRequest(String request_id){
         Request request= new Request();
@@ -87,8 +94,8 @@ public class RequestDao {
                 " FROM request WHERE request_id='"+request_id+"';";
 
         try{
+            FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();
-            System.out.println("consultando en la bd");
             Statement sentence = conn.createStatement();
             ResultSet tabla = sentence.executeQuery(sql_select);
 
@@ -103,8 +110,6 @@ public class RequestDao {
                 request.setStart_date(tabla.getString(4));
 
                 request.setEnd_date(tabla.getString(5));
-
-                System.out.println("ok");
             }
 
             return request;
@@ -122,34 +127,82 @@ public class RequestDao {
 
     public void updateRequest(String request_id,String state, String user_id, String serial, String start_date, String end_date){
 
-        String sql_select;
-        sql_select="UPDATE request SET state ='"+state+ "', user_id = '"+ user_id +"', serial = '"+ serial +
+        String sql_select="UPDATE request SET state ='"+state+ "', user_id = '"+ user_id +"', serial = '"+ serial +
                 "', start_date ='" + start_date +"',end_date= '"+end_date+" WHERE  request_id='"+ request_id +"';";
         try{
+            FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();
-            System.out.println("Update in the bd");
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_select);
-
         }
-        catch(SQLException e){ System.out.println(e); }
-        catch(Exception e){ System.out.println(e); }
+        catch(SQLException e){ 
+            View message = new View();
+            message.errorConnection(); 
+        }
+        catch(Exception e){
+            View message = new View();
+            message.errorConnection();  
+        }
 
     }
 
-
-    public void deleteRequest(String request_id){
-
-        String sql_select;
-        sql_select="DELETE FROM request WHERE  request_id='"+ request_id+"';";
-        try{
-            Connection conn= fachada.getConnetion();
-            System.out.println("Delete in the bd");
-            Statement sentencia = conn.createStatement();
-            sentencia.executeUpdate(sql_select);
+    
+    public int getIdUser(int id_request) {
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        int id_user = 0;
+        try {
+            Statement sentenceMult = conn.createStatement();
+            String queryMult = "SELECT id_user FROM request WHERE id_request=" + id_request + ";";
+            System.out.print(queryMult);
+            ResultSet rsMult = sentenceMult.executeQuery(queryMult);
+            while (rsMult.next()) {
+                id_user = rsMult.getInt("id_user");
+            }
+            System.out.println(id_user);
+            return id_user;
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
-        catch(SQLException e){ System.out.println(e); }
-        catch(Exception e){ System.out.println(e); }
+        return 0;
+    }
+    
+    public String getEndDate(int id_request) {
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        String end_date = "";
+        try {
+            Statement sentenceRequest = conn.createStatement();
+            String queryRequest = "SELECT end_date FROM request WHERE id_request=" + id_request + ";";
+            System.out.print(queryRequest);
+            ResultSet rsRequest = sentenceRequest.executeQuery(queryRequest);
+            while (rsRequest.next()) {
+                end_date = rsRequest.getString("end_date");
+            }
+            return end_date;
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public int getIdRequest(int id_user, int id_equipment, String state) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
 
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        int id = 0;
+        try {
+            Statement sentenceRequest = conn.createStatement();
+            String queryRequest = "SELECT id_request FROM request WHERE id_user=" + id_user + " AND id_equipment=" + id_equipment + "AND state='" + state + "';";
+            ResultSet rsRequest = sentenceRequest.executeQuery(queryRequest);
+            while (rsRequest.next()) {
+                id = rsRequest.getInt("id_request");
+            }
+            System.out.println(id);
+            return id;
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
     }
 }

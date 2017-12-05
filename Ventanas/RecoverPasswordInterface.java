@@ -73,7 +73,7 @@ public class RecoverPasswordInterface extends javax.swing.JFrame {
                 jButtonBack1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 101, -1));
+        getContentPane().add(jButtonBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 110, -1));
 
         textLogin1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         textLogin1.setForeground(new java.awt.Color(102, 102, 102));

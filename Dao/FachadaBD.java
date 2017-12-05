@@ -1,5 +1,6 @@
 package Dao;
 
+import Logica.View;
 import java.sql.*;
 
 public class FachadaBD {
@@ -10,9 +11,9 @@ public class FachadaBD {
     ResultSet tabla;
     
     public FachadaBD(){
-        url="jdbc:postgresql://pgsql2:5432/1625639";
-        user="1625639";
-        password="1625639";
+        url="jdbc:postgresql://pgsql2:5432/1632149";
+        user="1632149";
+        password="1632149";
     }
 
 
@@ -23,7 +24,8 @@ public class FachadaBD {
             Class.forName("org.postgresql.Driver");
             //System.out.println( "Driver Cargado" );
         } catch( Exception e ) {
-            System.out.println( "No se pudo cargar el driver." );
+             View message = new View();
+             message.errorConnection();
         }
 
         try{
@@ -33,7 +35,8 @@ public class FachadaBD {
             return conexion;
             //Crear objeto Statement para realizar queries a la base de datos
         } catch( Exception e ) {
-            System.out.println( "No se pudo abrir la bd." );
+             View message = new View();
+             message.errorConnection();
             return null;
         }
 

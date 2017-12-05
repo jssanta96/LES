@@ -8,12 +8,13 @@ public class User {
 
     private String user_name;
     private String project_id;
-    private String nickName;
     private String password;
     private String type;
     private String identification;
     private String state;
     private String email;
+    private String question;
+    private String answer;
 
     public User() {
     };
@@ -26,10 +27,6 @@ public class User {
 
     public String getProjectId(){
         return project_id;
-    }
-
-    public  String getNickName() {
-        return nickName;
     }
 
     public  String getPassword() {
@@ -51,6 +48,13 @@ public class User {
     public  String getEmail() {
         return email;
     }
+     public  String getQuestion() {
+        return question;
+    }
+
+    public  String getAnswer() {
+        return answer;
+    }
 
     public  void setIdentification(String identification) {
         this.identification = identification;
@@ -63,11 +67,6 @@ public class User {
     public  void setPassword(String password) {
         this.password = password;
     }
-
-    public  void setNickName(String nickName) {
-        this.nickName = nickName;
-    }
-
     public  void setUserName(String user_name) {
         this.user_name = user_name;
     }
@@ -83,6 +82,16 @@ public class User {
     public  void setEmail(String email){
         this.email = email;
     }
+    
+    public  void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public  void setAnswer(String answer){
+        this.answer = answer;
+    }
+    
+    
 
 
 }

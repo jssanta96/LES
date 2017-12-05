@@ -1,38 +1,40 @@
 package Dao;
 
 import Logica.Mult;
+import Logica.View;
+import Ventanas.InitialInterface;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MultDao {
-    FachadaBD fachada;
 
 
-    public MultDao(){
-        fachada = new FachadaBD();
+public MultDao(){
     }
 
 
 
     public int saveMult(Mult mult){
-        String save_sql;
-        int numberRows=0;
-
-        save_sql="INSERT INTO mult VALUES(NEXTVAL('mult_seq'), '"+
+        
+        String save_sql="INSERT INTO mult VALUES(NEXTVAL('mult_seq'), '"+
                 mult.getId_request()+","+mult.getValue()+");";
 
         try{
+            int numberRows;
+            FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();
             Statement sentence = conn.createStatement();
-
             numberRows= sentence.executeUpdate(save_sql);
-            System.out.println("up" + numberRows);
             return numberRows;
 
         }catch(SQLException e){
-            System.out.println(e);
+           View message = new View();
+           message.errorConnection();
         }
         catch(Exception e){
-            System.out.println(e);
+           View message = new View();
+           message.errorConnection();
         }
         return -1;
     }
@@ -40,14 +42,14 @@ public class MultDao {
 
 
     public Mult viewMult(int id_request){
+        
         Mult mult= new Mult();
-        String sql_select;
-        sql_select="SELECT id_mult,id_request,value"+
+        String sql_select ="SELECT id_mult,id_request,value"+
                 " FROM project WHERE id_request="+id_request+";";
 
         try{
+            FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();
-            System.out.println("consultando en la bd");
             Statement sentence = conn.createStatement();
             ResultSet tabla = sentence.executeQuery(sql_select);
 
@@ -56,52 +58,82 @@ public class MultDao {
                 mult.setId_request(tabla.getInt(1));
 
                 mult.setValue(tabla.getInt(2));
-
-                System.out.println("ok");
+                
             }
 
             return mult;
         }
         catch(SQLException e){
-            System.out.println(e);
+           View message = new View();
+           message.errorConnection();
         }
         catch(Exception e){
-            System.out.println(e);
+           View message = new View();
+           message.errorConnection();
         }
         return null;
     }
 
+    public boolean updateMult(int id_request, double value){
 
-
-    public void updateMult(int id_request, double value){
-
-        String sql_select;
-        sql_select="UPDATE mult SET value =" + value +" WHERE id_request="+id_request+";";
+        String sql_select ="UPDATE mult SET value =" + value +" WHERE id_request="+id_request+";";
         try{
+            FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();
-            System.out.println("Update in the bd");
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_select);
-
+            return true;
         }
-        catch(SQLException e){ System.out.println(e); }
-        catch(Exception e){ System.out.println(e); }
-
+        catch(SQLException e){
+           View message = new View();
+           message.errorConnection();
+        }
+        catch(Exception e){ 
+           View message = new View();
+           message.errorConnection();
+        }
+        return false;
     }
 
 
-    public void deleteMult(String id_mult){
+    public boolean deleteMult(String id_mult){
 
-        String sql_select;
-        sql_select="DELETE FROM mult WHERE  id_mult ="+id_mult+";";
+        String sql_select="DELETE FROM mult WHERE  id_mult ="+id_mult+";";
         try{
+            FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();
-            System.out.println("Delete in the bd");
             Statement sentencia = conn.createStatement();
             sentencia.executeUpdate(sql_select);
+            return true;
         }
-        catch(SQLException e){ System.out.println(e); }
-        catch(Exception e){ System.out.println(e); }
+        catch(SQLException e){
+           View message = new View();
+           message.errorConnection();
+        }
+        catch(Exception e){ 
+           View message = new View();
+           message.errorConnection();
+        }
+        return false;
+    }
+    public int getIdRequestMult(String id_mult) {
+
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        int id_request = 0;
+        try {
+            Statement sentenceMult = conn.createStatement();
+            String queryMult = "SELECT id_request FROM mult WHERE id_mult=" + id_mult + ";";
+            System.out.print(queryMult);
+            ResultSet rsMult = sentenceMult.executeQuery(queryMult);
+            while (rsMult.next()) {
+                id_request = rsMult.getInt("id_request");
+            }
+            return id_request;
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
 
     }
 }
