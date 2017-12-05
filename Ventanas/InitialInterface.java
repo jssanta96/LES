@@ -115,12 +115,16 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelCreateUser = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
+        jTextFieldQuestion = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
         jLabelProyecto = new javax.swing.JLabel();
         jLabelIdentificacion = new javax.swing.JLabel();
         jLabelSolicitud3 = new javax.swing.JLabel();
         jTextFieldIdentificacionCrearUsuario = new javax.swing.JTextField();
         jComboBoxCreateUserProject = new javax.swing.JComboBox<>();
+        jLabelAnswer = new javax.swing.JLabel();
+        jTextFieldAnswer = new javax.swing.JTextField();
+        jLabelQuestion = new javax.swing.JLabel();
         jLabelTipo1 = new javax.swing.JLabel();
         jLabelTipo = new javax.swing.JLabel();
         jLabelNombre2 = new javax.swing.JLabel();
@@ -311,7 +315,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jButtonReportMultxMiembro = new javax.swing.JButton();
         jButtonReportPresxMiembros = new javax.swing.JButton();
         jLabelUsuarios8 = new javax.swing.JLabel();
-        jLabelReportes = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabelFondo18 = new javax.swing.JLabel();
         jPanelLoanXProjectList = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
@@ -774,51 +778,75 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
         jPanelCreateUser.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
+        jTextFieldQuestion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldQuestionActionPerformed(evt);
+            }
+        });
+        jPanelCreateUser.add(jTextFieldQuestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 410, 30));
+
         jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLabPeq.png"))); // NOI18N
         jPanelCreateUser.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, -1, -1));
 
         jLabelProyecto.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelProyecto.setForeground(new java.awt.Color(102, 102, 102));
         jLabelProyecto.setText("PROYECTO");
-        jPanelCreateUser.add(jLabelProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, 30));
+        jPanelCreateUser.add(jLabelProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, -1, 30));
 
         jLabelIdentificacion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelIdentificacion.setForeground(new java.awt.Color(102, 102, 102));
         jLabelIdentificacion.setText("IDENTIFICACION");
-        jPanelCreateUser.add(jLabelIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
+        jPanelCreateUser.add(jLabelIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         jLabelSolicitud3.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabelSolicitud3.setForeground(new java.awt.Color(102, 102, 102));
         jLabelSolicitud3.setText("CREAR USUARIO");
         jPanelCreateUser.add(jLabelSolicitud3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, -1, -1));
-        jPanelCreateUser.add(jTextFieldIdentificacionCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 230, 30));
+        jPanelCreateUser.add(jTextFieldIdentificacionCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 200, 30));
 
-        jPanelCreateUser.add(jComboBoxCreateUserProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 230, 30));
+        jPanelCreateUser.add(jComboBoxCreateUserProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 140, 120, 30));
+
+        jLabelAnswer.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelAnswer.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelAnswer.setText("RESPUESTA");
+        jPanelCreateUser.add(jLabelAnswer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, 30));
+
+        jTextFieldAnswer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldAnswerActionPerformed(evt);
+            }
+        });
+        jPanelCreateUser.add(jTextFieldAnswer, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 410, 30));
+
+        jLabelQuestion.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelQuestion.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelQuestion.setText("PREGUNTA");
+        jPanelCreateUser.add(jLabelQuestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, 30));
 
         jLabelTipo1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelTipo1.setForeground(new java.awt.Color(102, 102, 102));
         jLabelTipo1.setText("E-MAIL");
-        jPanelCreateUser.add(jLabelTipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, 30));
+        jPanelCreateUser.add(jLabelTipo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, 30));
 
         jLabelTipo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelTipo.setForeground(new java.awt.Color(102, 102, 102));
         jLabelTipo.setText("CARGO");
-        jPanelCreateUser.add(jLabelTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, 30));
+        jPanelCreateUser.add(jLabelTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 180, -1, 30));
 
         jLabelNombre2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelNombre2.setForeground(new java.awt.Color(102, 102, 102));
         jLabelNombre2.setText("NOMBRE");
-        jPanelCreateUser.add(jLabelNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, 30));
-        jPanelCreateUser.add(jTextFieldEmailCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 230, 30));
+        jPanelCreateUser.add(jLabelNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, 30));
+        jPanelCreateUser.add(jTextFieldEmailCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 410, 30));
 
         jTextFieldNombreCrearUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldNombreCrearUsuarioActionPerformed(evt);
             }
         });
-        jPanelCreateUser.add(jTextFieldNombreCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 230, 30));
+        jPanelCreateUser.add(jTextFieldNombreCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 200, 30));
 
-        jPanelCreateUser.add(jComboBoxCreateUserType, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, 230, 30));
+        jPanelCreateUser.add(jComboBoxCreateUserType, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 120, 30));
 
         jButtonBack1.setBackground(new java.awt.Color(102, 0, 0));
         jButtonBack1.setForeground(new java.awt.Color(255, 255, 255));
@@ -1737,6 +1765,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelReportes.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
         jButtonReportPrestxProject.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonReportPrestxProject.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         jButtonReportPrestxProject.setForeground(new java.awt.Color(255, 255, 255));
         jButtonReportPrestxProject.setText("PRESTAMOS POR PROYECTO");
         jButtonReportPrestxProject.addActionListener(new java.awt.event.ActionListener() {
@@ -1754,7 +1783,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonMultasXMesActionPerformed(evt);
             }
         });
-        jPanelReportes.add(jButtonMultasXMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 210, 40));
+        jPanelReportes.add(jButtonMultasXMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 220, 40));
 
         jButtonReportPresxMes.setBackground(new java.awt.Color(102, 0, 0));
         jButtonReportPresxMes.setForeground(new java.awt.Color(255, 255, 255));
@@ -1764,7 +1793,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonReportPresxMesActionPerformed(evt);
             }
         });
-        jPanelReportes.add(jButtonReportPresxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 210, 40));
+        jPanelReportes.add(jButtonReportPresxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 210, 40));
 
         jButtonReportMultxMiembro.setBackground(new java.awt.Color(102, 0, 0));
         jButtonReportMultxMiembro.setForeground(new java.awt.Color(255, 255, 255));
@@ -1774,9 +1803,10 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonReportMultxMiembroActionPerformed(evt);
             }
         });
-        jPanelReportes.add(jButtonReportMultxMiembro, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 210, 40));
+        jPanelReportes.add(jButtonReportMultxMiembro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 210, 40));
 
         jButtonReportPresxMiembros.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonReportPresxMiembros.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         jButtonReportPresxMiembros.setForeground(new java.awt.Color(255, 255, 255));
         jButtonReportPresxMiembros.setText("PRESTAMOS POR MIEMBRO");
         jButtonReportPresxMiembros.addActionListener(new java.awt.event.ActionListener() {
@@ -1784,15 +1814,23 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonReportPresxMiembrosActionPerformed(evt);
             }
         });
-        jPanelReportes.add(jButtonReportPresxMiembros, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 210, 40));
+        jPanelReportes.add(jButtonReportPresxMiembros, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 210, 40));
 
         jLabelUsuarios8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabelUsuarios8.setForeground(new java.awt.Color(102, 102, 102));
         jLabelUsuarios8.setText("REPORTES");
         jPanelReportes.add(jLabelUsuarios8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, -1, -1));
 
-        jLabelReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reportes.png"))); // NOI18N
-        jPanelReportes.add(jLabelReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
+        jButton1.setBackground(new java.awt.Color(102, 0, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reportes.png"))); // NOI18N
+        jButton1.setText("GRAFICAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanelReportes.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, -1, -1));
 
         jLabelFondo18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo18.setText("jLabel4");
@@ -2999,6 +3037,18 @@ public final class InitialInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TotalMultasXMiembroActionPerformed
 
+    private void jTextFieldQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldQuestionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldQuestionActionPerformed
+
+    private void jTextFieldAnswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAnswerActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldAnswerActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void emptyText() {
         jTextAreaCrearEquipo.setText("");
         jTextAreaCrearProyecto.setText("");
@@ -3557,6 +3607,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TotalMultasXMiembro;
     private javax.swing.JTextField TotalMultasXmes;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonBack1;
     private javax.swing.JButton jButtonBack10;
@@ -3739,6 +3790,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabel90;
     private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabelAnswer;
     private javax.swing.JLabel jLabelBienvenido;
     private javax.swing.JLabel jLabelCodigo;
     private javax.swing.JLabel jLabelCodigo1;
@@ -3824,7 +3876,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelProyecto;
     private javax.swing.JLabel jLabelProyecto1;
     private javax.swing.JLabel jLabelProyecto2;
-    private javax.swing.JLabel jLabelReportes;
+    private javax.swing.JLabel jLabelQuestion;
     private javax.swing.JLabel jLabelSerial;
     private javax.swing.JLabel jLabelSerial1;
     private javax.swing.JLabel jLabelSerial2;
@@ -3937,6 +3989,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextArea jTextAreaCrearEquipo;
     private javax.swing.JTextArea jTextAreaCrearProyecto;
+    private javax.swing.JTextField jTextFieldAnswer;
     private javax.swing.JTextField jTextFieldCodigoCrearProyecto;
     private javax.swing.JTextField jTextFieldEmail1;
     private javax.swing.JTextField jTextFieldEmailCrearUsuario;
@@ -3950,6 +4003,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldPassActual;
     private javax.swing.JTextField jTextFieldPassActual1;
     private javax.swing.JTextField jTextFieldPassActual2;
+    private javax.swing.JTextField jTextFieldQuestion;
     private javax.swing.JTextField jTextFieldSerialCrearEquipo;
     private javax.swing.JTextField jTextFieldSetEmail;
     private javax.swing.JTextField jTextFieldSetName;
