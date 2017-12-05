@@ -48,11 +48,14 @@ CREATE TABLE users(
 	name VARCHAR(60) NOT NULL,
 	type VARCHAR(20) NOT NULL,
 	state VARCHAR(30) NOT NULL,
-	email VARCHAR(40) NOT NULL
+	email VARCHAR(40) NOT NULL,
+	secret_answer VARCHAR(80) NOT NULL,
+	secret_question VARCHAR(80) NOT NULL,
+	adress_photo VARCHAR(80)
 
 );
-INSERT INTO users(identification,project_id,user_password,name,type,state,email)
-VALUES('1107520913' , 1 , 'nothing' , 'carloscuervo@','Director','Activo','Carlitos6131@...com');
+INSERT INTO users(identification,project_id,user_password,name,type,state,email,secret_answer,secret_question)
+VALUES('1107520913' , 1 , 'nothing' , 'carloscuervo@','Director','Activo','Carlitos6131@...com','andres','¿Mejor amigo de la infancia?');
 
 
 

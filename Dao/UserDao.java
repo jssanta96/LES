@@ -130,6 +130,7 @@ public class UserDao {
                 String testingId =(rsUser.getString("identification"));
                 String testingPassword =(rsUser.getString("user_password"));
                 String testingState =(rsUser.getString("state"));
+                String testingRoutePicture =(rsUser.getString("adress_photo"));
                 
                 if(testingId.equals(identification) && testingPassword.equals(password) && testingState.equals("Activo")){
                     
@@ -138,6 +139,7 @@ public class UserDao {
                         objVentana.changeLabelIdentification(identification);
                         objVentana.setVisible(true);
                         objVentana.enableButtons(identification);
+                        objVentana.changeLabelPicture(testingRoutePicture);
                         return true;
                 }
                                
