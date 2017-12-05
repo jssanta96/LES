@@ -32,6 +32,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -2521,7 +2522,8 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonProyecto1ActionPerformed
 
     private void jButtonUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuario1ActionPerformed
-        
+        String[] titulos = {"Identificacion", "Proyecto", "Contraseña", "Nombre", "Cargo", "Estado", "Email"};
+        jTable1.setModel(new DefaultTableModel(null,titulos));
         Querys objQuery = new Querys();
         objQuery.fillTables(this.jTable1 , "SELECT identification , project_id , user_password , name , type , state , email FROM users");
         hidePanels();
@@ -2536,7 +2538,8 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonProyecto2ActionPerformed
 
     private void jButtonUsuario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuario2ActionPerformed
-       
+       String[] titulos = {"Codigo", "Nombre", "Descripcion", "Estado"};
+       jTable2.setModel(new DefaultTableModel(null,titulos));
         Querys objQuery = new Querys();
         objQuery.fillTables(this.jTable2 , "SELECT  code , name , description , state FROM project");
         hidePanels();
@@ -2558,6 +2561,8 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonProyecto3ActionPerformed
 
     private void jButtonUsuario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUsuario3ActionPerformed
+        String[] titulos = {"Serial", "Nombre", "Descripcion", "Estado"};
+        jTable3.setModel(new DefaultTableModel(null,titulos));
         Querys objQuery = new Querys();
         objQuery.fillTables(this.jTable3 , "SELECT serial , name , description , state FROM equipment");
         hidePanels();
