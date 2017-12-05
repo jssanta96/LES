@@ -60,6 +60,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jButtonSolicitud = new javax.swing.JButton();
         jButtonPerfil = new javax.swing.JButton();
         jButtonInfo = new javax.swing.JButton();
+        jLabelUserPhoto = new javax.swing.JLabel();
         jLabelBienvenido = new javax.swing.JLabel();
         jLabelUserIdentificationGeneral = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -508,15 +509,15 @@ public final class InitialInterface extends javax.swing.JFrame {
             }
         });
         jPanelMenu.add(jButtonInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 161, 37));
+        jPanelMenu.add(jLabelUserPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 160, 90));
 
         jLabelBienvenido.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabelBienvenido.setForeground(new java.awt.Color(153, 0, 0));
         jLabelBienvenido.setText("BIENVENIDO");
         jPanelMenu.add(jLabelBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
-        jLabelUserIdentificationGeneral.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabelUserIdentificationGeneral.setText("1234");
-        jPanelMenu.add(jLabelUserIdentificationGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        jPanelMenu.add(jLabelUserIdentificationGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoGris.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -2888,6 +2889,7 @@ public final class InitialInterface extends javax.swing.JFrame {
 
         if (JFileChooser.APPROVE_OPTION == result) {
             fichero = ventana.jFileChooserLoad.getSelectedFile();
+
         }
         try {
             ImageIcon icon = new ImageIcon(fichero.toString());
@@ -2897,6 +2899,8 @@ public final class InitialInterface extends javax.swing.JFrame {
             jLabelPhoto.setText(null);
 
             jLabelPhoto.setIcon(icono);
+            
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Error al abrir la imagen " + ex);
 
@@ -2910,7 +2914,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldPassActualActionPerformed
 
     private void jButtonSaveProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveProfileActionPerformed
-        // TODO add your handling code here:
+        saveImage(fichero.toString());
     }//GEN-LAST:event_jButtonSaveProfileActionPerformed
 
     private void jButtonListarPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarPrestamosActionPerformed
@@ -3090,6 +3094,32 @@ public final class InitialInterface extends javax.swing.JFrame {
             Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+    
+    public void saveImage(String route){
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        System.out.println("Abrio la conexion para la imagen");
+        try {
+            System.out.println("Entro al try");
+            Statement senteceImage = conn.createStatement();
+            String queryImage = "UPDATE users set adress_photo='" + route + "' WHERE identification ='"+jLabelUserIdentificationGeneral.getText()+"';";
+            System.out.print(queryImage);
+            senteceImage.executeUpdate(queryImage);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void changeLabelPicture(String route){
+            ImageIcon icon = new ImageIcon(route);
+
+            Icon icono = new ImageIcon(icon.getImage().getScaledInstance(jLabelUserPhoto.getWidth(), jLabelUserPhoto.getHeight(), Image.SCALE_DEFAULT));
+
+            jLabelUserPhoto.setText(null);
+
+            jLabelUserPhoto.setIcon(icono);
     }
 
     public int getIdUserMult(int id_request) {
@@ -3819,6 +3849,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTipo5;
     private javax.swing.JLabel jLabelUserIdentificationGeneral;
     private javax.swing.JLabel jLabelUserNameMult;
+    private javax.swing.JLabel jLabelUserPhoto;
     private javax.swing.JLabel jLabelUsuarios;
     private javax.swing.JLabel jLabelUsuarios1;
     private javax.swing.JLabel jLabelUsuarios10;
