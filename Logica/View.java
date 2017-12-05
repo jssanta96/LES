@@ -62,6 +62,9 @@ public final class View {
         
     }
     
-    
-    
+    public String valitadionAnswer(String question){
+        
+       String answer = (String) JOptionPane.showInputDialog(window, question, "Respuesta secreta" , 0, LesImage, null , null);
+       return  answer;     
+    }
 }

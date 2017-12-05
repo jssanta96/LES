@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package Ventanas;
+import Dao.UserDao;
+import Logica.View;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -100,7 +102,17 @@ public class RecoverPasswordInterface extends javax.swing.JFrame {
 
     
     private void jButtonComfirmar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComfirmar1ActionPerformed
-        // TODO add your handling code here:
+       UserDao objDao = new UserDao();
+       View objView = new View();
+       String question=objDao.getQuestion(jTextFieldIdentificacion.getText());
+       String answer = objView.valitadionAnswer(question);
+       if(answer.equals(objDao.getAnswer(jTextFieldIdentificacion.getText()))){
+           System.out.println(objDao.getAnswer(jTextFieldIdentificacion.getText())); 
+           objView.sucessfulOperationTypeElement("Contraseña","restaurada");
+           InitialInterface objWindow = new InitialInterface();
+           objWindow.generateInitialPassword();
+       }
+       
     }//GEN-LAST:event_jButtonComfirmar1ActionPerformed
 
     private void jButtonBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack1ActionPerformed
@@ -120,6 +132,10 @@ public class RecoverPasswordInterface extends javax.swing.JFrame {
             }
         });
     }
+  
+  public void showQuestion(){
+  
+  }
 
 
 

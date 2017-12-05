@@ -19,7 +19,6 @@ import Dao.RequestDao;
 import Dao.UserDao;
 import java.awt.Image;
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
@@ -72,6 +71,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        forgotPass1 = new javax.swing.JButton();
         jButtonProyecto = new javax.swing.JButton();
         jButtonUsuario = new javax.swing.JButton();
         jButtonEquipo = new javax.swing.JButton();
@@ -543,6 +543,18 @@ public final class InitialInterface extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
         jPanelInicio.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
+
+        forgotPass1.setBackground(new java.awt.Color(231, 231, 231));
+        forgotPass1.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
+        forgotPass1.setForeground(new java.awt.Color(127, 0, 0));
+        forgotPass1.setText("Cerrar Sesión");
+        forgotPass1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        forgotPass1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                forgotPass1ActionPerformed(evt);
+            }
+        });
+        jPanelInicio.add(forgotPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, 134, 19));
 
         jButtonProyecto.setBackground(new java.awt.Color(102, 0, 0));
         jButtonProyecto.setForeground(new java.awt.Color(255, 255, 255));
@@ -3063,6 +3075,12 @@ public final class InitialInterface extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void forgotPass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgotPass1ActionPerformed
+        LoginInterface objVentana = new LoginInterface();
+        objVentana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_forgotPass1ActionPerformed
+
     private void emptyText() {
         jTextAreaCrearEquipo.setText("");
         jTextAreaCrearProyecto.setText("");
@@ -3525,6 +3543,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TotalMultasXMiembro;
     private javax.swing.JTextField TotalMultasXmes;
+    private javax.swing.JButton forgotPass1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonBack1;

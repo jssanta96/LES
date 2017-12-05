@@ -179,6 +179,41 @@ public class UserDao {
         return 0;
     }
     
+    public String getQuestion(String identification){
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        String question="";
+        try {
+            Statement sentenceUsers = conn.createStatement();
+            String queryUsers = "SELECT secret_question FROM users WHERE identification='" + identification + "';";
+            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
+            while (rsUsers.next()) {
+                question = rsUsers.getString("secret_question");
+            }
+            return question;
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+     public String getAnswer(String identification){
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        String question="";
+        try {
+            Statement sentenceUsers = conn.createStatement();
+            String queryUsers = "SELECT secret_answer FROM users WHERE identification='" + identification + "';";
+            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
+            while (rsUsers.next()) {
+                question = rsUsers.getString("secret_answer");
+            }
+            return question;
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
 }
         
 
