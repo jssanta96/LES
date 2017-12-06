@@ -2,7 +2,10 @@ package Dao;
 
 import Logica.Project;
 import Logica.View;
+import Ventanas.InitialInterface;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ProjectDao {
 
@@ -87,6 +90,82 @@ public ProjectDao(){
         }
         return false;
         
+    }
+    
+    public String getProjectName(int project_id) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
+
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        String name ="";
+        try {
+            Statement sentenceUsers = conn.createStatement();
+            String queryUsers = "SELECT name FROM project WHERE id_project=" + project_id + ";";
+            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
+            while (rsUsers.next()) {
+                name = rsUsers.getString("name");
+            }
+            return name;
+        } catch (SQLException ex) {
+           Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public int getIdProject(String codeProject) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
+
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        int id =0;
+        try {
+            Statement sentenceUsers = conn.createStatement();
+            String queryUsers = "SELECT id_project FROM project WHERE code='" + codeProject + "';";
+            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
+            while (rsUsers.next()) {
+                id = rsUsers.getInt("id_project");
+            }
+            return id;
+        } catch (SQLException ex) {
+           Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+    
+    public String getDescriptionProject(int project_id) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
+
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        String description ="";
+        try {
+            Statement sentenceUsers = conn.createStatement();
+            String queryUsers = "SELECT description FROM project WHERE id_project=" + project_id + ";";
+            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
+            while (rsUsers.next()) {
+                description = rsUsers.getString("description");
+            }
+            return description;
+        } catch (SQLException ex) {
+           Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public String getStateProject(int project_id) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
+
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        String state ="";
+        try {
+            Statement sentenceUsers = conn.createStatement();
+            String queryUsers = "SELECT state FROM project WHERE id_project=" + project_id + ";";
+            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
+            while (rsUsers.next()) {
+                state = rsUsers.getString("state");
+            }
+            return state;
+        } catch (SQLException ex) {
+           Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
 }

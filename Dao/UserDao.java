@@ -15,8 +15,8 @@ public class UserDao {
     }
     public int saveUser(User user){
         
-    String save_sql="INSERT INTO users VALUES(NEXTVAL('users_seq'), '"+ user.getIdentification()+"','"+
-                user.getProjectId()+"','" +user.getPassword()+"','"+user.getUserName()+"','"+user.getType()+
+    String save_sql="INSERT INTO users VALUES(NEXTVAL('users_seq'), '"+ user.getIdentification()+"',"+
+                user.getProjectId()+",'" +user.getPassword()+"','"+user.getUserName()+"','"+user.getType()+
                 "','"+user.getState()+"','"+user.getEmail()+"','"+user.getAnswer()+"','"+user.getQuestion()+"','"+user.getPhoto()+"');";
                     System.out.println( save_sql );
 
@@ -80,10 +80,9 @@ public class UserDao {
         }
         return null;
     }
-    public boolean updateUser(String identification, String project_id, String password , String userName, String type, String state, String email,String answer, String question){
+    public boolean updateUser(String identification, String project_id, String userName, String type, String state, String email,String answer, String question){
 
-        String sql_select="UPDATE users SET  project_id = "+ project_id +", user_password = '"+ password +
-                "', name ='" + userName + "', type = '" + type +  "', state = '" + state + "', email = '"+ email +"', answer = '" + answer + "', question = '" + question + "' WHERE  identification='"+ identification +"';";
+        String sql_select="UPDATE users SET  project_id = "+ project_id +", name ='" + userName + "', type = '" + type +  "', state = '" + state + "', email = '"+ email +"', answer = '" + answer + "', question = '" + question + "' WHERE  identification='"+ identification +"';";
         try{
             FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();
@@ -198,7 +197,26 @@ public class UserDao {
         return 0;
     }
     
-        public String getUserEmail(int id_user) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
+    public int getIdProjectUser(int user_id) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
+
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        int id = 0;
+        try {
+            Statement sentenceUsers = conn.createStatement();
+            String queryUsers = "SELECT project_id FROM users WHERE id_user=" + user_id + ";";
+            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
+            while (rsUsers.next()) {
+                id = rsUsers.getInt("project_id");
+            }
+            return id;
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+    
+    public String getUserEmail(int id_user) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
 
         FachadaBD fachada = new FachadaBD();
         Connection conn = fachada.getConnetion();
@@ -216,6 +234,46 @@ public class UserDao {
         }
         return null;
     }
+    
+    public String getUserState(int id_user) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
+
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        String state= "";
+        try {
+            Statement sentenceUsers = conn.createStatement();
+            String queryUsers = "SELECT state FROM users WHERE id_user=" + id_user + ";";
+            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
+            while (rsUsers.next()) {
+                state = rsUsers.getString("state");
+            }
+            return state;
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    public String getUserType(int id_user) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
+
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        String type= "";
+        try {
+            Statement sentenceUsers = conn.createStatement();
+            String queryUsers = "SELECT type FROM users WHERE id_user=" + id_user + ";";
+            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
+            while (rsUsers.next()) {
+                type = rsUsers.getString("type");
+            }
+            return type;
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    
         
     
     

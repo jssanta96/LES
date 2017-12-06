@@ -150,6 +150,50 @@ public class EquipmentDao {
     
     }
      
+     public String getDescriptionEquipment(int id_equipment){
+         
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        String description="";
+        try {
+ 
+            Statement senteEquipment = conn.createStatement();
+            String queryEquipment = "SELECT description FROM equipment WHERE id_equipment=" + id_equipment + ";";
+            ResultSet rsEquip =  senteEquipment.executeQuery(queryEquipment);
+            while (rsEquip.next()) {
+                description = rsEquip.getString("description");
+            }
+            return description;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    
+    }
+     
+    public String getEquipmentName(int id_equipment){
+         
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        String name="";
+        try {
+ 
+            Statement senteEquipment = conn.createStatement();
+            String queryEquipment = "SELECT name FROM equipment WHERE id_equipment=" + id_equipment + ";";
+            ResultSet rsEquip =  senteEquipment.executeQuery(queryEquipment);
+            while (rsEquip.next()) {
+                name = rsEquip.getString("name");
+            }
+            return name;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    
+    }
+     
     public int getIdEquipment(String serial) {//Obtiene el id de la secuencia dependiendo del serial del equipo
 
         FachadaBD fachada = new FachadaBD();

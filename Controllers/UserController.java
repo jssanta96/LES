@@ -49,10 +49,10 @@ public class UserController {
 
     }
 
-    public void updateUser(String identification, String project_id, String password,  String user_name, String type, String state, String email,String answer , String question){
+    public void updateUser(String identification, String project_id, String user_name, String type, String state, String email,String answer , String question){
        
         UserDao userDao= new UserDao();
-        boolean cheek =userDao.updateUser(identification, project_id, password, user_name, type, state,email, answer, question);
+        boolean cheek =userDao.updateUser(identification, project_id, user_name, type, state,email, answer, question);
         if (cheek == true){
                 View message = new View();
                 message.sucessfulOperationTypeElement("Un usuario", "actualizado");
