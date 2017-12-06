@@ -178,19 +178,27 @@ public void addStateEquipment(JComboBox comboBox , String query , String state )
         }
                  
     }
-public void addStateUser(JComboBox comboBox , String query , String type ){
+public void addStateUser(JComboBox comboBox , String query , String state ){
       
       FachadaBD fachada = new FachadaBD();    
       comboBox.removeAllItems();
          
          try{
             Connection conn= fachada.getConnetion();
+            System.out.println("1");
             Statement sentenceProjects = conn.createStatement();
+                        System.out.println("2");
+
             ResultSet rs = sentenceProjects.executeQuery(query);    
-            
+                        System.out.println("3");
+                         System.out.println(query);
+
             while(rs.next()){
+                            System.out.println("4");
+
+                String stateUser = rs.getString(state);
+                System.out.println(stateUser);
                 
-                String stateUser = rs.getString(type);
                 switch(stateUser){
                     
                 case "Director":
@@ -206,6 +214,14 @@ public void addStateUser(JComboBox comboBox , String query , String type ){
                       comboBox.addItem("Inactivo"); 
              
                      break;
+                     
+                case "Lider de proyecto" : 
+                    
+                      comboBox.addItem("Activo");
+                      comboBox.addItem("Inactivo"); 
+             
+                     break;
+                     
                      
                 }
                
