@@ -138,45 +138,7 @@ public class UserDao {
         
         return false;
     }
-    public String getNameUser(int id_user) {
-        
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        String name = "";
-        try {
-            Statement sentenceMult = conn.createStatement();
-            String queryMult = "SELECT name FROM users WHERE id_user=" + id_user + ";";
-            System.out.print(queryMult);
-            ResultSet rsMult = sentenceMult.executeQuery(queryMult);
-            while (rsMult.next()) {
-                name = rsMult.getString("name");
-            }
-            return name;
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-    
-    public String getUserPassword(int id_user) {
-        
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        String password = "";
-        try {
-            Statement sentenceMult = conn.createStatement();
-            String queryMult = "SELECT user_password FROM users WHERE id_user=" + id_user + ";";
-            System.out.print(queryMult);
-            ResultSet rsMult = sentenceMult.executeQuery(queryMult);
-            while (rsMult.next()) {
-                password = rsMult.getString("user_password");
-            }
-            return password;
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
+
     
     public int getIdUser(String identification) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
 
@@ -197,85 +159,7 @@ public class UserDao {
         return 0;
     }
     
-    public int getIdProjectUser(int user_id) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
 
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        int id = 0;
-        try {
-            Statement sentenceUsers = conn.createStatement();
-            String queryUsers = "SELECT project_id FROM users WHERE id_user=" + user_id + ";";
-            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
-            while (rsUsers.next()) {
-                id = rsUsers.getInt("project_id");
-            }
-            return id;
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
-    }
-    
-    public String getUserEmail(int id_user) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
-
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        String email= "";
-        try {
-            Statement sentenceUsers = conn.createStatement();
-            String queryUsers = "SELECT email FROM users WHERE id_user=" + id_user + ";";
-            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
-            while (rsUsers.next()) {
-                email = rsUsers.getString("email");
-            }
-            return email;
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-    
-    public String getUserState(int id_user) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
-
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        String state= "";
-        try {
-            Statement sentenceUsers = conn.createStatement();
-            String queryUsers = "SELECT state FROM users WHERE id_user=" + id_user + ";";
-            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
-            while (rsUsers.next()) {
-                state = rsUsers.getString("state");
-            }
-            return state;
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-    
-    public String getUserType(int id_user) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
-
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        String type= "";
-        try {
-            Statement sentenceUsers = conn.createStatement();
-            String queryUsers = "SELECT type FROM users WHERE id_user=" + id_user + ";";
-            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
-            while (rsUsers.next()) {
-                type = rsUsers.getString("type");
-            }
-            return type;
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
-    
-    
-        
-    
     
     public String getData(String identification , String query , String data){
         FachadaBD fachada = new FachadaBD();
@@ -316,5 +200,3 @@ public class UserDao {
     
 }
         
-
-

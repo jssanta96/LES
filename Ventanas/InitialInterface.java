@@ -55,7 +55,20 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabelUserIdentificationGeneral.setVisible(false);
         
     }
+    public String splitComboBox(JComboBox change) {
 
+        String positionId = null;
+        String[] id = change.getSelectedItem().toString().split("\n");
+        ArrayList<String> prueba = new ArrayList<>(Arrays.asList(id));
+
+        for (int i = 0; i < prueba.size(); i++) {
+            String codigo[] = prueba.get(i).split(" ");
+
+            positionId = codigo[0];
+        }
+        return positionId;
+
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -3030,27 +3043,25 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack17ActionPerformed
 
     private void jButtonCheckEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckEquipActionPerformed
-                                            
+             
+        Querys objQuery = new Querys();
         String serial = splitComboBox(jComboBoxUpdateEquipmentSerial1);
-        int id_equipment = getIdEquipment(serial);
-        String equipment_name = getEquipmentName(id_equipment);
-        String state = getStateEquipment(id_equipment);
-        String description = getDescriptionEquipment(id_equipment);
+        String equipment_name = objQuery.typeUser("SELECT name FROM equipment WHERE serial ='" + serial + "'" , "name");
+        String state =objQuery.typeUser("SELECT state FROM equipment WHERE serial ='" + serial + "'" , "state");
+        String description = objQuery.typeUser("SELECT description FROM equipment WHERE serial ='" + serial + "'" , "description");
         jLabelEquipName.setText(equipment_name);  
         jLabelEquipState.setText(state);
         jLabelDescriptionEquip.setText(description);
     }//GEN-LAST:event_jButtonCheckEquipActionPerformed
 
     private void jButtonUserCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUserCheckActionPerformed
-        String identification = splitComboBox(jComboBoxUpdateIdUser1);
-        int id_user = getIdUser(identification);
-        int project_id = getIdProjectUser(id_user);
-        String projectName = getProjectName(project_id);
-        String state = getStateUser(id_user);
-        String type = getTypeUser(id_user);
-        String user_name= getNameUserMult(id_user);
-        String user_email = getUserEmail(id_user);
-        jLabelViewUserProject.setText(projectName);
+       
+        Querys objQuery = new Querys();
+        String state =objQuery.typeUser("SELECT state FROM users WHERE  identification ='" + splitComboBox(jComboBoxUpdateIdUser1) + "'" , "state");
+        String type = objQuery.typeUser("SELECT type FROM users WHERE  identification ='" + splitComboBox(jComboBoxUpdateIdUser1)  + "'" , "type");
+        String user_name= objQuery.typeUser("SELECT name FROM users WHERE  identification ='" + splitComboBox(jComboBoxUpdateIdUser1)  + "'" , "name");
+        String user_email = objQuery.typeUser("SELECT email FROM users WHERE  identification ='" +  splitComboBox(jComboBoxUpdateIdUser1) + "'" , "email");
+        //jLabelViewUserProject.setText(projectName);
         jLabelViewUserState.setText(state);
         jLabelViewUserRange.setText(type);
         jLabelViewUserName.setText(user_name);
@@ -3067,11 +3078,12 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSave4ActionPerformed
 
     private void jButtonCheckProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckProjectActionPerformed
-        String codeProject = splitComboBox(jComboBoxUpdateProjectId1);
-        int id_project = getIdProject(codeProject);
-        String projectName = getProjectName(id_project);
-        String description=getProjectDescription(id_project);
-        String state=getStateProject(id_project);
+         
+        Querys objQuery = new Querys();
+        String code = splitComboBox(jComboBoxUpdateProjectId1);
+        String projectName = objQuery.typeUser("SELECT name FROM project WHERE  code ='" +  code + "'" , "name");
+        String description=objQuery.typeUser("SELECT description FROM project WHERE  code ='" +  code + "'" , "description");
+        String state=objQuery.typeUser("SELECT state FROM project WHERE  code ='" +  code + "'" , "state");
         jLabelViewProjectName.setText(projectName);
         jLabelViewProjectDescription.setText(description);
         jLabelViewProjectName1.setText(state);
@@ -3094,10 +3106,10 @@ public final class InitialInterface extends javax.swing.JFrame {
     private void jButtonCheckMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckMultActionPerformed
         String id_mult = splitComboBox(jComboBoxMult);
         String user_name = "";
-        int id_request = getIdRequestMult(id_mult);
-        int id_user = getIdUserMult(id_request);
-        System.out.println(id_user);
-        user_name = getNameUserMult(id_user);
+   //     int id_request = getIdRequestMult(id_mult);
+     //   int id_user = getIdUserMult(id_request);
+  //      System.out.println(id_user);
+       // user_name = getNameUserMult(id_user);
         jLabelUserNameMult.setText(user_name);
 
     }//GEN-LAST:event_jButtonCheckMultActionPerformed
@@ -3225,10 +3237,9 @@ public final class InitialInterface extends javax.swing.JFrame {
     }
     
     public boolean checkActualPassword(String actualPassword){
-        int id_user=getIdUser(jLabelUserIdentificationGeneral.getText());
-        UserDao objDao = new UserDao();
+        Querys objQuery = new Querys();
         View objView = new View();
-        String passwordBd=objDao.getUserPassword(id_user);
+        String passwordBd=objQuery.typeUser("SELECT user_password FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "user_password");
         if(encryptSortPassword(actualPassword).equals(passwordBd)){
             objView.sucessfulOperationTypeElement("La contraseña","verificado");
             return true;
@@ -3239,64 +3250,15 @@ public final class InitialInterface extends javax.swing.JFrame {
     
     }
 
-
-    public String getNameUserMult(int id_user) {
-        UserDao objDao = new UserDao();
-        return objDao.getNameUser(id_user);
-    }
-    
-    public String getStateEquipment(int id_equipment){
-        EquipmentDao objDao = new EquipmentDao();
-        return objDao.getStateEquipment(id_equipment); 
-    }
-    
-    public String getDescriptionEquipment(int id_equipment){
-        EquipmentDao objDao = new EquipmentDao();
-        return objDao.getDescriptionEquipment(id_equipment);
-    }
-    
-    public int getIdProject(String codeProject){
-        ProjectDao objDao = new ProjectDao();
-        return objDao.getIdProject(codeProject);
-    }
-    
-    public String getEquipmentName(int id_equipment){
-        EquipmentDao objDao = new EquipmentDao();
-        return objDao.getEquipmentName(id_equipment);
-    }
-    
-    public String getStateUser(int id_user){
-        UserDao objDao = new UserDao();
-        return objDao.getUserState(id_user);
-    }
-    
-    public String getStateProject(int id_project){
-        ProjectDao objDao = new ProjectDao();
-        return objDao.getStateProject(id_project);
-    }
-    
-    public String getTypeUser(int id_user){
-        UserDao objDao = new UserDao();
-        return objDao.getUserType(id_user);
-    }
-
-    public String getUserEmail(int id_user){
-        UserDao objDao = new UserDao();
-        return objDao.getUserEmail(id_user);
-    }
-    
-    public String getProjectDescription(int id_project){
-        ProjectDao objDao = new ProjectDao();
-        return objDao.getDescriptionProject(id_project);
-    }
     
     public void fillMyProfile(){
-        int id_user=getIdUser(jLabelUserIdentificationGeneral.getText());
-        UserDao objDao = new UserDao();
-        String user_name=objDao.getNameUser(id_user);
+        
+        Querys objQuery = new Querys();
+        String user_name=objQuery.typeUser("SELECT name FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "name");
         jTextFieldSetName.setText(user_name);
-        String user_email=objDao.getUserEmail(id_user);
+        String user_email=objQuery.typeUser("SELECT email FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "email");
         jTextFieldSetEmail.setText(user_email);
+        
     }
     
     public void saveImage(String route){
@@ -3339,17 +3301,6 @@ public final class InitialInterface extends javax.swing.JFrame {
 
             jLabelUserPhoto.setIcon(icono);
     }
-
-    public int getIdUserMult(int id_request) {
-        RequestDao objDao = new RequestDao();
-        return objDao.getIdUser(id_request);
-    }
-
-    public int getIdRequestMult(String id_mult) {
-        MultDao objDao = new MultDao();
-        return objDao.getIdRequestMult(id_mult);
-    }
-    
   
    
     public void createUser() {
@@ -3375,15 +3326,14 @@ public final class InitialInterface extends javax.swing.JFrame {
         
         RequestController objCtrlRequest = new RequestController();
         EquipmentController objCtrlEquipment = new EquipmentController();
-
-        String identification_user = "";
-        identification_user = jLabelUserIdentificationGeneral.getText();
-        int id_user = getIdUser(identification_user);
-        String serial_equipment = "";
-        serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
-        int id_equipment = getIdEquipment(serial_equipment);
+        Querys objQuery = new Querys();
+        String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
+        int id=Integer.parseInt(id_user);
+        String serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
+        String id_equipment =objQuery.typeUser("SELECT id_equipment FROM users WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
+        int id_equipments=Integer.parseInt(id_equipment);
         int id_request = 0;
-        id_request = getIdRequest(id_user, id_equipment, "Activo");
+        id_request = getIdRequest(id, id_equipments, "Activo");
         Date end_date;
         end_date = convertStringToDate(getEndDate(id_request));
         String extend_date = convertDayToString(addDayDate(end_date, 7));
@@ -3391,7 +3341,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         System.out.println(extend_date);
 
         objCtrlRequest.renovateRequest(id_request, extend_date);
-        objCtrlEquipment.setStateEquipment(id_equipment, "Reservado");
+        objCtrlEquipment.setStateEquipment(id_equipments, "Reservado");
     }
 
     public void createProject() {
@@ -3433,18 +3383,18 @@ public final class InitialInterface extends javax.swing.JFrame {
         RequestController objCtrlRequest = new RequestController();
         EquipmentController objCtrlEquipment = new EquipmentController();
 
-        String identification_user = "";
-        identification_user = jLabelUserIdentificationGeneral.getText();
-        int id_user = getIdUser(identification_user);
-        String serial_equipment = "";
-        serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
-        int id_equipment = getIdEquipment(serial_equipment);
+        Querys objQuery = new Querys();
+        String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
+        int id=Integer.parseInt(id_user);
+        String serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
+        String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
+        int id_equipments=Integer.parseInt(id_equipment);
         String start_date = getStartDate();
         String state = "Activo";
         String end_date = convertDayToString(addDayDate(fecha, 7));
 
-        objCtrlRequest.addRequest(state, id_user, id_equipment, start_date, end_date);
-        objCtrlEquipment.setStateEquipment(id_equipment, "Ocupado");
+        objCtrlRequest.addRequest(state, id, id_equipments, start_date, end_date);
+        objCtrlEquipment.setStateEquipment(id_equipments, "Ocupado");
 
     }
 
@@ -3452,18 +3402,18 @@ public final class InitialInterface extends javax.swing.JFrame {
         RequestController objCtrlRequest = new RequestController();
         EquipmentController objCtrlEquipment = new EquipmentController();
 
-        String identification_user = "";
-        identification_user = jLabelUserIdentificationGeneral.getText();
-        int id_user = getIdUser(identification_user);
-        String serial_equipment = "";
-        serial_equipment = splitComboBox(jComboBoxEquipmentSerialReserve);
-        int id_equipment = getIdEquipment(serial_equipment);
+        Querys objQuery = new Querys();
+        String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
+        int id=Integer.parseInt(id_user);
+        String serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
+        String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
+        int id_equipments=Integer.parseInt(id_equipment);
         String start_date = getReserveDate();
         String state = "Reserva";
         String end_date = convertDayToString(addDayDate(convertStringToDate(getReserveDate()), 7));
 
-        objCtrlRequest.addRequest(state, id_user, id_equipment, start_date, end_date);
-        objCtrlEquipment.setStateEquipment(id_equipment, "Reservado");
+        objCtrlRequest.addRequest(state, id, id_equipments, start_date, end_date);
+        objCtrlEquipment.setStateEquipment(id_equipments, "Reservado");
     }
 
     public void changeLabelIdentification(String identification) {
@@ -3491,25 +3441,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         return reserveDate;
     }
 
-    public int getIdEquipment(String serial) {//Obtiene el id de la secuencia dependiendo del serial del equipo
-        EquipmentDao objDao = new EquipmentDao();
-        return objDao.getIdEquipment(serial);
-    }
-    
-    public int getIdProjectUser(int id_user){
-        UserDao objDao = new UserDao();
-        return objDao.getIdProjectUser(id_user);
-    }
-
-    public int getIdUser(String identification) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
-        UserDao objDao = new UserDao();
-        return objDao.getIdUser(identification);
-    }
-    
-    public String getProjectName(int id_project){
-        ProjectDao objDao = new ProjectDao();
-        return objDao.getProjectName(id_project);
-    }
+   
 
     public int getIdRequest(int id_user, int id_equipment, String state) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
         RequestDao objDao = new RequestDao();
@@ -3520,17 +3452,17 @@ public final class InitialInterface extends javax.swing.JFrame {
 
         RequestController objCtrlRequest = new RequestController();
         EquipmentController objCtrlEquipment = new EquipmentController();
-        String identification_user = "";
-        identification_user = jLabelUserIdentificationGeneral.getText();
-        int id_user = getIdUser(identification_user);
-        String serial_equipment = "";
-        serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
-        int id_equipment = getIdEquipment(serial_equipment);
+        Querys objQuery = new Querys();
+        String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
+        int id=Integer.parseInt(id_user);
+       String serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
+        String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
+        int id_equipments=Integer.parseInt(id_equipment);
         int id_request = 0;
-        id_request = getIdRequest(id_user, id_equipment, "Activo");
+        id_request = getIdRequest(id, id_equipments, "Activo");
 
         objCtrlRequest.setStateRequest(id_request, "Terminado");
-        objCtrlEquipment.setStateEquipment(id_equipment, "Disponible");
+        objCtrlEquipment.setStateEquipment(id_equipments, "Disponible");
 
     }
 
@@ -3557,21 +3489,6 @@ public final class InitialInterface extends javax.swing.JFrame {
         calendar.setTime(date); // Configuramos la fecha que se recibe	
         calendar.add(Calendar.DAY_OF_YEAR, days);  // numero de días a añadir, o restar en caso de días<0
         return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos	
-    }
-
-    public String splitComboBox(JComboBox change) {
-
-        String positionId = null;
-        String[] id = change.getSelectedItem().toString().split("\n");
-        ArrayList<String> prueba = new ArrayList<>(Arrays.asList(id));
-
-        for (int i = 0; i < prueba.size(); i++) {
-            String codigo[] = prueba.get(i).split(" ");
-
-            positionId = codigo[0];
-        }
-        return positionId;
-
     }
 
     public String generateInitialPassword() {

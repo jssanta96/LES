@@ -178,6 +178,10 @@ public class LoginInterface extends javax.swing.JFrame {
      return null;
     }
   }
+  
+ public void validateCordinatorEquipo(){
+     
+ }
 
 
 
