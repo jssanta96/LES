@@ -5,7 +5,14 @@
  */
 package Dao;
 
+import Controllers.EquipmentController;
+import Controllers.ProjectController;
+import Controllers.UserController;
 import Logica.View;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -320,5 +327,138 @@ public void addTypeUser(JComboBox comboBox , String query , String type ){
            message.errorConnection();
             }
     }
+
+public void readArchiveUsers(String absoulteRute){
+
+    try{
+        FileReader file = new FileReader(absoulteRute);        
+
+        
+        BufferedReader  fileBuffer = new BufferedReader(file);
+
+        boolean flag = true;
+        int acumulator=0;
+        
+        while(flag != false){
+
+            String csv = fileBuffer.readLine();
+
+            if(csv != null){
+                        
+
+                if(acumulator >= 0){
+                    String value[];
+
+                    value = csv.split(",");
+                    String identification = value[0];
+                    String idProyect = value[1];
+                    String password = value[2];
+                    String name = value[3];
+                    String typeUser = value[4];
+                    String state = value[5];
+                    String email = value[6];
+                    String answer = value[7];
+                    String question = value[8];
+                    String photo = value[9];
+
+                    UserController objCtrlUser = new UserController();
+
+                    objCtrlUser.addUser(identification, idProyect, password, name, typeUser, state, email,answer,question , photo);
+                }
+                else acumulator++;
+            }
+            flag = false;
+        }
+        
+    }catch(IOException e){
+        System.out.println("Error");
+    }
+    
+
+    
+}
+ 
+public void readArchiveProjects(String absoulteRute){
+
+    try{
+        FileReader file = new FileReader(absoulteRute);        
+
+        
+        BufferedReader  fileBuffer = new BufferedReader(file);
+
+        boolean flag = true;
+        int acumulator=0;
+        
+        while(flag != false){
+
+            String csv = fileBuffer.readLine();
+
+            if(csv != null){
+                        
+
+                if(acumulator >= 0){
+                    String value[];
+
+                    value = csv.split(",");
+                    String code = value[0];
+                    String name = value[1];
+                    String description = value[2];
+                    String state = value[3];
+
+
+                    ProjectController objCtrlProject = new ProjectController();
+
+                    objCtrlProject.addProject(code, name, description, state);
+                }
+                else acumulator++;
+            }
+            flag = false;
+        }
+        
+    }catch(IOException e){
+        System.out.println("Error");
+    }
+}
+public void readArchiveEquipment(String absoulteRute){
+
+    try{
+        FileReader file = new FileReader(absoulteRute);        
+
+        
+        BufferedReader  fileBuffer = new BufferedReader(file);
+
+        boolean flag = true;
+        int acumulator=0;
+        
+        while(flag != false){
+
+            String csv = fileBuffer.readLine();
+
+            if(csv != null){
+                        
+
+                if(acumulator >= 0){
+                    String value[];
+
+                    value = csv.split(",");
+                    String serial = value[0];
+                    String name = value[1];
+                    String description = value[2];
+                    String state = value[3];
+
+
+                    EquipmentController objCtrlEquipment = new EquipmentController();
+
+                    objCtrlEquipment.addEquipment(serial, name, description, state);
+                }
+                else acumulator++;
+            }
+            flag = false;
+        }
+        
+    }catch(IOException e){
+        System.out.println("Error");
+    }
+}
 
 }
