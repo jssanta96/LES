@@ -143,8 +143,7 @@ public class LoginInterface extends javax.swing.JFrame {
       
          UserDao daoUser = new UserDao();        
          String identification = textFieldAccount1.getText();
-         String validate = encryptSortPassword(textFieldPass1.getText());
-         String password = validateEncryptionPassword(validate);
+         String password = validateEncryptionPassword(textFieldPass1.getText());
          boolean cheek = daoUser.conection(identification, password);
          if(cheek == true){
                  this.setVisible(false);

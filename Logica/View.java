@@ -47,6 +47,21 @@ public final class View {
         JOptionPane.showMessageDialog(window, "Tu cuenta o contraseña son incorrectos.", "Notificacion", 0, LesImage);
     }
     
+    public void errorPassword(){
+    
+        JOptionPane.showMessageDialog(window, "La contraseña digitada es incorrecta, intentelo de nuevo o dirigase a la opcion de restablecer contraseña.", "Notificacion", 0, LesImage);
+    }
+    
+    public void errorComparePassword(){
+    
+        JOptionPane.showMessageDialog(window, "Los campos de la contraseña nueva no coinciden, intentelo de nuevo", "Notificacion", 0, LesImage);
+    }
+    
+    public void errorEmptyPassword(){
+    
+        JOptionPane.showMessageDialog(window, "Los campos de la contraseña nueva estan vacios", "Notificacion", 0, LesImage);
+    }
+    
     public void sucessfulLogin(){
         
         JOptionPane.showMessageDialog(window, "Bienvenido a LES", "Notificacion", 0, LesImage);

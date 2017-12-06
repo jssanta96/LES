@@ -17,6 +17,7 @@ import java.io.File;
 import Dao.Querys;
 import Dao.RequestDao;
 import Dao.UserDao;
+import Logica.View;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -66,8 +67,8 @@ public final class InitialInterface extends javax.swing.JFrame {
         jButtonPerfil = new javax.swing.JButton();
         jButtonInfo = new javax.swing.JButton();
         jLabelUserPhoto = new javax.swing.JLabel();
-        jLabelBienvenido = new javax.swing.JLabel();
         jLabelUserIdentificationGeneral = new javax.swing.JLabel();
+        jLabelBienvenido = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanelInicio = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -385,14 +386,15 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabelEmailLb = new javax.swing.JLabel();
         jLabelPassNew1 = new javax.swing.JLabel();
         jLabelPassNew3 = new javax.swing.JLabel();
-        jTextFieldPassActual2 = new javax.swing.JTextField();
-        jTextFieldPassActual = new javax.swing.JTextField();
+        jButtonCheckPass = new javax.swing.JButton();
+        jTextFieldPassActual = new javax.swing.JPasswordField();
         jTextFieldSetEmail = new javax.swing.JTextField();
         jTextFieldSetName = new javax.swing.JTextField();
-        jTextFieldPassActual1 = new javax.swing.JTextField();
         jLabelPhoto = new javax.swing.JLabel();
         jButtonSaveProfile = new javax.swing.JButton();
         jButtonLoadPhoto = new javax.swing.JButton();
+        jPasswordNew1 = new javax.swing.JPasswordField();
+        jPasswordNew = new javax.swing.JPasswordField();
         jLabelFondo24 = new javax.swing.JLabel();
         jPanelViewEquipment = new javax.swing.JPanel();
         jLabel80 = new javax.swing.JLabel();
@@ -521,13 +523,13 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelMenu.add(jButtonInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 161, 37));
         jPanelMenu.add(jLabelUserPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 160, 90));
 
+        jLabelUserIdentificationGeneral.setText("1234");
+        jPanelMenu.add(jLabelUserIdentificationGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, -1));
+
         jLabelBienvenido.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabelBienvenido.setForeground(new java.awt.Color(153, 0, 0));
         jLabelBienvenido.setText("BIENVENIDO");
         jPanelMenu.add(jLabelBienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
-
-        jLabelUserIdentificationGeneral.setText("1234");
-        jPanelMenu.add(jLabelUserIdentificationGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoGris.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -2196,17 +2198,19 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabelPassNew3.setForeground(new java.awt.Color(102, 102, 102));
         jLabelPassNew3.setText("CONFIRMAR");
         jPanelMyProfile.add(jLabelPassNew3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
-        jPanelMyProfile.add(jTextFieldPassActual2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 210, 30));
 
-        jTextFieldPassActual.addActionListener(new java.awt.event.ActionListener() {
+        jButtonCheckPass.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonCheckPass.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCheckPass.setText("...");
+        jButtonCheckPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldPassActualActionPerformed(evt);
+                jButtonCheckPassActionPerformed(evt);
             }
         });
-        jPanelMyProfile.add(jTextFieldPassActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 210, 30));
+        jPanelMyProfile.add(jButtonCheckPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 30, 30));
+        jPanelMyProfile.add(jTextFieldPassActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 180, 30));
         jPanelMyProfile.add(jTextFieldSetEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 210, 30));
         jPanelMyProfile.add(jTextFieldSetName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 210, 30));
-        jPanelMyProfile.add(jTextFieldPassActual1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 210, 30));
 
         jLabelPhoto.setText("Foto");
         jPanelMyProfile.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 140, 140));
@@ -2230,6 +2234,8 @@ public final class InitialInterface extends javax.swing.JFrame {
             }
         });
         jPanelMyProfile.add(jButtonLoadPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 130, 30));
+        jPanelMyProfile.add(jPasswordNew1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 210, 30));
+        jPanelMyProfile.add(jPasswordNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 210, 30));
 
         jLabelFondo24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo24.setText("jLabel4");
@@ -2572,6 +2578,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonInfoActionPerformed
 
     private void jButtonPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPerfilActionPerformed
+        fillMyProfile();
         hidePanels();
         jPanelMyProfile.setVisible(true);
 
@@ -2963,16 +2970,14 @@ public final class InitialInterface extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al abrir la imagen " + ex);
 
         }
+        
+        saveImage(fichero.toString());
 
 
     }//GEN-LAST:event_jButtonLoadPhotoActionPerformed
 
-    private void jTextFieldPassActualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPassActualActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPassActualActionPerformed
-
     private void jButtonSaveProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveProfileActionPerformed
-        saveImage(fichero.toString());
+        checkNewPassword();
     }//GEN-LAST:event_jButtonSaveProfileActionPerformed
 
     private void jButtonListarPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarPrestamosActionPerformed
@@ -3084,6 +3089,10 @@ public final class InitialInterface extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_forgotPass1ActionPerformed
 
+    private void jButtonCheckPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckPassActionPerformed
+       checkActualPassword(jTextFieldPassActual.getText());
+    }//GEN-LAST:event_jButtonCheckPassActionPerformed
+
     private void emptyText() {
         jTextAreaCrearEquipo.setText("");
         jTextAreaCrearProyecto.setText("");
@@ -3161,6 +3170,32 @@ public final class InitialInterface extends javax.swing.JFrame {
             }
         });
     }
+    public String encryptSortPassword(String password){
+       
+        String passwordEncrypt = "";
+
+        for (int i=password.length()-1;i>=0;i--){
+		passwordEncrypt = passwordEncrypt + password.charAt(i);          
+        }
+
+                return passwordEncrypt;
+    }
+    
+    public boolean checkActualPassword(String actualPassword){
+        int id_user=getIdUser(jLabelUserIdentificationGeneral.getText());
+        UserDao objDao = new UserDao();
+        View objView = new View();
+        String passwordBd=objDao.getUserPassword(id_user);
+        if(encryptSortPassword(actualPassword).equals(passwordBd)){
+            objView.sucessfulOperationTypeElement("La contraseña","verificado");
+            return true;
+        }else{
+            objView.errorPassword();
+            return false;
+        }
+    
+    }
+
 
     public String getNameUserMult(int id_user) {
         UserDao objDao = new UserDao();
@@ -3170,6 +3205,15 @@ public final class InitialInterface extends javax.swing.JFrame {
     public String getStateEquipment(int id_equipment){
         EquipmentDao objDao = new EquipmentDao();
         return objDao.getStateEquipment(id_equipment); 
+    }
+    
+    public void fillMyProfile(){
+        int id_user=getIdUser(jLabelUserIdentificationGeneral.getText());
+        UserDao objDao = new UserDao();
+        String user_name=objDao.getNameUser(id_user);
+        jTextFieldSetName.setText(user_name);
+        String user_email=objDao.getUserEmail(id_user);
+        jTextFieldSetEmail.setText(user_email);
     }
     
     public void saveImage(String route){
@@ -3186,6 +3230,21 @@ public final class InitialInterface extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void checkNewPassword(){
+        View objView = new View();
+        if(!(jPasswordNew.getText().length()==0  && jPasswordNew1.getText().length()==0)){
+            if(jPasswordNew.getText().equals(jPasswordNew1.getText()) && checkActualPassword(jTextFieldPassActual.getText())==true){
+                UserDao objDao = new UserDao();
+                objDao.updatePassword(jLabelUserIdentificationGeneral.getText(), encryptSortPassword(jPasswordNew.getText()));
+                objView.sucessfulOperationTypeElement("La contraseña", "actualizado");
+            }else{
+                objView.errorComparePassword();
+            }      
+        }else{
+            objView.errorEmptyPassword();
+        }      
     }
     
     public void changeLabelPicture(String route){
@@ -3207,7 +3266,9 @@ public final class InitialInterface extends javax.swing.JFrame {
         MultDao objDao = new MultDao();
         return objDao.getIdRequestMult(id_mult);
     }
-
+    
+  
+   
     public void createUser() {
 
         UserController objCtrlUser = new UserController();
@@ -3215,7 +3276,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         String identification = jTextFieldIdentificacionCrearUsuario.getText();
         String idProyect = splitComboBox(jComboBoxCreateUserProject);
         String name = jTextFieldNombreCrearUsuario.getText();
-        String password = generateInitialPassword();
+        String password = encryptSortPassword(generateInitialPassword());
         String typeUser = jComboBoxCreateUserType.getSelectedItem().toString();
         String state = "Activo";
         String email = jTextFieldEmailCrearUsuario.getText();
@@ -3431,16 +3492,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         return password;
 
     }
-        public String encryptSortPassword(String password){
-       
-        String passwordEncrypt = "";
-
-        for (int i=password.length()-1;i>=0;i--){
-		passwordEncrypt = passwordEncrypt + password.charAt(i);          
-        }
-
-                return passwordEncrypt;
-        }
+    
          
 
     public void updateUser() {
@@ -3584,6 +3636,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack9;
     private javax.swing.JButton jButtonCheckEquip;
     private javax.swing.JButton jButtonCheckMult;
+    private javax.swing.JButton jButtonCheckPass;
     private javax.swing.JButton jButtonCheckProject;
     private javax.swing.JButton jButtonConsultEquipment;
     private javax.swing.JButton jButtonConsultProject;
@@ -3910,6 +3963,8 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelViewProject;
     private javax.swing.JPanel jPanelViewUser;
     private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JPasswordField jPasswordNew;
+    private javax.swing.JPasswordField jPasswordNew1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
@@ -3953,9 +4008,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNombreCrearEquipo;
     private javax.swing.JTextField jTextFieldNombreCrearProyecto;
     private javax.swing.JTextField jTextFieldNombreCrearUsuario;
-    private javax.swing.JTextField jTextFieldPassActual;
-    private javax.swing.JTextField jTextFieldPassActual1;
-    private javax.swing.JTextField jTextFieldPassActual2;
+    private javax.swing.JPasswordField jTextFieldPassActual;
     private javax.swing.JTextField jTextFieldQuestion;
     private javax.swing.JTextField jTextFieldSerialCrearEquipo;
     private javax.swing.JTextField jTextFieldSetEmail;

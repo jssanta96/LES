@@ -158,6 +158,27 @@ public class UserDao {
         }
         return null;
     }
+    
+    public String getUserPassword(int id_user) {
+        
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        String password = "";
+        try {
+            Statement sentenceMult = conn.createStatement();
+            String queryMult = "SELECT user_password FROM users WHERE id_user=" + id_user + ";";
+            System.out.print(queryMult);
+            ResultSet rsMult = sentenceMult.executeQuery(queryMult);
+            while (rsMult.next()) {
+                password = rsMult.getString("user_password");
+            }
+            return password;
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
     public int getIdUser(String identification) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
 
         FachadaBD fachada = new FachadaBD();
@@ -176,6 +197,28 @@ public class UserDao {
         }
         return 0;
     }
+    
+        public String getUserEmail(int id_user) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
+
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        String email= "";
+        try {
+            Statement sentenceUsers = conn.createStatement();
+            String queryUsers = "SELECT email FROM users WHERE id_user=" + id_user + ";";
+            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
+            while (rsUsers.next()) {
+                email = rsUsers.getString("email");
+            }
+            return email;
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+        
+    
+    
     public String getData(String identification , String query , String data){
         FachadaBD fachada = new FachadaBD();
         Connection conn = fachada.getConnetion();

@@ -56,7 +56,7 @@ CREATE TABLE users(
 
 );
 INSERT INTO users(identification,project_id,user_password,name,type,state,email,secret_answer,secret_question)
-VALUES('1107520913' , 1 , 'nothing' , 'carloscuervo@','Director','Activo','Carlitos6131@...com','andres','¿Mejor amigo de la infancia?');
+VALUES('1107520913' , 1 ,'gnihton' , 'carloscuervo@','Director','Activo','Carlitos6131@...com','andres','¿Mejor amigo de la infancia?');
 
 
 
