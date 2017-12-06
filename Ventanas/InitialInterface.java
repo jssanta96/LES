@@ -44,12 +44,14 @@ public final class InitialInterface extends javax.swing.JFrame {
 
     public InitialInterface() {
 
+
         initComponents();
         fillEmptyFields();
         hidePanels();
         jPanelInicio.setVisible(true);
         this.setLocationRelativeTo(null);
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/logoLes.png")).getImage());
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -3429,19 +3431,30 @@ public final class InitialInterface extends javax.swing.JFrame {
         return password;
 
     }
+        public String encryptSortPassword(String password){
+       
+        String passwordEncrypt = "";
+
+        for (int i=password.length()-1;i>=0;i--){
+		passwordEncrypt = passwordEncrypt + password.charAt(i);          
+        }
+
+                return passwordEncrypt;
+        }
+         
 
     public void updateUser() {
 
         UserController objCtrlUser = new UserController();
         String updateIdUser = splitComboBox(jComboBoxUpdateIdUser);
         String updateIdProject = splitComboBox(jComboBoxUpdateUserProject);
-        String updatePassword = jPasswordField2.getText();
+        String updatePassword = encryptSortPassword(jPasswordField2.getText());  
         String updateState = jComboBoxUpdateUserState.getSelectedItem().toString();
         String updateType = jComboBoxUpdateUserType.getSelectedItem().toString();
         String updateName = jTextFieldNombre3.getText();
         String updateEmail = jTextFieldEmail1.getText();
-        String updateAnswer ="";
-        String updateQuestion = "";
+        String updateAnswer ="COMO TE LLAMAS";
+        String updateQuestion = "HOLA";
         objCtrlUser.updateUser(updateIdUser, updateIdProject, updatePassword, updateName, updateType, updateState, updateEmail, updateAnswer , updateQuestion);
 
     }
@@ -3536,6 +3549,11 @@ public final class InitialInterface extends javax.swing.JFrame {
         }
 
     }
+    
+
+    
+    
+ 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

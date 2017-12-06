@@ -143,7 +143,8 @@ public class LoginInterface extends javax.swing.JFrame {
       
          UserDao daoUser = new UserDao();        
          String identification = textFieldAccount1.getText();
-         String password = textFieldPass1.getText();       
+         String validate = encryptSortPassword(textFieldPass1.getText());
+         String password = validateEncryptionPassword(validate);
          boolean cheek = daoUser.conection(identification, password);
          if(cheek == true){
                  this.setVisible(false);
@@ -151,6 +152,32 @@ public class LoginInterface extends javax.swing.JFrame {
                 View message = new View();
                 message.errorLogin();
          }    
+  }
+  public String encryptSortPassword(String password){
+       
+        String passwordEncrypt = "";
+
+        for (int i=password.length()-1;i>=0;i--){
+		passwordEncrypt = passwordEncrypt + password.charAt(i);          
+        }
+
+                return passwordEncrypt;
+        }
+         
+  public String validateEncryptionPassword(String password){
+      
+      UserDao daoUser = new UserDao();  
+      String identification = textFieldAccount1.getText();
+      String encryptionPassword= daoUser.getData(identification, "SELECT user_password FROM users WHERE identification='", "user_password");
+      String normalPassword=encryptSortPassword(encryptionPassword);
+     if(normalPassword.equals(password)){
+          System.out.println(normalPassword);
+         String FinalnormalPassword=encryptSortPassword(password);
+         return FinalnormalPassword;
+        
+     }else{
+     return null;
+    }
   }
 
 
