@@ -3421,7 +3421,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     }
 
     public String getStartDate() {//Obtiene la fecha actual
-        SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
         return formatDate.format(fecha);
     }
 
@@ -3460,20 +3460,45 @@ public final class InitialInterface extends javax.swing.JFrame {
         int id_equipments=Integer.parseInt(id_equipment);
         int id_request = 0;
         id_request = getIdRequest(id, id_equipments, "Activo");
+        String finishDate=getEndDate(id_request);
+        Date endDate=convertStringToDate(finishDate);
+        Date systemDate=convertStringToDate(getStartDate());
+
+        int days=(int) ( systemDate.getTime() - endDate.getTime() )/86400000; 
+        
 
         objCtrlRequest.setStateRequest(id_request, "Terminado");
         objCtrlEquipment.setStateEquipment(id_equipments, "Disponible");
-
+        generateMult(id_request,days);
+    }
+    
+    public void generateMult(int id_request,int days){
+        double mult = calculateMult(days);
+        System.out.println(mult+" Valor multa");
+        System.out.println(id_request);
+        MultDao objDao = new MultDao();
+        objDao.generateMult(id_request, mult);
+       
+    }
+    
+    public double calculateMult(int days){
+        if(days<=0){
+            return 0;           
+        }else{
+            double valueMult=days*5000;
+            System.out.println(valueMult);
+            return valueMult;
+        }   
     }
 
     public String convertDayToString(Date date) {//Convierte un dato de tipo DATE a un String
-        SimpleDateFormat formatDate = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
         return formatDate.format(date);
     }
 
     public Date convertStringToDate(String date) {
         System.out.print(date);
-        SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date dateConvert = null;
         try {
             dateConvert = format.parse(date);
