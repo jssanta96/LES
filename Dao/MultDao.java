@@ -136,4 +136,19 @@ public MultDao(){
         return 0;
 
     }
+    
+    public void generateMult(int id_request,double value){
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        try {
+            System.out.println("Entro al try de generar mult");
+            Statement sentenceMult = conn.createStatement();
+            System.out.println("Entro al try de generar mult");
+            String queryMult = "INSERT INTO mult VALUES(NEXTVAL('mult_seq'),"+id_request+","+value+");";
+            System.out.print(queryMult);
+            sentenceMult.executeQuery(queryMult);
+        } catch (SQLException ex) {
+            System.out.print(ex);
+        }     
+    }
 }
