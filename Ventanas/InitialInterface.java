@@ -36,6 +36,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -1248,7 +1250,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jComboBoxEquipmentSerialReserve.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanelReserve.add(jComboBoxEquipmentSerialReserve, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 180, 30));
 
-        jSpinnerAño.setModel(new javax.swing.SpinnerNumberModel(2000, 2000, 2050, 1));
+        jSpinnerAño.setModel(new javax.swing.SpinnerNumberModel(2017, 2017, 2018, 1));
         jPanelReserve.add(jSpinnerAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 260, 80, -1));
 
         jSpinnerMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
@@ -2804,10 +2806,10 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack5ActionPerformed
 
     private void jButtonSave6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave6ActionPerformed
-        JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia: " + getReserveDate() + " hasta: " + convertDayToString(addDayDate(convertStringToDate(getReserveDate()), 7))
-                + "\n si no lo entrega antes de la fecha se le empezata a cobrar 5000(COP) por cada dia de atraso",
-                "PRESTAMO DE EQUIPO", JOptionPane.WARNING_MESSAGE);
         createReserve();
+        /*JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia: " + getReserveDate() + " hasta: " + convertDayToString(addDayDate(convertStringToDate(getReserveDate()), 7))
+                + "\n si no lo entrega antes de la fecha se le empezata a cobrar 5000(COP) por cada dia de atraso",
+                "PRESTAMO DE EQUIPO", JOptionPane.WARNING_MESSAGE);*/
 
     }//GEN-LAST:event_jButtonSave6ActionPerformed
 
@@ -3225,6 +3227,36 @@ public final class InitialInterface extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    public String convertDayToString(Date date) {//Convierte un dato de tipo DATE a un String
+        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
+        return formatDate.format(date);
+    }
+
+    public Date convertStringToDate(String date) {
+        System.out.print(date);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date dateConvert = null;
+        try {
+            dateConvert = format.parse(date);
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+        System.out.print(dateConvert.toString());
+        return dateConvert;
+    }
+
+    public Date addDayDate(Date date, int days) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date); // Configuramos la fecha que se recibe	
+        calendar.add(Calendar.DAY_OF_YEAR, days);  // numero de días a añadir, o restar en caso de días<0
+        return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos	
+    }
+
+    
+
+    
     public String encryptSortPassword(String password){
        
         String passwordEncrypt = "";
@@ -3388,15 +3420,40 @@ public final class InitialInterface extends javax.swing.JFrame {
         int id=Integer.parseInt(id_user);
         String serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
         String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
+        String state_equipment =objQuery.typeUser("SELECT state FROM equipment WHERE  serial ='" + serial_equipment + "'" , "state");
         int id_equipments=Integer.parseInt(id_equipment);
         String start_date = getStartDate();
         String state = "Activo";
         String end_date = convertDayToString(addDayDate(fecha, 7));
-
-        objCtrlRequest.addRequest(state, id, id_equipments, start_date, end_date);
-        objCtrlEquipment.setStateEquipment(id_equipments, "Ocupado");
+        if(state_equipment.equals("Ocupado") ||  state_equipment.equals("Reservado")){
+            View objView = new View();
+            objView.errorRequest();
+        }else{
+            objCtrlRequest.addRequest(state, id, id_equipments, start_date, end_date);
+            objCtrlEquipment.setStateEquipment(id_equipments, "Ocupado");}
 
     }
+    
+    public String getReserveDate() {
+        Calendar calendar = Calendar.getInstance();
+        int day1 = calendar.get(Calendar.DATE);
+        int month1 = calendar.get(Calendar.MONTH);
+        int year1 = calendar.get(Calendar.YEAR);
+
+        int day = (int) jSpinnerDia.getValue();
+
+        int month = (int)jSpinnerMes.getValue();
+
+        int year = (int)jSpinnerAño.getValue();
+        if(year>=year1 && month>=month1){
+            String reserveDate = year + "-" + month + "-" + day;
+            return reserveDate;
+        }else{
+
+            return null;
+        }
+    }
+    
 
     public void createReserve() {
         RequestController objCtrlRequest = new RequestController();
@@ -3410,10 +3467,14 @@ public final class InitialInterface extends javax.swing.JFrame {
         int id_equipments=Integer.parseInt(id_equipment);
         String start_date = getReserveDate();
         String state = "Reserva";
-        String end_date = convertDayToString(addDayDate(convertStringToDate(getReserveDate()), 7));
-
-        objCtrlRequest.addRequest(state, id, id_equipments, start_date, end_date);
-        objCtrlEquipment.setStateEquipment(id_equipments, "Reservado");
+        if(start_date==null ){
+            View objView = new View();
+            objView.errorReserve();
+        }else{
+            String end_date = convertDayToString(addDayDate(convertStringToDate(getReserveDate()), 7));
+            objCtrlRequest.addRequest(state, id, id_equipments, start_date, end_date);
+            objCtrlEquipment.setStateEquipment(id_equipments, "Reservado");
+        }
     }
 
     public void changeLabelIdentification(String identification) {
@@ -3430,16 +3491,8 @@ public final class InitialInterface extends javax.swing.JFrame {
         return objDao.getEndDate(id_request);
     }
 
-    public String getReserveDate() {
-        String day = "";
-        day = jSpinnerDia.getValue().toString();
-        String month = "";
-        month = jSpinnerMes.getValue().toString();
-        String year = "";
-        year = jSpinnerAño.getValue().toString();
-        String reserveDate = day + "-" + month + "-" + year;
-        return reserveDate;
-    }
+    
+
 
    
 
@@ -3489,31 +3542,6 @@ public final class InitialInterface extends javax.swing.JFrame {
             System.out.println(valueMult);
             return valueMult;
         }   
-    }
-
-    public String convertDayToString(Date date) {//Convierte un dato de tipo DATE a un String
-        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
-        return formatDate.format(date);
-    }
-
-    public Date convertStringToDate(String date) {
-        System.out.print(date);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateConvert = null;
-        try {
-            dateConvert = format.parse(date);
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
-        System.out.print(dateConvert.toString());
-        return dateConvert;
-    }
-
-    public Date addDayDate(Date date, int days) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date); // Configuramos la fecha que se recibe	
-        calendar.add(Calendar.DAY_OF_YEAR, days);  // numero de días a añadir, o restar en caso de días<0
-        return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos	
     }
 
     public String generateInitialPassword() {
