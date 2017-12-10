@@ -52,9 +52,19 @@ public final class View {
         JOptionPane.showMessageDialog(window, "La contraseña digitada es incorrecta, intentelo de nuevo o dirigase a la opcion de restablecer contraseña.", "Notificacion", 0, LesImage);
     }
     
+   public void errorRequest(){
+    
+        JOptionPane.showMessageDialog(window, "El equipo que desea se encuentra ocupado", "Notificacion", 0, LesImage);
+    }
+    
     public void errorComparePassword(){
     
         JOptionPane.showMessageDialog(window, "Los campos de la contraseña nueva no coinciden, intentelo de nuevo", "Notificacion", 0, LesImage);
+    }
+    
+    public void errorReserve(){
+    
+        JOptionPane.showMessageDialog(window, "La fecha de la reserva es incorrecta", "Notificacion", 0, LesImage);
     }
     
     public void errorEmptyPassword(){
