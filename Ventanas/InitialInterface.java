@@ -814,6 +814,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelCreateEquipment.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 310, 60));
 
         jButtonEquipmentCSV.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonEquipmentCSV.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         jButtonEquipmentCSV.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEquipmentCSV.setText("Cargar CSV");
         jButtonEquipmentCSV.addActionListener(new java.awt.event.ActionListener() {
@@ -908,6 +909,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelCreateUser.add(jComboBoxCreateUserType, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 120, 30));
 
         jButtonUserCSV.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonUserCSV.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         jButtonUserCSV.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUserCSV.setText("Cargar CSV");
         jButtonUserCSV.addActionListener(new java.awt.event.ActionListener() {
@@ -1192,6 +1194,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelCreateProject.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 310, 60));
 
         jButtonProjectCSV.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonProjectCSV.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         jButtonProjectCSV.setForeground(new java.awt.Color(255, 255, 255));
         jButtonProjectCSV.setText("Cargar CSV");
         jButtonProjectCSV.addActionListener(new java.awt.event.ActionListener() {
@@ -3182,17 +3185,43 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldRespuestaActionPerformed
 
     private void jButtonUserCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUserCSVActionPerformed
-        // TODO add your handling code here:
+        int result;
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("CSV y csv", "csv");
+        LoadPicture ventana = new LoadPicture();
+        ventana.jFileChooserLoad.setFileFilter(filtro);
+
+        result = ventana.jFileChooserLoad.showOpenDialog(null);  
+        if (JFileChooser.APPROVE_OPTION == result) {
+            fichero = ventana.jFileChooserLoad.getSelectedFile();
+
+        }
 
     }//GEN-LAST:event_jButtonUserCSVActionPerformed
 
     private void jButtonEquipmentCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipmentCSVActionPerformed
-        // TODO add your handling code here:
+        int result;
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("CSV y csv", "csv");
+        LoadPicture ventana = new LoadPicture();
+        ventana.jFileChooserLoad.setFileFilter(filtro);
+
+        result = ventana.jFileChooserLoad.showOpenDialog(null);  
+        if (JFileChooser.APPROVE_OPTION == result) {
+            fichero = ventana.jFileChooserLoad.getSelectedFile();
+
+        }
     }//GEN-LAST:event_jButtonEquipmentCSVActionPerformed
 
     private void jButtonProjectCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProjectCSVActionPerformed
         int result;
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG", "jpg", "png");
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("CSV y csv", "csv");
+        LoadPicture ventana = new LoadPicture();
+        ventana.jFileChooserLoad.setFileFilter(filtro);
+
+        result = ventana.jFileChooserLoad.showOpenDialog(null);  
+        if (JFileChooser.APPROVE_OPTION == result) {
+            fichero = ventana.jFileChooserLoad.getSelectedFile();
+
+        }
     }//GEN-LAST:event_jButtonProjectCSVActionPerformed
 
     private void emptyText() {
