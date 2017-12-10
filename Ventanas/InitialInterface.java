@@ -10,10 +10,8 @@ import Controllers.MultController;
 import Controllers.ProjectController;
 import Controllers.RequestController;
 import Controllers.UserController;
-import Dao.EquipmentDao;
 import Dao.FachadaBD;
 import Dao.MultDao;
-import Dao.ProjectDao;
 import java.io.File;
 import Dao.Querys;
 import Dao.RequestDao;
@@ -36,8 +34,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerDateModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -136,6 +132,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jButtonBack2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaCrearEquipo = new javax.swing.JTextArea();
+        jButtonEquipmentCSV = new javax.swing.JButton();
         jLabelFondo6 = new javax.swing.JLabel();
         jPanelCreateUser = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
@@ -156,6 +153,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jTextFieldEmailCrearUsuario = new javax.swing.JTextField();
         jTextFieldNombreCrearUsuario = new javax.swing.JTextField();
         jComboBoxCreateUserType = new javax.swing.JComboBox<>();
+        jButtonUserCSV = new javax.swing.JButton();
         jButtonBack1 = new javax.swing.JButton();
         jButtonOverwrite1 = new javax.swing.JButton();
         jButtonSave1 = new javax.swing.JButton();
@@ -211,6 +209,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jTextFieldNombreCrearProyecto = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextAreaCrearProyecto = new javax.swing.JTextArea();
+        jButtonProjectCSV = new javax.swing.JButton();
         jLabelFondo7 = new javax.swing.JLabel();
         jPanelContactUs = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -786,7 +785,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonSave2ActionPerformed(evt);
             }
         });
-        jPanelCreateEquipment.add(jButtonSave2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 100, 30));
+        jPanelCreateEquipment.add(jButtonSave2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 100, 30));
 
         jButtonOverwrite2.setBackground(new java.awt.Color(102, 0, 0));
         jButtonOverwrite2.setForeground(new java.awt.Color(255, 255, 255));
@@ -796,7 +795,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonOverwrite2ActionPerformed(evt);
             }
         });
-        jPanelCreateEquipment.add(jButtonOverwrite2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 90, 30));
+        jPanelCreateEquipment.add(jButtonOverwrite2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 110, 30));
 
         jButtonBack2.setBackground(new java.awt.Color(102, 0, 0));
         jButtonBack2.setForeground(new java.awt.Color(255, 255, 255));
@@ -806,13 +805,23 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonBack2ActionPerformed(evt);
             }
         });
-        jPanelCreateEquipment.add(jButtonBack2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 80, 30));
+        jPanelCreateEquipment.add(jButtonBack2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 100, 30));
 
         jTextAreaCrearEquipo.setColumns(20);
         jTextAreaCrearEquipo.setRows(5);
         jScrollPane1.setViewportView(jTextAreaCrearEquipo);
 
         jPanelCreateEquipment.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 310, 60));
+
+        jButtonEquipmentCSV.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonEquipmentCSV.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEquipmentCSV.setText("Cargar CSV");
+        jButtonEquipmentCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEquipmentCSVActionPerformed(evt);
+            }
+        });
+        jPanelCreateEquipment.add(jButtonEquipmentCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 110, 30));
 
         jLabelFondo6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo6.setText("jLabel4");
@@ -898,6 +907,16 @@ public final class InitialInterface extends javax.swing.JFrame {
 
         jPanelCreateUser.add(jComboBoxCreateUserType, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 120, 30));
 
+        jButtonUserCSV.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonUserCSV.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonUserCSV.setText("Cargar CSV");
+        jButtonUserCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonUserCSVActionPerformed(evt);
+            }
+        });
+        jPanelCreateUser.add(jButtonUserCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, 110, 30));
+
         jButtonBack1.setBackground(new java.awt.Color(102, 0, 0));
         jButtonBack1.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack1.setText("Volver");
@@ -906,7 +925,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonBack1ActionPerformed(evt);
             }
         });
-        jPanelCreateUser.add(jButtonBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 90, 30));
+        jPanelCreateUser.add(jButtonBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 90, 30));
 
         jButtonOverwrite1.setBackground(new java.awt.Color(102, 0, 0));
         jButtonOverwrite1.setForeground(new java.awt.Color(255, 255, 255));
@@ -916,7 +935,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonOverwrite1ActionPerformed(evt);
             }
         });
-        jPanelCreateUser.add(jButtonOverwrite1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 90, 30));
+        jPanelCreateUser.add(jButtonOverwrite1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 90, 30));
 
         jButtonSave1.setBackground(new java.awt.Color(102, 0, 0));
         jButtonSave1.setForeground(new java.awt.Color(255, 255, 255));
@@ -926,7 +945,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonSave1ActionPerformed(evt);
             }
         });
-        jPanelCreateUser.add(jButtonSave1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 100, 30));
+        jPanelCreateUser.add(jButtonSave1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 100, 30));
 
         jLabelFondo8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo8.setText("jLabel4");
@@ -1142,7 +1161,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonSave3ActionPerformed(evt);
             }
         });
-        jPanelCreateProject.add(jButtonSave3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 100, 30));
+        jPanelCreateProject.add(jButtonSave3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 100, 30));
 
         jButtonOverwrite3.setBackground(new java.awt.Color(102, 0, 0));
         jButtonOverwrite3.setForeground(new java.awt.Color(255, 255, 255));
@@ -1152,7 +1171,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonOverwrite3ActionPerformed(evt);
             }
         });
-        jPanelCreateProject.add(jButtonOverwrite3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 340, 90, 30));
+        jPanelCreateProject.add(jButtonOverwrite3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 110, 30));
 
         jButtonBack3.setBackground(new java.awt.Color(102, 0, 0));
         jButtonBack3.setForeground(new java.awt.Color(255, 255, 255));
@@ -1162,7 +1181,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonBack3ActionPerformed(evt);
             }
         });
-        jPanelCreateProject.add(jButtonBack3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 80, 30));
+        jPanelCreateProject.add(jButtonBack3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 340, 90, 30));
         jPanelCreateProject.add(jTextFieldCodigoCrearProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 210, 30));
         jPanelCreateProject.add(jTextFieldNombreCrearProyecto, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 210, 30));
 
@@ -1171,6 +1190,16 @@ public final class InitialInterface extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTextAreaCrearProyecto);
 
         jPanelCreateProject.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 310, 60));
+
+        jButtonProjectCSV.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonProjectCSV.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonProjectCSV.setText("Cargar CSV");
+        jButtonProjectCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonProjectCSVActionPerformed(evt);
+            }
+        });
+        jPanelCreateProject.add(jButtonProjectCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 110, 30));
 
         jLabelFondo7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo7.setText("jLabel4");
@@ -3106,13 +3135,15 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack20ActionPerformed
 
     private void jButtonCheckMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckMultActionPerformed
-        String id_mult = splitComboBox(jComboBoxMult);
-        String user_name = "";
-   //     int id_request = getIdRequestMult(id_mult);
-     //   int id_user = getIdUserMult(id_request);
-  //      System.out.println(id_user);
-       // user_name = getNameUserMult(id_user);
+        Querys objQuery = new Querys();
+        String id_mult = splitComboBox(jComboBoxMult);    
+        String id_request= objQuery.typeUser("SELECT id_request FROM mult WHERE  id_mult =' "+ id_mult + "'" , "id_request");
+        int id_requests=Integer.parseInt(id_request);
+        String id_user= objQuery.typeUser("SELECT id_user FROM request WHERE id_request=' "+ id_requests + "'" , "id_user");
+        int id_users=Integer.parseInt(id_user);
+        String user_name= objQuery.typeUser( "SELECT name FROM users WHERE id_user= ' "+ id_user + "'" , "name");
         jLabelUserNameMult.setText(user_name);
+
 
     }//GEN-LAST:event_jButtonCheckMultActionPerformed
 
@@ -3149,6 +3180,20 @@ public final class InitialInterface extends javax.swing.JFrame {
     private void jTextFieldRespuestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRespuestaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldRespuestaActionPerformed
+
+    private void jButtonUserCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUserCSVActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jButtonUserCSVActionPerformed
+
+    private void jButtonEquipmentCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipmentCSVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEquipmentCSVActionPerformed
+
+    private void jButtonProjectCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProjectCSVActionPerformed
+        int result;
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG", "jpg", "png");
+    }//GEN-LAST:event_jButtonProjectCSVActionPerformed
 
     private void emptyText() {
         jTextAreaCrearEquipo.setText("");
@@ -3226,8 +3271,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 new InitialInterface().setVisible(true);
             }
         });
-    }
-    
+    } 
     
     public String convertDayToString(Date date) {//Convierte un dato de tipo DATE a un String
         SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
@@ -3253,9 +3297,6 @@ public final class InitialInterface extends javax.swing.JFrame {
         calendar.add(Calendar.DAY_OF_YEAR, days);  // numero de días a añadir, o restar en caso de días<0
         return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos	
     }
-
-    
-
     
     public String encryptSortPassword(String password){
        
@@ -3281,7 +3322,6 @@ public final class InitialInterface extends javax.swing.JFrame {
         }
     
     }
-
     
     public void fillMyProfile(){
         
@@ -3491,11 +3531,6 @@ public final class InitialInterface extends javax.swing.JFrame {
         return objDao.getEndDate(id_request);
     }
 
-    
-
-
-   
-
     public int getIdRequest(int id_user, int id_equipment, String state) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
         RequestDao objDao = new RequestDao();
         return objDao.getIdRequest(id_user, id_equipment, state);
@@ -3556,8 +3591,6 @@ public final class InitialInterface extends javax.swing.JFrame {
 
     }
     
-         
-
     public void updateUser() {
 
         UserController objCtrlUser = new UserController();
@@ -3704,6 +3737,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonConsultProject;
     private javax.swing.JButton jButtonConsultUser;
     private javax.swing.JButton jButtonEntregar;
+    private javax.swing.JButton jButtonEquipmentCSV;
     private javax.swing.JButton jButtonEquipo;
     private javax.swing.JButton jButtonEquipo1;
     private javax.swing.JButton jButtonEquipo2;
@@ -3722,6 +3756,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonOverwrite4;
     private javax.swing.JButton jButtonOverwrite5;
     private javax.swing.JButton jButtonPerfil;
+    private javax.swing.JButton jButtonProjectCSV;
     private javax.swing.JButton jButtonProyecto;
     private javax.swing.JButton jButtonProyecto1;
     private javax.swing.JButton jButtonProyecto2;
@@ -3744,6 +3779,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSave8;
     private javax.swing.JButton jButtonSaveProfile;
     private javax.swing.JButton jButtonSolicitud;
+    private javax.swing.JButton jButtonUserCSV;
     private javax.swing.JButton jButtonUserCheck;
     private javax.swing.JButton jButtonUsuario;
     private javax.swing.JButton jButtonUsuario1;
