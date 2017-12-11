@@ -17,7 +17,12 @@ import Dao.Querys;
 import Dao.RequestDao;
 import Dao.UserDao;
 import Logica.View;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.awt.Image;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -36,6 +41,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+
 
 public final class InitialInterface extends javax.swing.JFrame {
 
@@ -333,6 +339,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
         jLabel59 = new javax.swing.JLabel();
+        jButtonReportPresxMiembros1 = new javax.swing.JButton();
         jButtonReportPrestxProject = new javax.swing.JButton();
         jButtonMultasXMes = new javax.swing.JButton();
         jButtonReportPresxMes = new javax.swing.JButton();
@@ -1846,6 +1853,17 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabel59.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
         jPanelReportes.add(jLabel59, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
+        jButtonReportPresxMiembros1.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonReportPresxMiembros1.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jButtonReportPresxMiembros1.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonReportPresxMiembros1.setText("EXPORTAR PDF");
+        jButtonReportPresxMiembros1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReportPresxMiembros1ActionPerformed(evt);
+            }
+        });
+        jPanelReportes.add(jButtonReportPresxMiembros1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 370, 210, 40));
+
         jButtonReportPrestxProject.setBackground(new java.awt.Color(102, 0, 0));
         jButtonReportPrestxProject.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
         jButtonReportPrestxProject.setForeground(new java.awt.Color(255, 255, 255));
@@ -3231,6 +3249,23 @@ public final class InitialInterface extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonProjectCSVActionPerformed
 
+    private void jButtonReportPresxMiembros1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportPresxMiembros1ActionPerformed
+        LoadPicture ventana = new LoadPicture();
+        int result=ventana.jFileChooserLoad.showSaveDialog(null);
+        if(result==ventana.jFileChooserLoad.APPROVE_OPTION){
+            try{
+                OutputStream outText= new FileOutputStream(ventana.jFileChooserLoad.getSelectedFile());
+                Document doc = new Document();
+                PdfWriter.getInstance(doc, outText);
+                doc.open();
+                doc.add(new Paragraph());
+                doc.close();
+                outText.close();
+                     
+            }catch(Exception e){}
+        }
+    }//GEN-LAST:event_jButtonReportPresxMiembros1ActionPerformed
+
     private void emptyText() {
         jTextAreaCrearEquipo.setText("");
         jTextAreaCrearProyecto.setText("");
@@ -3608,21 +3643,31 @@ public final class InitialInterface extends javax.swing.JFrame {
         Querys objQuery = new Querys();
         String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
         int id=Integer.parseInt(id_user);
-       String serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
+        String serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
         String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
         int id_equipments=Integer.parseInt(id_equipment);
         int id_request = 0;
-        id_request = getIdRequest(id, id_equipments, "Activo");
-        String finishDate=getEndDate(id_request);
-        Date endDate=convertStringToDate(finishDate);
-        Date systemDate=convertStringToDate(getStartDate());
+        try{
+            id_request = getIdRequest(id, id_equipments, "Activo");
+            if(id_request==0){
+                 Exception e = new Exception("Este es mi propio error.");
+                throw e;
+            }else{
+                String finishDate=getEndDate(id_request);
+                Date endDate=convertStringToDate(finishDate);
+                Date systemDate=convertStringToDate(getStartDate());
 
-        int days=(int) ( systemDate.getTime() - endDate.getTime() )/86400000; 
-        
+                int days=(int) ( systemDate.getTime() - endDate.getTime() )/86400000;    
+                objCtrlRequest.setStateRequest(id_request, "Terminado");
+                objCtrlEquipment.setStateEquipment(id_equipments, "Disponible");
+                generateMult(id_request,days);
+                
+            }
+          }catch(Exception e){
+                View objView = new View();
+                objView.errorDeliver();
+            }
 
-        objCtrlRequest.setStateRequest(id_request, "Terminado");
-        objCtrlEquipment.setStateEquipment(id_equipments, "Disponible");
-        generateMult(id_request,days);
     }
     
     public void generateMult(int id_request,int days){
@@ -3831,6 +3876,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonReportPrestxProject;
     private javax.swing.JButton jButtonReportPresxMes;
     private javax.swing.JButton jButtonReportPresxMiembros;
+    private javax.swing.JButton jButtonReportPresxMiembros1;
     private javax.swing.JButton jButtonReportes;
     private javax.swing.JButton jButtonReserve;
     private javax.swing.JButton jButtonSave;
