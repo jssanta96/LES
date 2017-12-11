@@ -67,6 +67,12 @@ public final class View {
         JOptionPane.showMessageDialog(window, "La fecha de la reserva es incorrecta", "Notificacion", 0, LesImage);
     }
     
+    public void errorDeliver(){
+    
+        JOptionPane.showMessageDialog(window, "Este equipo esta en estado de reserva", "Notificacion", 0, LesImage);
+    }
+    
+    
     public void errorEmptyPassword(){
     
         JOptionPane.showMessageDialog(window, "Los campos de la contraseña nueva estan vacios", "Notificacion", 0, LesImage);
