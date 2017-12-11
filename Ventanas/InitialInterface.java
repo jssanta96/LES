@@ -406,12 +406,12 @@ public final class InitialInterface extends javax.swing.JFrame {
         jButtonCheckPass = new javax.swing.JButton();
         jTextFieldPassActual = new javax.swing.JPasswordField();
         jTextFieldSetEmail = new javax.swing.JTextField();
-        jTextFieldSetName = new javax.swing.JTextField();
         jLabelPhoto = new javax.swing.JLabel();
         jButtonSaveProfile = new javax.swing.JButton();
         jButtonLoadPhoto = new javax.swing.JButton();
         jPasswordNew1 = new javax.swing.JPasswordField();
         jPasswordNew = new javax.swing.JPasswordField();
+        jLabelNameUserProfile = new javax.swing.JLabel();
         jLabelFondo24 = new javax.swing.JLabel();
         jPanelViewEquipment = new javax.swing.JPanel();
         jLabel80 = new javax.swing.JLabel();
@@ -2272,7 +2272,6 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelMyProfile.add(jButtonCheckPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 30, 30));
         jPanelMyProfile.add(jTextFieldPassActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 180, 30));
         jPanelMyProfile.add(jTextFieldSetEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 210, 30));
-        jPanelMyProfile.add(jTextFieldSetName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 210, 30));
 
         jLabelPhoto.setText("Foto");
         jPanelMyProfile.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 140, 140));
@@ -2298,6 +2297,10 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelMyProfile.add(jButtonLoadPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 300, 130, 30));
         jPanelMyProfile.add(jPasswordNew1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 210, 30));
         jPanelMyProfile.add(jPasswordNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 210, 30));
+
+        jLabelNameUserProfile.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelNameUserProfile.setForeground(new java.awt.Color(102, 102, 102));
+        jPanelMyProfile.add(jLabelNameUserProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 210, -1));
 
         jLabelFondo24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo24.setText("jLabel4");
@@ -2570,7 +2573,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelDeleteMult.add(jLabelMultValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, 30));
 
         jLabelValueMultUser.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelValueMultUser.setText("ValorMulta");
+        jLabelValueMultUser.setText("NULL");
         jPanelDeleteMult.add(jLabelValueMultUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, -1, 30));
 
         jLabelUserNameMult.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -3036,6 +3039,7 @@ public final class InitialInterface extends javax.swing.JFrame {
 
     private void jButtonSaveProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveProfileActionPerformed
         checkNewPassword();
+        updateEmail();
     }//GEN-LAST:event_jButtonSaveProfileActionPerformed
 
     private void jButtonListarPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarPrestamosActionPerformed
@@ -3129,7 +3133,9 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack19ActionPerformed
 
     private void jButtonSave8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSave8ActionPerformed
+        View objView = new View();
         deleteMult();
+        objView.sucessfulOperationTypeElement("La multa","eliminado");
     }//GEN-LAST:event_jButtonSave8ActionPerformed
 
     private void jButtonBack20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack20ActionPerformed
@@ -3143,9 +3149,10 @@ public final class InitialInterface extends javax.swing.JFrame {
         String id_request= objQuery.typeUser("SELECT id_request FROM mult WHERE  id_mult =' "+ id_mult + "'" , "id_request");
         int id_requests=Integer.parseInt(id_request);
         String id_user= objQuery.typeUser("SELECT id_user FROM request WHERE id_request=' "+ id_requests + "'" , "id_user");
-        int id_users=Integer.parseInt(id_user);
         String user_name= objQuery.typeUser( "SELECT name FROM users WHERE id_user= ' "+ id_user + "'" , "name");
+        String value= objQuery.typeUser( "SELECT value FROM mult WHERE id_mult= ' "+ id_mult + "'" , "value");
         jLabelUserNameMult.setText(user_name);
+        jLabelValueMultUser.setText(value);
 
 
     }//GEN-LAST:event_jButtonCheckMultActionPerformed
@@ -3356,7 +3363,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         
         Querys objQuery = new Querys();
         String user_name=objQuery.typeUser("SELECT name FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "name");
-        jTextFieldSetName.setText(user_name);
+        jLabelNameUserProfile.setText(user_name);
         String user_email=objQuery.typeUser("SELECT email FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "email");
         jTextFieldSetEmail.setText(user_email);
         
@@ -3376,7 +3383,35 @@ public final class InitialInterface extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }    
+    public String getEmailProfile(){
+         Querys objQuery = new Querys();
+         String email=objQuery.typeUser("SELECT email FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "email");
+         return email;
     }
+    
+    
+    public void updateEmail(){
+        View objView = new View();
+        if(getEmailProfile().equals(jTextFieldSetEmail.getText())){
+            
+        }else{
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        try {
+            Statement sentenceEmail = conn.createStatement();
+            String queryEmail = "UPDATE users set email='" + jTextFieldSetEmail.getText() + "' WHERE identification ='"+jLabelUserIdentificationGeneral.getText()+"';";
+            System.out.print(queryEmail);
+            sentenceEmail.executeUpdate(queryEmail);
+            objView.sucessfulOperationTypeElement("El email", "actualizado");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    }  
+    
+    
     
     public void checkNewPassword(){
         View objView = new View();
@@ -3402,6 +3437,7 @@ public final class InitialInterface extends javax.swing.JFrame {
 
             jLabelUserPhoto.setIcon(icono);
     }
+    
   
    
     public void createUser() {
@@ -3986,6 +4022,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelInicio1;
     private javax.swing.JLabel jLabelMultValue;
     private javax.swing.JLabel jLabelName;
+    private javax.swing.JLabel jLabelNameUserProfile;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelNombre1;
     private javax.swing.JLabel jLabelNombre10;
@@ -4141,6 +4178,5 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldRespuesta;
     private javax.swing.JTextField jTextFieldSerialCrearEquipo;
     private javax.swing.JTextField jTextFieldSetEmail;
-    private javax.swing.JTextField jTextFieldSetName;
     // End of variables declaration//GEN-END:variables
 }
