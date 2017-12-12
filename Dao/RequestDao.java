@@ -1,5 +1,7 @@
 package Dao;
 
+import Controllers.EquipmentController;
+import Controllers.RequestController;
 import Logica.Request;
 import Logica.View;
 import Ventanas.InitialInterface;
@@ -7,6 +9,8 @@ import Ventanas.InitialInterface;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 
 public class RequestDao {
 
@@ -204,5 +208,41 @@ public class RequestDao {
             Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
+    }
+     public void renovateLoan(JComboBox combo, JLabel identification  ) {
+        
+        RequestController objCtrlRequest = new RequestController();
+        EquipmentController objCtrlEquipment = new EquipmentController();
+        Querys objQuery = new Querys();
+        String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + identification.getText() + "'" , "id_user");
+        int id=Integer.parseInt(id_user);
+        System.out.println(id+" Id del usuario");
+        InitialInterface initial = new InitialInterface();
+        String serial_equipment = initial.splitComboBox(combo);
+        String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
+        int id_equipments=Integer.parseInt(id_equipment);
+        System.out.println(id_equipments);
+        int id_request = 0;
+        try{
+            System.out.println("Entro al try");
+            id_request = getIdRequest(id, id_equipments, "Activo");
+            if(id_request==0){
+                 System.out.println(id_request);
+                 Exception e = new Exception("Este es mi propio error.");
+                 throw e;
+            }else{
+                java.util.Date end_date;
+                end_date = initial.convertStringToDate(getEndDate(id_request));
+                String extend_date = initial.convertDayToString(initial.addDayDate(end_date, 7));
+
+
+                objCtrlRequest.renovateRequest(id_request, extend_date);
+                objCtrlEquipment.setStateEquipment(id_equipments, "Ocupado");
+        }
+          }catch(Exception e){
+                View objView = new View();
+                objView.errorRenovate();
+            }
+       
     }
 }
