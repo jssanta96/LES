@@ -3801,7 +3801,8 @@ public final class InitialInterface extends javax.swing.JFrame {
         objLoad.generateReport(jTable, pdfNewFile, title);
     }  
     public void enableButtons(String identification) {
-
+        
+       cheekCordinator();
         Querys objQuery = new Querys();
         String query = objQuery.typeUser("SELECT type FROM users WHERE identification ='" + identification + "'", "type");
         switch (query) {
@@ -3818,7 +3819,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonUsuario.setEnabled(false);
                 break;
 
-            case "Cordinador de equipos":
+            case "Cordinador":
 
                 jButtonProyecto.setEnabled(false);
                 jButtonUsuario.setEnabled(false);
@@ -3826,6 +3827,27 @@ public final class InitialInterface extends javax.swing.JFrame {
 
         }
 
+    }
+    
+    public void cheekRequest(String identification){
+        Querys objQuery = new Querys();
+        String query = objQuery.typeUser("SELECT id_user FROM users WHERE identification ='" + identification + "'", "id_user");
+        int id_user = Integer.valueOf(query);
+        String queryState = objQuery.typeUser("SELECT  state FROM request WHERE id_user = '" +id_user +"' and state = 'Activo'" , "state");                           
+        String queryName = objQuery.typeUser("SELECT name FROM users WHERE identification ='" + identification + "'", "name");
+        if(queryState == null){
+         
+        }else{
+         View message = new View();
+          message.membersWithMult( queryName + " recuerde entregar su equipo a tiempo");
+        }
+                      
+    }
+    
+   public void cheekCordinator(){
+        Querys objQuery = new Querys();
+        ArrayList<String> query = objQuery.listtypeUser("SELECT C.id_user,C.end_date FROM (SELECT *FROM request WHERE state='Activo') as C", "end_date");
+        System.out.println(query);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
