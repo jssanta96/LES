@@ -2887,7 +2887,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonUpdateUserActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-        int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea guardar los cambios del Equipo?", "ACTUALIZAR INFORMACION DE EQUIPO", JOptionPane.YES_NO_OPTION);
+               updateEquipment();  
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jButtonOverwriteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverwriteActionPerformed
@@ -3126,7 +3126,8 @@ public final class InitialInterface extends javax.swing.JFrame {
     private void jButtonRenovateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRenovateActionPerformed
         int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea renovar el prestamo  del equipo: " + jComboBoxEquipmentSerialLoan.getSelectedItem().toString(), "RENOVAR PRESTAMO DE EQUIPO", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.YES_OPTION == resp) {
-            renovateLoan();
+           RequestDao objDaoRequest = new RequestDao();
+           objDaoRequest.renovateLoan( jComboBoxEquipmentSerialLoan,jLabelUserIdentificationGeneral);
         }
     }//GEN-LAST:event_jButtonRenovateActionPerformed
 
@@ -3685,9 +3686,10 @@ public final class InitialInterface extends javax.swing.JFrame {
   
    
     public void createUser() {
-
-        UserController objCtrlUser = new UserController();
-
+        if(( jTextFieldIdentificacionCrearUsuario.getText().isEmpty() == false) &&  ( jTextFieldNombreCrearUsuario.getText().isEmpty()==false) && 
+           (jTextFieldEmailCrearUsuario.getText().isEmpty() == false)&&  ( jTextFieldQuestion.getText().isEmpty()==false)&&  (jTextFieldAnswer.getText().isEmpty()==false)){
+       
+        UserController objCtrlUser = new UserController();   
         String identification = jTextFieldIdentificacionCrearUsuario.getText();
         String idProyect = splitComboBox(jComboBoxCreateUserProject);
         String name = jTextFieldNombreCrearUsuario.getText();
@@ -3697,70 +3699,51 @@ public final class InitialInterface extends javax.swing.JFrame {
         String email = jTextFieldEmailCrearUsuario.getText();
         String question = jTextFieldQuestion.getText();
         String answer = jTextFieldAnswer.getText();
-        String photo = "1";
-
+        String photo = "1";  
         objCtrlUser.addUser(identification, idProyect, password, name, typeUser, state, email,answer,question , photo);
 
-    }
-
- 
-    public void renovateLoan() {
-        
-        RequestController objCtrlRequest = new RequestController();
-        EquipmentController objCtrlEquipment = new EquipmentController();
-        Querys objQuery = new Querys();
-        String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
-        int id=Integer.parseInt(id_user);
-        System.out.println(id+" Id del usuario");
-        String serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
-        String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
-        int id_equipments=Integer.parseInt(id_equipment);
-        System.out.println(id_equipments);
-        int id_request = 0;
-        try{
-            System.out.println("Entro al try");
-            id_request = getIdRequest(id, id_equipments, "Activo");
-            if(id_request==0){
-                 System.out.println(id_request);
-                 Exception e = new Exception("Este es mi propio error.");
-                 throw e;
-            }else{
-                Date end_date;
-                end_date = convertStringToDate(getEndDate(id_request));
-                String extend_date = convertDayToString(addDayDate(end_date, 7));
-
-
-                objCtrlRequest.renovateRequest(id_request, extend_date);
-                objCtrlEquipment.setStateEquipment(id_equipments, "Ocupado");
         }
-          }catch(Exception e){
-                View objView = new View();
-                objView.errorRenovate();
-            }
-       
-    }
-    public void createProject() {
+        else{
+           View objView = new View();
+           objView.voidFields("Campos vacios");
+        }
 
-        ProjectController objCtrlProject = new ProjectController();
+    }
+
+  
+   
+    public void createProject() {
+    if((jTextFieldCodigoCrearProyecto.getText().isEmpty() == false) &&  ( jTextFieldNombreCrearProyecto.getText().isEmpty()==false) && 
+      (jTextAreaCrearProyecto.getText().isEmpty() == false)){
+     ProjectController objCtrlProject = new ProjectController();
         String code = jTextFieldCodigoCrearProyecto.getText();
         String name = jTextFieldNombreCrearProyecto.getText();
         String description = jTextAreaCrearProyecto.getText();
         String state = "Activo";
 
         objCtrlProject.addProject(code, name, description, state);
+     } else{
+           View objView = new View();
+           objView.voidFields("Campos vacios");
+        }   
+       
 
     }
 
     public void createEquipment() {
-
+    if((jTextFieldSerialCrearEquipo.getText().isEmpty() == false) &&  (jTextFieldNombreCrearEquipo.getText().isEmpty()==false) && 
+         ( jTextAreaCrearEquipo.getText().isEmpty() == false)){
         EquipmentController objCtrlEquipment = new EquipmentController();
-
         String serial = jTextFieldSerialCrearEquipo.getText();
         String name = jTextFieldNombreCrearEquipo.getText();
         String description = jTextAreaCrearEquipo.getText();
         String state = "Disponible";
 
         objCtrlEquipment.addEquipment(serial, name, description, state);
+         }else{
+           View objView = new View();
+           objView.voidFields("Campos vacios");
+        }  
 
     }
 
@@ -3925,6 +3908,8 @@ public final class InitialInterface extends javax.swing.JFrame {
     
     public void updateUser() {
 
+        if(( jTextFieldNombreUpUser.getText().isEmpty() == false) &&  (jTextFieldEmail.getText().isEmpty()==false) && 
+           (jTextFieldRespuesta.getText().isEmpty() == false)&&  ( jTextFieldPregunta.getText().isEmpty()==false)){
         UserController objCtrlUser = new UserController();
         String updateIdUser = splitComboBox(jComboBoxUpdateIdUser);
         String updateIdProject = splitComboBox(jComboBoxUpdateUserProject);
@@ -3932,14 +3917,19 @@ public final class InitialInterface extends javax.swing.JFrame {
         String updateType = jComboBoxUpdateUserType.getSelectedItem().toString();
         String updateName = jTextFieldNombreUpUser.getText();
         String updateEmail = jTextFieldEmail.getText();
-        String updateAnswer ="COMO TE LLAMAS";
-        String updateQuestion = "HOLA";
+        String updateAnswer =jTextFieldRespuesta.getText();
+        String updateQuestion = jTextFieldPregunta.getText();
         objCtrlUser.updateUser(updateIdUser, updateIdProject, updateName, updateType, updateState, updateEmail, updateAnswer , updateQuestion);
+        }else{
+           View objView = new View();
+           objView.voidFields("Campos vacios");
+        }
+       
 
     }
 
     public void updateProject() {
-
+    if( (jTextArea3.getText().isEmpty() == false) &&  (jTextFieldNombreUpdateProject.getText().isEmpty()==false)){
         ProjectController objCtrlProject = new ProjectController();
         String updateProject = splitComboBox(jComboBoxUpdateProjectId);
         String updateNameProject = jTextFieldNombreUpdateProject.getText();
@@ -3947,19 +3937,29 @@ public final class InitialInterface extends javax.swing.JFrame {
         String updateState = splitComboBox(jComboBoxUpdateProjectState);
 
         objCtrlProject.updateProject(updateProject, updateNameProject, updateDescription, updateState);
-
+         }else{
+           View objView = new View();
+           objView.voidFields("Campos vacios");
+        }
     }
 
     public void updateEquipment() {
 
+        if( (jTextFieldNombreUpEquipment.getText().isEmpty() == false) &&  (jTextArea4.getText().isEmpty()==false)){
         EquipmentController objCtrlEquipment = new EquipmentController();
-        String updateSerialEquipment = jComboBoxUpdateEquipmentSerial.getSelectedItem().toString();
+        String updateSerialEquipment = splitComboBox(jComboBoxUpdateEquipmentSerial);
         String updateNameEquipment = jTextFieldNombreUpEquipment.getText();
-        String updateStateEquipment = jComboBoxUpdateEquipmentState.getSelectedItem().toString();
+        String updateStateEquipment = splitComboBox(jComboBoxUpdateEquipmentState);
         String updateDescriptionEquipment = jTextArea4.getText();
 
-        objCtrlEquipment.updateEquipment(updateSerialEquipment, updateNameEquipment, updateStateEquipment, updateDescriptionEquipment);
-
+        objCtrlEquipment.updateEquipment(updateSerialEquipment, updateNameEquipment, updateDescriptionEquipment, updateStateEquipment);
+  
+        }else{
+           View objView = new View();
+           objView.voidFields("Campos vacios");
+        }
+           
+       
     }
 
     public void utilJTableToPdf(JTable jTable, File pdfNewFile, String title){    
