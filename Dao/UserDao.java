@@ -39,47 +39,7 @@ public class UserDao {
         }
         return -1;
     }
-    public User viewUser(String identification){
-        
-        User user= new User();
-        String sql_select="SELECT identification,project_id,user_password,name,type,state,email,answer,question,photo"+
-                " FROM users WHERE identification='"+identification+"';";
 
-        try{
-            FachadaBD fachada = new FachadaBD();
-            Connection conn= fachada.getConnetion();
-            Statement sentence = conn.createStatement();
-            ResultSet tabla = sentence.executeQuery(sql_select);
-
-            while(tabla.next()){
-                user.setIdentification(tabla.getString(1));
-
-                user.setProjectId(tabla.getString(2));
-
-                user.setPassword(tabla.getString(3));
-
-                user.setUserName(tabla.getString(4));
-
-                user.setType(tabla.getString(5));
-
-                user.setState(tabla.getString(6));
-
-                user.setEmail(tabla.getString(7));
-
-            }
-
-            return user;
-        }
-        catch(SQLException e){
-            View message = new View();
-            message.errorConnection();
-        }
-        catch(Exception e){
-            View message = new View();
-            message.errorConnection();
-        }
-        return null;
-    }
     public boolean updateUser(String identification, String project_id, String userName, String type, String state, String email,String answer, String question){
 
         String sql_select="UPDATE users SET  project_id = "+ project_id +", name ='" + userName + "', type = '" + type +  "', state = '" + state + "', email = '"+ email +"', answer = '" + answer + "', question = '" + question + "' WHERE  identification='"+ identification +"';";
@@ -158,9 +118,7 @@ public class UserDao {
         }
         return 0;
     }
-    
-
-    
+     
     public String getData(String identification , String query , String data){
         FachadaBD fachada = new FachadaBD();
         Connection conn = fachada.getConnetion();

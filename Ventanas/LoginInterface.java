@@ -6,6 +6,7 @@
 package Ventanas;
 import javax.swing.ImageIcon;
 import Dao.UserDao;
+import Logica.Validate;
 import Logica.View;
 
 /**
@@ -27,14 +28,14 @@ public class LoginInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        forgotPass1 = new javax.swing.JButton();
-        textLogin1 = new javax.swing.JLabel();
-        submitLogin1 = new javax.swing.JButton();
-        textFieldPass1 = new javax.swing.JPasswordField();
-        iconPass1 = new javax.swing.JLabel();
-        IconAccount1 = new javax.swing.JLabel();
-        iconUser1 = new javax.swing.JLabel();
-        textFieldAccount1 = new javax.swing.JTextField();
+        forgotPassword = new javax.swing.JButton();
+        textTitle = new javax.swing.JLabel();
+        submitLogin = new javax.swing.JButton();
+        textFieldPassword = new javax.swing.JPasswordField();
+        iconPassword = new javax.swing.JLabel();
+        IconAccount = new javax.swing.JLabel();
+        iconLES = new javax.swing.JLabel();
+        textFieldAccount = new javax.swing.JTextField();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -42,66 +43,71 @@ public class LoginInterface extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        forgotPass1.setBackground(new java.awt.Color(231, 231, 231));
-        forgotPass1.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
-        forgotPass1.setForeground(new java.awt.Color(127, 0, 0));
-        forgotPass1.setText("Olvido Su Contraseña?");
-        forgotPass1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        forgotPass1.addActionListener(new java.awt.event.ActionListener() {
+        forgotPassword.setBackground(new java.awt.Color(231, 231, 231));
+        forgotPassword.setFont(new java.awt.Font("SansSerif", 1, 10)); // NOI18N
+        forgotPassword.setForeground(new java.awt.Color(127, 0, 0));
+        forgotPassword.setText("Olvido Su Contraseña?");
+        forgotPassword.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        forgotPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                forgotPass1ActionPerformed(evt);
+                forgotPasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(forgotPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 134, 19));
+        getContentPane().add(forgotPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, 134, 19));
 
-        textLogin1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        textLogin1.setForeground(new java.awt.Color(102, 102, 102));
-        textLogin1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        textLogin1.setText("INICIA SESION");
-        getContentPane().add(textLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 303, 28));
+        textTitle.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        textTitle.setForeground(new java.awt.Color(102, 102, 102));
+        textTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textTitle.setText("INICIA SESION");
+        getContentPane().add(textTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 303, 28));
 
-        submitLogin1.setBackground(new java.awt.Color(127, 0, 0));
-        submitLogin1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        submitLogin1.setForeground(new java.awt.Color(255, 255, 255));
-        submitLogin1.setText("Acceder");
-        submitLogin1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        submitLogin1.addActionListener(new java.awt.event.ActionListener() {
+        submitLogin.setBackground(new java.awt.Color(127, 0, 0));
+        submitLogin.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        submitLogin.setForeground(new java.awt.Color(255, 255, 255));
+        submitLogin.setText("Acceder");
+        submitLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        submitLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitLogin1ActionPerformed(evt);
+                submitLoginActionPerformed(evt);
             }
         });
-        getContentPane().add(submitLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, -1, -1));
+        getContentPane().add(submitLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, -1, -1));
 
-        textFieldPass1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        textFieldPass1.setForeground(new java.awt.Color(153, 153, 153));
-        textFieldPass1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textFieldPass1.addActionListener(new java.awt.event.ActionListener() {
+        textFieldPassword.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        textFieldPassword.setForeground(new java.awt.Color(153, 153, 153));
+        textFieldPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textFieldPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldPass1ActionPerformed(evt);
+                textFieldPasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(textFieldPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 170, 34));
+        getContentPane().add(textFieldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 170, 34));
 
-        iconPass1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconPass.png"))); // NOI18N
-        getContentPane().add(iconPass1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
+        iconPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconPass.png"))); // NOI18N
+        getContentPane().add(iconPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
 
-        IconAccount1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/accounts.png"))); // NOI18N
-        getContentPane().add(IconAccount1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+        IconAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/accounts.png"))); // NOI18N
+        getContentPane().add(IconAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
 
-        iconUser1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        iconUser1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LESlogo.png"))); // NOI18N
-        getContentPane().add(iconUser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, 135));
+        iconLES.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconLES.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LESlogo.png"))); // NOI18N
+        getContentPane().add(iconLES, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, -1, 135));
 
-        textFieldAccount1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        textFieldAccount1.setForeground(new java.awt.Color(153, 153, 153));
-        textFieldAccount1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textFieldAccount1.setToolTipText("");
-        textFieldAccount1.addActionListener(new java.awt.event.ActionListener() {
+        textFieldAccount.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        textFieldAccount.setForeground(new java.awt.Color(153, 153, 153));
+        textFieldAccount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textFieldAccount.setToolTipText("");
+        textFieldAccount.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldAccount1ActionPerformed(evt);
+                textFieldAccountActionPerformed(evt);
             }
         });
-        getContentPane().add(textFieldAccount1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 170, 32));
+        textFieldAccount.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                textFieldAccountKeyTyped(evt);
+            }
+        });
+        getContentPane().add(textFieldAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 180, 170, 32));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo.setText("jLabel4");
@@ -111,23 +117,28 @@ public class LoginInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void forgotPass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgotPass1ActionPerformed
+    private void forgotPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forgotPasswordActionPerformed
         RecoverPasswordInterface objVentana = new RecoverPasswordInterface();
         objVentana.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_forgotPass1ActionPerformed
+    }//GEN-LAST:event_forgotPasswordActionPerformed
 
-    private void submitLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitLogin1ActionPerformed
+    private void submitLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitLoginActionPerformed
         queryUser();
-    }//GEN-LAST:event_submitLogin1ActionPerformed
+    }//GEN-LAST:event_submitLoginActionPerformed
 
-    private void textFieldAccount1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAccount1ActionPerformed
+    private void textFieldAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldAccountActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldAccount1ActionPerformed
+    }//GEN-LAST:event_textFieldAccountActionPerformed
 
-    private void textFieldPass1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPass1ActionPerformed
+    private void textFieldPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPasswordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldPass1ActionPerformed
+    }//GEN-LAST:event_textFieldPasswordActionPerformed
+
+    private void textFieldAccountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldAccountKeyTyped
+        Validate field = new Validate();
+        field.numericFieldValidation(textFieldAccount);
+    }//GEN-LAST:event_textFieldAccountKeyTyped
 
 
   public static void main(String args[]) {
@@ -142,8 +153,8 @@ public class LoginInterface extends javax.swing.JFrame {
   public void queryUser(){
       
          UserDao daoUser = new UserDao();        
-         String identification = textFieldAccount1.getText();
-         String password = validateEncryptionPassword(textFieldPass1.getText());
+         String identification = textFieldAccount.getText();
+         String password = validateEncryptionPassword(textFieldPassword.getText());
          boolean cheek = daoUser.conection(identification, password);
          if(cheek == true){
                  this.setVisible(false);
@@ -166,7 +177,7 @@ public class LoginInterface extends javax.swing.JFrame {
   public String validateEncryptionPassword(String password){
       
       UserDao daoUser = new UserDao();  
-      String identification = textFieldAccount1.getText();
+      String identification = textFieldAccount.getText();
       String encryptionPassword= daoUser.getData(identification, "SELECT user_password FROM users WHERE identification='", "user_password");
       String normalPassword=encryptSortPassword(encryptionPassword);
      if(normalPassword.equals(password)){
@@ -186,15 +197,15 @@ public class LoginInterface extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel IconAccount1;
-    private javax.swing.JButton forgotPass1;
-    private javax.swing.JLabel iconPass1;
-    private javax.swing.JLabel iconUser1;
+    private javax.swing.JLabel IconAccount;
+    private javax.swing.JButton forgotPassword;
+    private javax.swing.JLabel iconLES;
+    private javax.swing.JLabel iconPassword;
     private javax.swing.JLabel jLabelFondo;
-    private javax.swing.JButton submitLogin1;
-    private javax.swing.JTextField textFieldAccount1;
-    private javax.swing.JPasswordField textFieldPass1;
-    private javax.swing.JLabel textLogin1;
+    private javax.swing.JButton submitLogin;
+    private javax.swing.JTextField textFieldAccount;
+    private javax.swing.JPasswordField textFieldPassword;
+    private javax.swing.JLabel textTitle;
     // End of variables declaration//GEN-END:variables
 
 }

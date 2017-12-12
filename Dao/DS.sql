@@ -89,7 +89,7 @@ CREATE TABLE mult(
 	FOREIGN KEY (id_request) REFERENCES request(id_request),
 	value INTEGER NOT NULL
 );
-
+/*
 --FUNCION CREAR MULTA
 CREATE OR REPLACE FUNCTION f_createMult() RETURNS TRIGGER AS $$
 BEGIN
@@ -108,5 +108,5 @@ CREATE TRIGGER insert_mult AFTER UPDATE
 ON request FOR EACH ROW EXECUTE PROCEDURE f_createMult();
 
 
-
+*/
 

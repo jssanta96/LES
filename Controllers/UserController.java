@@ -11,6 +11,7 @@ public class UserController {
 
     public int addUser(String identification, String project_id, String password, String user_name, String type, String state, String email , String answer , String question , String photo){
         
+        UserDao userDao= new UserDao();
         User user= new User();
         user.setIdentification(identification);
         user.setProjectId(project_id);
@@ -23,7 +24,6 @@ public class UserController {
         user.setQuestion(question);
         user.setPhoto(photo);
         
-        UserDao userDao= new UserDao();
         int result=userDao.saveUser(user);
         
         if (result == 1){
@@ -37,16 +37,6 @@ public class UserController {
         return 0;
         
         
-    }
-
-    public User viewUser(String identification){
-
-        User user = new User();
-        UserDao userDao= new UserDao();
-        user = userDao.viewUser(identification);
-        
-        return user;
-
     }
 
     public void updateUser(String identification, String project_id, String user_name, String type, String state, String email,String answer , String question){

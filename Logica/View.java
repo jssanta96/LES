@@ -67,12 +67,6 @@ public final class View {
         JOptionPane.showMessageDialog(window, "La fecha de la reserva es incorrecta", "Notificacion", 0, LesImage);
     }
     
-    public void errorDeliver(){
-    
-        JOptionPane.showMessageDialog(window, "Este equipo esta en estado de reserva", "Notificacion", 0, LesImage);
-    }
-    
-    
     public void errorEmptyPassword(){
     
         JOptionPane.showMessageDialog(window, "Los campos de la contraseña nueva estan vacios", "Notificacion", 0, LesImage);
@@ -85,7 +79,7 @@ public final class View {
     
     public void errorCreateTypeElement(){
         
-        JOptionPane.showMessageDialog(window, "Este dato se encuentra registrado en la base de datos" +"EL DATO QUE GENERO EL ERROR", "Notificacion", 0, LesImage);// poner el campo que esta generando el error.
+        JOptionPane.showMessageDialog(window, "Este dato se encuentra registrado en la base de datos" , "Notificacion", 0, LesImage);// poner el campo que esta generando el error.
     }
     
     public void sucessfulOperationTypeElement(String type , String operation){
@@ -98,4 +92,20 @@ public final class View {
        String answer = (String) JOptionPane.showInputDialog(window, question, "Respuesta secreta" , 0, LesImage, null , null);
        return  answer;     
     }
+    
+    public void fieldValidation(String message){
+        
+        JOptionPane.showMessageDialog(window, message, "Notificacion", 0, LesImage);
+    }
+    
+    public void voidFields(String message){
+        
+        JOptionPane.showMessageDialog(window, message, "Notificacion", 0, LesImage);
+    }
+    
+     public void membersWithMult(String message){
+        
+        JOptionPane.showMessageDialog(window, message, "Notificacion", 0, LesImage);
+    }
+
 }

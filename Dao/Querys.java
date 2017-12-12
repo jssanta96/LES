@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Dao;
-
 import Controllers.EquipmentController;
 import Controllers.ProjectController;
 import Controllers.UserController;
@@ -24,17 +18,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author invitado
- */
 public class Querys {
     
 public Querys(){
     
 }
-
-
 
 public void fillTables(JTable table , String query){
         
@@ -196,11 +184,8 @@ public void addStateUser(JComboBox comboBox , String query , String state ){
                         System.out.println("2");
 
             ResultSet rs = sentenceProjects.executeQuery(query);    
-                        System.out.println("3");
-                         System.out.println(query);
 
             while(rs.next()){
-                            System.out.println("4");
 
                 String stateUser = rs.getString(state);
                 System.out.println(stateUser);
@@ -302,14 +287,14 @@ public void addTypeUser(JComboBox comboBox , String query , String type ){
                     
                       comboBox.addItem("Lider de proyecto");
                       comboBox.addItem("Administrador");
-                      comboBox.addItem("Coordinador");
+                      comboBox.addItem("Cordinador de equipos");
                       comboBox.addItem("Miembro");
                       break;
                       
                 case "Administrador":           
                     
                       comboBox.addItem("Lider de proyecto");
-                      comboBox.addItem("Coordinador");
+                      comboBox.addItem("Cordinador de equipos");
                       comboBox.addItem("Miembro");
                               
                       break;

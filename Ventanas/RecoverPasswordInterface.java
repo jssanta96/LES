@@ -5,6 +5,7 @@
  */
 package Ventanas;
 import Dao.UserDao;
+import Logica.Validate;
 import Logica.View;
 import javax.swing.ImageIcon;
 
@@ -33,12 +34,12 @@ public class RecoverPasswordInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelSerial1 = new javax.swing.JLabel();
-        jButtonComfirmar1 = new javax.swing.JButton();
-        jButtonBack1 = new javax.swing.JButton();
-        textLogin1 = new javax.swing.JLabel();
+        jLabelIdTitle = new javax.swing.JLabel();
+        jButtonConfirmar = new javax.swing.JButton();
+        jButtonBack = new javax.swing.JButton();
+        textTitle = new javax.swing.JLabel();
         IconAccount1 = new javax.swing.JLabel();
-        iconUser1 = new javax.swing.JLabel();
+        iconLES = new javax.swing.JLabel();
         jTextFieldIdentificacion = new javax.swing.JTextField();
         jLabelFondo = new javax.swing.JLabel();
 
@@ -47,49 +48,59 @@ public class RecoverPasswordInterface extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelSerial1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelSerial1.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelSerial1.setText("IDENTIFICACION");
-        getContentPane().add(jLabelSerial1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
+        jLabelIdTitle.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelIdTitle.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelIdTitle.setText("IDENTIFICACION");
+        getContentPane().add(jLabelIdTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
-        jButtonComfirmar1.setBackground(new java.awt.Color(127, 0, 0));
-        jButtonComfirmar1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButtonComfirmar1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonComfirmar1.setText("Confrimar");
-        jButtonComfirmar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButtonComfirmar1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonConfirmar.setBackground(new java.awt.Color(127, 0, 0));
+        jButtonConfirmar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButtonConfirmar.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonConfirmar.setText("Confirmar");
+        jButtonConfirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonConfirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonComfirmar1ActionPerformed(evt);
+                jButtonConfirmarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonComfirmar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, -1, -1));
+        getContentPane().add(jButtonConfirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 110, 30));
 
-        jButtonBack1.setBackground(new java.awt.Color(127, 0, 0));
-        jButtonBack1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jButtonBack1.setForeground(new java.awt.Color(255, 255, 255));
-        jButtonBack1.setText("Volver");
-        jButtonBack1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButtonBack1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBack.setBackground(new java.awt.Color(127, 0, 0));
+        jButtonBack.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jButtonBack.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonBack.setText("Volver");
+        jButtonBack.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonBack1ActionPerformed(evt);
+                jButtonBackActionPerformed(evt);
             }
         });
-        getContentPane().add(jButtonBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 110, -1));
+        getContentPane().add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 110, 30));
 
-        textLogin1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        textLogin1.setForeground(new java.awt.Color(102, 102, 102));
-        textLogin1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        textLogin1.setText("RESTABLECER CONTRASEÑA");
-        getContentPane().add(textLogin1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 303, 28));
+        textTitle.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        textTitle.setForeground(new java.awt.Color(102, 102, 102));
+        textTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        textTitle.setText("RESTABLECER CONTRASEÑA");
+        getContentPane().add(textTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 303, 28));
 
         IconAccount1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/accounts.png"))); // NOI18N
         getContentPane().add(IconAccount1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
-        iconUser1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        iconUser1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LESlogo.png"))); // NOI18N
-        getContentPane().add(iconUser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, 135));
+        iconLES.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconLES.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LESlogo.png"))); // NOI18N
+        getContentPane().add(iconLES, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, -1, 135));
 
         jTextFieldIdentificacion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jTextFieldIdentificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldIdentificacionActionPerformed(evt);
+            }
+        });
+        jTextFieldIdentificacion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldIdentificacionKeyTyped(evt);
+            }
+        });
         getContentPane().add(jTextFieldIdentificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 150, 30));
 
         jLabelFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
@@ -100,7 +111,7 @@ public class RecoverPasswordInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void jButtonComfirmar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonComfirmar1ActionPerformed
+    private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
      
        UserDao objDao = new UserDao();
        View objView = new View();
@@ -120,13 +131,22 @@ public class RecoverPasswordInterface extends javax.swing.JFrame {
           
        }
        
-    }//GEN-LAST:event_jButtonComfirmar1ActionPerformed
+    }//GEN-LAST:event_jButtonConfirmarActionPerformed
 
-    private void jButtonBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack1ActionPerformed
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
         LoginInterface objVentana = new LoginInterface();
         objVentana.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_jButtonBack1ActionPerformed
+    }//GEN-LAST:event_jButtonBackActionPerformed
+
+    private void jTextFieldIdentificacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldIdentificacionKeyTyped
+        Validate field = new Validate();
+        field.numericFieldValidation(jTextFieldIdentificacion);
+    }//GEN-LAST:event_jTextFieldIdentificacionKeyTyped
+
+    private void jTextFieldIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdentificacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIdentificacionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,13 +175,13 @@ public class RecoverPasswordInterface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IconAccount1;
-    private javax.swing.JLabel iconUser1;
-    private javax.swing.JButton jButtonBack1;
-    private javax.swing.JButton jButtonComfirmar1;
+    private javax.swing.JLabel iconLES;
+    private javax.swing.JButton jButtonBack;
+    private javax.swing.JButton jButtonConfirmar;
     private javax.swing.JLabel jLabelFondo;
-    private javax.swing.JLabel jLabelSerial1;
+    private javax.swing.JLabel jLabelIdTitle;
     private javax.swing.JTextField jTextFieldIdentificacion;
-    private javax.swing.JLabel textLogin1;
+    private javax.swing.JLabel textTitle;
     // End of variables declaration//GEN-END:variables
 
 }
