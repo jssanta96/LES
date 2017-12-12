@@ -5,6 +5,24 @@
  */
 package Ventanas;
 
+import com.itextpdf.text.Anchor;
+import com.itextpdf.text.Chapter;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.Section;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+
 /**
  *
  * @author invitado
@@ -62,6 +80,7 @@ public class LoadPicture extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LoadPicture.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -69,6 +88,73 @@ public class LoadPicture extends javax.swing.JFrame {
                 new LoadPicture().setVisible(true);
             }
         });
+    }
+    
+    public void generateReport(JTable jTable, File pdfNewFile, String title){
+        try {
+            // We create the document and set the file name.        
+            // Creamos el documento e indicamos el nombre del fichero.
+            Document document = new Document();
+            try {
+                PdfWriter.getInstance(document, new FileOutputStream(pdfNewFile));
+            } catch (FileNotFoundException fileNotFoundException) {
+                System.out.println("No such file was found to generate the PDF (No se encontró el fichero para generar el pdf)" + fileNotFoundException);
+            }
+            document.open();
+            // We add metadata to PDF
+            // Añadimos los metadatos del PDF
+            document.addTitle("Table export to PDF (Exportamos la tabla a PDF)");
+            document.addSubject("Using iText (usando iText)");
+            document.addKeywords("Java, PDF, iText");
+            document.addAuthor("Código Xules");
+            document.addCreator("Código Xules");
+            Font categoryFont = new Font();
+
+            // First page (Primera página)
+            Anchor anchor = new Anchor("Reportes en PDF");
+            anchor.setName("Reportes en PDF");
+
+            // Second parameter is the number of the chapter (El segundo parámetro es el número del capítulo).
+            Chapter catPart = new Chapter(new Paragraph(anchor), 1);
+            Font subCategoryFont = new Font();
+            
+
+            Paragraph subPara = new Paragraph("Hecho por: carlosacg", subCategoryFont);
+            Section subCatPart = catPart.addSection(subPara);
+            subCatPart.add(new Paragraph("Tabla prestamos por proyectos"));
+
+            // Create the table (Creamos la tabla)
+            PdfPTable table = new PdfPTable(jTable.getColumnCount()); 
+
+            // Now we fill the rows of the PdfPTable (Ahora llenamos las filas de PdfPTable)
+            PdfPCell columnHeader;
+            // Fill table columns header 
+            // Rellenamos las cabeceras de las columnas de la tabla.                
+            for (int column = 0; column < jTable.getColumnCount(); column++) {                 
+                columnHeader = new PdfPCell(new Phrase(jTable.getColumnName(column)));
+                columnHeader.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(columnHeader);
+            }
+            table.setHeaderRows(1);
+            // Fill table rows (rellenamos las filas de la tabla).                
+            for (int row = 0; row < jTable.getRowCount(); row++) {                
+                for (int column = 0; column < jTable.getColumnCount(); column++) { 
+                    table.addCell(jTable.getValueAt(row, column).toString());
+                }
+            } 
+            subCatPart.add(table);
+
+            document.add(catPart);
+
+            document.close();
+            JOptionPane.showMessageDialog(null, "Your PDF file has been generated!(¡Se ha generado tu hoja PDF!)",
+                    "RESULTADO", JOptionPane.INFORMATION_MESSAGE);
+        } catch (DocumentException documentException) {
+            System.out.println("The file not exists (Se ha producido un error al generar un documento): " + documentException);
+            JOptionPane.showMessageDialog(null, "The file not exists (Se ha producido un error al generar un documento): " + documentException,
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }     
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

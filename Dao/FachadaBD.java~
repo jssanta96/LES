@@ -13,7 +13,7 @@ public class FachadaBD {
     public FachadaBD(){
         url="jdbc:postgresql://localhost:5432/curso_bd";
         user="andres";
-        password="";
+        password="fuckencio1234";
     }
 
 

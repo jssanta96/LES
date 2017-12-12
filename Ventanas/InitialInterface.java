@@ -29,6 +29,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -342,6 +343,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         jTable5 = new javax.swing.JTable();
         jButtonBack11 = new javax.swing.JButton();
+        jButtonExportMultMonth1 = new javax.swing.JButton();
         jLabelFondo19 = new javax.swing.JLabel();
         jPanelLoanXMonthList = new javax.swing.JPanel();
         jLabel63 = new javax.swing.JLabel();
@@ -351,6 +353,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jScrollPane10 = new javax.swing.JScrollPane();
         jTable6 = new javax.swing.JTable();
         jButtonBack12 = new javax.swing.JButton();
+        jButtonExportMultMonth2 = new javax.swing.JButton();
         jLabelFondo20 = new javax.swing.JLabel();
         jPanelLoanXMembersList = new javax.swing.JPanel();
         jLabel66 = new javax.swing.JLabel();
@@ -360,6 +363,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jScrollPane11 = new javax.swing.JScrollPane();
         jTable7 = new javax.swing.JTable();
         jButtonBack13 = new javax.swing.JButton();
+        jButtonExportMultMonth3 = new javax.swing.JButton();
         jLabelFondo21 = new javax.swing.JLabel();
         jPanelMultXMembersList = new javax.swing.JPanel();
         jLabelValorTotal = new javax.swing.JLabel();
@@ -371,6 +375,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jTable8 = new javax.swing.JTable();
         jButtonBack14 = new javax.swing.JButton();
         TotalMultasXMiembro = new javax.swing.JTextField();
+        jButtonExportMultMonth4 = new javax.swing.JButton();
         jLabelFondo22 = new javax.swing.JLabel();
         jPanelMultXMonthList = new javax.swing.JPanel();
         jLabelValorTotal1 = new javax.swing.JLabel();
@@ -380,6 +385,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabeMultasPorMiembro1 = new javax.swing.JLabel();
         jScrollPane13 = new javax.swing.JScrollPane();
         jTable9 = new javax.swing.JTable();
+        jButtonExportMultMonth = new javax.swing.JButton();
         jButtonBack15 = new javax.swing.JButton();
         TotalMultasXmes = new javax.swing.JTextField();
         jLabelFondo23 = new javax.swing.JLabel();
@@ -387,6 +393,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel75 = new javax.swing.JLabel();
         jLabel76 = new javax.swing.JLabel();
+        jLabelSetName = new javax.swing.JLabel();
         jLabelName = new javax.swing.JLabel();
         jLabelPerfil = new javax.swing.JLabel();
         jLabelPassActual1 = new javax.swing.JLabel();
@@ -399,7 +406,6 @@ public final class InitialInterface extends javax.swing.JFrame {
         jButtonCheckPass = new javax.swing.JButton();
         jTextFieldPassActual = new javax.swing.JPasswordField();
         jTextFieldSetEmail = new javax.swing.JTextField();
-        jTextFieldSetName = new javax.swing.JTextField();
         jLabelPhoto = new javax.swing.JLabel();
         jButtonSaveProfile = new javax.swing.JButton();
         jButtonLoadPhoto = new javax.swing.JButton();
@@ -2035,7 +2041,17 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonBack11ActionPerformed(evt);
             }
         });
-        jPanelLoanXProjectList.add(jButtonBack11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 90, 30));
+        jPanelLoanXProjectList.add(jButtonBack11, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 90, 30));
+
+        jButtonExportMultMonth1.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonExportMultMonth1.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonExportMultMonth1.setText("Exportar PDF");
+        jButtonExportMultMonth1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExportMultMonth1ActionPerformed(evt);
+            }
+        });
+        jPanelLoanXProjectList.add(jButtonExportMultMonth1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 130, 30));
 
         jLabelFondo19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo19.setText("jLabel4");
@@ -2090,7 +2106,17 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonBack12ActionPerformed(evt);
             }
         });
-        jPanelLoanXMonthList.add(jButtonBack12, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 90, 30));
+        jPanelLoanXMonthList.add(jButtonBack12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 90, 30));
+
+        jButtonExportMultMonth2.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonExportMultMonth2.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonExportMultMonth2.setText("Exportar PDF");
+        jButtonExportMultMonth2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExportMultMonth2ActionPerformed(evt);
+            }
+        });
+        jPanelLoanXMonthList.add(jButtonExportMultMonth2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 130, 30));
 
         jLabelFondo20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo20.setText("jLabel4");
@@ -2144,7 +2170,17 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonBack13ActionPerformed(evt);
             }
         });
-        jPanelLoanXMembersList.add(jButtonBack13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 90, 30));
+        jPanelLoanXMembersList.add(jButtonBack13, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 350, 90, 30));
+
+        jButtonExportMultMonth3.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonExportMultMonth3.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonExportMultMonth3.setText("Exportar PDF");
+        jButtonExportMultMonth3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExportMultMonth3ActionPerformed(evt);
+            }
+        });
+        jPanelLoanXMembersList.add(jButtonExportMultMonth3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 130, 30));
 
         jLabelFondo21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo21.setText("jLabel4");
@@ -2203,7 +2239,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonBack14ActionPerformed(evt);
             }
         });
-        jPanelMultXMembersList.add(jButtonBack14, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 90, 30));
+        jPanelMultXMembersList.add(jButtonBack14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 90, 30));
 
         TotalMultasXMiembro.setEditable(false);
         TotalMultasXMiembro.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -2213,6 +2249,16 @@ public final class InitialInterface extends javax.swing.JFrame {
             }
         });
         jPanelMultXMembersList.add(TotalMultasXMiembro, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 160, 30));
+
+        jButtonExportMultMonth4.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonExportMultMonth4.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonExportMultMonth4.setText("Exportar PDF");
+        jButtonExportMultMonth4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExportMultMonth4ActionPerformed(evt);
+            }
+        });
+        jPanelMultXMembersList.add(jButtonExportMultMonth4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, 130, 30));
 
         jLabelFondo22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo22.setText("jLabel4");
@@ -2253,6 +2299,16 @@ public final class InitialInterface extends javax.swing.JFrame {
 
         jPanelMultXMonthList.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 540, 140));
 
+        jButtonExportMultMonth.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonExportMultMonth.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonExportMultMonth.setText("Exportar PDF");
+        jButtonExportMultMonth.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonExportMultMonthActionPerformed(evt);
+            }
+        });
+        jPanelMultXMonthList.add(jButtonExportMultMonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, 130, 30));
+
         jButtonBack15.setBackground(new java.awt.Color(102, 0, 0));
         jButtonBack15.setForeground(new java.awt.Color(255, 255, 255));
         jButtonBack15.setText("Volver");
@@ -2261,7 +2317,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonBack15ActionPerformed(evt);
             }
         });
-        jPanelMultXMonthList.add(jButtonBack15, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, 90, 30));
+        jPanelMultXMonthList.add(jButtonBack15, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 90, 30));
 
         TotalMultasXmes.setEditable(false);
         TotalMultasXmes.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -2283,6 +2339,11 @@ public final class InitialInterface extends javax.swing.JFrame {
 
         jLabel76.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
         jPanelMyProfile.add(jLabel76, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
+
+        jLabelSetName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabelSetName.setForeground(new java.awt.Color(102, 102, 102));
+        jLabelSetName.setText("NOMBRE");
+        jPanelMyProfile.add(jLabelSetName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
 
         jLabelName.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabelName.setForeground(new java.awt.Color(102, 102, 102));
@@ -2340,7 +2401,6 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelMyProfile.add(jButtonCheckPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 250, 30, 30));
         jPanelMyProfile.add(jTextFieldPassActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 180, 30));
         jPanelMyProfile.add(jTextFieldSetEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 210, 30));
-        jPanelMyProfile.add(jTextFieldSetName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 210, 30));
 
         jLabelPhoto.setText("Foto");
         jPanelMyProfile.add(jLabelPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 140, 140));
@@ -3362,6 +3422,62 @@ public final class InitialInterface extends javax.swing.JFrame {
         field.stringFieldValidation(jTextFieldNombreUpdateProject);
     }//GEN-LAST:event_jTextFieldNombreUpdateProjectKeyTyped
 
+    private void jButtonExportMultMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportMultMonthActionPerformed
+        JFileChooser explorador = new JFileChooser("/home/");
+        explorador.setDialogTitle("Abrir documento...");
+        int result = explorador.showDialog(null, "Crear");
+        if(result==JFileChooser.APPROVE_OPTION){
+            fichero = explorador.getSelectedFile();
+
+        }
+
+        utilJTableToPdf(jTable9,fichero,"Reporte Multas por Mes");
+    }//GEN-LAST:event_jButtonExportMultMonthActionPerformed
+
+    private void jButtonExportMultMonth1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportMultMonth1ActionPerformed
+        JFileChooser explorador = new JFileChooser("/home/");
+        explorador.setDialogTitle("Abrir documento...");
+        int result = explorador.showDialog(null, "Crear");
+        if(result==JFileChooser.APPROVE_OPTION){
+            fichero = explorador.getSelectedFile();
+        }
+
+        utilJTableToPdf(jTable5,fichero,"Reporte Multas por Proyectos");
+    }//GEN-LAST:event_jButtonExportMultMonth1ActionPerformed
+
+    private void jButtonExportMultMonth2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportMultMonth2ActionPerformed
+        JFileChooser explorador = new JFileChooser("/home/");
+        explorador.setDialogTitle("Abrir documento...");
+        int result = explorador.showDialog(null, "Crear");
+        if(result==JFileChooser.APPROVE_OPTION){
+            fichero = explorador.getSelectedFile();
+        }
+
+        utilJTableToPdf(jTable6,fichero,"Reporte Prestamos por Mes");
+    }//GEN-LAST:event_jButtonExportMultMonth2ActionPerformed
+
+    private void jButtonExportMultMonth3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportMultMonth3ActionPerformed
+        JFileChooser explorador = new JFileChooser("/home/");
+        explorador.setDialogTitle("Abrir documento...");
+        int result = explorador.showDialog(null, "Crear");
+        if(result==JFileChooser.APPROVE_OPTION){
+            fichero = explorador.getSelectedFile();
+        }
+
+        utilJTableToPdf(jTable7,fichero,"Reporte Prestamos por Miembro");
+    }//GEN-LAST:event_jButtonExportMultMonth3ActionPerformed
+
+    private void jButtonExportMultMonth4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportMultMonth4ActionPerformed
+        JFileChooser explorador = new JFileChooser("/home/");
+        explorador.setDialogTitle("Abrir documento...");
+        int result = explorador.showDialog(null, "Crear");
+        if(result==JFileChooser.APPROVE_OPTION){
+            fichero = explorador.getSelectedFile();
+        }
+
+        utilJTableToPdf(jTable8,fichero,"Reporte Multas por Miembro");
+    }//GEN-LAST:event_jButtonExportMultMonth4ActionPerformed
+
     private void emptyText() {
         jTextAreaCrearEquipo.setText("");
         jTextAreaCrearProyecto.setText("");
@@ -3495,7 +3611,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         
         Querys objQuery = new Querys();
         String user_name=objQuery.typeUser("SELECT name FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "name");
-        jTextFieldSetName.setText(user_name);
+        jLabelSetName.setText(user_name);
         String user_email=objQuery.typeUser("SELECT email FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "email");
         jTextFieldSetEmail.setText(user_email);
         
@@ -3619,7 +3735,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         }
           }catch(Exception e){
                 View objView = new View();
-                objView.errorRequest();
+                objView.errorRenovate();
             }
        
     }
@@ -3846,6 +3962,10 @@ public final class InitialInterface extends javax.swing.JFrame {
 
     }
 
+    public void utilJTableToPdf(JTable jTable, File pdfNewFile, String title){    
+        LoadPicture objLoad = new LoadPicture();
+        objLoad.generateReport(jTable, pdfNewFile, title);
+    }  
     public void enableButtons(String identification) {
 
         Querys objQuery = new Querys();
@@ -3917,6 +4037,11 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonEntregar;
     private javax.swing.JButton jButtonEquipmentCSV;
     private javax.swing.JButton jButtonEquipo;
+    private javax.swing.JButton jButtonExportMultMonth;
+    private javax.swing.JButton jButtonExportMultMonth1;
+    private javax.swing.JButton jButtonExportMultMonth2;
+    private javax.swing.JButton jButtonExportMultMonth3;
+    private javax.swing.JButton jButtonExportMultMonth4;
     private javax.swing.JButton jButtonInfo;
     private javax.swing.JButton jButtonInicio;
     private javax.swing.JButton jButtonList;
@@ -4152,6 +4277,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSerial2;
     private javax.swing.JLabel jLabelSerialReserve;
     private javax.swing.JLabel jLabelSerialUpEquipment;
+    private javax.swing.JLabel jLabelSetName;
     private javax.swing.JLabel jLabelSolicitud10;
     private javax.swing.JLabel jLabelSolicitud11;
     private javax.swing.JLabel jLabelSolicitud8;
@@ -4282,7 +4408,6 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldRespuesta;
     private javax.swing.JTextField jTextFieldSerialCrearEquipo;
     private javax.swing.JTextField jTextFieldSetEmail;
-    private javax.swing.JTextField jTextFieldSetName;
     private javax.swing.JButton signOff;
     // End of variables declaration//GEN-END:variables
 }

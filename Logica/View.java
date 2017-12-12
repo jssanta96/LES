@@ -67,6 +67,11 @@ public final class View {
         JOptionPane.showMessageDialog(window, "La fecha de la reserva es incorrecta", "Notificacion", 0, LesImage);
     }
     
+    public void errorRenovate(){
+    
+        JOptionPane.showMessageDialog(window, "Este equipo no esta en la lista de prestamos, por lo tanto no se puede renovar", "Notificacion", 0, LesImage);
+    }
+    
     public void errorEmptyPassword(){
     
         JOptionPane.showMessageDialog(window, "Los campos de la contraseña nueva estan vacios", "Notificacion", 0, LesImage);
