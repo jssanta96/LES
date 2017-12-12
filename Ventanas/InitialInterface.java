@@ -3501,19 +3501,33 @@ public final class InitialInterface extends javax.swing.JFrame {
         Querys objQuery = new Querys();
         String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
         int id=Integer.parseInt(id_user);
+        System.out.println(id+" Id del usuario");
         String serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
-        String id_equipment =objQuery.typeUser("SELECT id_equipment FROM users WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
+        String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
         int id_equipments=Integer.parseInt(id_equipment);
+        System.out.println(id_equipments);
         int id_request = 0;
-        id_request = getIdRequest(id, id_equipments, "Activo");
-        Date end_date;
-        end_date = convertStringToDate(getEndDate(id_request));
-        String extend_date = convertDayToString(addDayDate(end_date, 7));
+        try{
+            System.out.println("Entro al try");
+            id_request = getIdRequest(id, id_equipments, "Activo");
+            if(id_request==0){
+                 System.out.println(id_request);
+                 Exception e = new Exception("Este es mi propio error.");
+                 throw e;
+            }else{
+                Date end_date;
+                end_date = convertStringToDate(getEndDate(id_request));
+                String extend_date = convertDayToString(addDayDate(end_date, 7));
 
-        System.out.println(extend_date);
 
-        objCtrlRequest.renovateRequest(id_request, extend_date);
-        objCtrlEquipment.setStateEquipment(id_equipments, "Reservado");
+                objCtrlRequest.renovateRequest(id_request, extend_date);
+                objCtrlEquipment.setStateEquipment(id_equipments, "Ocupado");
+        }
+          }catch(Exception e){
+                View objView = new View();
+                objView.errorRenovate();
+            }
+       
     }
 
     public void createProject() {
@@ -3554,7 +3568,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     public void createRequest() {
         RequestController objCtrlRequest = new RequestController();
         EquipmentController objCtrlEquipment = new EquipmentController();
-
+        View objView = new View();
         Querys objQuery = new Querys();
         String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
         int id=Integer.parseInt(id_user);
@@ -3566,11 +3580,12 @@ public final class InitialInterface extends javax.swing.JFrame {
         String state = "Activo";
         String end_date = convertDayToString(addDayDate(fecha, 7));
         if(state_equipment.equals("Ocupado") ||  state_equipment.equals("Reservado")){
-            View objView = new View();
             objView.errorRequest();
         }else{
             objCtrlRequest.addRequest(state, id, id_equipments, start_date, end_date);
-            objCtrlEquipment.setStateEquipment(id_equipments, "Ocupado");}
+            objCtrlEquipment.setStateEquipment(id_equipments, "Ocupado");
+            objView.sucessfulOperationTypeElement("El prestamo", "guardado");
+        }
 
     }
     
