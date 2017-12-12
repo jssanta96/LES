@@ -89,24 +89,22 @@ CREATE TABLE mult(
 	FOREIGN KEY (id_request) REFERENCES request(id_request),
 	value INTEGER NOT NULL
 );
-/*
+
 --FUNCION CREAR MULTA
-CREATE OR REPLACE FUNCTION f_createMult() RETURNS TRIGGER AS $$
+CREATE OR REPLACE FUNCTION f_deleteMult() RETURNS TRIGGER AS $$
 BEGIN
-IF(TG_OP = 'UPDATE') THEN
-	IF(NEW.end_date<now()) THEN
-		INSERT INTO mult(id_request,value) VALUES (NEW.id_request,5000);
-	ELSIF(NEW.end_date>now()) THEN
-		INSERT INTO mult(id_request,value) VALUES (NEW.id_request,0);
+IF(TG_OP = 'INSERT') THEN
+	IF(NEW.value=0) THEN
+		DELETE FROM mult WHERE id_mult=new.id_mult;
 	END IF;
 END IF;
 RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER insert_mult AFTER UPDATE
-ON request FOR EACH ROW EXECUTE PROCEDURE f_createMult();
+CREATE TRIGGER delete_mult AFTER INSERT
+ON mult FOR EACH ROW EXECUTE PROCEDURE f_deleteMult();
 
 
-*/
+
 
