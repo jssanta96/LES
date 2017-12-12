@@ -3514,6 +3514,33 @@ public final class InitialInterface extends javax.swing.JFrame {
             Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+        public String getEmailProfile(){
+         Querys objQuery = new Querys();
+         String email=objQuery.typeUser("SELECT email FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "email");
+         return email;
+    }
+    
+    
+      
+    public void updateEmail(){
+        View objView = new View();
+        if(getEmailProfile().equals(jTextFieldSetEmail.getText())){
+            
+        }else{
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        try {
+            Statement sentenceEmail = conn.createStatement();
+            String queryEmail = "UPDATE users set email='" + jTextFieldSetEmail.getText() + "' WHERE identification ='"+jLabelUserIdentificationGeneral.getText()+"';";
+            System.out.print(queryEmail);
+            sentenceEmail.executeUpdate(queryEmail);
+            objView.sucessfulOperationTypeElement("El email", "actualizado");
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    }  
     
     public void checkNewPassword(){
         View objView = new View();
@@ -3560,6 +3587,7 @@ public final class InitialInterface extends javax.swing.JFrame {
 
     }
 
+ 
     public void renovateLoan() {
         
         RequestController objCtrlRequest = new RequestController();
@@ -3567,18 +3595,34 @@ public final class InitialInterface extends javax.swing.JFrame {
         Querys objQuery = new Querys();
         String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
         int id=Integer.parseInt(id_user);
+        System.out.println(id+" Id del usuario");
         String serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
-        String id_equipment =objQuery.typeUser("SELECT id_equipment FROM users WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
+        String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
         int id_equipments=Integer.parseInt(id_equipment);
+        System.out.println(id_equipments);
         int id_request = 0;
-        id_request = getIdRequest(id, id_equipments, "Activo");
-        Date end_date;
-        end_date = convertStringToDate(getEndDate(id_request));
-        String extend_date = convertDayToString(addDayDate(end_date, 7));
-        objCtrlRequest.renovateRequest(id_request, extend_date);
-        objCtrlEquipment.setStateEquipment(id_equipments, "Reservado");
-    }
+        try{
+            System.out.println("Entro al try");
+            id_request = getIdRequest(id, id_equipments, "Activo");
+            if(id_request==0){
+                 System.out.println(id_request);
+                 Exception e = new Exception("Este es mi propio error.");
+                 throw e;
+            }else{
+                Date end_date;
+                end_date = convertStringToDate(getEndDate(id_request));
+                String extend_date = convertDayToString(addDayDate(end_date, 7));
 
+
+                objCtrlRequest.renovateRequest(id_request, extend_date);
+                objCtrlEquipment.setStateEquipment(id_equipments, "Ocupado");
+        }
+          }catch(Exception e){
+                View objView = new View();
+                objView.errorRequest();
+            }
+       
+    }
     public void createProject() {
 
         ProjectController objCtrlProject = new ProjectController();
@@ -3657,6 +3701,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         }
     }
     
+
     public void createReserve() {
         RequestController objCtrlRequest = new RequestController();
         EquipmentController objCtrlEquipment = new EquipmentController();
@@ -3697,7 +3742,6 @@ public final class InitialInterface extends javax.swing.JFrame {
         RequestDao objDao = new RequestDao();
         return objDao.getIdRequest(id_user, id_equipment, state);
     }
-
     public void deliverEquipment() {
 
         RequestController objCtrlRequest = new RequestController();
@@ -3705,23 +3749,33 @@ public final class InitialInterface extends javax.swing.JFrame {
         Querys objQuery = new Querys();
         String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
         int id=Integer.parseInt(id_user);
-       String serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
+        String serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
         String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
         int id_equipments=Integer.parseInt(id_equipment);
         int id_request = 0;
-        id_request = getIdRequest(id, id_equipments, "Activo");
-        String finishDate=getEndDate(id_request);
-        Date endDate=convertStringToDate(finishDate);
-        Date systemDate=convertStringToDate(getStartDate());
+        try{
+            id_request = getIdRequest(id, id_equipments, "Activo");
+            if(id_request==0){
+                 Exception e = new Exception("Este es mi propio error.");
+                throw e;
+            }else{
+                String finishDate=getEndDate(id_request);
+                Date endDate=convertStringToDate(finishDate);
+                Date systemDate=convertStringToDate(getStartDate());
 
-        int days=(int) ( systemDate.getTime() - endDate.getTime() )/86400000; 
-        
+                int days=(int) ( systemDate.getTime() - endDate.getTime() )/86400000;    
+                objCtrlRequest.setStateRequest(id_request, "Terminado");
+                objCtrlEquipment.setStateEquipment(id_equipments, "Disponible");
+                generateMult(id_request,days);
+                
+            }
+          }catch(Exception e){
+                View objView = new View();
+                objView.errorDeliver();
+            }
 
-        objCtrlRequest.setStateRequest(id_request, "Terminado");
-        objCtrlEquipment.setStateEquipment(id_equipments, "Disponible");
-        generateMult(id_request,days);
     }
-    
+        
     public void generateMult(int id_request,int days){
         double mult = calculateMult(days);
         System.out.println(mult+" Valor multa");
