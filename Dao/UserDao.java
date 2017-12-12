@@ -86,7 +86,7 @@ public class UserDao {
                         objVentana.setVisible(true);
                         objVentana.enableButtons(identification);
                         objVentana.changeLabelPicture(testingRoutePicture);
-                        
+                        objVentana.cheekRequest(identification);
                         return true;
                 }
                                

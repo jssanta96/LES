@@ -235,11 +235,47 @@ public String typeUser(String query , String type){
             ResultSet rs = sentenceProjects.executeQuery(query);    
             while(rs.next()){
                 String typeUser = rs.getString(type);
+                   
                      return typeUser;
             }
          }catch(SQLException e){
+                if(e == null){
+                       return null;
+
+           }else{
+         
            View message = new View();
-           message.errorConnection();
+           message.errorConnection(); 
+           }
+           
+         }
+        return null;
+
+    }
+public ArrayList<String> listtypeUser(String query , String type){
+     
+         FachadaBD fachada = new FachadaBD();       
+         try{
+            Connection conn= fachada.getConnetion();
+
+            Statement sentenceProjects = conn.createStatement();
+           
+            ResultSet rs = sentenceProjects.executeQuery(query);    
+            while(rs.next()){
+                ArrayList <String> typeUser = null;
+                    typeUser.add(rs.getString(type));
+                     return typeUser;
+            }
+         }catch(SQLException e){
+                if(e == null){
+                       return null;
+
+           }else{
+         
+           View message = new View();
+           message.errorConnection(); 
+           }
+           
          }
         return null;
 
