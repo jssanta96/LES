@@ -72,6 +72,11 @@ public final class View {
         JOptionPane.showMessageDialog(window, "Este equipo no esta en la lista de prestamos, por lo tanto no se puede renovar", "Notificacion", 0, LesImage);
     }
     
+    public void errorExtendRenovate(){
+        JOptionPane.showMessageDialog(window, "Has excedido los limite de renovacion", "Notificacion", 0, LesImage);
+   
+    }
+    
     public void errorEmptyPassword(){
     
         JOptionPane.showMessageDialog(window, "Los campos de la contraseña nueva estan vacios", "Notificacion", 0, LesImage);
@@ -95,11 +100,6 @@ public final class View {
     public String valitadionAnswer(String question){
         
        String answer = (String) JOptionPane.showInputDialog(window, question, "Respuesta secreta" , 0, LesImage, null , null);
-       return  answer;     
-    }
-     public int confirmateChange(){
-        
-       int answer = JOptionPane.showConfirmDialog(window, null, "Confirma los cambios acontinuacion?", 0, 0, LesImage);
        return  answer;     
     }
     

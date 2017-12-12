@@ -10,6 +10,7 @@ import java.io.File;
 import Dao.Querys;
 import Dao.RequestDao;
 import Dao.UserDao;
+import Logica.Assistant;
 import Logica.Validate;
 import Logica.View;
 import java.awt.Image;
@@ -47,20 +48,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/logoLes.png")).getImage());       
         jLabelUserIdentificationGeneral.setVisible(false);
     }
-    public String splitComboBox(JComboBox change) {
 
-        String positionId = null;
-        String[] id = change.getSelectedItem().toString().split("\n");
-        ArrayList<String> prueba = new ArrayList<>(Arrays.asList(id));
-
-        for (int i = 0; i < prueba.size(); i++) {
-            String codigo[] = prueba.get(i).split(" ");
-
-            positionId = codigo[0];
-        }
-        return positionId;
-
-    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -2966,8 +2954,9 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBackUpUserActionPerformed
 
     private void jButtonSaveReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveReserveActionPerformed
+        Assistant objAssistan = new Assistant();        
         createReserve();
-        /*JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia: " + getReserveDate() + " hasta: " + convertDayToString(addDayDate(convertStringToDate(getReserveDate()), 7))
+       /* JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia: " + getReserveDate() + " hasta: " +objAssistan. convertDayToString(objAssistan.addDayDate(objAssistan.convertStringToDate(getReserveDate()), 7))
                 + "\n si no lo entrega antes de la fecha se le empezata a cobrar 5000(COP) por cada dia de atraso",
                 "PRESTAMO DE EQUIPO", JOptionPane.WARNING_MESSAGE);*/
 
@@ -2986,7 +2975,8 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBackReserveActionPerformed
 
     private void jButtonSaveLoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveLoanActionPerformed
-        JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia:" + getStartDate() + "hasta: " + convertDayToString(addDayDate(fecha, 7))
+        Assistant objAssistan = new Assistant();   
+        JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia:" + objAssistan.getStartDate() + "hasta: " + objAssistan.convertDayToString(objAssistan.addDayDate(fecha, 7))
                 + "\nsi no lo entrega antes de la fecha se le empezata a cobrar 5000(COP) por cada dia de atraso",
                 "PRESTAMO DE EQUIPO", JOptionPane.WARNING_MESSAGE);
         createRequest();
@@ -3127,7 +3117,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         int resp = JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea renovar el prestamo  del equipo: " + jComboBoxEquipmentSerialLoan.getSelectedItem().toString(), "RENOVAR PRESTAMO DE EQUIPO", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.YES_OPTION == resp) {
            RequestDao objDaoRequest = new RequestDao();
-           objDaoRequest.renovateLoan( jComboBoxEquipmentSerialLoan,jLabelUserIdentificationGeneral);
+           renovateLoan();
         }
     }//GEN-LAST:event_jButtonRenovateActionPerformed
 
@@ -3206,9 +3196,9 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack17ActionPerformed
 
     private void jButtonCheckEquipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckEquipActionPerformed
-             
+        Assistant objAssistan = new Assistant();       
         Querys objQuery = new Querys();
-        String serial = splitComboBox(jComboBoxUpdateEquipmentSerial1);
+        String serial = objAssistan.splitComboBox(jComboBoxUpdateEquipmentSerial1);
         String equipment_name = objQuery.typeUser("SELECT name FROM equipment WHERE serial ='" + serial + "'" , "name");
         String state =objQuery.typeUser("SELECT state FROM equipment WHERE serial ='" + serial + "'" , "state");
         String description = objQuery.typeUser("SELECT description FROM equipment WHERE serial ='" + serial + "'" , "description");
@@ -3218,12 +3208,12 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCheckEquipActionPerformed
 
     private void jButtonUserCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUserCheckActionPerformed
-       
+        Assistant objAssistan = new Assistant();
         Querys objQuery = new Querys();
-        String state =objQuery.typeUser("SELECT state FROM users WHERE  identification ='" + splitComboBox(jComboBoxUpdateIdUser1) + "'" , "state");
-        String type = objQuery.typeUser("SELECT type FROM users WHERE  identification ='" + splitComboBox(jComboBoxUpdateIdUser1)  + "'" , "type");
-        String user_name= objQuery.typeUser("SELECT name FROM users WHERE  identification ='" + splitComboBox(jComboBoxUpdateIdUser1)  + "'" , "name");
-        String user_email = objQuery.typeUser("SELECT email FROM users WHERE  identification ='" +  splitComboBox(jComboBoxUpdateIdUser1) + "'" , "email");
+        String state =objQuery.typeUser("SELECT state FROM users WHERE  identification ='" + objAssistan.splitComboBox(jComboBoxUpdateIdUser1) + "'" , "state");
+        String type = objQuery.typeUser("SELECT type FROM users WHERE  identification ='" + objAssistan.splitComboBox(jComboBoxUpdateIdUser1)  + "'" , "type");
+        String user_name= objQuery.typeUser("SELECT name FROM users WHERE  identification ='" + objAssistan.splitComboBox(jComboBoxUpdateIdUser1)  + "'" , "name");
+        String user_email = objQuery.typeUser("SELECT email FROM users WHERE  identification ='" +  objAssistan.splitComboBox(jComboBoxUpdateIdUser1) + "'" , "email");
         //jLabelViewUserProject.setText(projectName);
         jLabelViewUserState.setText(state);
         jLabelViewUserRange.setText(type);
@@ -3241,9 +3231,9 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSaveUpdateProjectActionPerformed
 
     private void jButtonCheckProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckProjectActionPerformed
-         
+        Assistant objAssistan = new Assistant();
         Querys objQuery = new Querys();
-        String code = splitComboBox(jComboBoxUpdateProjectId1);
+        String code = objAssistan.splitComboBox(jComboBoxUpdateProjectId1);
         String projectName = objQuery.typeUser("SELECT name FROM project WHERE  code ='" +  code + "'" , "name");
         String description=objQuery.typeUser("SELECT description FROM project WHERE  code ='" +  code + "'" , "description");
         String state=objQuery.typeUser("SELECT state FROM project WHERE  code ='" +  code + "'" , "state");
@@ -3268,7 +3258,8 @@ public final class InitialInterface extends javax.swing.JFrame {
 
     private void jButtonCheckMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckMultActionPerformed
         Querys objQuery = new Querys();
-        String id_mult = splitComboBox(jComboBoxMult);    
+        Assistant objAssistan = new Assistant();
+        String id_mult = objAssistan.splitComboBox(jComboBoxMult);    
         String id_request= objQuery.typeUser("SELECT id_request FROM mult WHERE  id_mult =' "+ id_mult + "'" , "id_request");
         int id_requests=Integer.parseInt(id_request);
         String id_user= objQuery.typeUser("SELECT id_user FROM request WHERE id_request=' "+ id_requests + "'" , "id_user");
@@ -3557,143 +3548,61 @@ public final class InitialInterface extends javax.swing.JFrame {
         });
     }
     
+
     
-    public String convertDayToString(Date date) {//Convierte un dato de tipo DATE a un String
-        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
-        return formatDate.format(date);
-    }
-
-    public Date convertStringToDate(String date) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateConvert = null;
-        try {
-            dateConvert = format.parse(date);
-        } catch (ParseException ex) {
-            ex.printStackTrace();
-        }
-        return dateConvert;
-    }
-
-    public Date addDayDate(Date date, int days) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date); // Configuramos la fecha que se recibe	
-        calendar.add(Calendar.DAY_OF_YEAR, days);  // numero de días a añadir, o restar en caso de días<0
-        return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos	
-    }
-
-    public String encryptSortPassword(String password){
-       
-        String passwordEncrypt = "";
-
-        for (int i=password.length()-1;i>=0;i--){
-		passwordEncrypt = passwordEncrypt + password.charAt(i);          
-        }
-
-                return passwordEncrypt;
-    }
-    
-    public boolean checkActualPassword(String actualPassword){
-        
-        Querys objQuery = new Querys();
-        View objView = new View();
-        String passwordBd=objQuery.typeUser("SELECT user_password FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "user_password");
-        if(encryptSortPassword(actualPassword).equals(passwordBd)){
-            objView.sucessfulOperationTypeElement("La contraseña","verificado");
-            return true;
-        }else{
-            objView.errorPassword();
-            return false;
-        }
+    public boolean checkActualPassword(String actualPassword){       
+        Assistant objAssistan = new Assistant();
+        return objAssistan.checkActualPassword(actualPassword,jLabelUserIdentificationGeneral);
     
     }
 
     
     public void fillMyProfile(){
-        
-        Querys objQuery = new Querys();
-        String user_name=objQuery.typeUser("SELECT name FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "name");
-        jLabelSetName.setText(user_name);
-        String user_email=objQuery.typeUser("SELECT email FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "email");
-        jTextFieldSetEmail.setText(user_email);
+        Assistant objAssistan = new Assistant();
+        objAssistan.fillMyProfile(jLabelUserIdentificationGeneral,jLabelSetName,jTextFieldSetEmail);
         
     }
     
     public void saveImage(String route){
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        System.out.println("Abrio la conexion para la imagen");
-        try {
-            Statement senteceImage = conn.createStatement();
-            String queryImage = "UPDATE users set adress_photo='" + route + "' WHERE identification ='"+jLabelUserIdentificationGeneral.getText()+"';";
-            senteceImage.executeUpdate(queryImage);
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Assistant objAssistan = new Assistant();
+        objAssistan.saveImage(route, jLabelUserIdentificationGeneral);
     }
+    
         public String getEmailProfile(){
-         Querys objQuery = new Querys();
-         String email=objQuery.typeUser("SELECT email FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "email");
-         return email;
+         Assistant objAssistan = new Assistant();
+         return objAssistan.getEmailProfile(jLabelUserIdentificationGeneral);
     }
     
     
       
     public void updateEmail(){
-        View objView = new View();
-        if(getEmailProfile().equals(jTextFieldSetEmail.getText())){
-            
-        }else{
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        try {
-            Statement sentenceEmail = conn.createStatement();
-            String queryEmail = "UPDATE users set email='" + jTextFieldSetEmail.getText() + "' WHERE identification ='"+jLabelUserIdentificationGeneral.getText()+"';";
-            System.out.print(queryEmail);
-            sentenceEmail.executeUpdate(queryEmail);
-            objView.sucessfulOperationTypeElement("El email", "actualizado");
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        }
+        Assistant objAssistan = new Assistant();
+        objAssistan.updateEmail(jTextFieldSetEmail,jLabelUserIdentificationGeneral);
     }  
     
     public void checkNewPassword(){
-        View objView = new View();
-        if(!(jPasswordNew.getText().length()==0  && jPasswordNew1.getText().length()==0)){
-            if(jPasswordNew.getText().equals(jPasswordNew1.getText()) && checkActualPassword(jTextFieldPassActual.getText())==true){
-                UserDao objDao = new UserDao();
-                objDao.updatePassword(jLabelUserIdentificationGeneral.getText(), encryptSortPassword(jPasswordNew.getText()));
-                objView.sucessfulOperationTypeElement("La contraseña", "actualizado");
-            }else{
-                objView.errorComparePassword();
-            }      
-        }else{
-            objView.errorEmptyPassword();
-        }      
+        Assistant objAssistan = new Assistant();
+        objAssistan.checkNewPassword(jPasswordNew, jPasswordNew1, jTextFieldPassActual, jLabelUserIdentificationGeneral);
     }
     
     public void changeLabelPicture(String route){
             ImageIcon icon = new ImageIcon(route);
-
             Icon icono = new ImageIcon(icon.getImage().getScaledInstance(jLabelUserPhoto.getWidth(), jLabelUserPhoto.getHeight(), Image.SCALE_DEFAULT));
-
             jLabelUserPhoto.setText(null);
-
             jLabelUserPhoto.setIcon(icono);
     }
   
    
     public void createUser() {
+        Assistant objAssistan = new Assistant();
         if(( jTextFieldIdentificacionCrearUsuario.getText().isEmpty() == false) &&  ( jTextFieldNombreCrearUsuario.getText().isEmpty()==false) && 
            (jTextFieldEmailCrearUsuario.getText().isEmpty() == false)&&  ( jTextFieldQuestion.getText().isEmpty()==false)&&  (jTextFieldAnswer.getText().isEmpty()==false)){
        
         UserController objCtrlUser = new UserController();   
         String identification = jTextFieldIdentificacionCrearUsuario.getText();
-        String idProyect = splitComboBox(jComboBoxCreateUserProject);
+        String idProyect = objAssistan.splitComboBox(jComboBoxCreateUserProject);
         String name = jTextFieldNombreCrearUsuario.getText();
-        String password = encryptSortPassword(generateInitialPassword());
+        String password = objAssistan.encryptSortPassword(generateInitialPassword());
         String typeUser = jComboBoxCreateUserPosition.getSelectedItem().toString();
         String state = "Activo";
         String email = jTextFieldEmailCrearUsuario.getText();
@@ -3749,28 +3658,26 @@ public final class InitialInterface extends javax.swing.JFrame {
 
     public void deleteMult() {
         MultController objCtrlMult = new MultController();
-
+        Assistant objAssistan = new Assistant();
         String id_mult = "";
-        id_mult = splitComboBox(jComboBoxMult);
-
+        id_mult = objAssistan.splitComboBox(jComboBoxMult);
         objCtrlMult.deleteMult(id_mult);
-
     }
 
     public void createRequest() {
         RequestController objCtrlRequest = new RequestController();
         EquipmentController objCtrlEquipment = new EquipmentController();
-
+        Assistant objAssistan = new Assistant();
         Querys objQuery = new Querys();
         String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
         int id=Integer.parseInt(id_user);
-        String serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
+        String serial_equipment = objAssistan.splitComboBox(jComboBoxEquipmentSerialLoan);
         String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
         String state_equipment =objQuery.typeUser("SELECT state FROM equipment WHERE  serial ='" + serial_equipment + "'" , "state");
         int id_equipments=Integer.parseInt(id_equipment);
-        String start_date = getStartDate();
+        String start_date = objAssistan.getStartDate();
         String state = "Activo";
-        String end_date = convertDayToString(addDayDate(fecha, 7));
+        String end_date = objAssistan.convertDayToString(objAssistan.addDayDate(fecha, 7));
         if(state_equipment.equals("Ocupado") ||  state_equipment.equals("Reservado")){
             View objView = new View();
             objView.errorRequest();
@@ -3780,35 +3687,26 @@ public final class InitialInterface extends javax.swing.JFrame {
 
     }
     
+    public void renovateLoan() {
+        Assistant objAssistan = new Assistant();
+        objAssistan.renovateLoan(jLabelUserIdentificationGeneral, jComboBoxEquipmentSerialLoan);
+       
+    }
+    
     public String getReserveDate() {
-        Calendar calendar = Calendar.getInstance();
-        int day1 = calendar.get(Calendar.DATE);
-        int month1 = calendar.get(Calendar.MONTH);
-        int year1 = calendar.get(Calendar.YEAR);
-
-        int day = (int) jSpinnerDia.getValue();
-
-        int month = (int)jSpinnerMes.getValue();
-
-        int year = (int)jSpinnerAño.getValue();
-        if(year>=year1 && month>=month1){
-            String reserveDate = year + "-" + month + "-" + day;
-            return reserveDate;
-        }else{
-
-            return null;
-        }
+        Assistant objAssistan = new Assistant();
+        return objAssistan.getReserveDate(jSpinnerDia, jSpinnerMes, jSpinnerAño);
     }
     
 
     public void createReserve() {
         RequestController objCtrlRequest = new RequestController();
         EquipmentController objCtrlEquipment = new EquipmentController();
-
+        Assistant objAssistan = new Assistant();
         Querys objQuery = new Querys();
         String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
         int id=Integer.parseInt(id_user);
-        String serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
+        String serial_equipment = objAssistan.splitComboBox(jComboBoxEquipmentSerialLoan);
         String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
         int id_equipments=Integer.parseInt(id_equipment);
         String start_date = getReserveDate();
@@ -3817,7 +3715,7 @@ public final class InitialInterface extends javax.swing.JFrame {
             View objView = new View();
             objView.errorReserve();
         }else{
-            String end_date = convertDayToString(addDayDate(convertStringToDate(getReserveDate()), 7));
+            String end_date = objAssistan.convertDayToString(objAssistan.addDayDate(objAssistan.convertStringToDate(getReserveDate()), 7));
             objCtrlRequest.addRequest(state, id, id_equipments, start_date, end_date);
             objCtrlEquipment.setStateEquipment(id_equipments, "Reservado");
         }
@@ -3827,92 +3725,27 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabelUserIdentificationGeneral.setText(identification);
     }
 
-    public String getStartDate() {//Obtiene la fecha actual
-        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
-        return formatDate.format(fecha);
-    }
-
-    public String getEndDate(int id_request) {
-        RequestDao objDao = new RequestDao();
-        return objDao.getEndDate(id_request);
-    }
-
-    public int getIdRequest(int id_user, int id_equipment, String state) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
-        RequestDao objDao = new RequestDao();
-        return objDao.getIdRequest(id_user, id_equipment, state);
-    }
+  
     public void deliverEquipment() {
-
-        RequestController objCtrlRequest = new RequestController();
-        EquipmentController objCtrlEquipment = new EquipmentController();
-        Querys objQuery = new Querys();
-        String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
-        int id=Integer.parseInt(id_user);
-        String serial_equipment = splitComboBox(jComboBoxEquipmentSerialLoan);
-        String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
-        int id_equipments=Integer.parseInt(id_equipment);
-        int id_request = 0;
-        try{
-            id_request = getIdRequest(id, id_equipments, "Activo");
-            if(id_request==0){
-                 Exception e = new Exception("Este es mi propio error.");
-                throw e;
-            }else{
-                String finishDate=getEndDate(id_request);
-                Date endDate=convertStringToDate(finishDate);
-                Date systemDate=convertStringToDate(getStartDate());
-
-                int days=(int) ( systemDate.getTime() - endDate.getTime() )/86400000;    
-                objCtrlRequest.setStateRequest(id_request, "Terminado");
-                objCtrlEquipment.setStateEquipment(id_equipments, "Disponible");
-                generateMult(id_request,days);
-                
-            }
-          }catch(Exception e){
-                View objView = new View();
-                objView.errorDeliver();
-            }
+        Assistant objAssistan = new Assistant();
+        objAssistan.deliverEquipment(jLabelUserIdentificationGeneral, jComboBoxEquipmentSerialLoan);
 
     }
         
-    public void generateMult(int id_request,int days){
-        double mult = calculateMult(days);
-        System.out.println(mult+" Valor multa");
-        System.out.println(id_request);
-        MultDao objDao = new MultDao();
-        objDao.generateMult(id_request, mult);
-       
-    }
-    
-    public double calculateMult(int days){
-        if(days<=0){
-            return 0;           
-        }else{
-            double valueMult=days*5000;
-            System.out.println(valueMult);
-            return valueMult;
-        }   
-    }
-
     public String generateInitialPassword() {
 
-        String identification = jTextFieldIdentificacionCrearUsuario.getText();
-        String name = jTextFieldNombreCrearUsuario.getText();
-        String initial = name.substring(0, 1);
-        char last = name.charAt(name.length() - 1);
-        String password = (initial + identification + last).toUpperCase();
-
-        return password;
+        Assistant objAssistan = new Assistant();
+        return objAssistan.generateInitialPassword(jTextFieldIdentificacionCrearUsuario,jTextFieldNombreCrearUsuario);
 
     }
     
     public void updateUser() {
-
+        Assistant objAssistan = new Assistant();
         if(( jTextFieldNombreUpUser.getText().isEmpty() == false) &&  (jTextFieldEmail.getText().isEmpty()==false) && 
            (jTextFieldRespuesta.getText().isEmpty() == false)&&  ( jTextFieldPregunta.getText().isEmpty()==false)){
         UserController objCtrlUser = new UserController();
-        String updateIdUser = splitComboBox(jComboBoxUpdateIdUser);
-        String updateIdProject = splitComboBox(jComboBoxUpdateUserProject);
+        String updateIdUser = objAssistan.splitComboBox(jComboBoxUpdateIdUser);
+        String updateIdProject = objAssistan.splitComboBox(jComboBoxUpdateUserProject);
         String updateState = jComboBoxUpdateUserState.getSelectedItem().toString();
         String updateType = jComboBoxUpdateUserType.getSelectedItem().toString();
         String updateName = jTextFieldNombreUpUser.getText();
@@ -3929,12 +3762,13 @@ public final class InitialInterface extends javax.swing.JFrame {
     }
 
     public void updateProject() {
+        Assistant objAssistan = new Assistant();
     if( (jTextArea3.getText().isEmpty() == false) &&  (jTextFieldNombreUpdateProject.getText().isEmpty()==false)){
         ProjectController objCtrlProject = new ProjectController();
-        String updateProject = splitComboBox(jComboBoxUpdateProjectId);
+        String updateProject = objAssistan.splitComboBox(jComboBoxUpdateProjectId);
         String updateNameProject = jTextFieldNombreUpdateProject.getText();
         String updateDescription = jTextArea3.getText();
-        String updateState = splitComboBox(jComboBoxUpdateProjectState);
+        String updateState = objAssistan.splitComboBox(jComboBoxUpdateProjectState);
 
         objCtrlProject.updateProject(updateProject, updateNameProject, updateDescription, updateState);
          }else{
@@ -3944,12 +3778,12 @@ public final class InitialInterface extends javax.swing.JFrame {
     }
 
     public void updateEquipment() {
-
+        Assistant objAssistan = new Assistant();
         if( (jTextFieldNombreUpEquipment.getText().isEmpty() == false) &&  (jTextArea4.getText().isEmpty()==false)){
         EquipmentController objCtrlEquipment = new EquipmentController();
-        String updateSerialEquipment = splitComboBox(jComboBoxUpdateEquipmentSerial);
+        String updateSerialEquipment = objAssistan.splitComboBox(jComboBoxUpdateEquipmentSerial);
         String updateNameEquipment = jTextFieldNombreUpEquipment.getText();
-        String updateStateEquipment = splitComboBox(jComboBoxUpdateEquipmentState);
+        String updateStateEquipment = objAssistan.splitComboBox(jComboBoxUpdateEquipmentState);
         String updateDescriptionEquipment = jTextArea4.getText();
 
         objCtrlEquipment.updateEquipment(updateSerialEquipment, updateNameEquipment, updateDescriptionEquipment, updateStateEquipment);

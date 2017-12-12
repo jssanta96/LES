@@ -190,6 +190,26 @@ public class RequestDao {
         return null;
     }
     
+    public String getStartDate(int id_request) {
+        FachadaBD fachada = new FachadaBD();
+        Connection conn = fachada.getConnetion();
+        String start_date = "";
+        try {
+            Statement sentenceRequest = conn.createStatement();
+            String queryRequest = "SELECT start_date FROM request WHERE id_request=" + id_request + ";";
+            System.out.print(queryRequest);
+            ResultSet rsRequest = sentenceRequest.executeQuery(queryRequest);
+            while (rsRequest.next()) {
+                start_date = rsRequest.getString("start_date");
+            }
+            return start_date;
+        } catch (SQLException ex) {
+            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    
+    
     public int getIdRequest(int id_user, int id_equipment, String state) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
 
         FachadaBD fachada = new FachadaBD();
@@ -208,41 +228,7 @@ public class RequestDao {
             Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
-    }
-     public void renovateLoan(JComboBox combo, JLabel identification  ) {
+    
         
-        RequestController objCtrlRequest = new RequestController();
-        EquipmentController objCtrlEquipment = new EquipmentController();
-        Querys objQuery = new Querys();
-        String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + identification.getText() + "'" , "id_user");
-        int id=Integer.parseInt(id_user);
-        System.out.println(id+" Id del usuario");
-        InitialInterface initial = new InitialInterface();
-        String serial_equipment = initial.splitComboBox(combo);
-        String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
-        int id_equipments=Integer.parseInt(id_equipment);
-        System.out.println(id_equipments);
-        int id_request = 0;
-        try{
-            System.out.println("Entro al try");
-            id_request = getIdRequest(id, id_equipments, "Activo");
-            if(id_request==0){
-                 System.out.println(id_request);
-                 Exception e = new Exception("Este es mi propio error.");
-                 throw e;
-            }else{
-                java.util.Date end_date;
-                end_date = initial.convertStringToDate(getEndDate(id_request));
-                String extend_date = initial.convertDayToString(initial.addDayDate(end_date, 7));
-
-
-                objCtrlRequest.renovateRequest(id_request, extend_date);
-                objCtrlEquipment.setStateEquipment(id_equipments, "Ocupado");
-        }
-          }catch(Exception e){
-                View objView = new View();
-                objView.errorRenovate();
-            }
-       
-    }
+}
 }
