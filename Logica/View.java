@@ -107,5 +107,12 @@ public final class View {
         
         JOptionPane.showMessageDialog(window, message, "Notificacion", 0, LesImage);
     }
+    
+    public void errorDeliver(){
+    
+        JOptionPane.showMessageDialog(window, "Este equipo esta en estado de reserva", "Notificacion", 0, LesImage);
+    }
+    
+    
 
 }
