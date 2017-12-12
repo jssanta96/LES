@@ -3801,8 +3801,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         objLoad.generateReport(jTable, pdfNewFile, title);
     }  
     public void enableButtons(String identification) {
-        
-       cheekCordinator();
+
         Querys objQuery = new Querys();
         String query = objQuery.typeUser("SELECT type FROM users WHERE identification ='" + identification + "'", "type");
         switch (query) {
@@ -3844,12 +3843,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                       
     }
     
-   public void cheekCordinator(){
-        Querys objQuery = new Querys();
-        ArrayList<String> query = objQuery.listtypeUser("SELECT C.id_user,C.end_date FROM (SELECT *FROM request WHERE state='Activo') as C", "end_date");
-        System.out.println(query);
-    }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TotalMultasXMiembro;
     private javax.swing.JTextField TotalMultasXmes;
