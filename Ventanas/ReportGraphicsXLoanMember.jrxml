@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a45a5a3f-f977-418d-b860-02d7a34038de">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="44"/>
+	<queryString>
+		<![CDATA[SELECT name , COUNT (id_request) FROM users, request WHERE users.id_user= request.id_user GROUP BY name;]]>
+	</queryString>
+	<field name="name" class="java.lang.String"/>
+	<field name="count" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="95" splitType="Stretch">
+			<staticText>
+				<reportElement x="106" y="10" width="355" height="81" uuid="a099c7cd-c251-4c08-af6d-61a5db7f5364"/>
+				<textElement>
+					<font size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE GRAFICO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="0" width="91" height="91" uuid="952e5d69-223c-49b7-aeae-9d77d6a20c21"/>
+				<imageExpression><![CDATA["C:\\Users\\REDSKULL\\Desktop\\LES\\Imagenes\\logoLesPeq.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<detail>
+		<band height="408" splitType="Stretch">
+			<staticText>
+				<reportElement x="198" y="26" width="150" height="18" uuid="ca80fc92-62f9-4bbf-abca-2868a7530623"/>
+				<text><![CDATA[PRESTAMOS POR MIEMBRO]]></text>
+			</staticText>
+			<elementGroup/>
+			<stackedBarChart>
+				<chart>
+					<reportElement x="0" y="103" width="555" height="86" uuid="095066af-1884-4ca7-8a23-fc38799f8c97"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[""]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{name}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{count}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</stackedBarChart>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="455" y="388" width="100" height="20" uuid="ad07956c-ab60-41fe-800a-29351d1f69e1"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
