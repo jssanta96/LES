@@ -155,7 +155,7 @@ public void addStateEquipment(JComboBox comboBox , String query , String state )
              
                       break;
                       
-                case "Cordinador de equipos" : 
+                case "Cordinador" : 
                  
                     comboBox.addItem("Disponible");
                     comboBox.addItem("Ocupado");
@@ -223,7 +223,7 @@ public void addStateUser(JComboBox comboBox , String query , String state ){
         }
                  
     }
-public String typeUser(String query , String type){
+public String query(String query , String type){
      
          FachadaBD fachada = new FachadaBD();       
          try{

@@ -4,8 +4,6 @@ import Controllers.MultController;
 import Controllers.ProjectController;
 import Controllers.RequestController;
 import Controllers.UserController;
-import Dao.FachadaBD;
-import Dao.MultDao;
 import java.io.File;
 import Dao.Querys;
 import Dao.RequestDao;
@@ -19,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -185,14 +184,10 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabelLogoLabContactUs = new javax.swing.JLabel();
         jLabelLogoUnivalleContactUs = new javax.swing.JLabel();
         jLabelLogoLESContactUs = new javax.swing.JLabel();
-        jLabelEmailLab = new javax.swing.JLabel();
-        jLabelTelefonos = new javax.swing.JLabel();
-        jLabelContacto = new javax.swing.JLabel();
-        jLabelEmailCordi = new javax.swing.JLabel();
-        jLabelCoordinadora = new javax.swing.JLabel();
-        jLabelCoordinador = new javax.swing.JLabel();
         jButtonEditContact = new javax.swing.JButton();
         jButtonSaveEditContact = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jLabelFondoContactUs = new javax.swing.JLabel();
         jPanelReserve = new javax.swing.JPanel();
         jLabelLogoUnivalleReserve = new javax.swing.JLabel();
@@ -1278,32 +1273,6 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabelLogoLESContactUs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoLesPeq.png"))); // NOI18N
         jPanelContactUs.add(jLabelLogoLESContactUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, -1, -1));
 
-        jLabelEmailLab.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelEmailLab.setText("E-mail: laboratorio.multimediayvision@correounivalle.edu.co");
-        jPanelContactUs.add(jLabelEmailLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
-
-        jLabelTelefonos.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabelTelefonos.setText("Telefonos: (57) (2) 321 21 00 ext. 2791, Fax. 339 20 86");
-        jPanelContactUs.add(jLabelTelefonos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
-
-        jLabelContacto.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabelContacto.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelContacto.setText("CONTACTO");
-        jPanelContactUs.add(jLabelContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
-
-        jLabelEmailCordi.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabelEmailCordi.setText("E-mail: maria.trujillo@correounivalle.edu.co");
-        jPanelContactUs.add(jLabelEmailCordi, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
-
-        jLabelCoordinadora.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabelCoordinadora.setText("P.H.D Maria Patricia Trujillo Uribe");
-        jPanelContactUs.add(jLabelCoordinadora, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
-
-        jLabelCoordinador.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabelCoordinador.setForeground(new java.awt.Color(102, 102, 102));
-        jLabelCoordinador.setText("COORDINADOR");
-        jPanelContactUs.add(jLabelCoordinador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
-
         jButtonEditContact.setBackground(new java.awt.Color(102, 0, 0));
         jButtonEditContact.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEditContact.setText("Editar");
@@ -1323,6 +1292,13 @@ public final class InitialInterface extends javax.swing.JFrame {
             }
         });
         jPanelContactUs.add(jButtonSaveEditContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 100, 30));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("COORDINADOR\nP.H.D Maria Patricia Trujillo Uribe\nE-mail: maria.trujillo@correounivalle.edu.co\n\nCONTACTO\nTelefonos: (57) (2) 321 21 00 ext. 2791, Fax. 339 20 86\nE-mail: laboratorio.multimediayvision@correounivalle.edu.co");
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jPanelContactUs.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 490, 220));
 
         jLabelFondoContactUs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondoContactUs.setText("jLabel4");
@@ -2766,8 +2742,13 @@ public final class InitialInterface extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInfoActionPerformed
+        
         hidePanels();
         jPanelContactUs.setVisible(true);
+        jTextArea1.setEnabled(false);
+       
+        
+        
     }//GEN-LAST:event_jButtonInfoActionPerformed
 
     private void jButtonPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPerfilActionPerformed
@@ -3243,9 +3224,9 @@ public final class InitialInterface extends javax.swing.JFrame {
         Assistant objAssistan = new Assistant();       
         Querys objQuery = new Querys();
         String serial = objAssistan.splitComboBox(jComboBoxUpdateEquipmentSerial1);
-        String equipment_name = objQuery.typeUser("SELECT name FROM equipment WHERE serial ='" + serial + "'" , "name");
-        String state =objQuery.typeUser("SELECT state FROM equipment WHERE serial ='" + serial + "'" , "state");
-        String description = objQuery.typeUser("SELECT description FROM equipment WHERE serial ='" + serial + "'" , "description");
+        String equipment_name = objQuery.query("SELECT name FROM equipment WHERE serial ='" + serial + "'" , "name");
+        String state =objQuery.query("SELECT state FROM equipment WHERE serial ='" + serial + "'" , "state");
+        String description = objQuery.query("SELECT description FROM equipment WHERE serial ='" + serial + "'" , "description");
         jLabelEquipName.setText(equipment_name);  
         jLabelEquipState.setText(state);
         jLabelDescriptionEquip.setText(description);
@@ -3254,11 +3235,11 @@ public final class InitialInterface extends javax.swing.JFrame {
     private void jButtonUserCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUserCheckActionPerformed
         Assistant objAssistan = new Assistant();
         Querys objQuery = new Querys();
-        String state =objQuery.typeUser("SELECT state FROM users WHERE  identification ='" + objAssistan.splitComboBox(jComboBoxUpdateIdUser1) + "'" , "state");
-        String type = objQuery.typeUser("SELECT type FROM users WHERE  identification ='" + objAssistan.splitComboBox(jComboBoxUpdateIdUser1)  + "'" , "type");
-        String user_name= objQuery.typeUser("SELECT name FROM users WHERE  identification ='" + objAssistan.splitComboBox(jComboBoxUpdateIdUser1)  + "'" , "name");
-        String user_email = objQuery.typeUser("SELECT email FROM users WHERE  identification ='" +  objAssistan.splitComboBox(jComboBoxUpdateIdUser1) + "'" , "email");
-        String project_name = objQuery.typeUser("SELECT name FROM project WHERE id_project =(SELECT project_id FROM users WHERE identification='"+objAssistan.splitComboBox(jComboBoxUpdateIdUser1)+"');","name");
+        String state =objQuery.query("SELECT state FROM users WHERE  identification ='" + objAssistan.splitComboBox(jComboBoxUpdateIdUser1) + "'" , "state");
+        String type = objQuery.query("SELECT type FROM users WHERE  identification ='" + objAssistan.splitComboBox(jComboBoxUpdateIdUser1)  + "'" , "type");
+        String user_name= objQuery.query("SELECT name FROM users WHERE  identification ='" + objAssistan.splitComboBox(jComboBoxUpdateIdUser1)  + "'" , "name");
+        String user_email = objQuery.query("SELECT email FROM users WHERE  identification ='" +  objAssistan.splitComboBox(jComboBoxUpdateIdUser1) + "'" , "email");
+        String project_name = objQuery.query("SELECT name FROM project WHERE id_project =(SELECT project_id FROM users WHERE identification='"+objAssistan.splitComboBox(jComboBoxUpdateIdUser1)+"');","name");
         jLabelViewUserProject.setText(project_name);
         jLabelViewUserState.setText(state);
         jLabelViewUserRange.setText(type);
@@ -3284,9 +3265,9 @@ public final class InitialInterface extends javax.swing.JFrame {
         Assistant objAssistan = new Assistant();
         Querys objQuery = new Querys();
         String code = objAssistan.splitComboBox(jComboBoxUpdateProjectId1);
-        String projectName = objQuery.typeUser("SELECT name FROM project WHERE  code ='" +  code + "'" , "name");
-        String description=objQuery.typeUser("SELECT description FROM project WHERE  code ='" +  code + "'" , "description");
-        String state=objQuery.typeUser("SELECT state FROM project WHERE  code ='" +  code + "'" , "state");
+        String projectName = objQuery.query("SELECT name FROM project WHERE  code ='" +  code + "'" , "name");
+        String description=objQuery.query("SELECT description FROM project WHERE  code ='" +  code + "'" , "description");
+        String state=objQuery.query("SELECT state FROM project WHERE  code ='" +  code + "'" , "state");
         jLabelViewProjectName.setText(projectName);
         jLabelViewProjectDescription.setText(description);
         jLabelViewProjectName1.setText(state);
@@ -3311,11 +3292,11 @@ public final class InitialInterface extends javax.swing.JFrame {
             Querys objQuery = new Querys();
             Assistant objAssistan = new Assistant();
             String id_mult = objAssistan.splitComboBox(jComboBoxMult);    
-            String id_request= objQuery.typeUser("SELECT id_request FROM mult WHERE  id_mult =' "+ id_mult + "'" , "id_request");
+            String id_request= objQuery.query("SELECT id_request FROM mult WHERE  id_mult =' "+ id_mult + "'" , "id_request");
             int id_requests=Integer.parseInt(id_request);
-            String id_user= objQuery.typeUser("SELECT id_user FROM request WHERE id_request=' "+ id_requests + "'" , "id_user");
-            String user_name= objQuery.typeUser( "SELECT name FROM users WHERE id_user= ' "+ id_user + "'" , "name");
-            String value = objQuery.typeUser("SELECT value FROM mult WHERE id_mult='"+id_mult+"'","value");
+            String id_user= objQuery.query("SELECT id_user FROM request WHERE id_request=' "+ id_requests + "'" , "id_user");
+            String user_name= objQuery.query( "SELECT name FROM users WHERE id_user= ' "+ id_user + "'" , "name");
+            String value = objQuery.query("SELECT value FROM mult WHERE id_mult='"+id_mult+"'","value");
             jLabelUserNameMult.setText(user_name);
             jLabelValueMultUser.setText(value);
       }catch(Exception e){
@@ -3361,47 +3342,63 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldRespuestaActionPerformed
 
     private void jButtonUserCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUserCSVActionPerformed
-        int result;
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("CSV y csv", "csv");
-        LoadPicture ventana = new LoadPicture();
-        ventana.jFileChooserLoad.setFileFilter(filtro);
+        try{
+            int result;
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("CSV y csv", "csv");
+            LoadPicture ventana = new LoadPicture();
+            ventana.jFileChooserLoad.setFileFilter(filtro);
 
-        result = ventana.jFileChooserLoad.showOpenDialog(null);  
-        if (JFileChooser.APPROVE_OPTION == result) {
-            fichero = ventana.jFileChooserLoad.getSelectedFile();
-            Querys objQuery = new Querys();
-            objQuery.readArchiveUsers(fichero.toString());
+            result = ventana.jFileChooserLoad.showOpenDialog(null);  
+            if (JFileChooser.APPROVE_OPTION == result) {
+                fichero = ventana.jFileChooserLoad.getSelectedFile();
+                Querys objQuery = new Querys();
+                objQuery.readArchiveUsers(fichero.toString());
+            }
+        }catch(Exception ex){
+            View objView = new View();
+            objView.errorCargarCSV();
         }
 
     }//GEN-LAST:event_jButtonUserCSVActionPerformed
 
     private void jButtonEquipmentCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipmentCSVActionPerformed
-         int result;
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("CSV y csv", "csv");
-        LoadPicture ventana = new LoadPicture();
-        ventana.jFileChooserLoad.setFileFilter(filtro);
+       try{
+            int result;
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("CSV y csv", "csv");
+            LoadPicture ventana = new LoadPicture();
+            ventana.jFileChooserLoad.setFileFilter(filtro);
 
-        result = ventana.jFileChooserLoad.showOpenDialog(null);  
-        if (JFileChooser.APPROVE_OPTION == result) {
-            fichero = ventana.jFileChooserLoad.getSelectedFile();
-            Querys objQuery = new Querys();
-            objQuery.readArchiveEquipment(fichero.toString());
+            result = ventana.jFileChooserLoad.showOpenDialog(null);  
+            if (JFileChooser.APPROVE_OPTION == result) {
+                fichero = ventana.jFileChooserLoad.getSelectedFile();
+                Querys objQuery = new Querys();
+                objQuery.readArchiveEquipment(fichero.toString());
+            }
+        }catch(Exception ex){
+            View objView = new View();
+            objView.errorCargarCSV();
         }
+
 
     }//GEN-LAST:event_jButtonEquipmentCSVActionPerformed
 
     private void jButtonProjectCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProjectCSVActionPerformed
-         int result;
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("CSV y csv", "csv");
-        LoadPicture ventana = new LoadPicture();
-        ventana.jFileChooserLoad.setFileFilter(filtro);
+     try{
+            int result;
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("CSV y csv", "csv");
+            LoadPicture ventana = new LoadPicture();
+            ventana.jFileChooserLoad.setFileFilter(filtro);
 
-        result = ventana.jFileChooserLoad.showOpenDialog(null);  
-        if (JFileChooser.APPROVE_OPTION == result) {
-            fichero = ventana.jFileChooserLoad.getSelectedFile();
-            Querys objQuery = new Querys();
-            objQuery.readArchiveProjects(fichero.toString());
-        }
+            result = ventana.jFileChooserLoad.showOpenDialog(null);  
+            if (JFileChooser.APPROVE_OPTION == result) {
+                fichero = ventana.jFileChooserLoad.getSelectedFile();
+                Querys objQuery = new Querys();
+                objQuery.readArchiveProjects(fichero.toString());
+            }        
+        }catch(Exception ex){
+                View objView = new View();
+                objView.errorCargarCSV();
+            }
 
     }//GEN-LAST:event_jButtonProjectCSVActionPerformed
 
@@ -3518,12 +3515,13 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonExportMultMonth4ActionPerformed
 
     private void jButtonEditContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditContactActionPerformed
-      jLabelCoordinadora.repaint();
-
+        jTextArea1.setEnabled(true);
+        
     }//GEN-LAST:event_jButtonEditContactActionPerformed
 
     private void jButtonSaveEditContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveEditContactActionPerformed
-        // TODO add your handling code here:
+       jTextArea1.setEnabled(false);
+       Assistant objAssistan = new Assistant();
     }//GEN-LAST:event_jButtonSaveEditContactActionPerformed
 
     private void emptyText() {
@@ -3541,6 +3539,14 @@ public final class InitialInterface extends javax.swing.JFrame {
         jTextFieldNombreUpUser.setText("");
         jTextFieldNombreUpdateProject.setText("");
         jTextFieldNombreUpEquipment.setText("");
+        jTextFieldPregunta.setText("");
+        jTextFieldNombreUpUser.setText("");
+        jTextFieldEmail.setText("");
+        jTextFieldQuestion.setText("");
+        jTextFieldAnswer.setText("");
+        jTextFieldEmailCrearUsuario.setText("");
+
+             
     }
 
     private void hidePanels() {
@@ -3732,11 +3738,11 @@ public final class InitialInterface extends javax.swing.JFrame {
         EquipmentController objCtrlEquipment = new EquipmentController();
         Assistant objAssistan = new Assistant();
         Querys objQuery = new Querys();
-        String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
+        String id_user= objQuery.query("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
         int id=Integer.parseInt(id_user);
         String serial_equipment = objAssistan.splitComboBox(jComboBoxEquipmentSerialLoan);
-        String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
-        String state_equipment =objQuery.typeUser("SELECT state FROM equipment WHERE  serial ='" + serial_equipment + "'" , "state");
+        String id_equipment =objQuery.query("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
+        String state_equipment =objQuery.query("SELECT state FROM equipment WHERE  serial ='" + serial_equipment + "'" , "state");
         int id_equipments=Integer.parseInt(id_equipment);
         String start_date = objAssistan.getStartDate();
         String state = "Activo";
@@ -3767,10 +3773,10 @@ public final class InitialInterface extends javax.swing.JFrame {
         EquipmentController objCtrlEquipment = new EquipmentController();
         Assistant objAssistan = new Assistant();
         Querys objQuery = new Querys();
-        String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
+        String id_user= objQuery.query("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
         int id=Integer.parseInt(id_user);
         String serial_equipment = objAssistan.splitComboBox(jComboBoxEquipmentSerialLoan);
-        String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
+        String id_equipment =objQuery.query("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
         int id_equipments=Integer.parseInt(id_equipment);
         String start_date = getReserveDate();
         String state = "Reserva";
@@ -3866,7 +3872,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     public void enableButtons(String identification) {
 
         Querys objQuery = new Querys();
-        String query = objQuery.typeUser("SELECT type FROM users WHERE identification ='" + identification + "'", "type");
+        String query = objQuery.query("SELECT type FROM users WHERE identification ='" + identification + "'", "type");
         switch (query) {
 
             case "Lider de proyecto":
@@ -3884,7 +3890,8 @@ public final class InitialInterface extends javax.swing.JFrame {
                 break;
 
             case "Cordinador":
-
+                Assistant objAssistan = new Assistant();
+                objAssistan.cheekCordinator();
                 jButtonProyecto.setEnabled(false);
                 jButtonUsuario.setEnabled(false);
                 break;
@@ -3893,22 +3900,10 @@ public final class InitialInterface extends javax.swing.JFrame {
 
     }
     
-    public void cheekRequest(String identification){
-        Querys objQuery = new Querys();
-        String query = objQuery.typeUser("SELECT id_user FROM users WHERE identification ='" + identification + "'", "id_user");
-        int id_user = Integer.valueOf(query);
-        String queryState = objQuery.typeUser("SELECT  state FROM request WHERE id_user = '" +id_user +"' and state = 'Activo'" , "state");                           
-        String queryName = objQuery.typeUser("SELECT name FROM users WHERE identification ='" + identification + "'", "name");
-        if(queryState == null){
-         
-        }else{
-         View message = new View();
-          message.membersWithMult( queryName + " recuerde entregar su equipo a tiempo");
-        }
-                      
-    }
-    
 
+    public JTextArea getContact(){
+        return jTextArea1;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TotalMultasXMiembro;
     private javax.swing.JTextField TotalMultasXmes;
@@ -4073,9 +4068,6 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelCodigo6;
     private javax.swing.JLabel jLabelCodigo7;
     private javax.swing.JLabel jLabelCodigoUpdateProject;
-    private javax.swing.JLabel jLabelContacto;
-    private javax.swing.JLabel jLabelCoordinador;
-    private javax.swing.JLabel jLabelCoordinadora;
     private javax.swing.JLabel jLabelDay;
     private javax.swing.JLabel jLabelDescripcion;
     private javax.swing.JLabel jLabelDescripcion4;
@@ -4084,9 +4076,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDescripcionUpdateProject;
     private javax.swing.JLabel jLabelDescriptionEquip;
     private javax.swing.JLabel jLabelEmail;
-    private javax.swing.JLabel jLabelEmailCordi;
     private javax.swing.JLabel jLabelEmailCreateUser;
-    private javax.swing.JLabel jLabelEmailLab;
     private javax.swing.JLabel jLabelEmailLb;
     private javax.swing.JLabel jLabelEquipName;
     private javax.swing.JLabel jLabelEquipState;
@@ -4201,7 +4191,6 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSolicitud9;
     private javax.swing.JLabel jLabelStateUpEquipment;
     private javax.swing.JLabel jLabelStateUpdateProject;
-    private javax.swing.JLabel jLabelTelefonos;
     private javax.swing.JLabel jLabelTipo4;
     private javax.swing.JLabel jLabelTipo5;
     private javax.swing.JLabel jLabelTitle;
@@ -4277,6 +4266,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordNew;
     private javax.swing.JPasswordField jPasswordNew1;
     private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
@@ -4304,6 +4294,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JTable jTable7;
     private javax.swing.JTable jTable8;
     private javax.swing.JTable jTable9;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextArea jTextArea4;
     private javax.swing.JTextArea jTextAreaCrearEquipo;

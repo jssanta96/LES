@@ -1,7 +1,5 @@
 package Dao;
 
-import Controllers.EquipmentController;
-import Controllers.RequestController;
 import Logica.Request;
 import Logica.View;
 import Ventanas.InitialInterface;
@@ -9,8 +7,6 @@ import Ventanas.InitialInterface;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 
 public class RequestDao {
 
@@ -150,24 +146,6 @@ public class RequestDao {
 
     }
 
-    
-    public int getIdUser(int id_request) {
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        int id_user = 0;
-        try {
-            Statement sentenceMult = conn.createStatement();
-            String queryMult = "SELECT id_user FROM request WHERE id_request=" + id_request + ";";
-            ResultSet rsMult = sentenceMult.executeQuery(queryMult);
-            while (rsMult.next()) {
-                id_user = rsMult.getInt("id_user");
-            }
-            return id_user;
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
-    }
     
     public String getEndDate(int id_request) {
         FachadaBD fachada = new FachadaBD();

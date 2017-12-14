@@ -127,7 +127,7 @@ public class RecoverPasswordInterface extends javax.swing.JFrame {
           boolean cheek =objDao.updatePassword(identification, password);
           if(cheek== true){
                View message = new View();
-               message.sucessfulOperationTypeElement("Su contreseña", "generada");
+               message.sucessfulOperationTypeElement("Su contreseña", "ha sido generada por defecto");
           }
           
        }

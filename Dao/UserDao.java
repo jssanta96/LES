@@ -1,5 +1,6 @@
 package Dao;
 
+import Logica.Assistant;
 import Logica.User;
 import Logica.View;
 import Ventanas.InitialInterface;
@@ -85,12 +86,14 @@ public class UserDao {
                         InitialInterface objVentana = new InitialInterface();
                         objVentana.changeLabelIdentification(identification);
                         objVentana.setVisible(true);
-                        objVentana.enableButtons(identification);
+                        objVentana.enableButtons(identification);                     
                         File fileImg = new File(testingRoutePicture);
                         if(fileImg.exists()){
                             objVentana.changeLabelPicture(testingRoutePicture);
-                        }                       
-                        objVentana.cheekRequest(identification);
+                        }
+                        Assistant objAssistan = new Assistant();
+                        objAssistan.cheekRequest(identification);
+                        objAssistan.cheekMult(identification);
                         return true;
                 }
                                
@@ -107,25 +110,6 @@ public class UserDao {
         return false;
     }
 
-    
-    public int getIdUser(String identification) {//Obtiene el id de la secuencia dependiendo de la identificacion del usuario
-
-        FachadaBD fachada = new FachadaBD();
-        Connection conn = fachada.getConnetion();
-        int id = 0;
-        try {
-            Statement sentenceUsers = conn.createStatement();
-            String queryUsers = "SELECT id_user FROM users WHERE identification='" + identification + "';";
-            ResultSet rsUsers = sentenceUsers.executeQuery(queryUsers);
-            while (rsUsers.next()) {
-                id = rsUsers.getInt("id_user");
-            }
-            return id;
-        } catch (SQLException ex) {
-            Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return 0;
-    }
      
     public String getData(String identification , String query , String data){
         FachadaBD fachada = new FachadaBD();

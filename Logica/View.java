@@ -132,5 +132,9 @@ public final class View {
     
         JOptionPane.showMessageDialog(window, "El campo de identificacion esta vacio", "Notificacion", 0, LesImage);
     } 
+    public void errorCargarCSV(){
+    
+        JOptionPane.showMessageDialog(window, "Se presento un error al cargar el CSV", "Notificacion", 0, LesImage);
+    }
 
 }
