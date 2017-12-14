@@ -323,14 +323,14 @@ public void addTypeUser(JComboBox comboBox , String query , String type ){
                     
                       comboBox.addItem("Lider de proyecto");
                       comboBox.addItem("Administrador");
-                      comboBox.addItem("Cordinador de equipos");
+                      comboBox.addItem("Cordinador");
                       comboBox.addItem("Miembro");
                       break;
                       
                 case "Administrador":           
                     
                       comboBox.addItem("Lider de proyecto");
-                      comboBox.addItem("Cordinador de equipos");
+                      comboBox.addItem("Cordinador");
                       comboBox.addItem("Miembro");
                               
                       break;
