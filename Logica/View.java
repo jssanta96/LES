@@ -72,6 +72,11 @@ public final class View {
         JOptionPane.showMessageDialog(window, "Este equipo no esta en la lista de prestamos, por lo tanto no se puede renovar", "Notificacion", 0, LesImage);
     }
     
+    public void errorShowMult(){
+    
+        JOptionPane.showMessageDialog(window, "No hay multa seleccionada", "Notificacion", 0, LesImage);
+    }
+    
     public void errorExtendRenovate(){
         JOptionPane.showMessageDialog(window, "Has excedido los limite de renovacion", "Notificacion", 0, LesImage);
    

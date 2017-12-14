@@ -3263,16 +3263,21 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack20ActionPerformed
 
     private void jButtonCheckMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckMultActionPerformed
-        Querys objQuery = new Querys();
-        Assistant objAssistan = new Assistant();
-        String id_mult = objAssistan.splitComboBox(jComboBoxMult);    
-        String id_request= objQuery.typeUser("SELECT id_request FROM mult WHERE  id_mult =' "+ id_mult + "'" , "id_request");
-        int id_requests=Integer.parseInt(id_request);
-        String id_user= objQuery.typeUser("SELECT id_user FROM request WHERE id_request=' "+ id_requests + "'" , "id_user");
-        String user_name= objQuery.typeUser( "SELECT name FROM users WHERE id_user= ' "+ id_user + "'" , "name");
-        String value = objQuery.typeUser("SELECT value FROM mult WHERE id_mult='"+id_mult+"'","value");
-        jLabelUserNameMult.setText(user_name);
-        jLabelValueMultUser.setText(value);
+      try{
+            Querys objQuery = new Querys();
+            Assistant objAssistan = new Assistant();
+            String id_mult = objAssistan.splitComboBox(jComboBoxMult);    
+            String id_request= objQuery.typeUser("SELECT id_request FROM mult WHERE  id_mult =' "+ id_mult + "'" , "id_request");
+            int id_requests=Integer.parseInt(id_request);
+            String id_user= objQuery.typeUser("SELECT id_user FROM request WHERE id_request=' "+ id_requests + "'" , "id_user");
+            String user_name= objQuery.typeUser( "SELECT name FROM users WHERE id_user= ' "+ id_user + "'" , "name");
+            String value = objQuery.typeUser("SELECT value FROM mult WHERE id_mult='"+id_mult+"'","value");
+            jLabelUserNameMult.setText(user_name);
+            jLabelValueMultUser.setText(value);
+      }catch(Exception e){
+          View objView = new View();
+          objView.errorShowMult();
+      }
 
 
     }//GEN-LAST:event_jButtonCheckMultActionPerformed
