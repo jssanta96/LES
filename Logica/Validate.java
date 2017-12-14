@@ -17,7 +17,7 @@ public class Validate {
     }
     
     public boolean stringFieldValidation(JTextField field, JLabel label ){
-        if(!field.getText().matches("[[a-z]*"+"[A-Z]*]*")){
+        if(!field.getText().matches("[[a-z]*"+" "+"[A-Z]*]*")){
             String errorMessage = "Solo se permite letras en " + label.getText();
             View message = new View(); 
             message.fieldValidation(errorMessage);

@@ -306,7 +306,6 @@ public final class InitialInterface extends javax.swing.JFrame {
         jButtonReportMultxMiembro = new javax.swing.JButton();
         jButtonReportPresxMiembros = new javax.swing.JButton();
         jLabelUsuarios8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabelFondo18 = new javax.swing.JLabel();
         jPanelLoanXProjectList = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
@@ -1928,7 +1927,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonReportPresxMesActionPerformed(evt);
             }
         });
-        jPanelReportes.add(jButtonReportPresxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 210, 40));
+        jPanelReportes.add(jButtonReportPresxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 210, 40));
 
         jButtonReportMultxMiembro.setBackground(new java.awt.Color(102, 0, 0));
         jButtonReportMultxMiembro.setForeground(new java.awt.Color(255, 255, 255));
@@ -1938,7 +1937,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonReportMultxMiembroActionPerformed(evt);
             }
         });
-        jPanelReportes.add(jButtonReportMultxMiembro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 210, 40));
+        jPanelReportes.add(jButtonReportMultxMiembro, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 220, 40));
 
         jButtonReportPresxMiembros.setBackground(new java.awt.Color(102, 0, 0));
         jButtonReportPresxMiembros.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
@@ -1949,23 +1948,12 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonReportPresxMiembrosActionPerformed(evt);
             }
         });
-        jPanelReportes.add(jButtonReportPresxMiembros, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 210, 40));
+        jPanelReportes.add(jButtonReportPresxMiembros, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 210, 40));
 
         jLabelUsuarios8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabelUsuarios8.setForeground(new java.awt.Color(102, 102, 102));
         jLabelUsuarios8.setText("REPORTES");
         jPanelReportes.add(jLabelUsuarios8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, -1, -1));
-
-        jButton1.setBackground(new java.awt.Color(102, 0, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/reportes.png"))); // NOI18N
-        jButton1.setText("GRAFICAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanelReportes.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, -1, -1));
 
         jLabelFondo18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondo18.setText("jLabel4");
@@ -3178,6 +3166,7 @@ public final class InitialInterface extends javax.swing.JFrame {
 
     private void jButtonSaveProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveProfileActionPerformed
         checkNewPassword();
+        updateEmail();
     }//GEN-LAST:event_jButtonSaveProfileActionPerformed
 
     private void jButtonListarPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarPrestamosActionPerformed
@@ -3318,10 +3307,6 @@ public final class InitialInterface extends javax.swing.JFrame {
     private void jTextFieldAnswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAnswerActionPerformed
 
     }//GEN-LAST:event_jTextFieldAnswerActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void signOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signOffActionPerformed
         LoginInterface objVentana = new LoginInterface();
@@ -3907,7 +3892,6 @@ public final class InitialInterface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField TotalMultasXMiembro;
     private javax.swing.JTextField TotalMultasXmes;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonBack10;
     private javax.swing.JButton jButtonBack11;

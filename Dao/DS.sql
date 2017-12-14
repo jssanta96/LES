@@ -12,7 +12,8 @@ CREATE TABLE equipment(
 	serial VARCHAR(50)NOT NULL,
 	name VARCHAR(60) NOT NULL,
 	description VARCHAR(30) NOT NULL,
-	state VARCHAR(20) NOT NULL
+	state VARCHAR(20) NOT NULL,
+        UNIQUE(serial)
 
 );
 INSERT INTO equipment(serial,name,description,state)
@@ -36,7 +37,8 @@ CREATE TABLE project(
 	code VARCHAR(30) NOT NULL,
 	name VARCHAR(50) NOT NULL,
 	description VARCHAR(60) NOT NULL,
-	state VARCHAR(30) NOT NULL
+	state VARCHAR(30) NOT NULL,
+        UNIQUE(code)
 	
 );
 
