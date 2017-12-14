@@ -128,6 +128,9 @@ public final class View {
         JOptionPane.showMessageDialog(window, "Este equipo esta en estado de reserva", "Notificacion", 0, LesImage);
     }
     
+     public void emptyIdentification(){
     
+        JOptionPane.showMessageDialog(window, "El campo de identificacion esta vacio", "Notificacion", 0, LesImage);
+    } 
 
 }
