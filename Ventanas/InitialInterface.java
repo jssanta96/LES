@@ -525,6 +525,8 @@ public final class InitialInterface extends javax.swing.JFrame {
             }
         });
         jPanelMenu.add(jButtonInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 161, 37));
+
+        jLabelUserPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/sinFoto.jpg"))); // NOI18N
         jPanelMenu.add(jLabelUserPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 160, 90));
 
         jLabelUserIdentificationGeneral.setText("1234");
@@ -3586,10 +3588,19 @@ public final class InitialInterface extends javax.swing.JFrame {
     }
     
     public void changeLabelPicture(String route){
+        File fileImg = new File(route);
+        if(fileImg.exists()){
+            
             ImageIcon icon = new ImageIcon(route);
             Icon icono = new ImageIcon(icon.getImage().getScaledInstance(jLabelUserPhoto.getWidth(), jLabelUserPhoto.getHeight(), Image.SCALE_DEFAULT));
             jLabelUserPhoto.setText(null);
             jLabelUserPhoto.setIcon(icono);
+        }else{
+            ImageIcon icon = new ImageIcon("/Imagenes/sinFoto.jpg");
+            Icon icono = new ImageIcon(icon.getImage().getScaledInstance(jLabelUserPhoto.getWidth(), jLabelUserPhoto.getHeight(), Image.SCALE_DEFAULT));
+            jLabelUserPhoto.setText(null);
+            jLabelUserPhoto.setIcon(icono);
+        }    
     }
   
    
