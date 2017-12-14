@@ -162,6 +162,13 @@ public void addStateEquipment(JComboBox comboBox , String query , String state )
              
                      break;
                      
+                case "Administrador" : 
+                 
+                    comboBox.addItem("Disponible");
+                    comboBox.addItem("Ocupado");
+             
+                     break;
+                     
                 }
                
             }
@@ -234,7 +241,7 @@ public String query(String query , String type){
             ResultSet rs = sentenceProjects.executeQuery(query);    
             while(rs.next()){
                 String typeUser = rs.getString(type);
-                   
+                   System.out.println(type);
                      return typeUser;
             }
          }catch(SQLException e){

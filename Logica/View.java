@@ -82,6 +82,11 @@ public final class View {
    
     }
     
+    public void errorPicture(){
+        JOptionPane.showMessageDialog(window, "La ruta de la foto de perfil a cambiado", "Notificacion", 0, LesImage);
+   
+    }
+    
     public void errorEmptyPassword(){
     
         JOptionPane.showMessageDialog(window, "Los campos de la contraseña nueva estan vacios", "Notificacion", 0, LesImage);

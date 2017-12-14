@@ -90,10 +90,11 @@ public class UserDao {
                         File fileImg = new File(testingRoutePicture);
                         if(fileImg.exists()){
                             objVentana.changeLabelPicture(testingRoutePicture);
+                        }else{
+                            message.errorPicture();
                         }
                         Assistant objAssistan = new Assistant();
                         objAssistan.cheekRequest(identification);
-                        objAssistan.cheekMult(identification);
                         return true;
                 }
                                

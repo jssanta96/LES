@@ -349,20 +349,6 @@ public class Assistant {
                       
     }
     
-    public void cheekMult(String identification){
-        Querys objQuery = new Querys();
-        String query = objQuery.query("SELECT id_user FROM users WHERE identification ='" + identification + "'", "id_user");
-        int id_user = Integer.valueOf(query);
-        System.out.println(query);
-        String queryName = objQuery.query("SELECT name FROM users WHERE identification ='" + identification + "'", "name");
-        String queryState = objQuery.query("SELECT mult.id_request , mult.value , request.id_user FROM request NATURAL JOIN MULT WHERE id_user = '" + id_user + "'", "mult.value");
-        if(queryState == null){
-         
-        }else{
-         View message = new View();
-          message.membersWithMult( queryName + " tiene multas por pagar");
-        }
-                      
-    }
+
       
 }

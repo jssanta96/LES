@@ -116,6 +116,10 @@ CREATE TABLE mult(
 	FOREIGN KEY (id_request) REFERENCES request(id_request),
 	value INTEGER NOT NULL
 );
+INSERT INTO mult (id_request,value)
+	VALUES(1,50000);
+INSERT INTO mult (id_request,value)
+	VALUES(2,30000);
 
 --Funcion eliminar multa cuando se inserte una con valor 0
 CREATE OR REPLACE FUNCTION f_deleteMult() RETURNS TRIGGER AS $$

@@ -12,7 +12,8 @@ CREATE TABLE equipment(
 	serial VARCHAR(50)NOT NULL,
 	name VARCHAR(60) NOT NULL,
 	description VARCHAR(30) NOT NULL,
-	state VARCHAR(20) NOT NULL
+	state VARCHAR(20) NOT NULL,
+        UNIQUE(serial)
 
 );
 INSERT INTO equipment(serial,name,description,state)
@@ -36,7 +37,8 @@ CREATE TABLE project(
 	code VARCHAR(30) NOT NULL,
 	name VARCHAR(50) NOT NULL,
 	description VARCHAR(60) NOT NULL,
-	state VARCHAR(30) NOT NULL
+	state VARCHAR(30) NOT NULL,
+        UNIQUE(code)
 	
 );
 
@@ -114,6 +116,10 @@ CREATE TABLE mult(
 	FOREIGN KEY (id_request) REFERENCES request(id_request),
 	value INTEGER NOT NULL
 );
+INSERT INTO mult (id_request,value)
+	VALUES(1,50000);
+INSERT INTO mult (id_request,value)
+	VALUES(2,30000);
 
 --Funcion eliminar multa cuando se inserte una con valor 0
 CREATE OR REPLACE FUNCTION f_deleteMult() RETURNS TRIGGER AS $$
