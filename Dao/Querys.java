@@ -17,6 +17,11 @@ import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class Querys {
     
@@ -162,13 +167,6 @@ public void addStateEquipment(JComboBox comboBox , String query , String state )
              
                      break;
                      
-                case "Administrador" : 
-                 
-                    comboBox.addItem("Disponible");
-                    comboBox.addItem("Ocupado");
-             
-                     break;
-                     
                 }
                
             }
@@ -241,7 +239,7 @@ public String query(String query , String type){
             ResultSet rs = sentenceProjects.executeQuery(query);    
             while(rs.next()){
                 String typeUser = rs.getString(type);
-                   System.out.println(type);
+                   
                      return typeUser;
             }
          }catch(SQLException e){
@@ -485,6 +483,23 @@ public void readArchiveUsers(String absoulteRute){
          System.out.println("Error");
      }
  }
+ 
+public void reportGraphic(String ruta){
+            FachadaBD fachada = new FachadaBD();   
+            
+            Connection conn= fachada.getConnetion();
+            try{
+                String rutaReporte=System.getProperty("user.dir")+ruta;
+                JasperReport jasperReport=(JasperReport)JRLoader.loadObjectFromFile(rutaReporte);
+                JasperPrint print;
+                print = JasperFillManager.fillReport(jasperReport, null,conn);
+                JasperViewer view = new JasperViewer(print,false);
+                view.setVisible(true);
+            }catch(Exception e){
+                System.out.print("error"+e);
+            }
+
+}
  
 
 }
