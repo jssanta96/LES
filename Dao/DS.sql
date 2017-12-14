@@ -17,6 +17,14 @@ CREATE TABLE equipment(
 );
 INSERT INTO equipment(serial,name,description,state)
 VALUES('31654971' , 'Portatil DELL' , 'nothing' , 'Disponible');
+INSERT INTO equipment(serial,name,description,state)
+VALUES('9461E654' , 'Kinet ' , 'nothing' , 'Disponible');
+INSERT INTO equipment(serial,name,description,state)
+VALUES('E313C874' , 'ACCER 2' , 'portatil accer' , 'Disponible');
+INSERT INTO equipment(serial,name,description,state)
+VALUES('FKDJQ654' , 'LIP MOTION' , 'nothing' , 'Disponible');
+INSERT INTO equipment(serial,name,description,state)
+VALUES('ES98746D' , 'GLASS VR' , 'Gafas realidad Virtual' , 'Disponible');
 
 
 DROP SEQUENCE project_seq cascade;
@@ -34,6 +42,14 @@ CREATE TABLE project(
 
 INSERT INTO project(code,name,description,state)
 VALUES('1111' , 'Hola mundo' , 'Esto es prueba' , 'Activo');
+INSERT INTO project(code,name,description,state)
+VALUES('1111' , 'DS' , 'Desarrollo de software 1' , 'Activo');
+INSERT INTO project(code,name,description,state)
+VALUES('1111' , 'BD' , 'Bases de Datos' , 'Activo');
+INSERT INTO project(code,name,description,state)
+VALUES('1111' , 'SO' , 'Sistemas operativos' , 'Activo');
+INSERT INTO project(code,name,description,state)
+VALUES('1111' , 'TGS' , 'Teoria general de sistemas' , 'Activo');
 
 DROP SEQUENCE users_seq cascade;
 CREATE SEQUENCE users_seq;
@@ -56,8 +72,13 @@ CREATE TABLE users(
 
 );
 INSERT INTO users(identification,project_id,user_password,name,type,state,email,secret_answer,secret_question)
-VALUES('1107520913' , 1 ,'gnihton' , 'carloscuervo@','Director','Activo','Carlitos6131@...com','andres','¿Mejor amigo de la infancia?');
-
+VALUES('1107520913' , 1 ,'gnihton' , 'Carlos Cuervo','Director','Activo','Carlitos6131@...com','andres','¿Mejor amigo de la infancia?');
+INSERT INTO users(identification,project_id,user_password,name,type,state,email,secret_answer,secret_question)
+VALUES('1625606' , 2 ,'gnihton' , 'Diana KT','Director','Activo','LaKt@...com','andres','¿Mejor amigo de la infancia?');
+INSERT INTO users(identification,project_id,user_password,name,type,state,email,secret_answer,secret_question)
+VALUES('1632149' , 1 ,'gnihton' , 'Andres Serrato','Director','Activo','serratoandres@...com','andres','¿Mejor amigo de la infancia?');
+INSERT INTO users(identification,project_id,user_password,name,type,state,email,secret_answer,secret_question)
+VALUES('1631506' , 1 ,'gnihton' , 'Juan Santa','Director','Activo','santasebastian@...com','andres','¿Mejor amigo de la infancia?');
 
 
 DROP SEQUENCE request_seq cascade;
@@ -77,6 +98,10 @@ CREATE TABLE request(
 );
 INSERT INTO request(state,id_user,id_equipment,start_date,end_date)
 VALUES('Activo',1,1,'2017-11-29','2017-12-6');
+INSERT INTO request(state,id_user,id_equipment,start_date,end_date)
+VALUES('Activo',3,3,'2017-11-20','2017-12-27');
+INSERT INTO request(state,id_user,id_equipment,start_date,end_date)
+VALUES('Activo',2,2,'2017-12-10','2017-12-17');
 
 
 
@@ -90,7 +115,7 @@ CREATE TABLE mult(
 	value INTEGER NOT NULL
 );
 
---FUNCION CREAR MULTA
+--Funcion eliminar multa cuando se inserte una con valor 0
 CREATE OR REPLACE FUNCTION f_deleteMult() RETURNS TRIGGER AS $$
 BEGIN
 IF(TG_OP = 'INSERT') THEN
