@@ -3,6 +3,7 @@ package Dao;
 import Logica.User;
 import Logica.View;
 import Ventanas.InitialInterface;
+import java.io.File;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -90,7 +91,10 @@ public class UserDao {
                         objVentana.changeLabelIdentification(identification);
                         objVentana.setVisible(true);
                         objVentana.enableButtons(identification);
-                        objVentana.changeLabelPicture(testingRoutePicture);
+                        File fileImg = new File(testingRoutePicture);
+                        if(fileImg.exists()){
+                            objVentana.changeLabelPicture(testingRoutePicture);
+                        }                       
                         objVentana.cheekRequest(identification);
                         return true;
                 }
