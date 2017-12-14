@@ -113,10 +113,11 @@ public class RecoverPasswordInterface extends javax.swing.JFrame {
     
     private void jButtonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarActionPerformed
      
-       UserDao objDao = new UserDao();
+     UserDao objDao = new UserDao();
        View objView = new View();
-       
-       String identification = jTextFieldIdentificacion.getText();
+       if(jTextFieldIdentificacion.getText().length()==0){
+           objView.emptyIdentification();
+       }else{String identification = jTextFieldIdentificacion.getText();
        String question=objDao.getData(identification , "SELECT secret_question FROM users WHERE identification='" ,"secret_question" );
        String validateAnswer = objView.valitadionAnswer(question);
        String answer = objDao.getData(identification , "SELECT secret_answer FROM users WHERE identification='" ,"secret_answer");
@@ -130,6 +131,7 @@ public class RecoverPasswordInterface extends javax.swing.JFrame {
           }
           
        }
+     }
        
     }//GEN-LAST:event_jButtonConfirmarActionPerformed
 
@@ -141,7 +143,7 @@ public class RecoverPasswordInterface extends javax.swing.JFrame {
 
     private void jTextFieldIdentificacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldIdentificacionKeyTyped
         Validate field = new Validate();
-        field.numericFieldValidation(jTextFieldIdentificacion);
+       field.numericFieldValidation(jTextFieldIdentificacion , jLabelIdTitle);
     }//GEN-LAST:event_jTextFieldIdentificacionKeyTyped
 
     private void jTextFieldIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdentificacionActionPerformed

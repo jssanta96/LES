@@ -33,7 +33,7 @@ public class LoginInterface extends javax.swing.JFrame {
         submitLogin = new javax.swing.JButton();
         textFieldPassword = new javax.swing.JPasswordField();
         iconPassword = new javax.swing.JLabel();
-        IconAccount = new javax.swing.JLabel();
+        Id = new javax.swing.JLabel();
         iconLES = new javax.swing.JLabel();
         textFieldAccount = new javax.swing.JTextField();
         jLabelFondo = new javax.swing.JLabel();
@@ -86,8 +86,8 @@ public class LoginInterface extends javax.swing.JFrame {
         iconPassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconPass.png"))); // NOI18N
         getContentPane().add(iconPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
 
-        IconAccount.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/accounts.png"))); // NOI18N
-        getContentPane().add(IconAccount, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+        Id.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/accounts.png"))); // NOI18N
+        getContentPane().add(Id, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
 
         iconLES.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         iconLES.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/LESlogo.png"))); // NOI18N
@@ -137,7 +137,7 @@ public class LoginInterface extends javax.swing.JFrame {
 
     private void textFieldAccountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldAccountKeyTyped
         Validate field = new Validate();
-        field.numericFieldValidation(textFieldAccount);
+        field.numericFieldValidation(textFieldAccount , Id);
     }//GEN-LAST:event_textFieldAccountKeyTyped
 
 
@@ -197,7 +197,7 @@ public class LoginInterface extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel IconAccount;
+    private javax.swing.JLabel Id;
     private javax.swing.JButton forgotPassword;
     private javax.swing.JLabel iconLES;
     private javax.swing.JLabel iconPassword;

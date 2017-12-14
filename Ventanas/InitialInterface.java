@@ -9,25 +9,13 @@ import Dao.MultDao;
 import java.io.File;
 import Dao.Querys;
 import Dao.RequestDao;
-import Dao.UserDao;
 import Logica.Assistant;
 import Logica.Validate;
 import Logica.View;
 import java.awt.Image;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -203,6 +191,8 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabelEmailCordi = new javax.swing.JLabel();
         jLabelCoordinadora = new javax.swing.JLabel();
         jLabelCoordinador = new javax.swing.JLabel();
+        jButtonEditContact = new javax.swing.JButton();
+        jButtonSaveEditContact = new javax.swing.JButton();
         jLabelFondoContactUs = new javax.swing.JLabel();
         jPanelReserve = new javax.swing.JPanel();
         jLabelLogoUnivalleReserve = new javax.swing.JLabel();
@@ -1313,6 +1303,26 @@ public final class InitialInterface extends javax.swing.JFrame {
         jLabelCoordinador.setForeground(new java.awt.Color(102, 102, 102));
         jLabelCoordinador.setText("COORDINADOR");
         jPanelContactUs.add(jLabelCoordinador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+
+        jButtonEditContact.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonEditContact.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonEditContact.setText("Editar");
+        jButtonEditContact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditContactActionPerformed(evt);
+            }
+        });
+        jPanelContactUs.add(jButtonEditContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 360, 100, 30));
+
+        jButtonSaveEditContact.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonSaveEditContact.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonSaveEditContact.setText("Guardar");
+        jButtonSaveEditContact.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSaveEditContactActionPerformed(evt);
+            }
+        });
+        jPanelContactUs.add(jButtonSaveEditContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 100, 30));
 
         jLabelFondoContactUs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo.jpg"))); // NOI18N
         jLabelFondoContactUs.setText("jLabel4");
@@ -2864,7 +2874,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEquipoActionPerformed
 
     private void jTextFieldNombreCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreCrearUsuarioActionPerformed
-
+        
     }//GEN-LAST:event_jTextFieldNombreCrearUsuarioActionPerformed
 
     private void jButtonUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateUserActionPerformed
@@ -2878,7 +2888,12 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonUpdateUserActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-        updateEquipment();  
+       
+        Validate field = new Validate();
+        boolean name =field.stringFieldValidation(jTextFieldNombreUpEquipment, jLabelNombreUpEquipment); 
+        if(name == true){
+          updateEquipment();  
+        }
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jButtonOverwriteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverwriteActionPerformed
@@ -2900,11 +2915,22 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEmptyCreateUserActionPerformed
 
     private void jButtonSaveCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveCreateUserActionPerformed
-        createUser();
+        Validate field = new Validate();
+        boolean id = field.numericFieldValidation(jTextFieldIdentificacionCrearUsuario, jLabelIdentificacion);
+        boolean  name = field.stringFieldValidation(jTextFieldNombreCrearUsuario, jLabelNombreCreateUser);
+        if((id == true) &&(name == true)){
+               createUser();
+        }
+     
     }//GEN-LAST:event_jButtonSaveCreateUserActionPerformed
 
     private void jButtonSaveCreateEquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveCreateEquipmentActionPerformed
-        createEquipment();
+        Validate field = new Validate();
+        boolean serial = field.numericAndCharFieldValidation(jTextFieldSerialCrearEquipo ,jLabelCodigo); 
+        boolean  nameEquipment =field.stringFieldValidation(jTextFieldNombreCrearEquipo, jLabelNombre);
+         if((serial == true) &&(nameEquipment == true)){
+              createEquipment();
+        }
     }//GEN-LAST:event_jButtonSaveCreateEquipmentActionPerformed
 
     private void jButtonEmptyCreateEquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmptyCreateEquipmentActionPerformed
@@ -2917,7 +2943,13 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBackCreateEquipmentActionPerformed
 
     private void jButtonSaveCreateProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveCreateProjectActionPerformed
-        createProject();
+       
+        Validate field = new Validate();
+        boolean codeProject = field.numericAndCharFieldValidation(jTextFieldCodigoCrearProyecto, jLabelTitleCodigoCreateProject);
+        boolean nameProject =  field.stringFieldValidation(jTextFieldNombreCrearProyecto, jLabelTitleNombreCreateProject);
+         if((codeProject == true) &&(nameProject == true)){
+              createProject();
+        }
     }//GEN-LAST:event_jButtonSaveCreateProjectActionPerformed
 
     private void jButtonEmptyCreateProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmptyCreateProjectActionPerformed
@@ -2943,8 +2975,11 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNombreUpUserActionPerformed
 
     private void jButtonSaveUpUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveUpUserActionPerformed
-
+        Validate field = new Validate();
+        boolean nameUser = field.stringFieldValidation(jTextFieldNombreUpUser, jLabelNombreTitle);
+        if(nameUser == true){
         updateUser();
+        }
     }//GEN-LAST:event_jButtonSaveUpUserActionPerformed
 
     private void jButtonEmptyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmptyActionPerformed
@@ -3237,7 +3272,12 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack18ActionPerformed
 
     private void jButtonSaveUpdateProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveUpdateProjectActionPerformed
-        updateProject();
+        Validate field = new Validate();
+        boolean nameProject = field.stringFieldValidation(jTextFieldNombreUpdateProject, jLabelNombreUpdateProject);
+        if(nameProject == true){
+              updateProject(); 
+        }
+     
     }//GEN-LAST:event_jButtonSaveUpdateProjectActionPerformed
 
     private void jButtonCheckProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCheckProjectActionPerformed
@@ -3366,8 +3406,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonProjectCSVActionPerformed
 
     private void jTextFieldNombreUpUserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreUpUserKeyTyped
-        Validate field = new Validate();
-        field.stringFieldValidation(jTextFieldNombreUpUser);
+ 
     }//GEN-LAST:event_jTextFieldNombreUpUserKeyTyped
 
     private void jTextFieldEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldEmailKeyTyped
@@ -3375,13 +3414,11 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldEmailKeyTyped
 
     private void jTextFieldCodigoCrearProyectoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldCodigoCrearProyectoKeyTyped
-        Validate field = new Validate();
-        field.numericAndCharFieldValidation(jTextFieldCodigoCrearProyecto);
+ 
     }//GEN-LAST:event_jTextFieldCodigoCrearProyectoKeyTyped
 
     private void jTextFieldNombreCrearProyectoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreCrearProyectoKeyTyped
-        Validate field = new Validate();
-        field.stringFieldValidation(jTextFieldNombreCrearProyecto);
+
     }//GEN-LAST:event_jTextFieldNombreCrearProyectoKeyTyped
 
     private void jTextFieldCodigoCrearProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoCrearProyectoActionPerformed
@@ -3389,8 +3426,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldCodigoCrearProyectoActionPerformed
 
     private void jTextFieldNombreCrearEquipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreCrearEquipoKeyTyped
-        Validate field = new Validate();
-        field.stringFieldValidation(jTextFieldNombreCrearEquipo);
+
     }//GEN-LAST:event_jTextFieldNombreCrearEquipoKeyTyped
 
     private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
@@ -3398,8 +3434,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldEmailActionPerformed
 
     private void jTextFieldSerialCrearEquipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerialCrearEquipoKeyTyped
-        Validate field = new Validate();
-        field.numericAndCharFieldValidation(jTextFieldSerialCrearEquipo);
+  
     }//GEN-LAST:event_jTextFieldSerialCrearEquipoKeyTyped
 
     private void jTextFieldNombreCrearEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreCrearEquipoActionPerformed
@@ -3411,23 +3446,19 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldSerialCrearEquipoActionPerformed
 
     private void jTextFieldIdentificacionCrearUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldIdentificacionCrearUsuarioKeyTyped
-        Validate field = new Validate();
-        field.numericFieldValidation(jTextFieldIdentificacionCrearUsuario);
+  
     }//GEN-LAST:event_jTextFieldIdentificacionCrearUsuarioKeyTyped
 
     private void jTextFieldNombreCrearUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreCrearUsuarioKeyTyped
-        Validate field = new Validate();
-        field.stringFieldValidation(jTextFieldNombreCrearUsuario);
+
     }//GEN-LAST:event_jTextFieldNombreCrearUsuarioKeyTyped
 
     private void jTextFieldNombreUpEquipmentKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreUpEquipmentKeyTyped
-        Validate field = new Validate();
-        field.stringFieldValidation(jTextFieldNombreUpEquipment);
+    
     }//GEN-LAST:event_jTextFieldNombreUpEquipmentKeyTyped
 
     private void jTextFieldNombreUpdateProjectKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreUpdateProjectKeyTyped
-        Validate field = new Validate();
-        field.stringFieldValidation(jTextFieldNombreUpdateProject);
+
     }//GEN-LAST:event_jTextFieldNombreUpdateProjectKeyTyped
 
     private void jButtonExportMultMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportMultMonthActionPerformed
@@ -3485,6 +3516,15 @@ public final class InitialInterface extends javax.swing.JFrame {
 
         utilJTableToPdf(jTable8,fichero,"Reporte Multas por Miembro");
     }//GEN-LAST:event_jButtonExportMultMonth4ActionPerformed
+
+    private void jButtonEditContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditContactActionPerformed
+      jLabelCoordinadora.repaint();
+
+    }//GEN-LAST:event_jButtonEditContactActionPerformed
+
+    private void jButtonSaveEditContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveEditContactActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSaveEditContactActionPerformed
 
     private void emptyText() {
         jTextAreaCrearEquipo.setText("");
@@ -3904,6 +3944,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCreateEquipment;
     private javax.swing.JButton jButtonCreateProject;
     private javax.swing.JButton jButtonCreateUser;
+    private javax.swing.JButton jButtonEditContact;
     private javax.swing.JButton jButtonEmpty;
     private javax.swing.JButton jButtonEmptyCreateEquipment;
     private javax.swing.JButton jButtonEmptyCreateProject;
@@ -3943,6 +3984,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSaveCreateEquipment;
     private javax.swing.JButton jButtonSaveCreateProject;
     private javax.swing.JButton jButtonSaveCreateUser;
+    private javax.swing.JButton jButtonSaveEditContact;
     private javax.swing.JButton jButtonSaveLoan;
     private javax.swing.JButton jButtonSaveProfile;
     private javax.swing.JButton jButtonSaveReserve;
