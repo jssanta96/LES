@@ -9,16 +9,6 @@ import Dao.Querys;
 import Dao.RequestDao;
 import Dao.UserDao;
 import Ventanas.InitialInterface;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -157,7 +147,7 @@ public class Assistant {
         Assistant objAssistan = new Assistant();
         Querys objQuery = new Querys();
         View objView = new View();
-        String passwordBd=objQuery.query("SELECT user_password FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "user_password");
+        String passwordBd=objQuery.typeUser("SELECT user_password FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "user_password");
         if(encryptSortPassword(actualPassword).equals(passwordBd)){
             objView.sucessfulOperationTypeElement("La contraseña","verificado");
             return true;
@@ -185,7 +175,7 @@ public class Assistant {
     
     public String getEmailProfile(JLabel jLabelUserIdentificationGeneral){
          Querys objQuery = new Querys();
-         String email=objQuery.query("SELECT email FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "email");
+         String email=objQuery.typeUser("SELECT email FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "email");
          return email;
     }
 
@@ -240,9 +230,9 @@ public class Assistant {
     public void fillMyProfile(JLabel jLabelUserIdentificationGeneral,JLabel jLabelSetName ,JTextField jTextFieldSetEmail){
         
         Querys objQuery = new Querys();
-        String user_name=objQuery.query("SELECT name FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "name");
+        String user_name=objQuery.typeUser("SELECT name FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "name");
         jLabelSetName.setText(user_name);
-        String user_email=objQuery.query("SELECT email FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "email");
+        String user_email=objQuery.typeUser("SELECT email FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "email");
         jTextFieldSetEmail.setText(user_email);
         
     }
@@ -253,10 +243,10 @@ public class Assistant {
         RequestController objCtrlRequest = new RequestController();
         EquipmentController objCtrlEquipment = new EquipmentController();
         Querys objQuery = new Querys();
-        String id_user= objQuery.query("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
+        String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
         int id=Integer.parseInt(id_user);
         String serial_equipment = objAssistan.splitComboBox(jComboBoxEquipmentSerialLoan);
-        String id_equipment =objQuery.query("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
+        String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
         int id_equipments=Integer.parseInt(id_equipment);
         int id_request = 0;
         try{
@@ -296,10 +286,10 @@ public class Assistant {
         RequestController objCtrlRequest = new RequestController();
         EquipmentController objCtrlEquipment = new EquipmentController();
         Querys objQuery = new Querys();
-        String id_user= objQuery.query("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
+        String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
         int id=Integer.parseInt(id_user);
         String serial_equipment = objAssistan.splitComboBox(jComboBoxEquipmentSerialLoan);
-        String id_equipment =objQuery.query("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
+        String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
         int id_equipments=Integer.parseInt(id_equipment);
         int id_request = 0;
         try{
@@ -324,45 +314,6 @@ public class Assistant {
             }
 
     }
-       public void cheekCordinator(){
-        Querys objQuery = new Querys();
-        String query = objQuery.query("SELECT request.state FROM request WHERE state = SOME  (SELECT state FROM request  WHERE state = 'Activo')" , "state");
-        if(query == null){
-         
-         }else{
-              View message = new View();
-              message.membersWithMult(" Cordinador hay miembros con prestamos activos");
-            }
-    }
-    public void cheekRequest(String identification){
-        Querys objQuery = new Querys();
-        String query = objQuery.query("SELECT id_user FROM users WHERE identification ='" + identification + "'", "id_user");
-        int id_user = Integer.valueOf(query);
-        String queryState = objQuery.query("SELECT  state FROM request WHERE id_user = '" +id_user +"' and state = 'Activo'" , "state");                           
-        String queryName = objQuery.query("SELECT name FROM users WHERE identification ='" + identification + "'", "name");
-        if(queryState == null){
-         
-        }else{
-         View message = new View();
-          message.membersWithMult( queryName + " recuerde entregar su equipo a tiempo");
-        }
-                      
-    }
     
-    public void cheekMult(String identification){
-        Querys objQuery = new Querys();
-        String query = objQuery.query("SELECT id_user FROM users WHERE identification ='" + identification + "'", "id_user");
-        int id_user = Integer.valueOf(query);
-        System.out.println(query);
-        String queryName = objQuery.query("SELECT name FROM users WHERE identification ='" + identification + "'", "name");
-        String queryState = objQuery.query("SELECT mult.id_request , mult.value , request.id_user FROM request NATURAL JOIN MULT WHERE id_user = '" + id_user + "'", "mult.value");
-        if(queryState == null){
-         
-        }else{
-         View message = new View();
-          message.membersWithMult( queryName + " tiene multas por pagar");
-        }
-                      
-    }
-      
+    
 }
