@@ -841,6 +841,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelCreateEquipment.add(jScrollPaneCreateEquipment, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 310, 60));
 
         jButtonEquipmentCSV.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonEquipmentCSV.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         jButtonEquipmentCSV.setForeground(new java.awt.Color(255, 255, 255));
         jButtonEquipmentCSV.setText("Cargar CSV");
         jButtonEquipmentCSV.addActionListener(new java.awt.event.ActionListener() {
@@ -946,6 +947,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelCreateUser.add(jComboBoxCreateUserPosition, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 180, 120, 30));
 
         jButtonUserCSV.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonUserCSV.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         jButtonUserCSV.setForeground(new java.awt.Color(255, 255, 255));
         jButtonUserCSV.setText("Cargar CSV");
         jButtonUserCSV.addActionListener(new java.awt.event.ActionListener() {
@@ -1259,6 +1261,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelCreateProject.add(jScrollPaneDescriptionCreateProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 310, 60));
 
         jButtonProjectCSV.setBackground(new java.awt.Color(102, 0, 0));
+        jButtonProjectCSV.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         jButtonProjectCSV.setForeground(new java.awt.Color(255, 255, 255));
         jButtonProjectCSV.setText("Cargar CSV");
         jButtonProjectCSV.addActionListener(new java.awt.event.ActionListener() {
