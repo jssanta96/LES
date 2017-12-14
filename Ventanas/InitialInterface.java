@@ -3809,6 +3809,7 @@ public final class InitialInterface extends javax.swing.JFrame {
             case "Lider de proyecto":
 
                 jButtonEquipo.setEnabled(false);
+                jButtonMultDelete.setEnabled(false);
                 break;
 
             case "Miembro":
@@ -3816,6 +3817,7 @@ public final class InitialInterface extends javax.swing.JFrame {
                 jButtonEquipo.setEnabled(false);
                 jButtonProyecto.setEnabled(false);
                 jButtonUsuario.setEnabled(false);
+                jButtonMultDelete.setEnabled(false);
                 break;
 
             case "Cordinador":
