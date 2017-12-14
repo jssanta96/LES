@@ -2966,6 +2966,8 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSaveReserveActionPerformed
 
     private void jButtonListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListActionPerformed
+        String[] titulos = {"Usuario", "Equipo","FechaInicio","FechaEntrega","Estado"};
+        jTable10.setModel(new DefaultTableModel(null, titulos)); 
         Querys objQuery = new Querys();
         objQuery.fillTables(this.jTable10, "SELECT id_user , id_equipment , start_date , end_date , state FROM request WHERE state='Reserva'");
         hidePanels();
@@ -3163,6 +3165,8 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonSaveProfileActionPerformed
 
     private void jButtonListarPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarPrestamosActionPerformed
+        String[] titulos = {"Usuario", "Equipo","FechaInicio","FechaEntrega","Estado"};
+        jTable4.setModel(new DefaultTableModel(null, titulos));
         Querys objQuery = new Querys();
         objQuery.fillTables(this.jTable4, "SELECT id_user , id_equipment , start_date , end_date , state FROM request WHERE state='Activo'");
         hidePanels();
