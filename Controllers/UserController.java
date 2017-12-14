@@ -48,7 +48,7 @@ public class UserController {
                 message.sucessfulOperationTypeElement("Un usuario", "actualizado");
 
         }
-        System.out.println("error");
+
 
     }
 

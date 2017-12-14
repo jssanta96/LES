@@ -2691,7 +2691,7 @@ public final class InitialInterface extends javax.swing.JFrame {
         jPanelDeleteMult.add(jLabelMultValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, 30));
 
         jLabelValueMultUser.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabelValueMultUser.setText("ValorMulta");
+        jLabelValueMultUser.setText("NULL");
         jPanelDeleteMult.add(jLabelValueMultUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, -1, 30));
 
         jLabelUserNameMult.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -2861,7 +2861,6 @@ public final class InitialInterface extends javax.swing.JFrame {
     private void jButtonEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEquipoActionPerformed
         hidePanels();
         jPanelCRUDEquipment.setVisible(true);
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonEquipoActionPerformed
 
     private void jTextFieldNombreCrearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreCrearUsuarioActionPerformed
@@ -2869,7 +2868,6 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNombreCrearUsuarioActionPerformed
 
     private void jButtonUpdateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonUpdateUserActionPerformed
-
         Querys objQuery = new Querys();
         objQuery.updateComboBoxs(this.jComboBoxUpdateUserProject, "SELECT * FROM project", "id_project", "name");
         objQuery.updateComboBoxs(this.jComboBoxUpdateIdUser, "SELECT * FROM users", "identification", "name");
@@ -2880,7 +2878,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonUpdateUserActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-               updateEquipment();  
+        updateEquipment();  
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jButtonOverwriteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOverwriteActionPerformed
@@ -2945,7 +2943,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNombreUpUserActionPerformed
 
     private void jButtonSaveUpUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveUpUserActionPerformed
-        // TODO add your handling code here:
+
         updateUser();
     }//GEN-LAST:event_jButtonSaveUpUserActionPerformed
 
@@ -2961,9 +2959,9 @@ public final class InitialInterface extends javax.swing.JFrame {
     private void jButtonSaveReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveReserveActionPerformed
         Assistant objAssistan = new Assistant();        
         createReserve();
-       /* JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia: " + getReserveDate() + " hasta: " +objAssistan. convertDayToString(objAssistan.addDayDate(objAssistan.convertStringToDate(getReserveDate()), 7))
+        JOptionPane.showMessageDialog(null, "Su prestamo estara habil desde el dia: " + getReserveDate() + " hasta: " +objAssistan. convertDayToString(objAssistan.addDayDate(objAssistan.convertStringToDate(getReserveDate()), 7))
                 + "\n si no lo entrega antes de la fecha se le empezata a cobrar 5000(COP) por cada dia de atraso",
-                "PRESTAMO DE EQUIPO", JOptionPane.WARNING_MESSAGE);*/
+                "PRESTAMO DE EQUIPO", JOptionPane.WARNING_MESSAGE);
 
     }//GEN-LAST:event_jButtonSaveReserveActionPerformed
 
@@ -3104,6 +3102,8 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBack15ActionPerformed
 
     private void jButtonMultDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultDeleteActionPerformed
+        jLabelUserNameMult.setText("NULL");
+        jLabelValueMultUser.setText("NULL");
         hidePanels();
         jPanelDeleteMult.setVisible(true);
         Querys objQuery = new Querys();
@@ -3219,7 +3219,8 @@ public final class InitialInterface extends javax.swing.JFrame {
         String type = objQuery.typeUser("SELECT type FROM users WHERE  identification ='" + objAssistan.splitComboBox(jComboBoxUpdateIdUser1)  + "'" , "type");
         String user_name= objQuery.typeUser("SELECT name FROM users WHERE  identification ='" + objAssistan.splitComboBox(jComboBoxUpdateIdUser1)  + "'" , "name");
         String user_email = objQuery.typeUser("SELECT email FROM users WHERE  identification ='" +  objAssistan.splitComboBox(jComboBoxUpdateIdUser1) + "'" , "email");
-        //jLabelViewUserProject.setText(projectName);
+        String project_name = objQuery.typeUser("SELECT name FROM project WHERE id_project =(SELECT project_id FROM users WHERE identification='"+objAssistan.splitComboBox(jComboBoxUpdateIdUser1)+"');","name");
+        jLabelViewUserProject.setText(project_name);
         jLabelViewUserState.setText(state);
         jLabelViewUserRange.setText(type);
         jLabelViewUserName.setText(user_name);
@@ -3268,27 +3269,28 @@ public final class InitialInterface extends javax.swing.JFrame {
         String id_request= objQuery.typeUser("SELECT id_request FROM mult WHERE  id_mult =' "+ id_mult + "'" , "id_request");
         int id_requests=Integer.parseInt(id_request);
         String id_user= objQuery.typeUser("SELECT id_user FROM request WHERE id_request=' "+ id_requests + "'" , "id_user");
-        int id_users=Integer.parseInt(id_user);
         String user_name= objQuery.typeUser( "SELECT name FROM users WHERE id_user= ' "+ id_user + "'" , "name");
+        String value = objQuery.typeUser("SELECT value FROM mult WHERE id_mult='"+id_mult+"'","value");
         jLabelUserNameMult.setText(user_name);
+        jLabelValueMultUser.setText(value);
 
 
     }//GEN-LAST:event_jButtonCheckMultActionPerformed
 
     private void TotalMultasXMiembroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TotalMultasXMiembroActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_TotalMultasXMiembroActionPerformed
 
     private void jTextFieldQuestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldQuestionActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldQuestionActionPerformed
 
     private void jTextFieldAnswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldAnswerActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldAnswerActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void signOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signOffActionPerformed
@@ -3374,7 +3376,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNombreCrearProyectoKeyTyped
 
     private void jTextFieldCodigoCrearProyectoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodigoCrearProyectoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldCodigoCrearProyectoActionPerformed
 
     private void jTextFieldNombreCrearEquipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombreCrearEquipoKeyTyped
@@ -3383,7 +3385,7 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldNombreCrearEquipoKeyTyped
 
     private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldEmailActionPerformed
 
     private void jTextFieldSerialCrearEquipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldSerialCrearEquipoKeyTyped
@@ -3392,11 +3394,11 @@ public final class InitialInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldSerialCrearEquipoKeyTyped
 
     private void jTextFieldNombreCrearEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreCrearEquipoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldNombreCrearEquipoActionPerformed
 
     private void jTextFieldSerialCrearEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSerialCrearEquipoActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextFieldSerialCrearEquipoActionPerformed
 
     private void jTextFieldIdentificacionCrearUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldIdentificacionCrearUsuarioKeyTyped
@@ -3542,10 +3544,8 @@ public final class InitialInterface extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(InitialInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new InitialInterface().setVisible(true);

@@ -44,15 +44,10 @@ public class UserDao {
     public boolean updateUser(String identification, String project_id, String userName, String type, String state, String email,String answer, String question){
 
         String sql_select="UPDATE users SET  project_id = "+ project_id +", name ='" + userName + "', type = '" + type +  "', state = '" + state + "', email = '"+ email +"', secret_answer = '" + answer + "', secret_question = '" + question + "' WHERE  identification='"+ identification +"';";
-        System.out.println(sql_select);
         try{
             FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();
-                    System.out.println("0");
-
             Statement sentencia = conn.createStatement();
-                    System.out.println("1");
-
             sentencia.executeUpdate(sql_select);
             return true;
         }
@@ -102,8 +97,12 @@ public class UserDao {
             }
             
         }
-        catch(SQLException e){ System.out.println(e); }
-        catch(Exception e){ System.out.println(e); }
+        catch(SQLException e){ 
+            System.out.println(e); 
+        }
+        catch(Exception e){
+            System.out.println(e); 
+        }
         
         return false;
     }

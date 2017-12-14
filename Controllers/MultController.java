@@ -47,7 +47,6 @@ public class MultController {
                 message.sucessfulOperationTypeElement("Una multa", "actualizo");
 
         }
-        System.out.println("error");
 
         
     }

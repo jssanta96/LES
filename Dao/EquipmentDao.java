@@ -52,7 +52,6 @@ public class EquipmentDao {
         try{
             FachadaBD fachada = new FachadaBD();
             Connection conn= fachada.getConnetion();
-            System.out.println("consultando en la bd");
             Statement sentence = conn.createStatement();
             ResultSet tabla = sentence.executeQuery(sql_select);
 
@@ -65,7 +64,6 @@ public class EquipmentDao {
 
                 equipment.setState(tabla.getString(4));
 
-                System.out.println("ok");
             }
 
             return equipment;

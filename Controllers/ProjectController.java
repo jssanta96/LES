@@ -52,10 +52,7 @@ public class ProjectController {
                 View message = new View();
                 message.sucessfulOperationTypeElement("Un proyecto", "actualizo");
 
-        }
-                        System.out.println("error");
-
-    
+        }  
     }
 
 }

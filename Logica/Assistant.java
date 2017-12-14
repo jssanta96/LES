@@ -111,15 +111,12 @@ public class Assistant {
             return 0;           
         }else{
             double valueMult=days*5000;
-            System.out.println(valueMult);
             return valueMult;
         }   
     }
     
     public void generateMult(int id_request,int days){
         double mult = calculateMult(days);
-        System.out.println(mult+" Valor multa");
-        System.out.println(id_request);
         MultDao objDao = new MultDao();
         objDao.generateMult(id_request, mult);
        
@@ -192,7 +189,6 @@ public class Assistant {
         try {
             Statement sentenceEmail = conn.createStatement();
             String queryEmail = "UPDATE users set email='" + jTextFieldSetEmail.getText() + "' WHERE identification ='"+jLabelUserIdentificationGeneral.getText()+"';";
-            System.out.print(queryEmail);
             sentenceEmail.executeUpdate(queryEmail);
             objView.sucessfulOperationTypeElement("El email", "actualizado");
             
@@ -205,7 +201,6 @@ public class Assistant {
     public void saveImage(String route, JLabel jLabelUserIdentificationGeneral){
         FachadaBD fachada = new FachadaBD();
         Connection conn = fachada.getConnetion();
-        System.out.println("Abrio la conexion para la imagen");
         try {
             Statement senteceImage = conn.createStatement();
             String queryImage = "UPDATE users set adress_photo='" + route + "' WHERE identification ='"+jLabelUserIdentificationGeneral.getText()+"';";
@@ -250,28 +245,22 @@ public class Assistant {
         Querys objQuery = new Querys();
         String id_user= objQuery.typeUser("SELECT id_user FROM users WHERE  identification ='" + jLabelUserIdentificationGeneral.getText() + "'" , "id_user");
         int id=Integer.parseInt(id_user);
-        System.out.println(id+" Id del usuario");
         String serial_equipment = objAssistan.splitComboBox(jComboBoxEquipmentSerialLoan);
         String id_equipment =objQuery.typeUser("SELECT id_equipment FROM equipment WHERE  serial ='" + serial_equipment + "'" , "id_equipment");
         int id_equipments=Integer.parseInt(id_equipment);
-        System.out.println(id_equipments);
         int id_request = 0;
         try{
-            System.out.println("Entro al try");
             id_request = getIdRequest(id, id_equipments, "Activo");
             if(id_request==0){
-                 System.out.println(id_request);
                  Exception e = new Exception("Este es mi propio error.");
                  throw e;
             }else{
                 Date end_date;
                 end_date = objAssistan.convertStringToDate(getEndDate(id_request));
-                System.out.println(end_date);
                 Date start_date;
                 start_date = objAssistan.convertStringToDate(objAssistan.getStarRequestDate(id_request));
  
                 int days=(int) ( end_date.getTime() - start_date.getTime() )/86400000; 
-                System.out.println(days+" Dias entre fechas");
                 if(days>=21){
                     
                     objView.errorExtendRenovate();

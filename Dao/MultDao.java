@@ -124,7 +124,6 @@ public MultDao(){
         try {
             Statement sentenceMult = conn.createStatement();
             String queryMult = "SELECT id_request FROM mult WHERE id_mult=" + id_mult + ";";
-            System.out.print(queryMult);
             ResultSet rsMult = sentenceMult.executeQuery(queryMult);
             while (rsMult.next()) {
                 id_request = rsMult.getInt("id_request");

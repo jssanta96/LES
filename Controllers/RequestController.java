@@ -2,6 +2,7 @@ package Controllers;
 
 import Dao.RequestDao;
 import Logica.Request;
+import Logica.View;
 
 public class RequestController {
    
@@ -34,7 +35,7 @@ public class RequestController {
         boolean cheek =requestDao.changeStateRequest(id_request,state);
         
         if (cheek == true){
-                        System.out.println("Se actualizo el estado de un equipo ");
+
 
         }
     }
@@ -44,7 +45,7 @@ public class RequestController {
         boolean cheek =requestDao.renovateRequest(id_request,end_date);
         
         if (cheek == true){
-                        System.out.println("Se renovo el prestamo de un equipo ");
+
 
         }
     }

@@ -61,12 +61,8 @@ public class EquipmentController {
         
         EquipmentDao equipmentDao= new EquipmentDao();
         
-        boolean cheek =equipmentDao.changeStateEquipment(id_equipment,state);
-        
-        if (cheek == true){
-                        System.out.println("Se actualizo el estado de un equipo ");
+        equipmentDao.changeStateEquipment(id_equipment,state);
 
-        }
     }
 
 }

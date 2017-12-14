@@ -158,12 +158,10 @@ public class RequestDao {
         try {
             Statement sentenceMult = conn.createStatement();
             String queryMult = "SELECT id_user FROM request WHERE id_request=" + id_request + ";";
-            System.out.print(queryMult);
             ResultSet rsMult = sentenceMult.executeQuery(queryMult);
             while (rsMult.next()) {
                 id_user = rsMult.getInt("id_user");
             }
-            System.out.println(id_user);
             return id_user;
         } catch (SQLException ex) {
             Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);
@@ -178,7 +176,6 @@ public class RequestDao {
         try {
             Statement sentenceRequest = conn.createStatement();
             String queryRequest = "SELECT end_date FROM request WHERE id_request=" + id_request + ";";
-            System.out.print(queryRequest);
             ResultSet rsRequest = sentenceRequest.executeQuery(queryRequest);
             while (rsRequest.next()) {
                 end_date = rsRequest.getString("end_date");
@@ -197,7 +194,6 @@ public class RequestDao {
         try {
             Statement sentenceRequest = conn.createStatement();
             String queryRequest = "SELECT start_date FROM request WHERE id_request=" + id_request + ";";
-            System.out.print(queryRequest);
             ResultSet rsRequest = sentenceRequest.executeQuery(queryRequest);
             while (rsRequest.next()) {
                 start_date = rsRequest.getString("start_date");
@@ -222,7 +218,6 @@ public class RequestDao {
             while (rsRequest.next()) {
                 id = rsRequest.getInt("id_request");
             }
-            System.out.println(id);
             return id;
         } catch (SQLException ex) {
             Logger.getLogger(InitialInterface.class.getName()).log(Level.SEVERE, null, ex);

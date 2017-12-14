@@ -179,16 +179,15 @@ public void addStateUser(JComboBox comboBox , String query , String state ){
          
          try{
             Connection conn= fachada.getConnetion();
-            System.out.println("1");
+
             Statement sentenceProjects = conn.createStatement();
-                        System.out.println("2");
+                      
 
             ResultSet rs = sentenceProjects.executeQuery(query);    
 
             while(rs.next()){
 
                 String stateUser = rs.getString(state);
-                System.out.println(stateUser);
                 
                 switch(stateUser){
                     
