@@ -3098,9 +3098,10 @@ public final class InitialInterface extends javax.swing.JFrame {
         String[] titulos = {"Mes", "CantidadMultas", "Valor"};
         jTable9.setModel(new DefaultTableModel(null, titulos));
         Querys objQuery = new Querys();
-        objQuery.fillTables(this.jTable9, "SELECT TO_CHAR(start_date,'TMMonth') mes, COUNT (mult.id_mult),COUNT (mult.id_mult)*5000 FROM request\n"
+        objQuery.fillTables(this.jTable9, "SELECT TO_CHAR(start_date,'TMMonth') mes, COUNT (mult.id_mult),COUNT (mult.id_mult)*5000  FROM request\n"
                 + "INNER JOIN mult ON request.id_request= mult.id_request WHERE TO_CHAR(start_date,'TMMonth') =TO_CHAR(start_date,'TMMonth') AND mult.value>0 GROUP BY mes;");
-        objQuery.setTotal(this.TotalMultasXmes,"SELECT SUM(value) FROM mult WHERE value>0;");
+        objQuery.setTotal(this.TotalMultasXmes,"SELECT SUM(valor) FROM (SELECT TO_CHAR(start_date,'TMMonth') mes, COUNT (mult.id_mult),COUNT (mult.id_mult)*5000  AS valor FROM request\n" +
+"                INNER JOIN mult ON request.id_request= mult.id_request WHERE TO_CHAR(start_date,'TMMonth') =TO_CHAR(start_date,'TMMonth')  GROUP BY mes) as bf;");
         hidePanels();
         jPanelMultXMonthList.setVisible(true);
     }//GEN-LAST:event_jButtonMultasXMesActionPerformed
@@ -3131,7 +3132,10 @@ public final class InitialInterface extends javax.swing.JFrame {
                 + "               INNER JOIN request ON users.id_user=request.id_user\n"
                 + "                INNER JOIN mult ON request.id_request=mult.id_request\n"
                 + "                WHERE mult.value>0 GROUP BY users.name;");
-                objQuery.setTotal(this.TotalMultasXMiembro,"SELECT SUM(value) FROM mult WHERE value>0;");
+                objQuery.setTotal(this.TotalMultasXMiembro,"SELECT SUM (valor) FROM (Select users.name ,COUNT(mult.id_request),(COUNT(mult.value) * 5000) as valor FROM users\n" +
+"                          INNER JOIN request ON users.id_user=request.id_user\n" +
+"                            INNER JOIN mult ON request.id_request=mult.id_request\n" +
+"                       GROUP BY users.name) AS BF;");
 
         hidePanels();
         jPanelMultXMembersList.setVisible(true);
@@ -3592,7 +3596,8 @@ public final class InitialInterface extends javax.swing.JFrame {
         Querys objQuery = new Querys();
         objQuery.reportGraphic(direccion);
     }//GEN-LAST:event_jButtonBack24ActionPerformed
-//
+////
+    //
     private void jButtonBack25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBack25ActionPerformed
         // TODO add your handling code here:
          String direccion ="/Ventanas/ReportGraphicsXMultMonth.jasper";
